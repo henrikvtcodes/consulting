@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-class MyDocument extends Document {
+class AppDocument extends Document {
   static async getInitialProps(ctx:any) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html className="h-full bg-gray-50">
         <Head>
           <script
             async
@@ -20,7 +20,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/henriklogo.png" />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
-        <body>
+        <body className="h-full">
           <Main />
           <NextScript />
         </body>
@@ -29,4 +29,4 @@ class MyDocument extends Document {
   }
 }
 
-export default MyDocument;
+export default AppDocument;

@@ -5,7 +5,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
   <Provider store={store}>
     <ChakraProvider resetCSS={false} >
@@ -15,4 +15,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp
+export default App;
