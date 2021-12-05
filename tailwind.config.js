@@ -1,4 +1,5 @@
 const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   mode: "jit",
@@ -60,6 +61,9 @@ module.exports = {
         },
         spanishViolet: "#432371",
         MacAndCheese: "#faae7b",
+      },
+      fontFamily: {
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
     },
   },
