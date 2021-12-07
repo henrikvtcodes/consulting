@@ -21,7 +21,10 @@
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
+    "axios": "^0.24.0",
+    "cookie": "^0.4.1",
     "framer-motion": "^4",
+    "micro": "^9.3.4",
     "next": "12.0.4",
     "postcss": "^8.4.4",
     "react": "17.0.2",
@@ -29,12 +32,16 @@
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
     "react-supabase": "^0.2.0",
+    "recoil": "^0.5.2",
     "stripe": "^8.191.0",
     "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
+    "@types/cookie": "^0.4.1",
+    "@types/micro": "^7.3.6",
     "@types/node": "16.11.11",
     "@types/react": "17.0.37",
+    "@types/recoil": "^0.0.9",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
     "typescript": "4.5.2"
