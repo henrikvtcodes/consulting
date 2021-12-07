@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 
-const Home = (props) => {
+const Home:NextPage = () => {
   return (
     <div className="">
     </div>
