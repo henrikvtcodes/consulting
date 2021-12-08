@@ -6,7 +6,7 @@ import logo from "~pub/henriklogo.png";
 
 const Home:NextPage = () => {
   return (
-    <main className="text-black bg-gray-100 w-screen h-screen my-auto">
+    <main className="text-black bg-gray-100 w-screen h-screen flex flex-col justify-center align-middle">
       <div className="grid justify-center place-content-center mx-2 my-4">
         <div className='justify-self-center'>
           <Image src={"/henriklogo.png"} className='w-24 h-24 justify-self-center' width={96} height={96} alt="henrik's logo"/>

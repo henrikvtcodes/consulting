@@ -5,13 +5,9 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import "../styles/globals.css";
 
-function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }) {
   return (
-  <Provider store={store}>
-    <ChakraProvider resetCSS={false} >
       <Component {...pageProps} />
-    </ChakraProvider>
-  </Provider>
   );
 }
 
