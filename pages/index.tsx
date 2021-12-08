@@ -24,7 +24,7 @@ const Home:NextPage = () => {
           {" "}
           This website is coming soon (I promise it&apos;ll be pretty cool!). In
           the meantime, I&apos;m still open to take clients, so you can contact me
-          at the information below.{" "}
+          at the email address below.{" "}
         </p>
         <br />
         <div>
