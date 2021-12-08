@@ -5,7 +5,7 @@ import Image from 'next/image'
 import logo from "~pub/henriklogo.png";
 import { DefaultMeta } from '~components/meta';
 
-const Home:NextPage = () => {
+const Home:NextPage = (props) => {
   return (
     <main className="text-black bg-gray-100 w-screen h-screen flex flex-col justify-center align-middle">
       <DefaultMeta />
@@ -32,7 +32,7 @@ const Home:NextPage = () => {
         <div>
           {" "}
           <b>Email me at:</b>{" "}
-          <a href="mailto:consulting@henrikvt.com">consulting@henrikvt.com</a>{" "}
+          <a className='select-all' href="mailto:consulting@henrikvt.com">consulting@henrikvt.com</a>{" "}
         </div>
       </div>
     </main>
