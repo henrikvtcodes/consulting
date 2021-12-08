@@ -32,7 +32,7 @@ const Home:NextPage = (props) => {
         <div>
           {" "}
           <b>Email me at:</b>{" "}
-          <a className='select-all' href="mailto:consulting@henrikvt.com">consulting@henrikvt.com</a>{" "}
+          <a className='select-all umami--click--signup-button' href="mailto:consulting@henrikvt.com">consulting@henrikvt.com</a>{" "}
         </div>
       </div>
     </main>
