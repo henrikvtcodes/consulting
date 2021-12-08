@@ -6,7 +6,7 @@ const meta = {
   desc: "HVTC: Technology services for residential and small business. Full website coming soon.",
   author: "Henrik Van Tassell",
   icon: "/henriklogo.png",
-  image: "images/henrik-forest.jpg",
+  image: "/milfordsunrise.jpg",
   twitterSite: "@henrik_tech",
 };
 
