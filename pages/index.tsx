@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import logo from "~pub/henriklogo.png";
 
-const Home:NextPage = () => {
+const Home:NextPage = (props) => {
   return (
     <main className="text-black bg-gray-100 w-screen h-screen flex flex-col justify-center align-middle">
       <div className="grid justify-center place-content-center mx-2 my-4">
@@ -23,8 +23,8 @@ const Home:NextPage = () => {
         <p className="max-w-3xl">
           {" "}
           This website is coming soon (I promise it&apos;ll be pretty cool!). In
-          the meantime, I&apos;m still open to take clients, so you can contact me
-          at the email address below.{" "}
+          the meantime, I&apos;m still open to take clients, so you can email me
+          at the address below.{" "}
         </p>
         <br />
         <div>
@@ -37,4 +37,4 @@ const Home:NextPage = () => {
   );
 }
 
-export default Home
+export default Home;
