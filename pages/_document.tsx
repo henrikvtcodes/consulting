@@ -17,7 +17,6 @@ class AppDocument extends Document {
             src="/umami.js"
             data-host-url="http://analytics.henriktech.com"
           />
-          <link rel="icon" type="image/png" href="/henriklogo.png" />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
         <body className="h-full">
