@@ -5,7 +5,7 @@ import Image from 'next/image'
 import logo from "~pub/henriklogo.png";
 import { DefaultMeta } from '~components/meta';
 
-const Home:NextPage = (props:any) => {
+const Home:NextPage = () => {
   return (
     <main className="text-black bg-gray-100 w-screen h-screen flex flex-col justify-center align-middle">
       <DefaultMeta />
