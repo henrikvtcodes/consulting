@@ -11,9 +11,9 @@ type EmailPasswordLogin = {
 }
 
 // Login Hooks
-export const useLogin = async (provider:CustomProvider) => await supabase.auth.signIn({provider:provider})
+export const useLogin = async (provider:CustomProvider) => {await supabase.auth.signIn({provider:provider})}
 
-export const useEmailPasswordLogin = async (data:EmailPasswordLogin) => await supabase.auth.signIn({email:data.email, password:data.password})
+export const useEmailPasswordLogin = async (data:EmailPasswordLogin) => {await supabase.auth.signIn({email:data.email, password:data.password})}
 
 // Signup Flow
 export const useCodeValidation = async (code:string) => {
