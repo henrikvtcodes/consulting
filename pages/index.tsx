@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import logo from "~pub/henriklogo.png";
 
-const Home:NextPage = (props:any) => {
+const Home:NextPage = () => {
   return (
     <main className="text-black bg-gray-100 w-screen h-screen flex flex-col justify-center align-middle">
       <div className="grid justify-center place-content-center mx-2 my-4">
