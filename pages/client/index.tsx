@@ -2,7 +2,7 @@
 
 
 
-const ClientHome = (props) => {
+const ClientHome = (props:any) => {
   return (
     <main>
 
