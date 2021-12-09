@@ -1,4 +1,4 @@
-const AdminHome = (props) => {
+const AdminHome = (props:any) => {
   return (
     <main>
 
