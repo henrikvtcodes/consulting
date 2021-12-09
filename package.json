@@ -22,6 +22,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.4.0",
     "axios": "^0.24.0",
+    "chalk": "^5.0.0",
     "cookie": "^0.4.1",
     "framer-motion": "^4",
     "micro": "^9.3.4",
