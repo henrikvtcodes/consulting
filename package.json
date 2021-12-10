@@ -16,10 +16,10 @@
     "@reduxjs/toolkit": "^1.6.2",
     "@stripe/stripe-js": "^1.21.2",
     "@supabase/supabase-js": "^1.28.5",
-    "@tailwindcss/aspect-ratio": "^0.3.0",
-    "@tailwindcss/forms": "^0.3.4",
-    "@tailwindcss/line-clamp": "^0.2.2",
-    "@tailwindcss/typography": "^0.4.1",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.0",
     "autoprefixer": "^10.4.0",
     "axios": "^0.24.0",
     "chalk": "^5.0.0",
@@ -35,7 +35,7 @@
     "react-supabase": "^0.2.0",
     "recoil": "^0.5.2",
     "stripe": "^8.191.0",
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^3.0.0"
   },
   "devDependencies": {
     "@types/cookie": "^0.4.1",
