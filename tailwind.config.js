@@ -3,12 +3,12 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   mode: "jit",
-  purge: [
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./layouts/**/*.{js,ts,jsx,tsx}",
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media", // or 'media' or 'class'
   theme: {
     extend: {
       colors: {
@@ -21,9 +21,9 @@ module.exports = {
         fuschia: colors.fuschia,
         gray: {
           DEFAULT: colors.gray,
-          true: colors.trueGray,
-          cool: colors.coolGray,
-          blue: colors.blueGray,
+          true: colors.neutral,
+          cool: colors.gray,
+          blue: colors.slate,
           manatee: "#9CA3AF",
           jet: "#2c2f33",
           charleston: "#23272a",
@@ -71,9 +71,9 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require("@tailwindcss/typography"),
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/line-clamp"),
     require("@tailwindcss/forms"),
+    require("@tailwindcss/typography")
   ],
 };
