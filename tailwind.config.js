@@ -11,17 +11,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        customGray: {
+        gray: {
           manatee: "#9CA3AF",
           jet: "#2c2f33",
           charleston: "#23272a",
         },
-        customOrange: {
+        orange: {
           spanish: "#e36414",
           dark: "#fb8b24",
           flame: "#e25822",
         },
-        customBlue: {
+        blue: {
           celadon: "#457b9d",
           prussian: "#1d3557",
           pacific: "#0eb1d2",
@@ -29,7 +29,7 @@ module.exports = {
           jeans: "#00a6fb",
           twitter: "#1DA1F2",
         },
-        customPurple: {
+        purple: {
           amethyst: "#a663cc",
           wisteria: "#b298dc",
           electric: "#b14aed",
