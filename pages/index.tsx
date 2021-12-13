@@ -19,7 +19,7 @@ const Home:NextPage = (props) => {
         </b>
         <i className="justify-self-center">
           {" "}
-          ~Technology services for residential and small business~{" "}
+          ~Technology services for residential and small business, now running on Tailwind v3.0.0!~{" "}
         </i>
         <br />
         <p className="max-w-3xl">
