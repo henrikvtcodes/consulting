@@ -8,9 +8,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.7.2",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
     "@reduxjs/toolkit": "^1.6.2",
@@ -32,8 +29,6 @@
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
-    "react-supabase": "^0.2.0",
-    "recoil": "^0.5.2",
     "stripe": "^8.191.0",
     "tailwindcss": "^3.0.0"
   },

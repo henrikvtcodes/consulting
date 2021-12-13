@@ -1,34 +1,16 @@
+# Henrik VT Consulting Website & Dashboard
+
+This is a dashboard that I am making for my I.T. Consulting business. Built using the hypebeast stack variety A of Next.js/Tailwind, Supabase, API Routes, and Stripe. I could have built with variety B of NextAuth, Prisma, and Planetscale but chose the former for development speed.
+
+## Supabase
+Chosen because I love the open source nature of this product. I could also use the 
+#### Database
+I have chosen to use a tool called DrawSQL to create the schema. You can find a link to that [here](<https://drawsql.app/n-a-63/diagrams/hvtconsulting>).
+#### Authentication
+My project has Email/Password, Google, and Facebook authentication methods enabled. However, this app has a funky signup flow. In order to limit who can create an account and therefore commission my services, I have an invite code based signup flow.
+
+## API Routes
+I am using Nextjs API Routes for a few things: Stripe payment handling and Supabase administrator functions. The stripe one is obvious; secure payment handling is very important. As for Supabase administrator functions, there are just some things that are easier to do in a secure environment with a service role key.
+
+---
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import logo from "~pub/henriklogo.png";
-import { DefaultMeta } from '~components/meta';
+import PublicLayout from 'layouts/public'
+import { DefaultMeta } from '~components/meta'
 
 const Home:NextPage = (props) => {
   return (
