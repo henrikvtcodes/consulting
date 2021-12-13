@@ -14,8 +14,7 @@ const Home:NextPage = (props) => {
           <Image src={"/henriklogo.png"} className='w-24 h-24 justify-self-center' width={96} height={96} alt="henrik's logo"/>
         </div>
         <b className="text-4xl mx-2 justify-self-center ">
-          {" "}
-          Henrik Van Tassell Consulting{" "}
+          Henrik Van Tassell Consulting
         </b>
         <i className="justify-self-center">
           {" "}
