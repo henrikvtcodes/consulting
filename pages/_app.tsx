@@ -1,6 +1,5 @@
 import type { AppProps } from 'next/app'
 import { store } from '../utils/redux/index';
-import { Provider } from "react-redux";
 import Favicon, { DefaultMeta } from "~components/meta";
 
 import "../styles/globals.css";
