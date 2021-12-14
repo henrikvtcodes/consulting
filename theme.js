@@ -23,7 +23,10 @@ module.exports = {
       shadow: "7a93ac",
       twitter: "#1DA1F2",
       cornflower: "#7494ea",
+      cornflower2: "#818CF8",
       purpleNavy: "#465786",
+      eyes: "#93C5FD",
+      boy: "#60a5fa",
     },
     purple: {
       amethyst: "#a663cc",
@@ -31,10 +34,13 @@ module.exports = {
       electric: "#b14aed",
       instagram: "#E1306C",
       twitch: "#6b3fa0",
+      blue: "#a5b4fc",
     },
     yellow: {
       hair: "#FFDD31",
-      hair2:"#FFE76B",
+      hair2: "#FFE76B",
+      minion: "#fde047",
+      jonquil: "#facc15",
     },
     green: {
       keppel: "#2EBFA5",

@@ -14,9 +14,10 @@ module.exports = {
       colors: {
         brand: {
           primary: theme.colors.blue.cornflower,
-          accent1: theme.colors.yellow.hair,
-          accent1h: theme.colors.yellow.hair2,
-          accent2: theme.colors.blue.cornflower,
+          accent1: theme.colors.blue.eyes,
+          accent1h: theme.colors.blue.boy,
+          accent2: theme.colors.yellow.minion,
+          accent2h: theme.colors.yellow.jonquil,
           text1: theme.colors.black.raisin,
           text2: theme.colors.gray.rock,
           grey: theme.colors.gray.rock,
