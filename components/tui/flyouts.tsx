@@ -40,24 +40,6 @@ export const solutions = [
   }
 ];
 
-export interface FlyoutArrayProps {
-  name: string;
-  description: string;
-  href: string;
-  icon?: any;
-}
-
-export type FlyoutArray = [
-  name: string,
-  description: string,
-  href: string,
-  icon?: any,
-]
-
-export interface FlyoutProps {
-  items?: [FlyoutArray]
-}
-
 const SolutionsFlyout = () => {
 
   return (
