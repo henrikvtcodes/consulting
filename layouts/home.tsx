@@ -1,16 +1,18 @@
 
 
 
+import HeaderM from "~components/tui/headerM";
 
+import type { NextPage } from "next";
 
-const Home = ({children}:any) => {
+const HomeLayout:NextPage = (props) => {
   return (
     <div>
-      <h1>Home</h1>
-      {children}
+      <HeaderM />
+      {props.children}
     </div>
   )
 };
 
 
-export default Home;
+export default HomeLayout;

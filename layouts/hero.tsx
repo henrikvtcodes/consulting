@@ -31,7 +31,7 @@ const PublicLayout = ({ children }:any) => {
             <div className="mt-10 sm:justify-center lg:justify-start"></div>
 
             {/**
-             * FIXME
+             * REVIEW
              * I FOUND THE PROBLEM CHILD WOOHOO
              * FUCK YOU WEIRD DIV TAG
              */}
