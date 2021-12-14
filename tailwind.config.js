@@ -1,5 +1,6 @@
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
+const theme = require("./theme.js")
 
 module.exports = {
   content: [
@@ -11,33 +12,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: {
-          manatee: "#9CA3AF",
-          jet: "#2c2f33",
-          charleston: "#23272a",
+        brand: {
+          primary: theme.colors.blue.cornflower,
+          accent1: theme.colors.yellow.hair,
+          accent1h: theme.colors.yellow.hair2,
+          accent2: theme.colors.blue.cornflower,
+          text1: theme.colors.black.raisin,
+          text2: theme.colors.gray.rock,
+          grey: theme.colors.gray.rock,
+          black: theme.colors.black.raisin,
         },
-        orange: {
-          spanish: "#e36414",
-          dark: "#fb8b24",
-          flame: "#e25822",
-        },
-        blue: {
-          celadon: "#457b9d",
-          prussian: "#1d3557",
-          pacific: "#0eb1d2",
-          azure: "#3185fc",
-          jeans: "#00a6fb",
-          twitter: "#1DA1F2",
-        },
-        purple: {
-          amethyst: "#a663cc",
-          wisteria: "#b298dc",
-          electric: "#b14aed",
-          instagram: "#E1306C",
-          twitch: "#6b3fa0",
-        },
-        spanishViolet: "#432371",
-        MacAndCheese: "#faae7b",
+        ...theme.colors,
       },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
