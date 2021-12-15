@@ -7,9 +7,10 @@ import { DefaultMeta } from '~components/meta'
 
 const Page:NextPage = (props) => {
   return (
-    <HomeLayout>
-      
-    </HomeLayout>
+    <HomeLayout
+      title="Wifi Solutions"
+      desc="Get the most out of your internet connection."
+    ></HomeLayout>
   );
 }
 

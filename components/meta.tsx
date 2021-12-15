@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const meta = {
+export const meta = {
   title: "Henrik Van Tassell Consulting",
-  desc: "HVTC: Technology services for residential and small business. Full website coming soon.",
+  desc: "HVTC: Technology services for residential and small business.",
   author: "Henrik Van Tassell",
   icon: "/henriklogo.png",
   image: "/milfordsunrise.JPG",
@@ -49,16 +49,14 @@ const DefaultMeta = () => {
 };
 
 type CustomMetaProps = {
-  props: {
     title: string;
     desc: string;
     published?: string;
     author?: string;
     image?: string;
-  };
 };
 
-const CustomMeta = ({ props }: CustomMetaProps) => {
+const CustomMeta = (props:CustomMetaProps) => {
   const router = useRouter();
 
   let canonUrl = `https://henriktech.com${router.asPath}`;

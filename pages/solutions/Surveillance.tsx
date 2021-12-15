@@ -7,9 +7,10 @@ import { DefaultMeta } from '~components/meta'
 
 const Page:NextPage = (props) => {
   return (
-    <HomeLayout>
-      
-    </HomeLayout>
+    <HomeLayout
+      title="Security &amp; Surveillance"
+      desc="Keep an eye on what's yours. Privacy-first video surveillance."
+    ></HomeLayout>
   );
 }
 

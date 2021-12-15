@@ -11,7 +11,7 @@ import { CheckIcon } from "@heroicons/react/solid";
 
 const Page:NextPage = (props) => {
   return (
-    <HomeLayout>
+    <HomeLayout title="Solutions" desc='See what we can offer you.'>
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:flex-col sm:align-center">

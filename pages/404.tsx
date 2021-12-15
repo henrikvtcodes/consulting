@@ -1,8 +1,14 @@
 import NextLink from 'next/link';
 
+import { CustomMeta } from '~components/meta';
+
 const ErrorPage = () => { 
   return (
     <main className="flex justify-center align-middle h-screen w-screen">
+      <CustomMeta
+        title="Error 404: Page not found"
+        desc="Error 404: Page not found. Please check the URL and try again."
+      />
       <div className="bg-white min-h-full px-4 py-16 sm:px-6 sm:py-24 md:grid md:place-items-center lg:px-8">
         <div className="max-w-max mx-auto">
           <div className="sm:flex">
