@@ -1,13 +1,7 @@
 import NextLink from 'next/link';
 
-import { Fragment, SVGProps } from 'react'
+import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
-import {
-  WifiIcon,
-  GlobeAltIcon,
-  VideoCameraIcon,
-  DeviceMobileIcon
-} from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
 import classNames from './classnames'

@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import NextLink from 'next/link';
 
-import PublicLayout from "layouts/hero";
 import HomeLayout from "layouts/home";
 import { DefaultMeta } from "~components/meta";
 

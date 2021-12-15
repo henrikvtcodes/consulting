@@ -23,7 +23,7 @@ const solutions = [
     description: "Connect your property.",
     href: "/solutions/Networking",
     includedFeatures: [
-      "High speed",
+      "High speed: modern hardware",
       "Wired and wireless networking",
       "Connect multiple buildings together",
       "Remote monitoring available",

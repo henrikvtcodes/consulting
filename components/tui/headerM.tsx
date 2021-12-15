@@ -8,9 +8,7 @@ import {
   MenuIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 
-import classNames from './classnames';
 import SolutionsFlyout from './flyouts';
 import solutions from '~utils/config'
 
