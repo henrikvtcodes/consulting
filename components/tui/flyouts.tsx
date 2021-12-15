@@ -14,27 +14,27 @@ import classNames from './classnames'
 
 export const solutions = [
   {
-    name: "Wifi",
+    name: "Wifi Connectivity",
     description:
-      "We can help you get the most out of your internet connection.",
+      "Get the most out of your internet connection.",
     href: "/solutions/WiFi",
     icon: WifiIcon,
   },
   {
     name: "Networking",
-    description: "We specialize in small business and large residental networking.",
+    description: "Connect your property.",
     href: "/solutions/Networking",
     icon: GlobeAltIcon,
   },
   {
-    name: "Video Surveillance",
+    name: "Security & Surveillance",
     description: "Keep an eye on what's yours. Privacy first video surveillance.",
     href: "/solutions/Surveillance",
     icon: VideoCameraIcon,
   },
   {
     name: "Smart Home",
-    description: "We install and configure light switches, bulbs, smart plugs, thermostats, and more.",
+    description: "Automate your home or business. Save time and energy instantly.",
     href: "/solutions/SmartHome",
     icon: DeviceMobileIcon,
   }
