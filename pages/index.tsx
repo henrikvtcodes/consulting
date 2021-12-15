@@ -15,7 +15,7 @@ const Home: NextPage = (props) => {
           <div className="relative">
             <div className="absolute inset-x-0 bottom-0 h-1/2 " />
             <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 shad">
-              <div className="relative shadow-2xl shadow-brand-primary sm:rounded-2xl sm:overflow-hidden">
+              <div className="relative shadow-2xl md:shadow-brand-primary sm:rounded-2xl sm:overflow-hidden">
                 <div className="absolute inset-0">
                   <Image
                     className="h-full w-full object-cover"
