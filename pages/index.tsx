@@ -14,8 +14,8 @@ const Home: NextPage = (props) => {
           {/* Hero card */}
           <div className="relative">
             <div className="absolute inset-x-0 bottom-0 h-1/2 " />
-            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 shad">
-              <div className="relative shadow-2xl md:shadow-brand-primary sm:rounded-2xl sm:overflow-hidden">
+            <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+              <div className="relative shadow-2xl md:shadow-brand-primary sm:rounded-2xl sm:overflow-hidden ">
                 <div className="absolute inset-0">
                   <Image
                     className="h-full w-full object-cover"
@@ -35,7 +35,8 @@ const Home: NextPage = (props) => {
                     </span>
                   </h1>
                   <p className="mt-6 max-w-lg mx-auto text-center text-xl text-blue-prussian sm:max-w-3xl">
-                    Serving Pike County, Pennsylvania and Hudson County, New Jersey since 2019
+                    Serving Pike County, Pennsylvania and Hudson County, New
+                    Jersey since 2019
                   </p>
                   <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                     <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">

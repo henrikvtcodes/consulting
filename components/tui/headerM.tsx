@@ -13,50 +13,6 @@ import { ChevronDownIcon } from "@heroicons/react/solid";
 import classNames from './classnames';
 import SolutionsFlyout, { solutions } from './flyouts';
 
-
-// const solutions = [
-//   {
-//     name: "Analytics",
-//     description:
-//       "Get a better understanding of where your traffic is coming from.",
-//     href: "#",
-//     icon: ChartBarIcon,
-//   },
-//   {
-//     name: "Engagement",
-//     description: "Speak directly to your customers in a more meaningful way.",
-//     href: "#",
-//     icon: CursorClickIcon,
-//   },
-//   {
-//     name: "Security",
-//     description: "Your customers' data will be safe and secure.",
-//     href: "#",
-//     icon: ShieldCheckIcon,
-//   },
-//   {
-//     name: "Integrations",
-//     description: "Connect with third-party tools that you're already using.",
-//     href: "#",
-//     icon: ViewGridIcon,
-//   },
-//   {
-//     name: "Automations",
-//     description:
-//       "Build strategic funnels that will drive your customers to convert",
-//     href: "#",
-//     icon: RefreshIcon,
-//   },
-//   {
-//     name: "Reports",
-//     description:
-//       "Get detailed reports that will help you make more informed decisions ",
-//     href: "#",
-//     icon: DocumentReportIcon,
-//   },
-// ];
-
-
 const HeaderM = () => {
   return (
     <Popover className="z-50 relative bg-white">
@@ -151,17 +107,17 @@ const HeaderM = () => {
                 </div>
               </div>
               <div className="mt-6">
-                <nav className="grid grid-cols-1 gap-7">
+                <nav className="grid grid-cols-1 gap-7 ">
                   {solutions.map((solution) => (
                     <NextLink key={solution.name} href={solution.href}>
                       <a
                         key={solution.name}
                         href={solution.href}
-                        className="-m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
+                        className="group -m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
                       >
                         <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-brand-primary text-white">
                           <solution.icon
-                            className="h-6 w-6"
+                            className="h-6 w-6 group-hover:text-brand-accent2h"
                             aria-hidden="true"
                           />
                         </div>
@@ -193,16 +149,16 @@ const HeaderM = () => {
 
                 <NextLink href="/contact" passHref>
                   <a className="text-base font-medium text-brand-text1 hover:text-brand-text2">
-                    Contact Me
+                    Contact
                   </a>
                 </NextLink>
               </div>
               <div className="mt-6">
-                <NextLink href="signup" prefetch={false}>
+                {/* <NextLink href="signup" prefetch={false}>
                   <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h">
                     Sign up
                   </a>
-                </NextLink>
+                </NextLink> */}
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{" "}
                   <NextLink href={"/signin"} prefetch={false}>
