@@ -19,7 +19,8 @@
       "~utils/*": ["./utils/*"],
       "~components/*": ["./components/*"],
       "~pub/*": ["./public/*"],
-      "~layout/*": ["./layout/*"]
+      "~layout/*": ["./layout/*"],
+      "~config":["./utils/config"]
     },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

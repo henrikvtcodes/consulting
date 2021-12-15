@@ -11,7 +11,10 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
 import classNames from './classnames';
-import SolutionsFlyout, { solutions } from './flyouts';
+import SolutionsFlyout from './flyouts';
+import solutions from '~utils/config'
+
+const localSolutions =  solutions
 
 const HeaderM = () => {
   return (
@@ -108,7 +111,7 @@ const HeaderM = () => {
               </div>
               <div className="mt-6">
                 <nav className="grid grid-cols-1 gap-7 ">
-                  {solutions.map((solution) => (
+                  {localSolutions.solutions.map((solution:any) => (
                     <NextLink key={solution.name} href={solution.href}>
                       <a
                         key={solution.name}

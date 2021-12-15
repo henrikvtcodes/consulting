@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import NextLink from 'next/link';
 
 import PublicLayout from "layouts/hero";
 import HomeLayout from "layouts/home";
@@ -40,18 +41,16 @@ const Home: NextPage = (props) => {
                   </p>
                   <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                     <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
-                      <a
-                        href="#"
-                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-brand-accent1 bg-white hover:bg-indigo-50 sm:px-8"
-                      >
-                        Solutions
-                      </a>
-                      <a
-                        href="#"
-                        className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-brand-accent1 bg-opacity-60 hover:bg-opacity-70 sm:px-8"
-                      >
-                        Live Projects
-                      </a>
+                      <NextLink href="/solutions" passHref>
+                        <a className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-brand-accent1 bg-white hover:bg-indigo-50 sm:px-8">
+                          Solutions
+                        </a>
+                      </NextLink>
+                      <NextLink href="/case-studies" passHref>
+                        <a className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-brand-accent1 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
+                          Live Projects
+                        </a>
+                      </NextLink>
                     </div>
                   </div>
                 </div>

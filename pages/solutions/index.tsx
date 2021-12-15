@@ -5,58 +5,9 @@ import NextLink from 'next/link';
 
 import HomeLayout from 'layouts/home'
 import { DefaultMeta } from '~components/meta'
-import { solutions } from '~components/tui/flyouts';
+import { solutions } from '~utils/config';
 
 import { CheckIcon } from "@heroicons/react/solid";
-
-const tiers = [
-  {
-    name: "Wifi Connectivity",
-    description: "Get the most out of your internet connection.",
-    href: "/solutions/WiFi",
-    includedFeatures: [
-      "Wide range of options",
-      "Own your equipment",
-      "Optimized for cost-effectiveness and value",
-      "Next generation WiFi 6 solutions available"
-    ],
-  },
-  {
-    name: "Networking",
-    description: "Connect your property.",
-    href: "/solutions/Networking",
-    includedFeatures: [
-      "High speed",
-      "Wired and wireless networking",
-      "Connect multiple buildings together",
-      "Remote monitoring available"
-    ],
-  },
-  {
-    name: "Security & Surveillance",
-    description:
-      "Keep an eye on what's yours. Privacy first video surveillance.",
-    href: "/solutions/Surveillance",
-    includedFeatures: [
-      "Highly scalable",
-      "Footage stored locally or in a private cloud",
-      "Privacy first - we don't rely on Amazon or Google",
-      "Catch bad actors in high resolution",
-    ],
-  },
-  {
-    name: "Smart Home",
-    description:
-      "Automate your home or business. Save time and energy instantly.",
-    href: "/solutions/SmartHome",
-    includedFeatures: [
-      "Access from anywhere",
-      "Smart lighting",
-      "Intelligent thermostat & window treatment control",
-      "Smart Audio & Video",
-    ],
-  },
-];
 
 const Page:NextPage = (props) => {
   return (
@@ -86,7 +37,7 @@ const Page:NextPage = (props) => {
             </div> */}
           </div>
           <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
-            {tiers.map((tier) => (
+            {solutions.map((tier) => (
               <div
                 key={tier.name}
                 className="border border-gray-200 rounded-lg hover:shadow-md hover:shadow-brand-primary/50 divide-y divide-gray-200"

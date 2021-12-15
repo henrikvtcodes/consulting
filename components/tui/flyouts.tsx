@@ -11,34 +11,7 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
 import classNames from './classnames'
-
-export const solutions = [
-  {
-    name: "Wifi Connectivity",
-    description:
-      "Get the most out of your internet connection.",
-    href: "/solutions/WiFi",
-    icon: WifiIcon,
-  },
-  {
-    name: "Networking",
-    description: "Connect your property.",
-    href: "/solutions/Networking",
-    icon: GlobeAltIcon,
-  },
-  {
-    name: "Security & Surveillance",
-    description: "Keep an eye on what's yours. Privacy first video surveillance.",
-    href: "/solutions/Surveillance",
-    icon: VideoCameraIcon,
-  },
-  {
-    name: "Smart Home",
-    description: "Automate your home or business. Save time and energy instantly.",
-    href: "/solutions/SmartHome",
-    icon: DeviceMobileIcon,
-  }
-];
+import { solutions } from '~utils/config';
 
 const SolutionsFlyout = () => {
 
