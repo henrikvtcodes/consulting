@@ -59,7 +59,7 @@ import SolutionsFlyout, { solutions } from './flyouts';
 
 const HeaderM = () => {
   return (
-    <Popover className="relative bg-white">
+    <Popover className="z-50 relative bg-white">
       <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <NextLink href={"/"} passHref>
@@ -111,7 +111,7 @@ const HeaderM = () => {
             </a>
           </NextLink>
           <NextLink href={"sign-in"} prefetch={false} passHref>
-            <a className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-indigo-700">
+            <a className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h">
               Sign up
             </a>
           </NextLink>
@@ -199,7 +199,7 @@ const HeaderM = () => {
               </div>
               <div className="mt-6">
                 <NextLink href="signup" prefetch={false}>
-                  <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent-1">
+                  <a className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h">
                     Sign up
                   </a>
                 </NextLink>
