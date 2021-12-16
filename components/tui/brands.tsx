@@ -2,11 +2,13 @@ import Image from "next/image";
 import NextLink from "next/link";
 import type { NextPage } from "next";
 
+import { SimpleScale } from './imageScale';
+
 type Logo = {
   alt: string,
   href: string,
   img: string,
-  width?: number,
+  width: number,
 }
 
 type BrandComponentProps = {
@@ -19,31 +21,7 @@ const defaultLogos: Array<Logo> = [
     alt: "Workcation",
     href: "#",
     img: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-  },
-  {
-    alt: "Workcation",
-    href: "#",
-    img: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-  },
-  {
-    alt: "Workcation",
-    href: "#",
-    img: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-  },
-  {
-    alt: "Workcation",
-    href: "#",
-    img: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-  },
-  {
-    alt: "Workcation",
-    href: "#",
-    img: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
-  },
-  {
-    alt: "Workcation",
-    href: "#",
-    img: "https://tailwindui.com/img/logos/transistor-logo-gray-400.svg",
+    width: 85.3,
   },
 ];
 
@@ -63,7 +41,7 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
               src={logos[0].img}
               alt={logos[0].alt}
               height={48}
-              width={logos[0].width ? logos[0].width : 85.3}
+              width={logos[0].width}
             />
           </div>
           <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-100 hover:bg-gray-200 group">
@@ -72,7 +50,7 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
               src={logos[1].img}
               alt={logos[1].alt}
               height={48}
-              width={logos[1].width ? logos[1].width : 85.3}
+              width={logos[1].width}
             />
           </div>
           <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-100 hover:bg-gray-200 group">
@@ -81,7 +59,7 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
               src={logos[2].img}
               alt={logos[2].alt}
               height={48}
-              width={logos[2].width ? logos[2].width : 85.3}
+              width={logos[2].width}
             />
           </div>
           <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-100 hover:bg-gray-200 group">
@@ -90,7 +68,7 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
               src={logos[3].img}
               alt={logos[3].alt}
               height={48}
-              width={logos[3].width ? logos[3].width : 85.3}
+              width={logos[3].width}
             />
           </div>
           <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-100 hover:bg-gray-200 group">
@@ -99,7 +77,7 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
               src={logos[4].img}
               alt={logos[4].alt}
               height={48}
-              width={logos[4].width ? logos[4].width : 85.3}
+              width={logos[4].width}
             />
           </div>
           <div className="col-span-1 flex justify-center py-8 px-8 bg-gray-100 hover:bg-gray-200 group">
@@ -108,7 +86,7 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
               src={logos[5].img}
               alt={logos[5].alt}
               height={48}
-              width={logos[5].width ? logos[5].width : 85.3}
+              width={logos[5].width}
             />
           </div>
         </div>

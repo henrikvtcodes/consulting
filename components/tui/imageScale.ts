@@ -23,6 +23,10 @@ const ScaleImage = ( w1:number, h1:number,  scale?:number, h2?:number, w2?:numbe
   }
 }
 
+const SimpleScale = (width:number, height:number, scale:number) => { 
+  return { width: width * scale, height: height * scale };
+}
+
 // const AutoImageScale = async (image:string, scale?:number, w2?:number, h2?:number) => {
 //   let result = await probe(image);
 //   let finalDimensions = ScaleImage(result.width, result.height, scale, w2, h2);
@@ -30,4 +34,4 @@ const ScaleImage = ( w1:number, h1:number,  scale?:number, h2?:number, w2?:numbe
 // }
 
 
-export { ScaleImage };
+export { ScaleImage, SimpleScale };
