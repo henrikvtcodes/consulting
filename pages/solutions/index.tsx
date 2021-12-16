@@ -5,13 +5,13 @@ import NextLink from 'next/link';
 
 import HomeLayout from 'layouts/home'
 import { DefaultMeta } from '~components/meta'
-import { solutions } from '~utils/config';
+import { solutions, allSolutions } from '~utils/config';
 
 import { CheckIcon } from "@heroicons/react/solid";
 
 const Page:NextPage = (props) => {
   return (
-    <HomeLayout title="Solutions" desc='See what we can offer you.'>
+    <HomeLayout title="Solutions" desc="See what we can offer you.">
       <div className="bg-white">
         <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
           <div className="sm:flex sm:flex-col sm:align-center">
@@ -21,20 +21,42 @@ const Page:NextPage = (props) => {
             <p className="mt-5 text-xl text-gray-500 sm:text-center">
               See what we can offer you.
             </p>
-            {/* <div className="relative self-center mt-2 bg-gray-100 rounded-lg p-0.5 flex sm:mt-8">
-              <button
-                type="button"
-                className="relative w-1/2 bg-white border-gray-200 rounded-md shadow-sm py-2 text-sm font-medium text-gray-900 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:z-10 sm:w-auto sm:px-8"
-              >
-                Monthly billing
-              </button>
-              <button
-                type="button"
-                className="ml-0.5 relative w-1/2 border border-transparent rounded-md py-2 text-sm font-medium text-gray-700 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:z-10 sm:w-auto sm:px-8"
-              >
-                Yearly billing
-              </button>
-            </div> */}
+            <div className="bg-white">
+              <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+                <div>
+                  <h2 className="text-base font-semibold text-brand-accent1h uppercase tracking-wide">
+                    We have standards
+                  </h2>
+                  <p className="mt-2 text-3xl font-extrabold text-gray-900">
+                    All Solutions
+                  </p>
+                  <p className="mt-4 text-lg text-gray-500">
+                    Every project completed by Henrik Van Tassell Consulting is
+                    carefully crafted.
+                  </p>
+                </div>
+                <div className="mt-12 lg:mt-0 lg:col-span-2">
+                  <dl className="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-rows-2 sm:grid-flow-col sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
+                    {allSolutions.map((feature) => (
+                      <div key={feature.name} className="relative">
+                        <dt>
+                          <CheckIcon
+                            className="absolute h-6 w-6 text-green-500"
+                            aria-hidden="true"
+                          />
+                          <p className="ml-9 text-lg leading-6 font-medium text-gray-900">
+                            {feature.name}
+                          </p>
+                        </dt>
+                        <dd className="mt-2 ml-9 text-base text-gray-500">
+                          {feature.description}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="mt-12 space-y-4 sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-4">
             {solutions.map((tier) => (
@@ -46,7 +68,7 @@ const Page:NextPage = (props) => {
                   <h2 className="text-lg leading-6 font-medium text-brand-text1">
                     {tier.name}
                   </h2>
-                  <p className="mt-4 text-sm text-gray-500 h-16">
+                  <p className="mt-4 text-sm text-gray-500 md:h-16">
                     {tier.description}
                   </p>
                   {/* <p className="mt-8">
@@ -69,12 +91,21 @@ const Page:NextPage = (props) => {
                   </h3>
                   <ul role="list" className="mt-6 space-y-4">
                     {tier.includedFeatures.map((feature) => (
-                      <li key={feature} className="flex space-x-3">
+                      <li key={feature.feat} className="flex space-x-3">
                         <CheckIcon
                           className="flex-shrink-0 h-5 w-5 text-green-500"
                           aria-hidden="true"
                         />
-                        <span className="text-sm text-gray-500">{feature}</span>
+                        {feature.tip ? (
+                          <span className="text-sm text-gray-500 relative">
+                            {feature.feat}
+                            <span className="hidden group-hover:visible"> {feature.tip}</span>
+                          </span>
+                        ) : (
+                          <span className="text-sm text-gray-500">
+                            {feature.feat}
+                          </span>
+                        )}
                       </li>
                     ))}
                   </ul>
