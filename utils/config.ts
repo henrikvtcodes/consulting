@@ -81,10 +81,30 @@ const allSolutions = [
   }
 ];
 
+const faqs = [
+  {
+    question: "How old are you? Who are you?",
+    answer:
+      "You can check out my about page; that should answer all your questions.",
+  },
+  {
+    question: "Do you have a terms of service and/or privacy policy?",
+    answer: `Since I use Google and Facebook API's, I am required to have some form of privacy policy. 
+    The code is open source on GitHub (https://github.com/henrikvtcodes/consulting) but I'll tell you exactly how it works.
+    I only store basic identifying information about you: name, email, profile picture, and your phone number, if you consented to that. 
+    I also collect anonymous usage data with a simple analytics tool.
+    This site does not employ any privacy-intrusive technologies; e.g. cross site trackers, supercookies, personalization, etc.`,
+  },
+  {
+    question: "How do you process payment? Is it secure?",
+    answer: `I employ Stripe as my payment processor. This means that any of your raw credit card details, bank information, or other sensitive information are never processed or stored by me. 
+    It is stored in encrypted form on Stripe's infrastructure. You can read their policies here: https://stripe.com/privacy`,
+  },
+];
 
 const config = {
   solutions: solutions,
 };
 
 export default config;
-export { solutions, allSolutions };
+export { solutions, allSolutions, faqs };
