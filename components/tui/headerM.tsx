@@ -39,23 +39,29 @@ const HeaderM = () => {
           </Popover.Button>
         </div>
         <Popover.Group as="nav" className="hidden md:flex space-x-10">
-          <SolutionsFlyout />
-
-          <NextLink href="/">
+          <NextLink href="/" passHref>
             <a
-              href="#"
+              className="text-base font-medium text-gray-500 hover:text-gray-900"
+            >
+              About Me
+            </a>
+          </NextLink>
+
+          <NextLink href="/" passHref>
+            <a
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
               Case Studies
             </a>
           </NextLink>
 
-          <NextLink href="/">
+          <SolutionsFlyout />
+
+          <NextLink href="/faq" passHref>
             <a
-              href="#"
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
-              About Me
+              FAQ
             </a>
           </NextLink>
 
@@ -109,7 +115,7 @@ const HeaderM = () => {
               </div>
               <div className="mt-6">
                 <nav className="grid grid-cols-1 gap-7 ">
-                  {localSolutions.solutions.map((solution:any) => (
+                  {localSolutions.solutions.map((solution: any) => (
                     <NextLink key={solution.name} href={solution.href}>
                       <a
                         key={solution.name}
