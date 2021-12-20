@@ -39,7 +39,7 @@ const HeaderM = () => {
           </Popover.Button>
         </div>
         <Popover.Group as="nav" className="hidden md:flex space-x-10">
-          <NextLink href="/" passHref>
+          <NextLink href="/about" passHref>
             <a
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >
@@ -47,7 +47,7 @@ const HeaderM = () => {
             </a>
           </NextLink>
 
-          <NextLink href="/" passHref>
+          <NextLink href="/projects" passHref>
             <a
               className="text-base font-medium text-gray-500 hover:text-gray-900"
             >

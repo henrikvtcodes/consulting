@@ -102,9 +102,22 @@ const faqs = [
   },
 ];
 
+const people = [
+  {
+    name: "Henrik Van Tassell",
+    role: "Sole Proprietor - Consultant, Installer",
+    imageUrl: "/henrik_headshot.jpg",
+    bio: `Hi, I'm Henrik: a 17yo with an all-around enthusiasm for next-generation technology. My skills encompass many different areas of technology: programming, event a/v, networking, electrical. 
+    All of this has been enabled by my best central trait: a passion for deciphering how things function and a desire to learn how to utilize those things.`,
+    twitterUrl: "https://twittter/henrik_tech",
+    linkedinUrl: "https://www.linkedin.com/in/henrik-van-tassell-68964a216/",
+  },
+  // More people...
+];
+
 const config = {
   solutions: solutions,
 };
 
 export default config;
-export { solutions, allSolutions, faqs };
+export { solutions, allSolutions, faqs, people };
