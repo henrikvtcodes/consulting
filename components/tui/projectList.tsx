@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import NextLink from "next/link";
 
 import classNames from "./classnames";
 
@@ -39,25 +40,19 @@ const posts = [
   },
 ];
 
-type ProjectProps = {
+export type ProjectProps = {
   title: string;
-  client?: string;
   href: string;
-  date: string;
+  slug: string;
   desc: string;
+  client?: string;
+  date?: string;
   published?: boolean;
-}
+};
 
 type ProjectListProps = {
   children?: React.ReactNode;
-  projects: Array<{
-    title: string;
-    client?: string;
-    href: string;
-    date: string;
-    desc: string;
-    published?: boolean;
-  }>;
+  projects: Array<ProjectProps>;
 };
 
 const ProjectList = (props:ProjectListProps) =>{
@@ -74,11 +69,13 @@ const ProjectList = (props:ProjectListProps) =>{
             <p className="text-xl text-gray-500">
               See a list of projects we&apos;ve done.
             </p>
-            
           </div>
         </div>
-        <div className="mt-6 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
+        <div className="mt-3 pt-10 grid gap-16 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-12">
           {items.map((item) => (
+            // NOTE Beware of ts-ignore directive
+            // @ts-ignore
+            item.published as unknown as boolean ?
             <div key={item.title}>
               <p className="text-sm text-gray-500">
                 <time dateTime={item.date}>{item.date}</time>
@@ -94,14 +91,17 @@ const ProjectList = (props:ProjectListProps) =>{
                 </p>
               </a>
               <div className="mt-3">
-                <a
-                  href={item.href}
-                  className="text-base font-semibold text-indigo-600 hover:text-indigo-500"
-                >
-                  Read full story
-                </a>
+                {/* NOTE Beware of this @ts-ignore directive */}
+                {/* @ts-ignore */}
+                <NextLink href={`/projects/${item.slug}`} passHref>
+                  <a className="text-base font-semibold text-brand-accent1 hover:text-brand-accent1h">
+                    Read full story
+                  </a>
+                </NextLink>
               </div>
             </div>
+            :
+            null
           ))}
         </div>
       </div>

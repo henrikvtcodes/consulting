@@ -2,7 +2,10 @@
 title: Vacation Rental Woes
 client: Sean Strub & Xavier Morales
 coverImage: dwarfskill.jpg
-published: false
+published: true
+desc: The story of how we fixed the wifi problems of a vacation rental and saved our clients money.
+index: 0
+date: 2021-01-19
 tags: networking,wifi
 ---
 ## The Problem
@@ -15,5 +18,3 @@ Second, to solve the range issue, I installed a point-to-point radio link to the
 ## The Results
 After almost a year of operation, Sean & Xavier have received no guest complaints about wifi performance and have not had to issue any discounts or refunds as a result. Whenever they had issues, I was able to remotely log in, troubleshoot, and resolve the issue at hand.  
 Additionally, the system has paid itself off by this point.
-### Customer Quote
-> This isnt a real quote lmao.
