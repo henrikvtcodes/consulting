@@ -5,7 +5,6 @@ coverImage: dwarfskill.jpg
 published: true
 desc: The story of how we fixed the wifi problems of a vacation rental and saved our clients money.
 index: 0
-date: 2021-01-19
 tags: networking,wifi
 ---
 ## The Problem
