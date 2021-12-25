@@ -14,10 +14,20 @@ import { DefaultMeta } from "~components/meta";
 import Brands from "~components/tui/brands";
 import classNames from "~components/tui/classnames";
 import { faqs } from '~utils/config';
+import { markdownToHtmlSync } from "~utils/markdownToHtml";
+import markdownStyles from "~styles/faq.module.css";
 
-const Page: NextPage = (props) => {
+type PageProps = {
+  children?: React.ReactNode;
+  faqItems: Array<{
+    question: string;
+    answer: string;
+  }>
+};
+
+const Page = ({ faqItems }:PageProps) => {
   return (
-    <HomeLayout title="">
+    <HomeLayout title="FAQs" desc="Frequently Asked Questions">
       <div className="">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
@@ -25,7 +35,7 @@ const Page: NextPage = (props) => {
               Frequently asked questions
             </h2>
             <dl className="mt-6 space-y-6 divide-y divide-gray-200">
-              {faqs.map((faq) => (
+              {faqItems.map((faq) => (
                 <Disclosure as="div" key={faq.question} className="pt-6">
                   {({ open }) => (
                     <>
@@ -47,7 +57,10 @@ const Page: NextPage = (props) => {
                       </dt>
                       <Disclosure.Panel as="dd" className="mt-2 pr-12">
                         <p className="text-base text-gray-500">
-                          {faq.answer}
+                          <div
+                            className={markdownStyles["markdown"]}
+                            dangerouslySetInnerHTML={{ __html: faq.answer }}
+                          />
                         </p>
                       </Disclosure.Panel>
                     </>
@@ -62,11 +75,18 @@ const Page: NextPage = (props) => {
   );
 };
 
-// export async function getStaticProps() {
-//   // MDX text - can be from a local file, database, anywhere
-//   const source = "Some **mdx** text, with a component <Test />";
-//   const mdxSource = await serialize(source);
-//   return { props: { source: mdxSource } };
-// }
+export const getStaticProps = () => {
+  let faqItems = faqs
+
+  faqItems.map((faq) => {
+    faq.answer = markdownToHtmlSync(faq.answer || "")
+  });
+
+  return {
+    props: { 
+      faqItems,
+    },
+  };
+};
 
 export default Page;
