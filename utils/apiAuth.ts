@@ -1,15 +1,15 @@
-import { supabase } from "./supabase";
+import { supabaseServer } from "./supabase";
 import cookie from "cookie";
 
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export const getUserCookie = async (req: NextApiRequest) => {
-  const { user } = await supabase.auth.api.getUserByCookie(req);
+  const { user } = await supabaseServer.auth.api.getUserByCookie(req);
   return user;
 }
 
 export const getValidUserCookie = async (req: NextApiRequest, res:NextApiResponse) => {
-  const { user, error } = await supabase.auth.api.getUserByCookie(req);
+  const { user, error } = await supabaseServer.auth.api.getUserByCookie(req);
 
   if (!user) {
     return res.status(401).send("Unauthorized");
@@ -30,5 +30,5 @@ export const getValidUserCookie = async (req: NextApiRequest, res:NextApiRespons
 };
 
 export const setUserCookie = async (req: NextApiRequest, res:NextApiResponse, user:any) => {
-  await supabase.auth.api.setAuthCookie(req, res);
+  await supabaseServer.auth.api.setAuthCookie(req, res);
 }

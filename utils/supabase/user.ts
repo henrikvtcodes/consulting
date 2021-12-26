@@ -1,6 +1,6 @@
 import { supabase } from "./index";
 
-export const getUserProps = async ( ) =>{
+export const getUserData = async ( ) =>{
   const user = supabase.auth.user();
   if (!user) return;
 
@@ -10,16 +10,25 @@ export const getUserProps = async ( ) =>{
     .select("*")
     .eq("id", user.id);
 
-  const { data: customerData, error: customerDataError } = await supabase
-    .from("customers")
-    .select("*")
-    .eq("id", user.id);
+  
 
-  if (UserDataError || customerDataError) return;
+  if (UserDataError) return;
 
   return {
     user: user,
     userData: userData,
-    customerData: customerData,
   }
+}
+
+export const getCustomerData = async ({userId}:{userId: string}) =>{
+  const { data: customerData, error: customerDataError } = await supabase
+    .from("customers")
+    .select("*")
+    .eq("id", userId);
+
+    if (customerDataError) return;
+
+    return {
+      customerData: customerData,
+    }
 }
