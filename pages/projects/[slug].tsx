@@ -22,6 +22,7 @@ type PostType = {
   client: string;
   coverImage: string;
   excerpt: string;
+  desc: string;
   content: string;
   published?: boolean;
 };
@@ -30,7 +31,7 @@ const Page = ({ post }:PageProps) => {
   const router = useRouter();
 
   return (
-    <HomeLayout>
+    <HomeLayout title={`${post.title}: An HVTC Customer Success Story`} desc={post.desc}>
       <div>
         <div className="max-w-2xl mx-auto">
           <Post.Title>{post.title}</Post.Title>
