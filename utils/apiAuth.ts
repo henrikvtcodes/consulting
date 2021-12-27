@@ -1,4 +1,4 @@
-import { supabaseServer } from "./supabase";
+import { supabase, supabaseServer } from "./supabase";
 import cookie from "cookie";
 
 import type { NextApiRequest, NextApiResponse } from "next";

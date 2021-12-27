@@ -1,5 +1,5 @@
 import { stripe } from "~utils/stripe";
-import { supabaseServer } from "../index"
+import { supabase, supabaseServer } from "../index"
 
 
 // Create a customer in Supabase from Stripe
