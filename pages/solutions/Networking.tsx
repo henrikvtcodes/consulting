@@ -4,6 +4,8 @@ import Image from 'next/image'
 
 import HomeLayout from 'layouts/home'
 import Brands from '~components/tui/brands'
+import Features from '~components/tui/featuresTabs'
+import config from '~utils/config'
 
 const vendors = [
   {
@@ -50,6 +52,7 @@ const Page:NextPage = (props) => {
       title="Networking Solutions"
       desc="Connect your property."
     >
+      <Features tabs={config.solutionsTabs.networking} />
       <Brands logos={vendors} />
     </HomeLayout>
   );

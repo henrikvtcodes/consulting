@@ -4,11 +4,12 @@ import { Tab } from "@headlessui/react";
 
 import classNames from "./classnames";
 import config from "~utils/config";
+import Post from "~components/post";
 
 type FeatureProps = {
   name: string;
-  desc: string;
-  imageURL: string;
+  description: string;
+  imageSrc: string;
   imageAlt: string;
 }
 
@@ -17,7 +18,11 @@ type TabProps = {
   features: FeatureProps[];
 }
 
-const Features = (tabs:Array<TabProps>) => {
+type ComponentProps = {
+  tabs: Array<TabProps>;
+}
+
+const Features = (props:ComponentProps) => {
   return (
     <div className="bg-white">
       <section
@@ -41,7 +46,7 @@ const Features = (tabs:Array<TabProps>) => {
             <div className="-mx-4 flex overflow-x-auto sm:mx-0">
               <div className="flex-auto px-4 border-b border-gray-200 sm:px-0">
                 <Tab.List className="-mb-px flex space-x-10">
-                  {tabs.map((tab) => (
+                  {props.tabs.map((tab) => (
                     <Tab
                       key={tab.name}
                       className={({ selected }) =>
@@ -61,7 +66,7 @@ const Features = (tabs:Array<TabProps>) => {
             </div>
 
             <Tab.Panels as={Fragment}>
-              {tabs.map((tab) => (
+              {props.tabs.map((tab) => (
                 <Tab.Panel key={tab.name} className="space-y-16 pt-10 lg:pt-16">
                   {tab.features.map((feature) => (
                     <div
@@ -73,16 +78,17 @@ const Features = (tabs:Array<TabProps>) => {
                           {feature.name}
                         </h3>
                         <p className="mt-2 text-sm text-gray-500">
-                          {feature.desc}
+                          {feature.description}
                         </p>
                       </div>
                       <div className="lg:col-span-7">
                         <div className="aspect-w-2 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden sm:aspect-w-5 sm:aspect-h-2">
                           <Image
-                            src={feature.imageURL}
+                            src={feature.imageSrc}
                             alt={feature.imageAlt}
                             className="object-center object-cover"
-                            layout="fill"
+                            width={586}
+                            height={293}
                           />
                         </div>
                       </div>
