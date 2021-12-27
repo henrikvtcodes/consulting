@@ -21,7 +21,7 @@ export const getValidUserCookie = async (req: NextApiRequest, res:NextApiRespons
     const token = cookie.parse(req.headers.cookie as string)["sb:token"];
 
     // @ts-ignore
-    supabase.auth.session = () => ({
+    supabaseServer.auth.session = () => ({
       user: user,
       access_token: token,
     });
