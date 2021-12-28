@@ -1,4 +1,4 @@
-import { stripe } from "~utils/stripe";
+import { stripe } from "~utils/Stripe";
 import { supabase, supabaseServer } from "../index"
 
 

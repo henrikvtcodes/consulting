@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Typical from "react-typical";
 import { useEffect } from "react";
 
-import { supabase } from "~utils/supabase";
+import { supabase } from "~utils/Supabase";
 
 const Page = () => { // Page that directs user to administrator or client dashboard if logged in, directs to home page if not logged in
   const router = useRouter();
