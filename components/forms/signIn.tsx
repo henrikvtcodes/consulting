@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 import formStyles from "~styles/forms.module.css";
-import { submitSignIn, testOnSubmit } from "~utils/formHandle";
+import { submitSignIn, testOnSubmit } from "~utils/signin";
 
 export type SignInFormProps = {
   email: string;
@@ -10,6 +11,10 @@ export type SignInFormProps = {
 }
 
 const SignInForm = () => {
+
+  useEffect(() => {
+    console.log(`Current Origin: ${window.location.origin}`);
+  });
 
   const { register, handleSubmit, formState: { errors } } = useForm<SignInFormProps>();
 
