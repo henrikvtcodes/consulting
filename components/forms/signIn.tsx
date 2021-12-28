@@ -1,16 +1,25 @@
-
+import { useForm } from "react-hook-form";
 
 import formStyles from "~styles/forms.module.css";
-import { submitSignIn } from "~utils/formHandle";
+import { submitSignIn, testOnSubmit } from "~utils/formHandle";
+
+export type SignInFormProps = {
+  email: string;
+  password: string;
+  "remember-me": boolean;
+}
 
 const SignInForm = () => {
+
+  const { register, handleSubmit, formState: { errors } } = useForm<SignInFormProps>();
+
   return (
-    <form className="space-y-6" onSubmit={submitSignIn}>
+    <form className="space-y-6" onSubmit={handleSubmit(submitSignIn)}>
       <div className={formStyles.Input}>
         <label htmlFor="email">Email address</label>
         <input
           id="email"
-          name="email"
+          {...register("email")}
           type="email"
           autoComplete="email"
           required
@@ -21,7 +30,7 @@ const SignInForm = () => {
         <label htmlFor="password">Password</label>
         <input
           id="password"
-          name="password"
+          {...register("password")}
           type="password"
           autoComplete="current-password"
           required
@@ -30,7 +39,7 @@ const SignInForm = () => {
 
       <div className="flex items-center justify-between">
         <div className={formStyles.Checkbox}>
-          <input id="remember-me" name="remember-me" type="checkbox" />
+          <input id="remember-me" {...register("remember-me")} type="checkbox" />
           <label htmlFor="remember-me">Remember me</label>
         </div>
 
@@ -51,5 +60,5 @@ const SignInForm = () => {
       </div>
     </form>
   );
-}
+};
 export default SignInForm;
