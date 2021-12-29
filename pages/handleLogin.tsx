@@ -19,11 +19,11 @@ const Page = () => { // Page that directs user to administrator or client dashbo
   })
   
   return (
-    <main className="h-screen w-screen bg-slate-400 grid place-content-center place-items-center">
+    <main className="h-screen w-screen bg-gray-50 grid place-content-center place-items-center">
       <h1 className="text-4xl text-brand-text1">
         <Typical
           steps={[
-            "Please wait while we log you in...",
+            "Please wait while we log you in..."
           ]}
           loop={1}
         />
