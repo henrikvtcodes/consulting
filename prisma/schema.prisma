@@ -34,22 +34,10 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
-}
-
-model User {
-  id            String     @id @default(cuid())
-  name          String?
-  email         String?    @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  customer      Customer[]
-
-  @@map("users")
 }
 
 model VerificationToken {
@@ -61,10 +49,130 @@ model VerificationToken {
   @@map("verificationtokens")
 }
 
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  phone         String?
+  image         String?
+  role          String    @default("user")
+
+  accounts Account[]
+  sessions Session[]
+  customer Customer[]
+  invite   Invite[]
+
+  @@map("users")
+}
+
+model Invite {
+  id     String    @id @default(cuid())
+  token  String    @unique
+  used   Boolean   @default(false)
+  usedBy String    @default("null")
+  usedOn DateTime?
+
+  user User @relation(fields: [usedBy], references: [id], onDelete: Cascade)
+
+  @@unique([id, token])
+  @@map("invites")
+}
+
 model Customer {
   id       String @id @default(cuid())
   userId   String
+  fullName String
   stripeID String
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  charge   Charge[]
+  projects Project[]
+  invoices Invoice[]
+
+
+  Quote Quote[]
+  @@map("customers")
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  status      String
+  isClosed    Boolean
+  ownerId     String
+  totalCost   Int
+  totalDue    Int
+  totalPaid   Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+
+  customer Customer @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  charge   Charge[]
+  quote    Quote[]
+  invoices Invoice[]
+
+  @@map("projects")
+}
+
+model Quote {
+  id         String   @id @default(cuid())
+  projectId  String
+  customerId String
+  amount     Int
+  status     String
+  isAccepted Boolean
+  isDeclined Boolean
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+
+  invoice Invoice[]
+
+  Charge Charge[]
+  @@map("invoices")
+}
+
+model Invoice {
+  id         String   @id @default(cuid())
+  projectId  String
+  customerId String
+  stripeId   String
+  chargeId   String
+  quoteId    String
+  status     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  charge   Charge   @relation(fields: [chargeId], references: [id], onDelete: Cascade)
+  quote    Quote    @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+}
+
+model Charge {
+  id         String   @id @default(cuid())
+  amount     Int
+  currency   String
+  customerId String
+  projectId  String
+  stripeId   String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  quoteId    String?
+
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  quote    Quote?   @relation(fields: [quoteId], references: [id])
+
+  invoice Invoice[]
+
+
+  @@map("charges")
 }
