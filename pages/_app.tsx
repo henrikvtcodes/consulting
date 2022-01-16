@@ -1,13 +1,15 @@
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
+
 import Favicon from "~components/meta";
 import "../styles/globals.css";
 
-function App({ Component, pageProps }:AppProps) {
+function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
-  <div>
+    <SessionProvider session={session}>
       <Favicon />
       <Component {...pageProps} />
-  </div>
+    </SessionProvider>
   );
 }
 

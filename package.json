@@ -5,7 +5,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma": "prisma migrate dev",
+    "prisma:gen": "prisma generate",
+    "prisma:push": "prisma push"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
