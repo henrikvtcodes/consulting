@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import PasswordStrengthBar from "react-password-strength-bar";
@@ -17,11 +17,34 @@ export type SignUpFormProps = {
   refCode: string;
 };
 
+type Step = {
+  index: number;
+}
+
 const SignUpForm = () => {
 
-    return (
-      <SignUpParts.UserDetails />
-    );
+  const formMethods = useForm<SignUpFormProps>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setError,
+    formState: { errors, isDirty },
+  } = formMethods;
+
+  const [ step, setStep ] = useState<Step>({ index: 0 });
+
+  const next = () => setStep(() => ({ index: step.index++ }));
+
+  return (
+    <FormProvider {...formMethods}>
+      <form onSubmit={testOnSubmit}>
+        {
+          
+        }
+      </form>
+    </FormProvider>
+  );
 };
 
 export default SignUpForm;
