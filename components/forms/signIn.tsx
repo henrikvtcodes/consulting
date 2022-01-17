@@ -8,15 +8,22 @@ export type SignInFormProps = {
   email: string;
   password: string;
   "remember-me": boolean;
-}
+};
 
-const SignInForm = () => {
+export type SignInComponentProps = {
+  csrfToken: string;
+};
 
+const SignInForm = ({ csrfToken }: SignInComponentProps) => {
   useEffect(() => {
     console.log(`Current Origin: ${window.location.origin}`);
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm<SignInFormProps>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignInFormProps>();
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit(submitSignIn)}>
@@ -44,7 +51,11 @@ const SignInForm = () => {
 
       <div className="flex items-center justify-between">
         <div className={formStyles.Checkbox}>
-          <input id="remember-me" {...register("remember-me")} type="checkbox" />
+          <input
+            id="remember-me"
+            {...register("remember-me")}
+            type="checkbox"
+          />
           <label htmlFor="remember-me">Remember me</label>
         </div>
 

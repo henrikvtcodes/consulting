@@ -6,7 +6,7 @@ import { getCsrfToken } from "next-auth/react";
 import FormPageLayout from "layouts/formPage";
 import FormWindow from "~components/forms/window";
 import SignInForm from "~components/forms/signIn";
-const Page = () => {
+const Page = ({ csrfToken }: any) => {
   return (
     <FormPageLayout>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -16,7 +16,7 @@ const Page = () => {
       </div>
 
       <FormWindow>
-        <SignInForm />
+        <SignInForm csrfToken={csrfToken} />
       </FormWindow>
     </FormPageLayout>
   );
