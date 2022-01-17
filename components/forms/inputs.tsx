@@ -6,16 +6,23 @@ import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 import formStyles from "~styles/forms.module.css";
 import classNames from "../tui/classnames";
 
-type TextFieldProps = { 
-  label: string; 
-  type: string; 
+type TextFieldProps = {
+  label: string;
+  type: string;
   id: string;
   auto: string;
   isRequired: boolean;
   placeholder?: string;
-}
+};
 
-const TextField = ({ label, type , id, auto, isRequired, placeholder }:TextFieldProps,) => {
+const Input = ({
+  label,
+  type,
+  id,
+  auto,
+  isRequired,
+  placeholder,
+}: TextFieldProps) => {
   const { register } = useFormContext();
 
   return (
@@ -31,14 +38,14 @@ const TextField = ({ label, type , id, auto, isRequired, placeholder }:TextField
       />
     </div>
   );
-}
+};
 
 type CheckboxProps = {
-  id:string;
-  label:string;
-}
+  id: string;
+  label: string;
+};
 
-const Checkbox = ({id, label}:CheckboxProps) => {
+const Checkbox = ({ id, label }: CheckboxProps) => {
   const { register } = useFormContext();
 
   return (
@@ -47,18 +54,18 @@ const Checkbox = ({id, label}:CheckboxProps) => {
       <label htmlFor={id}>{label}</label>
     </div>
   );
-}
+};
 
 type SelectMenuProps = {
-  id:string;
-  label:string;
+  id: string;
+  label: string;
   options: Array<{
     id: string;
     name: string;
-  }>
-}
-const SelectMenu = ({id, label, options}:SelectMenuProps) => {
-  const [selected, setSelected] = useState(options[3])
+  }>;
+};
+const SelectMenu = ({ id, label, options }: SelectMenuProps) => {
+  const [selected, setSelected] = useState(options[3]);
 
   return (
     <Listbox value={selected} onChange={setSelected}>
@@ -129,18 +136,16 @@ const SelectMenu = ({id, label, options}:SelectMenuProps) => {
       )}
     </Listbox>
   );
-}
-
+};
 
 const SubmitButton = () => {
   return (
-  <div>
-    <button type="submit" className={formStyles.Button}>
-      Sign in
-    </button>
-  </div>
-  )
-  
-}
+    <div>
+      <button type="submit" className={formStyles.Button}>
+        Sign in
+      </button>
+    </div>
+  );
+};
 
-export { TextField, Checkbox, SubmitButton };
+export { Input, Checkbox, SubmitButton };
