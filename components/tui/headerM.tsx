@@ -1,18 +1,14 @@
-import Image from 'next/image'
-import NextLink from 'next/link';
-
+import Image from "next/image";
+import NextLink from "next/link";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import {
-  MenuIcon,
-  XIcon,
-} from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
-import SolutionsFlyout from './flyouts';
-import solutions from '~utils/config'
+import SolutionsFlyout from "./flyouts";
+import solutions from "~utils/config";
 
-const localSolutions =  solutions
+const localSolutions = solutions;
 
 const HeaderM = () => {
   return (
@@ -40,17 +36,13 @@ const HeaderM = () => {
         </div>
         <Popover.Group as="nav" className="hidden md:flex space-x-10">
           <NextLink href="/about" passHref>
-            <a
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
+            <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               About Me
             </a>
           </NextLink>
 
           <NextLink href="/projects" passHref>
-            <a
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
+            <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               Case Studies
             </a>
           </NextLink>
@@ -58,14 +50,12 @@ const HeaderM = () => {
           <SolutionsFlyout />
 
           <NextLink href="/faq" passHref>
-            <a
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
+            <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               FAQ
             </a>
           </NextLink>
 
-          {/* TODO Add Flyout menu for more options here */}
+          {/* NOTE Add Flyout menu for more options here */}
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
           <NextLink href={"sign-in"} prefetch={false} passHref>
