@@ -21,10 +21,10 @@ export default NextAuth({
   ],
 
   pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
+    signIn: "/auth/sign-in",
+    signOut: "/auth/sign-out",
     error: "/auth/error", // Error code passed in query string as ?error=
-    verifyRequest: "/auth/verify-email", // (used for check email message)
-    newUser: "/auth/signup", // New users will be directed here on first sign in (leave the property out if not of interest)
+    verifyRequest: "/auth/verify-email", // used for check email message
+    newUser: "/auth/sign-up", // New users will be directed here on first sign in
   },
 });

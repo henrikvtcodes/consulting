@@ -5,6 +5,9 @@ import {
   DeviceMobileIcon,
 } from "@heroicons/react/outline";
 
+// prettier-ignore-file
+// eslint-disable
+
 const solutions = [
   {
     name: "Wifi Connectivity",
@@ -180,6 +183,39 @@ const solutionsTabs = [
   },
 ];
 
+const NextAuthErrorParams: {
+  [key: string]: {
+    title: string;
+    message: string;
+  };
+} = {
+  "Default": {
+    title: "An Unknown Error Occurred",
+    message: "An unknown error ocurred. Please try again later.",
+  },
+  "Configuration": {
+    title: "Server Error",
+    message: "The server encountered an error while attempting to log you in.",
+  },
+  "Verification": {
+    title: "Verification Error",
+    message:
+      "The email verification token is invalid or expired. Please try again.",
+  },
+  "AccessDenied": {
+    title: "Access Denied",
+    message: "You are not permitted to access this page.",
+  },
+  "OAuthSignin": {
+    title: "Provider Signin Error",
+    message: "We were not able to sign you in using this provider.",
+  },
+  "OAuthCallback": {
+    title: "Provider Signin Error",
+    message: "We were not able to complete the signin process.",
+  },
+};
+
 const allowedOrigins: string[] = [
   "http://localhost:3000",
   "https://consulting.henrikvt.com",
@@ -194,6 +230,7 @@ const config = {
     smartHome: solutionsTabs,
   },
   origins: allowedOrigins,
+  NextAuthErrorParams,
 };
 
 export default config;
