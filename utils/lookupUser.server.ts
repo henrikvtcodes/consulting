@@ -8,7 +8,7 @@ import { prisma } from "./Prisma";
 export type UserRole = "admin" | "user" | null;
 export const validRoles: Array<UserRole> = ["admin", "user"];
 
-export async function getUserRole( // Determine the current role of the logged in user; return null if not logged in or not specified
+async function getUserRole_Prod( // Determine the current role of the logged in user; return null if not logged in or not specified
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<UserRole> {
@@ -38,4 +38,18 @@ export async function getUserRole( // Determine the current role of the logged i
   } else {
     return null;
   }
+}
+
+async function getUserRole_Dev(): Promise<UserRole> {
+  return "admin";
+}
+
+export async function getUserRole( // Determine the current role of the logged in user; return null if not logged in or not specified
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<UserRole> {
+  if (process.env.NODE_ENV === "development") {
+    return getUserRole_Dev();
+  }
+  return getUserRole_Prod(req, res);
 }
