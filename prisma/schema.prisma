@@ -1,6 +1,7 @@
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
@@ -57,8 +58,9 @@ model User {
   phone         String?
   image         String?
   role          String    @default("user")
+  isInvited     Boolean   @default(false)
 
-  accounts Account[]
+  account  Account[]
   sessions Session[]
   customer Customer[]
   invite   Invite[]
@@ -90,7 +92,6 @@ model Customer {
   charge   Charge[]
   projects Project[]
   invoices Invoice[]
-
 
   Quote Quote[]
   @@map("customers")
