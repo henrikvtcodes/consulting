@@ -1,7 +1,5 @@
 import axios from "axios";
 
-import { prisma } from "./prisma";
-
 const submitCode = (formData: any) => {
   const code: string = formData.code;
 
