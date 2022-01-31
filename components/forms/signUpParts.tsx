@@ -4,11 +4,9 @@ import { useRouter, withRouter } from "next/router";
 import PasswordStrengthBar from "react-password-strength-bar";
 import { ZXCVBNFeedback, ZXCVBNScore } from "zxcvbn";
 
-
 import formStyles from "~styles/forms.module.css";
 import { handleTransition } from "./transition";
-import { TextField } from "./inputs";
-import strength from './strength';
+import strength from "./strength";
 import { testOnSubmit } from "~utils/signin";
 
 type AccountDetailsProps = {
@@ -20,8 +18,7 @@ type AccountDetailsProps = {
   next?: any;
 };
 
-const UserDetails = (props:{next:any}) => {
-
+const UserDetails = (props: { next: any }) => {
   const methods = useForm<AccountDetailsProps>();
 
   const {
@@ -30,7 +27,7 @@ const UserDetails = (props:{next:any}) => {
     watch,
     setError,
     formState: { errors, isDirty },
-  } = methods
+  } = methods;
 
   const router = useRouter();
   const { refCode } = router.query; // get refCode URL parameter to make sure that User is allowed to sign up
@@ -38,7 +35,8 @@ const UserDetails = (props:{next:any}) => {
   let [password, setPassword] = useState<string>();
   let [passwordsMatch, setPasswordsMatch] = useState<boolean>();
 
-  let evalScore:{score:ZXCVBNScore,feedback:ZXCVBNFeedback} = strength(password);
+  let evalScore: { score: ZXCVBNScore; feedback: ZXCVBNFeedback } =
+    strength(password);
 
   useEffect(() => {
     let subscription = watch((value, { name, type }) => {
@@ -55,10 +53,9 @@ const UserDetails = (props:{next:any}) => {
       // eslint-disable-next-line
       evalScore = strength(value.password);
 
-      if ( evalScore.score < 4 ) {
+      if (evalScore.score < 4) {
         setError("password", { message: "Passwords is not strong enough" });
       }
-
     });
   }, [setError, watch]);
 
@@ -152,8 +149,7 @@ const UserDetails = (props:{next:any}) => {
   );
 };
 
-const PersonalDetails  = () => {
-
+const PersonalDetails = () => {
   const {
     register,
     handleSubmit,
@@ -179,7 +175,6 @@ const PersonalDetails  = () => {
 };
 
 const PaymentInformation = () => {
-
   const {
     register,
     handleSubmit,
@@ -189,6 +184,5 @@ const PaymentInformation = () => {
 
   return <form onSubmit={handleSubmit(testOnSubmit)}></form>;
 };
-
 
 export { UserDetails, PersonalDetails, PaymentInformation };
