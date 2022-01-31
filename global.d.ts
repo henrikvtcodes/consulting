@@ -1,8 +1,6 @@
-declare module "remark";
+declare module 'remark';
 
-declare module "react-typical" {
-  any;
-}
+declare module 'react-typical';
 
 import type { PrismaClient as PrismaClientType } from "@prisma/client";
 
