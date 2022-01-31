@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import NextLink from 'next/link';
+import NextLink from "next/link";
 
 import HomeLayout from "layouts/home";
 import { DefaultMeta } from "~components/meta";
@@ -22,6 +22,7 @@ const Home: NextPage = (props) => {
                     src="/milfordsunrise.JPG"
                     alt="Foggy sunrise"
                     layout="fill"
+                    priority
                   />
                   <div className="absolute inset-0 mix-blend-multiply" />
                 </div>
@@ -30,7 +31,7 @@ const Home: NextPage = (props) => {
                     <span className="block text-brand-text1">
                       Technology Solutions
                     </span>
-                    <span className="block text-brand-text1 sm:text-4xl lg:text-5xl backdrop-blur-md rounded-xl">
+                    <span className="block text-brand-text1 sm:text-4xl lg:text-5xl rounded-xl">
                       for residential and small business
                     </span>
                   </h1>
