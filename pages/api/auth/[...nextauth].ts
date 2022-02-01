@@ -19,6 +19,8 @@ export default NextAuth({
     }),
   ],
 
+  secret: process.env.NEXTAUTH_SECRET as string,
+
   pages: {
     signIn: "/auth/sign-in",
     signOut: "/auth/sign-out",
@@ -26,4 +28,6 @@ export default NextAuth({
     verifyRequest: "/auth/verify-email", // used for check email message
     newUser: "/auth/sign-up", // New users will be directed here on first sign in
   },
+
+  callbacks: {},
 });
