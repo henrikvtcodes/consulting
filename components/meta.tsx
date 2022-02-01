@@ -49,14 +49,14 @@ const DefaultMeta = () => {
 };
 
 type CustomMetaProps = {
-    title: string;
-    desc: string;
-    published?: string;
-    author?: string;
-    image?: string;
+  title: string;
+  desc: string;
+  published?: string;
+  author?: string;
+  image?: string;
 };
 
-const CustomMeta = (props:CustomMetaProps) => {
+const CustomMeta = (props: CustomMetaProps) => {
   const router = useRouter();
 
   let canonUrl = `https://henriktech.com${router.asPath}`;
@@ -84,7 +84,7 @@ const CustomMeta = (props:CustomMetaProps) => {
       />
 
       {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:card" content="summary" />
       <meta property="twitter:url" content={canonUrl} />
       <meta property="twitter:title" content={props.title} />
       <meta property="twitter:description" content={props.desc} />
