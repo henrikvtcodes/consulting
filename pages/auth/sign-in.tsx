@@ -1,12 +1,14 @@
 import { LockClosedIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import type { GetServerSideProps } from "next";
-import { getCsrfToken } from "next-auth/react";
+import { getCsrfToken, getProviders } from "next-auth/react";
 
 import FormPageLayout from "layouts/formPage";
 import FormWindow from "~components/forms/window";
 import SignInForm from "~components/forms/signIn";
-const Page = ({ csrfToken }: any) => {
+
+// eslint-disable-next-line
+const Page = ({ csrfToken }: { csrfToken: string }) => {
   return (
     <FormPageLayout>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -24,8 +26,9 @@ const Page = ({ csrfToken }: any) => {
 
 async function getServerSideProps(context: any) {
   const csrfToken = await getCsrfToken(context);
+  const providers = await getProviders();
   return {
-    props: { csrfToken },
+    props: { csrfToken, providers },
   };
 }
 
