@@ -1,5 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { FaFacebookF } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
+import { getProviders, signIn } from "next-auth/react";
 
 import formStyles from "~styles/forms.module.css";
 import { submitSignIn, testOnSubmit } from "~utils/signin";
@@ -8,62 +12,46 @@ export type SignInFormProps = {
   email: string;
   password: string;
   "remember-me": boolean;
-}
+};
 
-const SignInForm = () => {
+export type SignInComponentProps = {
+  csrfToken: string;
+};
 
+const SignInForm = ({ csrfToken }: SignInComponentProps) => {
   useEffect(() => {
     console.log(`Current Origin: ${window.location.origin}`);
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm<SignInFormProps>();
+  const router = useRouter();
+  router.basePath;
 
   return (
-    <form className="space-y-6" onSubmit={handleSubmit(submitSignIn)}>
-      <div className={formStyles.Input}>
-        <label htmlFor="email">Email address</label>
-        <input
-          id="email"
-          {...register("email")}
-          type="email"
-          autoComplete="email"
-          required
-        />
-      </div>
-
-      <div className={formStyles.Input}>
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          {...register("password")}
-          type="password"
-          autoComplete="current-password"
-          required
-        />
-      </div>
-
-      <div className="flex items-center justify-between">
-        <div className={formStyles.Checkbox}>
-          <input id="remember-me" {...register("remember-me")} type="checkbox" />
-          <label htmlFor="remember-me">Remember me</label>
-        </div>
-
-        <div className="text-sm">
-          <a
-            href="#"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Forgot your password?
-          </a>
-        </div>
-      </div>
-
-      <div>
-        <button type="submit" className={formStyles.Button}>
-          Sign in
-        </button>
-      </div>
-    </form>
+    <div className="flex flex-col justify-center items-center space-y-2">
+      <span> Sign in with </span>
+      <button
+        onClick={() =>
+          signIn("google", {
+            callbackUrl: "http://localhost:3000/auth",
+          })
+        }
+        className="w-full inline-flex justify-center py-2 px-4 border text-brand-text1 border-gray-300 rounded-md shadow-sm bg-gray-100 font-medium hover:bg-gray-200"
+      >
+        {" "}
+        <FaGoogle /> Google{" "}
+      </button>
+      <button
+        onClick={() =>
+          signIn("facebook", {
+            callbackUrl: "http://localhost:3000/auth",
+          })
+        }
+        className="w-full inline-flex justify-center py-2 px-4 border text-brand-text1 border-gray-300 rounded-md shadow-sm bg-gray-100 font-medium hover:bg-gray-200"
+      >
+        {" "}
+        <FaFacebookF /> Facebook{" "}
+      </button>
+    </div>
   );
 };
 export default SignInForm;

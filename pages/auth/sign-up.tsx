@@ -1,5 +1,3 @@
-
-
 import FormPageLayout from "layouts/formPage";
 import FormWindow from "~components/forms/window";
 import SignUpForm from "~components/forms/signUpFull";
