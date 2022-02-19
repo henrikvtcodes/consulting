@@ -1,16 +1,18 @@
 # Henrik VT Consulting Website & Dashboard
 
-This is a dashboard that I am making for my I.T. Consulting business. Built using the hypebeast stack variety A of Next.js/Tailwind, Supabase, API Routes, and Stripe. I could have built with variety B of NextAuth, Prisma, and Planetscale but chose the former for development speed.
+This is a dashboard that I am making for my I.T. Consulting business. Built using the hypebeast stack of Next.js/React/Tailwind, NextAuth, Prisma (with a Postgres DB), and Stripe. There are also other little components.
 
-## Supabase
-Chosen because I love the open source nature of this product. I could also use the 
-#### Database
-I have chosen to use a tool called DrawSQL to create the schema. You can find a link to that [here](<https://drawsql.app/n-a-63/diagrams/hvtconsulting>).
-#### Authentication
-My project has Email/Password, Google, and Facebook authentication methods enabled. However, this app has a funky signup flow. In order to limit who can create an account and therefore commission my services, I have an invite code based signup flow.
+### NextAuth
+My project primarily uses Google & Facebook OAuth to authenticate users. I chose NextAuth for its supreme degree of customizability. This app has an invite-code based signup system to guard against me getting spamming with proposals/messages. 
 
-## API Routes
-I am using Nextjs API Routes for a few things: Stripe payment handling and Supabase administrator functions. The stripe one is obvious; secure payment handling is very important. As for Supabase administrator functions, there are just some things that are easier to do in a secure environment with a service role key.
+### Prisma (Postgres)
+I chose Prisma simply because it's something that I've wanted to dig into for a while. Additionally, its a very well-loved ORM in the community. Full type safety is an amazing experience. NextAuth also has an adapter for it which allows me to easily tightly integrate sign up flows with custom authentication/authorization.
+
+### API Routes
+Next.js API Routes are really the backbone of this project. They handle all of my backend needs, from authentication (NextAuth), to handling payments (Stripe).
+
+### Stripe  
+Stripe was also a no-brainer. There are other payment processors out there but none of them match Stripe's amazing DX suite. Stripe just makes it so easy with all of the ways that they enable developers, whether its Checkout pages, or a custom form with Stripe Elements. I'm also making heavy use of Stripe's Invoicing features for this project.
 
 ---
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
