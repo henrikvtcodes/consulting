@@ -13,7 +13,7 @@ const solutions = [
     name: "Wifi Connectivity",
     description: "Get the most out of your internet connection.",
     href: "/solutions/WiFi",
-    includedFeatures: [
+    shortFeatures: [
       {
         feat: "Wide range of options",
         tip: "Choose from a wide range of options",
@@ -31,7 +31,7 @@ const solutions = [
     name: "Networking",
     description: "Connect your property.",
     href: "/solutions/Networking",
-    includedFeatures: [
+    shortFeatures: [
       { feat: "High speed: modern hardware" },
       { feat: "Wired and wireless networking" },
       { feat: "Connect multiple buildings together" },
@@ -44,7 +44,7 @@ const solutions = [
     description:
       "Keep an eye on what's yours. Privacy first video surveillance.",
     href: "/solutions/Surveillance",
-    includedFeatures: [
+    shortFeatures: [
       { feat: "Highly scalable" },
       { feat: "Footage stored locally or in a private cloud" },
       { feat: "Privacy first - we don't rely on Amazon or Google" },
@@ -57,7 +57,7 @@ const solutions = [
     description:
       "Automate your home or business. Save time and energy instantly.",
     href: "/solutions/SmartHome",
-    includedFeatures: [
+    shortFeatures: [
       { feat: "Access from anywhere" },
       { feat: "Smart lighting" },
       { feat: "Intelligent thermostat & window treatment control" },
@@ -66,6 +66,161 @@ const solutions = [
     icon: DeviceMobileIcon,
   },
 ];
+
+const vendors = {
+  WiFi: [
+  {
+    alt: "Ubiquiti Networks",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/UbiquitiNetworks_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVWJpcXVpdGlOZXR3b3Jrc19Db2xvcl9EYXJrLnBuZyIsImlhdCI6MTYzOTYxMTEyMCwiZXhwIjoxOTU0OTcxMTIwfQ.kJBMVEgmowlPRq2_-7mWR6UhFFUjT7lS2-sidzxYtf0",
+    width: 164,
+  },
+  {
+    alt: "TP-Link",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/TPLink_Color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVFBMaW5rX0NvbG9yLnBuZyIsImlhdCI6MTYzOTYxMTExOCwiZXhwIjoxOTU0OTcxMTE4fQ.dDbtPtcde-gRe1pLTX4ATinRQaejHHrplC5b-ggLGq0",
+    width: 99,
+  },
+  {
+    alt: "Netgear Business",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/NetgearBusiness_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvTmV0Z2VhckJ1c2luZXNzX0RhcmsucG5nIiwiaWF0IjoxNjM5NjExMTEzLCJleHAiOjE5NTQ5NzExMTN9.gktSuTvcHE5Nm8EE3lmqtbidKOWuVIEo4ncppJz4dEw",
+    width: 204,
+  },
+  {
+    alt: "Cisco Meraki Go",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/CiscoMerakiGo_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvQ2lzY29NZXJha2lHb19Db2xvcl9EYXJrLnBuZyIsImlhdCI6MTYzOTYyMTI5NywiZXhwIjoxOTU0OTgxMjk3fQ.6O9NbmsLcos-taoW-GtoOaBo1lBTV4UKjQnVFLAVkSg",
+    width: 173,
+  },
+  {
+    alt: "Aruba Instant On",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/ArubaInstantOn_Color_Dark.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvQXJ1YmFJbnN0YW50T25fQ29sb3JfRGFyay5zdmciLCJpYXQiOjE2Mzk2MjEzNjEsImV4cCI6MTk1NDk4MTM2MX0.pvDRto0B19tV7eczXpAnk4QkO4u35zjvfzrDh0GOK7Q",
+    width: 93,
+  },
+  {
+    alt: "Belden",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Belden_Color.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvQmVsZGVuX0NvbG9yLnN2ZyIsImlhdCI6MTYzOTYxOTc2NywiZXhwIjoxOTU0OTc5NzY3fQ.e2DKcZP0xCLu4V1r2fTk5RpQ4AXP5AyasLMdLSDhioE",
+    width: 250,
+  },
+],
+  Networking: [
+  {
+    alt: "Ubiquiti Networks",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/UbiquitiNetworks_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVWJpcXVpdGlOZXR3b3Jrc19Db2xvcl9EYXJrLnBuZyIsImlhdCI6MTYzOTYxMTEyMCwiZXhwIjoxOTU0OTcxMTIwfQ.kJBMVEgmowlPRq2_-7mWR6UhFFUjT7lS2-sidzxYtf0",
+    width: 164,
+  },
+  {
+    alt: "TP-Link",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/TPLink_Color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVFBMaW5rX0NvbG9yLnBuZyIsImlhdCI6MTYzOTYxMTExOCwiZXhwIjoxOTU0OTcxMTE4fQ.dDbtPtcde-gRe1pLTX4ATinRQaejHHrplC5b-ggLGq0",
+    width: 99,
+  },
+  {
+    alt: "Netgear Business",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/NetgearBusiness_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvTmV0Z2VhckJ1c2luZXNzX0RhcmsucG5nIiwiaWF0IjoxNjM5NjExMTEzLCJleHAiOjE5NTQ5NzExMTN9.gktSuTvcHE5Nm8EE3lmqtbidKOWuVIEo4ncppJz4dEw",
+    width: 204,
+  },
+  {
+    alt: "PFSense",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/PfSense_Color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvUGZTZW5zZV9Db2xvci5wbmciLCJpYXQiOjE2Mzk2MTExMTYsImV4cCI6MTk1NDk3MTExNn0.EDC_e3ZLaghvKWWLgkv0IhprquH5yIChJuDv9aK_vD0",
+    width: 164,
+  },
+  {
+    alt: "TrueCable",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/TrueCable_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVHJ1ZUNhYmxlX0RhcmsucG5nIiwiaWF0IjoxNjM5NjE3NTQ2LCJleHAiOjE5NTQ5Nzc1NDZ9.uv4njudURdvYtsERsT2wRHB0qU-m2fmTwsOsS2r8iec",
+    width: 102,
+  },
+  {
+    alt: "Belden",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Belden_Color.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvQmVsZGVuX0NvbG9yLnN2ZyIsImlhdCI6MTYzOTYxOTc2NywiZXhwIjoxOTU0OTc5NzY3fQ.e2DKcZP0xCLu4V1r2fTk5RpQ4AXP5AyasLMdLSDhioE",
+    width: 250,
+  },
+],
+  Smarthome: [
+  {
+    alt: "Lutron Caseta Wireless",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/LutronCaseta_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvTHV0cm9uQ2FzZXRhX0NvbG9yX0RhcmsucG5nIiwiaWF0IjoxNjM5NjIzNDcwLCJleHAiOjE5NTQ5ODM0NzB9.8_pknIRUF-P656Wc76pl0qxcVe_UipYb96g5zSSLfaM",
+    width: 76,
+  },
+  {
+    alt: "Philips Hue",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/PhilipsHue_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvUGhpbGlwc0h1ZV9Db2xvcl9EYXJrLnBuZyIsImlhdCI6MTYzOTYyMzg5OSwiZXhwIjoxOTU0OTgzODk5fQ.NfUe6aoETh4RHprRhgJRq8OdqnAdC5fP6oc30h-2jHM",
+    width: 75,
+  },
+  {
+    alt: "Aeotec",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Aeotec_Color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvQWVvdGVjX0NvbG9yLnBuZyIsImlhdCI6MTYzOTYyMzcwOSwiZXhwIjoxOTU0OTgzNzA5fQ.PiUGBd-OL1RI9ugjnfwcZHOVXECDFTrO9Yj9pZl8ADw",
+    width: 193,
+  },
+  {
+    alt: "Kasa Smart",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/KasaSmart_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvS2FzYVNtYXJ0X0NvbG9yX0RhcmsucG5nIiwiaWF0IjoxNjM5NjIzNjE4LCJleHAiOjE5NTQ5ODM2MTh9.3IaVVQTwE9jNbQq2Lsic78eC1RCr25R5gKSLrvNWeyU",
+    width: 159,
+  },
+  {
+    alt: "HomeSeer",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/HomeSeer_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvSG9tZVNlZXJfQ29sb3JfRGFyay5wbmciLCJpYXQiOjE2Mzk2MjQyMDAsImV4cCI6MTk1NDk4NDIwMH0.RwbIKt0xH7bCGTVstFtsWGYTQiKAmHyWpf2jYp7q5PA",
+    width: 255,
+  },
+  {
+    alt: "Sonos",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Sonos_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvU29ub3NfRGFyay5wbmciLCJpYXQiOjE2Mzk2MjQwOTQsImV4cCI6MTk1NDk4NDA5NH0.6_ZjjRProzb4duq5r9nU__F99Fj9SsxaJAyJCIlpYxE",
+    width: 72,
+  },
+],
+  Security: [
+  {
+    alt: "Synology",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Synology_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvU3lub2xvZ3lfRGFyay5wbmciLCJpYXQiOjE2Mzk2MTExMTcsImV4cCI6MTk1NDk3MTExN30.mBmbN2-wTHtLV8mA3jbNCTZ651IIYceEHPX4ztvtBFE",
+    width: 180,
+  },
+  {
+    alt: "Ubiquiti Networks",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/UbiquitiNetworks_Color_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVWJpcXVpdGlOZXR3b3Jrc19Db2xvcl9EYXJrLnBuZyIsImlhdCI6MTYzOTYxMTEyMCwiZXhwIjoxOTU0OTcxMTIwfQ.kJBMVEgmowlPRq2_-7mWR6UhFFUjT7lS2-sidzxYtf0",
+    width: 164,
+  },
+  {
+    alt: "Netgear Business",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/NetgearBusiness_Dark.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvTmV0Z2VhckJ1c2luZXNzX0RhcmsucG5nIiwiaWF0IjoxNjM5NjExMTEzLCJleHAiOjE5NTQ5NzExMTN9.gktSuTvcHE5Nm8EE3lmqtbidKOWuVIEo4ncppJz4dEw",
+    width: 204,
+  },
+  {
+    alt: "Hikvision",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Hikvision_Color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvSGlrdmlzaW9uX0NvbG9yLnBuZyIsImlhdCI6MTYzOTYxMTEwOSwiZXhwIjoxOTU0OTcxMTA5fQ.geO-4VP2N2njuHA6KtURk_mE-aeZBR1gML8MvySh72E",
+    width: 85,
+  },
+  {
+    alt: "Axis Communications",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/AxisCommunications_Color.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvQXhpc0NvbW11bmljYXRpb25zX0NvbG9yLnBuZyIsImlhdCI6MTYzOTYxMTEwNiwiZXhwIjoxOTU0OTcxMTA2fQ.6UjWijRDKvCnUaLoYCM4rQaedyYRftttBOA105DX7Qs",
+    width: 133,
+  },
+  {
+    alt: "Uniview",
+    href: "#",
+    img: "https://impnjvrvbyrcqytveudc.supabase.in/storage/v1/object/sign/files/images/Uniview_Color_Dark.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJmaWxlcy9pbWFnZXMvVW5pdmlld19Db2xvcl9EYXJrLmpwZyIsImlhdCI6MTYzOTYyMjg3MiwiZXhwIjoxOTU0OTgyODcyfQ.LMii1Qa6UfEdX_UlaSWznl6D0bdrN3YY58VQzj_WYfI",
+    width: 95,
+  },
+]
+}
 
 const allSolutions = [
   {
@@ -234,4 +389,4 @@ const config = {
 };
 
 export default config;
-export { solutions, allSolutions, faqs, people, allowedOrigins };
+export { solutions, allSolutions, faqs, people, allowedOrigins, vendors };

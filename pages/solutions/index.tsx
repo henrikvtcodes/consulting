@@ -1,15 +1,15 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import NextLink from 'next/link';
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import NextLink from "next/link";
 
-import HomeLayout from 'layouts/home'
-import { DefaultMeta } from '~components/meta'
-import { solutions, allSolutions } from '~utils/config';
+import HomeLayout from "layouts/home";
+import { DefaultMeta } from "~components/meta";
+import { solutions, allSolutions } from "~utils/config";
 
 import { CheckIcon } from "@heroicons/react/solid";
 
-const Page:NextPage = (props) => {
+const Page: NextPage = (props) => {
   return (
     <HomeLayout title="Solutions" desc="See what we can offer you.">
       <div className="bg-white">
@@ -90,7 +90,7 @@ const Page:NextPage = (props) => {
                     What we can do
                   </h3>
                   <ul role="list" className="mt-6 space-y-4">
-                    {tier.includedFeatures.map((feature) => (
+                    {tier.shortFeatures.map((feature) => (
                       <li key={feature.feat} className="flex space-x-3">
                         <CheckIcon
                           className="flex-shrink-0 h-5 w-5 text-green-500"
@@ -99,7 +99,10 @@ const Page:NextPage = (props) => {
                         {feature.tip ? (
                           <span className="text-sm text-gray-500 relative">
                             {feature.feat}
-                            <span className="hidden group-hover:visible"> {feature.tip}</span>
+                            <span className="hidden group-hover:visible">
+                              {" "}
+                              {feature.tip}
+                            </span>
                           </span>
                         ) : (
                           <span className="text-sm text-gray-500">
@@ -117,6 +120,6 @@ const Page:NextPage = (props) => {
       </div>
     </HomeLayout>
   );
-}
+};
 
 export default Page;
