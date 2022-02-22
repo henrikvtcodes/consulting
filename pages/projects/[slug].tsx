@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import type { NextPage, GetStaticProps } from "next"
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import fs from "fs";
 import path from "path";
 
@@ -9,11 +9,10 @@ import markdownToHtml from "~utils/markdownToHtml";
 import markdownStyles from "../../styles/markdown.module.css";
 import Post from "components/post";
 
-
-type PageProps = { 
+type PageProps = {
   post: PostType;
-  children?: React.ReactNode,
-}
+  children?: React.ReactNode;
+};
 
 type PostType = {
   slug: string;
@@ -21,22 +20,26 @@ type PostType = {
   date: string;
   client: string;
   coverImage: string;
-  excerpt: string;
   desc: string;
   content: string;
   published?: boolean;
 };
 
-const Page = ({ post }:PageProps) => {
+const Page = ({ post }: { post: PostType }) => {
   const router = useRouter();
 
   return (
-    <HomeLayout title={`${post.title}: An HVTC Customer Success Story`} desc={post.desc}>
+    <HomeLayout
+      title={`${post.title}: An HVTC Customer Success Story`}
+      desc={post.desc}
+    >
       <div>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto pb-12">
           <Post.Title>{post.title}</Post.Title>
-          <Post.CoverImage image={post.coverImage}/>
-          <h1 className="text-xl"><strong>For:</strong> {post.client}</h1>
+          <Post.CoverImage image={post.coverImage} />
+          <h1 className="text-xl">
+            <strong>For:</strong> {post.client}
+          </h1>
           <div
             className={markdownStyles["markdown"]}
             dangerouslySetInnerHTML={{ __html: post.content }}
@@ -48,21 +51,21 @@ const Page = ({ post }:PageProps) => {
 };
 
 export async function getStaticPaths() {
-  const files = fs.readdirSync(path.join('content'))
+  const files = fs.readdirSync(path.join("content"));
 
   const paths = files.map((filename) => ({
     params: {
-      slug: filename.replace('.md', ''),
+      slug: filename.replace(".md", ""),
     },
-  }))
+  }));
 
   return {
     paths,
     fallback: false,
-  }
+  };
 }
 
-export async function getStaticProps({ params: { slug } }:any) {
+export async function getStaticProps({ params: { slug } }: any) {
   const post = getPostBySlug(slug, [
     "title",
     "date",
@@ -71,24 +74,31 @@ export async function getStaticProps({ params: { slug } }:any) {
     "coverImage",
     "client",
     "published",
+    "desc",
   ]);
   const content = await markdownToHtml(post.content || "");
 
-  if (post.published as unknown as boolean === false) {
+  if ((post.published as unknown as boolean) === false) {
     return {
       notFound: true,
-    }
+    };
   }
+
+  const finalPost: PostType = {
+    title: post.title,
+    date: post.date,
+    slug: post.slug,
+    client: post.client,
+    coverImage: post.coverImage,
+    desc: post.desc,
+    content,
+  };
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      post: finalPost,
     },
   };
 }
-
 
 export default Page;
