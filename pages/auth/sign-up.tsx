@@ -1,3 +1,6 @@
+import { useDebouncedValue } from "@mantine/hooks";
+import { useState } from "react";
+
 import FormPageLayout from "layouts/formPage";
 import FormWindow from "~components/forms/window";
 import SignUpForm from "~components/forms/signUpFull";
@@ -5,6 +8,9 @@ import formStyles from "~styles/forms.module.css";
 
 // eslint-disable-next-line
 const Page = (props: any) => {
+  const [value, setValue] = useState("");
+  const [debounced] = useDebouncedValue(value, 200);
+
   return (
     <FormPageLayout title="Sign Up" desc="Confirm your account">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -22,6 +28,7 @@ const Page = (props: any) => {
               placeholder={"Enter Invite Code"}
               type={"text"}
               autoComplete={"off"}
+              onChange={(event) => setValue(event.currentTarget.value)}
               required
             />
           </div>
