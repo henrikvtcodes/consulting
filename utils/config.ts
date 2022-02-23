@@ -3,6 +3,15 @@ import {
   GlobeAltIcon,
   VideoCameraIcon,
   DeviceMobileIcon,
+  AdjustmentsIcon,
+  BookOpenIcon,
+  CurrencyDollarIcon,
+  ChatAlt2Icon,
+  HomeIcon,
+  PuzzleIcon,
+  BriefcaseIcon,
+  LocationMarkerIcon,
+  LockClosedIcon
 } from "@heroicons/react/outline";
 
 // prettier-ignore-file
@@ -25,6 +34,34 @@ const solutions = [
       { feat: "Highly Flexible" },
       { feat: "Next generation WiFi 6 solutions available" },
     ],
+    longFeatures: [
+      {
+        feat: "Custom Designed",
+        desc: `When designing your WiFi system, we take note of many factors that affect the design of a WiFi network. Part of the process includes 
+        investigating existing infrastructure and taking signal strength measurements. The end result is WiFi that works for you. `,
+        icon: AdjustmentsIcon,
+      },
+      {
+        feat: "Transparent",
+        desc: `We strive to make sure that our clients can trust us. Our proposal packages (proposal, quotes, and invoices)
+        clearly outline the goals of the project and the reasoning behind the design. All major costs (>$20) are itemized and
+        explained.`,
+        icon: BookOpenIcon,
+      },
+      {
+        feat: "Budget Optimized",
+        desc: `The budget is one of the central factors in any project. When given a budget, we make sure that it is used as efficiently
+        as possible. If we can't work with a given budget, we make sure the client understands why and we will provide alternate options
+        at the client's request.`,
+        icon: CurrencyDollarIcon,
+      },
+      {
+        feat: "Human Support",
+        desc: `We never leave you in the dark. If you have any questions, or issues, we will not hesistate to help. Unless it's necessary,
+        we won't even charge most of the time! Additionally, you won't be left confused; We don't try to hide behind fancy technical terms.`,
+        icon: ChatAlt2Icon,
+      },
+    ],
     icon: WifiIcon,
   },
   {
@@ -36,6 +73,41 @@ const solutions = [
       { feat: "Wired and wireless networking" },
       { feat: "Connect multiple buildings together" },
       { feat: "Remote monitoring available" },
+    ],
+    longFeatures: [
+      {
+        feat: "Limited Budget",
+        desc: "We will do our best to build the best solution for your budget.",
+        icon: CurrencyDollarIcon,
+      },
+      {
+        feat: "Maintenace",
+        desc: "Not everything needs replacing; we can also repair, maintain, and extend networks.",
+        icon: PuzzleIcon,
+      },
+      {
+        feat: "Security",
+        desc: `We understand the importance of network security in the 21st century.`,
+        icon: LockClosedIcon,
+      },
+      {
+        feat: "Residential",
+        desc: `Unstable home network? Slow internet? We can advise you on how to get the most out of your home network.
+        Don't be afraid to ask; we will gladly give free advice.`,
+        icon: HomeIcon,
+      },
+      {
+        feat: "Small Business",
+        desc: `As a small business, we love to work with other small businesses. We understand what is necessary
+        to get your business online.`,
+        icon: BriefcaseIcon,
+      },
+      {
+        feat: "Rural",
+        desc: `Need to connect multiple buildings? A pool, garage/workshop, guest house, or even neighbor? 
+        HVTC is who you need; this is our specialty.`,
+        icon: LocationMarkerIcon,
+      }
     ],
     icon: GlobeAltIcon,
   },
@@ -50,6 +122,13 @@ const solutions = [
       { feat: "Privacy first - we don't rely on Amazon or Google" },
       { feat: "Catch bad actors in high resolution" },
     ],
+    longFeatures: [
+      {
+        feat: "",
+        desc: "",
+        icon: WifiIcon,
+      }
+    ],
     icon: VideoCameraIcon,
   },
   {
@@ -63,9 +142,22 @@ const solutions = [
       { feat: "Intelligent thermostat & window treatment control" },
       { feat: "Smart Audio & Video" },
     ],
+    longFeatures: [
+      {
+        feat: "",
+        desc: "",
+        icon: WifiIcon,
+      }
+    ],
     icon: DeviceMobileIcon,
   },
 ];
+const namedSolutions = {
+  WiFi: solutions[0],
+  Networking: solutions[1],
+  Surveillance: solutions[2],
+  SmartHome: solutions[3],
+}
 
 const vendors = {
   WiFi: [
@@ -389,4 +481,4 @@ const config = {
 };
 
 export default config;
-export { solutions, allSolutions, faqs, people, allowedOrigins, vendors };
+export { solutions, allSolutions, namedSolutions,  faqs, people, allowedOrigins, vendors };
