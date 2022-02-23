@@ -13,7 +13,7 @@ const FormPageLayout = (props: LayoutProps) => {
   const desc = props.desc ? props.desc : meta.desc;
 
   return (
-    <div className="min-h-screen flex flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gradient-to-tr from-brand-primary to-inherit">
+    <div className="min-h-screen flex flex-col justify-center items-center py-12 sm:px-6 lg:px-8 bg-gradient-to-tr from-brand-primary to-inherit">
       <CustomMeta title={title} desc={desc} />
       <div className="">{props.children}</div>
     </div>

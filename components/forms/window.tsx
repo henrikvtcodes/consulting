@@ -1,18 +1,15 @@
-
-
-
 type FormWindowProps = {
   children: React.ReactNode;
-}
+};
 
-const FormWindow = (props:FormWindowProps) => {
+const FormWindow = (props: FormWindowProps) => {
   return (
-    <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-      <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <div className="">
+      <div className="bg-white rounded-lg p-6 md:max-w-lg">
         {props.children}
       </div>
     </div>
   );
-}
+};
 
 export default FormWindow;
