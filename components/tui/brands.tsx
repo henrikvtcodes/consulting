@@ -2,19 +2,19 @@ import Image from "next/image";
 import NextLink from "next/link";
 import type { NextPage } from "next";
 
-import { SimpleScale } from './imageScale';
+import { SimpleScale } from "./imageScale";
 
 type Logo = {
-  alt: string,
-  href: string,
-  img: string,
-  width: number,
-}
+  alt: string;
+  href: string;
+  img: string;
+  width: number;
+};
 
 type BrandComponentProps = {
   logos?: Logo[];
   children?: React.ReactNode;
-}
+};
 
 const defaultLogos: Array<Logo> = [
   {
@@ -25,8 +25,9 @@ const defaultLogos: Array<Logo> = [
   },
 ];
 
-const Brands = (props:BrandComponentProps) => { // You'll need this: https://www.omnicalculator.com/other/image-ratio
-  let logos = props.logos ? props.logos : defaultLogos
+const Brands = (props: BrandComponentProps) => {
+  // You'll need this: https://www.omnicalculator.com/other/image-ratio
+  let logos = props.logos ? props.logos : defaultLogos;
 
   return (
     <div className="bg-white">
@@ -93,6 +94,6 @@ const Brands = (props:BrandComponentProps) => { // You'll need this: https://www
       </div>
     </div>
   );
-}
+};
 
 export default Brands;

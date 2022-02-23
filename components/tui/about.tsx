@@ -1,8 +1,8 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 import { people } from "~utils/config";
 
-const AboutSection  = () => { 
+const AboutSection = () => {
   return (
     <div className="bg-white text-brand-text1">
       <div className="mx-auto py-12 px-4 max-w-7xl sm:px-6 lg:px-8 lg:py-24">
@@ -11,9 +11,7 @@ const AboutSection  = () => {
             <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
               About Me
             </h2>
-            <p className="text-xl text-gray-500">
-              
-            </p>
+            <p className="text-xl text-gray-500"></p>
           </div>
           <div className="lg:col-span-2">
             <ul
@@ -28,8 +26,9 @@ const AboutSection  = () => {
                         className="object-cover shadow-lg rounded-lg"
                         src={person.imageUrl}
                         alt=""
-                        width={197.15}
-                        height={197.15}
+                        width={250}
+                        height={250}
+                        priority
                       />
                     </div>
                     <div className="sm:col-span-2">
@@ -89,6 +88,7 @@ const AboutSection  = () => {
         </div>
       </div>
     </div>
-  );}
+  );
+};
 
 export default AboutSection;
