@@ -17,7 +17,6 @@ type PageProps = {
 type PostType = {
   slug: string;
   title: string;
-  date: string;
   client: string;
   coverImage: string;
   desc: string;
@@ -25,6 +24,7 @@ type PostType = {
   published?: boolean;
 };
 
+// eslint-disable-next-line
 const Page = ({ post }: { post: PostType }) => {
   const router = useRouter();
 
@@ -86,7 +86,6 @@ export async function getStaticProps({ params: { slug } }: any) {
 
   const finalPost: PostType = {
     title: post.title,
-    date: post.date,
     slug: post.slug,
     client: post.client,
     coverImage: post.coverImage,
