@@ -1,11 +1,13 @@
 import axios from "axios";
 
-const submitCode = (formData: any) => {
-  const code: string = formData.code;
+const submitCode = (code: string) => {
+  const result = axios.get("/api/invitecode", {
+    data: {
+      code,
+    },
+  });
 
-  const result = axios.post("/api/verifyCode", { code });
-
-  result.then((response) => {});
+  return result;
 };
 
 export { submitCode };

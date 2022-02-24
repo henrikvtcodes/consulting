@@ -1,17 +1,17 @@
 .Input label {
-  @apply block text-sm font-medium text-gray-700 ;
+  @apply block text-sm font-medium text-gray-700;
 }
 
 .Input input {
-  @apply mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-accent2h focus:border-brand-accent2h sm:text-sm ;
+  @apply mt-1 appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-accent2h focus:border-brand-accent2h sm:text-sm;
 }
 
 .ConfirmPasswordInput label {
-  @apply block text-sm font-medium text-gray-700 ;
+  @apply block text-sm font-medium text-gray-700;
 }
 
 .ConfirmPasswordInput input {
-  @apply appearance-none block w-full px-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-accent2h focus:border-brand-accent2h sm:text-sm ;
+  @apply appearance-none block w-full px-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-accent2h focus:border-brand-accent2h sm:text-sm;
 }
 
 .Checkbox {

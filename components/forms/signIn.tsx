@@ -29,7 +29,7 @@ const SignInForm = ({ csrfToken }: SignInComponentProps) => {
   router.basePath;
 
   return (
-    <div className="flex flex-col space-y-2 ">
+    <div className="flex flex-col space-y-2">
       <span className="text-center font-semibold text-lg"> Sign in with </span>
       <div className="flex flex-row justify-center items-center space-x-2">
         <button
