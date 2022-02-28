@@ -26,6 +26,14 @@ export function WarningBanner() {
                   unfinished pages or features that are not functional.
                 </span>
               </p>
+              <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
+                <a
+                  href="https://consulting.henrikvt.com"
+                  className="flex items-center justify-center ml-2 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-red-600 bg-white hover:bg-red-50"
+                >
+                  See Main Site
+                </a>
+              </div>
             </div>
           </div>
         </div>
