@@ -2339,8 +2339,8 @@ __metadata:
     marked: ^4.0.8
     micro: ^9.3.4
     nanoid: ^3.2.0
-    next: latest
-    next-auth: ^4.1.0
+    next: ^12.1.0
+    next-auth: ^4.2.1
     next-mdx-remote: ^3.0.8
     postcss: ^8.4.4
     prisma: ^3.10.0
@@ -5386,9 +5386,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "next-auth@npm:4.1.0"
+"next-auth@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "next-auth@npm:4.2.1"
   dependencies:
     "@babel/runtime": ^7.16.3
     "@panva/hkdf": ^1.0.1
@@ -5401,12 +5401,12 @@ __metadata:
     uuid: ^8.3.2
   peerDependencies:
     nodemailer: ^6.6.5
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ^17.0.2 || ^18.0.0-0
+    react-dom: ^17.0.2 || ^18.0.0-0
   peerDependenciesMeta:
     nodemailer:
       optional: true
-  checksum: db0e5cf8d5b23ea56a9dd121fab6b84abc06f9ed0d8236a14945be84651a348c27a2240abb8b51a9f1521411cfe92c28c75d5cd390596b5987b1e516e1a1287d
+  checksum: 08733486e731d38801606b70a9bfb21a213a5771f4de21ef7f64e13aa94b5cc45508b424ccb549b7b73be69ed597b87e3dcfba520c75195b46ccf44e3d199ea5
   languageName: node
   linkType: hard
 
@@ -5432,7 +5432,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:latest":
+"next@npm:^12.1.0":
   version: 12.1.0
   resolution: "next@npm:12.1.0"
   dependencies:
