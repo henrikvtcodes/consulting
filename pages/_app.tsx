@@ -3,8 +3,10 @@ import { SessionProvider } from "next-auth/react";
 import { MantineProvider } from "@mantine/core";
 
 import Favicon from "~components/meta";
+import { WarningBanner } from "~components/tui/warning-banner";
 import "../styles/globals.css";
 
+// eslint-disable-next-line
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
@@ -15,6 +17,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           fontFamily: "Inter",
         }}
       >
+        <WarningBanner />
         <Favicon />
         <Component {...pageProps} />
       </MantineProvider>

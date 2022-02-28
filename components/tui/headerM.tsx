@@ -7,12 +7,13 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import SolutionsFlyout from "./flyouts";
 import solutions from "~utils/config";
+import { WarningBanner } from "./warning-banner";
 
 const localSolutions = solutions;
 
 const HeaderM = () => {
   return (
-    <Popover className="z-50 relative bg-white">
+    <Popover className="z-40 relative bg-white mt-14">
       <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
         <div className="flex justify-start lg:w-0 lg:flex-1">
           <NextLink href={"/"} passHref>
