@@ -14,7 +14,7 @@ import SignInForm from "~components/forms/signIn";
 import { NextAuthErrorParams } from "utils/config";
 
 // eslint-disable-next-line
-const Page = ({ csrfToken }) => {
+const Page = ({ csrfToken }: any) => {
   const router = useRouter();
 
   const { error } = router.query;
