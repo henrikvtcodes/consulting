@@ -5,13 +5,13 @@ import { getSession } from "next-auth/react";
 
 import { prisma } from "./Prisma";
 
-export type UserRole = "admin" | "user" | null;
-export const validRoles: Array<UserRole> = ["admin", "user"];
+export type UserRole = "admin" | "client";
+export const validRoles: Array<UserRole> = ["admin", "client"];
 
 async function getUserRole_Prod( // Determine the current role of the logged in user; return null if not logged in or not specified
   req: NextApiRequest,
   res: NextApiResponse
-): Promise<UserRole> {
+): Promise<UserRole | null> {
   const session = await getSession({ req });
 
   if (!session) {
@@ -32,7 +32,8 @@ async function getUserRole_Prod( // Determine the current role of the logged in 
 
   let role = user.role;
 
-  if (role in validRoles) {
+  // @ts-ignore
+  if (validRoles.includes(role)) {
     // @ts-ignore
     return role;
   } else {
@@ -47,9 +48,6 @@ async function getUserRole_Dev(): Promise<UserRole> {
 export async function getUserRole( // Determine the current role of the logged in user; return null if not logged in or not specified
   req: NextApiRequest,
   res: NextApiResponse
-): Promise<UserRole> {
-  if (process.env.NODE_ENV === "development") {
-    return getUserRole_Dev();
-  }
+): Promise<UserRole | null> {
   return getUserRole_Prod(req, res);
 }

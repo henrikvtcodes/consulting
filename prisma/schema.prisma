@@ -57,7 +57,7 @@ model User {
   emailVerified DateTime?
   phone         String?
   image         String?
-  role          String    @default("user")
+  role          String    @default("client")
   isInvited     Boolean   @default(false)
 
   account  Account[]
