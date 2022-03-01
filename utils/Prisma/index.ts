@@ -1,5 +1,5 @@
-import { PrismaClient } from "../../prisma/generated";
-import type { PrismaClient as PrismaClientType } from "../../prisma/generated";
+import { PrismaClient } from "@prisma/client";
+import type { PrismaClient as PrismaClientType } from "@prisma/client";
 let prisma: PrismaClientType;
 
 if (process.env.NODE_ENV === "production") {

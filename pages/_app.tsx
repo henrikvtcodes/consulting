@@ -17,7 +17,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           fontFamily: "Inter",
         }}
       >
-        {process.env.NODE_ENV === "production" && <WarningBanner />}
+        {process.env.PROD_WARN === "true" && <WarningBanner />}
         <Favicon />
         <Component {...pageProps} />
       </MantineProvider>
