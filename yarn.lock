@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-".prisma@link:node-modules/.prisma::locator=consulting%40workspace%3A.":
+".prisma@link:node-modules/.prisma::locator=%40prisma%2Fclient%40npm%3A3.10.0":
   version: 0.0.0-use.local
-  resolution: ".prisma@link:node-modules/.prisma::locator=consulting%40workspace%3A."
+  resolution: ".prisma@link:node-modules/.prisma::locator=%40prisma%2Fclient%40npm%3A3.10.0"
   languageName: node
   linkType: soft
 
