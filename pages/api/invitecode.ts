@@ -9,7 +9,7 @@ import {
   createCode,
   markCodeAsUsed,
 } from "~utils/Prisma/inviteCode";
-import { getUserRole } from "~utils/lookupUser.server";
+import { getUserRole } from "~utils/getUserRole.server";
 import { getUser } from "~utils/apiAuth";
 import { genHexCode } from "~utils/nanoid";
 import { create } from "domain";
@@ -36,14 +36,10 @@ export default async function handler(
         res.end();
         return;
       } else if (isValid === (false || null)) {
-        res
-          .status(404)
-          .json({
-            message:
-              typeof isValid === "boolean"
-                ? "Code is Invalid"
-                : "Code not found",
-          });
+        res.status(404).json({
+          message:
+            typeof isValid === "boolean" ? "Code is Invalid" : "Code not found",
+        });
         res.end;
         return;
       }

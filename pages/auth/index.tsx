@@ -1,14 +1,16 @@
 import { useRouter } from "next/router";
+import { NextPage } from "next";
 // @ts-ignore
 import Typical from "react-typical";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
+import axios from "axios";
 
 import FormPageLayout from "layouts/formPage";
-import { getUserRole } from "~utils/lookupUser.server";
+import { getUserRole } from "~utils/getUserRole.server";
 
 // eslint-disable-next-line
-const Page = () => {
+const Page: NextPage = (props) => {
   // Page that directs user to administrator or client dashboard if logged in, directs to home page if not logged in
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -19,6 +21,32 @@ const Page = () => {
       setTimeout(() => {
         router.push("/auth/sign-in");
       }, 10000);
+    } else if (status === "authenticated") {
+      const roleReq = axios("/api/getRole");
+      roleReq.then((res) => {
+        const role = res.data.role;
+        console.log(`User Role: ${role}`);
+
+        switch (role) {
+          default:
+            setTimeout(() => {
+              router.push("/auth/error?error=InvalidRole");
+            }, 5000);
+          case "admin":
+            setTimeout(() => {
+              router.push("/admin");
+            }, 10000);
+          case "client":
+            setTimeout(() => {
+              router.push("/client");
+            }, 10000);
+        }
+      });
+      roleReq.catch((e) => {
+        setTimeout(() => {
+          router.push("/auth/error?error=InvalidRole");
+        }, 5000);
+      });
     }
   }, [router, status, session]);
 

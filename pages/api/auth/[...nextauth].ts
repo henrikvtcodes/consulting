@@ -25,7 +25,6 @@ export default NextAuth({
 
   pages: {
     signIn: "/auth/sign-in",
-    signOut: "/auth/sign-out",
     error: "/auth/error", // Error code passed in query string as ?error=
     verifyRequest: "/auth/verify-email", // used for check email message
     newUser: "/auth/sign-up", // New users will be directed here on first sign in

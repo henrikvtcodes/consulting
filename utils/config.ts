@@ -435,6 +435,10 @@ const NextAuthErrorParams: {
     title: "Server Error",
     message: "The server encountered an error while attempting to log you in.",
   },
+  "InvalidRole": {
+    title: "User Discrepancy",
+    message: "There is a problem with your user account. Please contact Henrik directly to report the problem.",
+  },
   "Verification": {
     title: "Verification Error",
     message:
@@ -472,4 +476,4 @@ const config = {
 };
 
 export default config;
-export { solutions, allSolutions, namedSolutions,  faqs, people, allowedOrigins, vendors };
+export { solutions, allSolutions, namedSolutions,  faqs, people, allowedOrigins, vendors, NextAuthErrorParams };
