@@ -6,6 +6,8 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "utils/Prisma";
 
 export default NextAuth({
+  // NOTE: POTENTIAL FOR TYPE ERROR
+  // @ts-ignore
   adapter: PrismaAdapter(prisma),
 
   providers: [
