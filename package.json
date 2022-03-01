@@ -4,12 +4,12 @@
   "scripts": {
     "dev": "next dev",
     "dev:gen": "yarn prisma generate && next dev",
-    "build": "ANALYZE=true next build",
+    "build": "ANALYZE=true next build && prisma generate",
     "start": "next start",
     "lint": "next lint",
-    "prisma": "yarn prisma migrate dev",
-    "prisma:gen": "yarn prisma generate",
-    "prisma:push": "yarn prisma push"
+    "prisma": "prisma migrate dev",
+    "prisma:gen": "prisma generate",
+    "prisma:push": "prisma push"
   },
   "dependencies": {
     "@google-cloud/storage": "^5.17.0",
