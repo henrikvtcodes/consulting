@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: true,
+});
+
+module.exports = withBundleAnalyzer({
   swcMinify: true,
   reactStrictMode: true,
   images: {
@@ -9,4 +13,4 @@ module.exports = {
       "impnjvrvbyrcqytveudc.supabase.in",
     ],
   },
-};
+});
