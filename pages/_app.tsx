@@ -5,8 +5,8 @@ import Favicon from "~components/meta";
 import { WarningBanner } from "~components/tui/warning-banner";
 import "../styles/globals.css";
 
-// eslint-disable-next-line
-function App({ Component, pageProps: { session, ...pageProps } }) {
+// prettier-ignore
+function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       {process.env.NEXT_PUBLIC_PROD_WARN === "true" && <WarningBanner />}
