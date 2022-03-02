@@ -3,22 +3,23 @@ import AwesomeDebouncePromise from "awesome-debounce-promise";
 import { useAsync } from "react-async-hook";
 import useConstant from "use-constant";
 
-export const useDebouncedFunc = (inputFunc: any, waitMs: number = 400) => {
+export const useDebouncedFunc = <T>(inputFunc: any, waitMs: number = 400) => {
   // Handle the input text state
   const [inputText, setInputText] = useState("");
 
   // Debounce the original search async function
-  const debouncedInputFunc = useConstant(() =>
+  const debouncedInputFunc = useConstant<typeof inputFunc>(() =>
     AwesomeDebouncePromise(inputFunc, waitMs)
   );
 
   // The async callback is run each time the text changes,
   // but as the search function is debounced, it does not
   // fire a new request on each keystroke
-  const searchResults = useAsync(async () => {
+  const results = useAsync<T>(async () => {
     if (inputText.length === 0) {
       return [];
     } else {
+      console.log(debouncedInputFunc(inputText));
       return debouncedInputFunc(inputText);
     }
   }, [debouncedInputFunc, inputText]);
@@ -27,6 +28,6 @@ export const useDebouncedFunc = (inputFunc: any, waitMs: number = 400) => {
   return {
     inputText,
     setInputText,
-    searchResults,
+    results,
   };
 };
