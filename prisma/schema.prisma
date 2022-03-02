@@ -60,10 +60,10 @@ model User {
   role          String    @default("client")
   isInvited     Boolean   @default(false)
 
-  account  Account[]
+  accounts Account[]
   sessions Session[]
   customer Customer[]
-  invite   Invite[]
+  invite   Invite?
 
   @@map("users")
 }
@@ -72,7 +72,7 @@ model Invite {
   id     String    @id @default(cuid())
   token  String    @unique
   used   Boolean   @default(false)
-  usedBy String    @default("null")
+  usedBy String    @unique @default("null")
   usedOn DateTime?
 
   user User @relation(fields: [usedBy], references: [id], onDelete: Cascade)
@@ -87,7 +87,7 @@ model Customer {
   fullName String
   stripeID String
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   charge   Charge[]
   projects Project[]
@@ -110,10 +110,10 @@ model Project {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @default(now())
 
-  customer Customer @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  customer Customer @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: Cascade)
 
-  charge   Charge[]
-  quote    Quote[]
+  charges  Charge[]
+  quotes   Quote[]
   invoices Invoice[]
 
   @@map("projects")
@@ -131,11 +131,11 @@ model Quote {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
 
-  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
 
-  invoices Invoice[]
-  charges  Charge[]
+  invoices Invoice?
+  charges  Charge?
 
   @@map("quotes")
 }
@@ -145,14 +145,14 @@ model Invoice {
   projectId  String
   customerId String
   stripeId   String
-  chargeId   String
-  quoteId    String
+  chargeId   String   @unique
+  quoteId    String   @unique
   status     String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
 
-  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
   charge   Charge   @relation(fields: [chargeId], references: [id], onDelete: Cascade)
   quote    Quote    @relation(fields: [quoteId], references: [id], onDelete: Cascade)
 
@@ -169,13 +169,13 @@ model Charge {
   paid       Boolean
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
-  quoteId    String?
+  quoteId    String?  @unique
 
   customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
-  project  Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
-  quote    Quote?   @relation(fields: [quoteId], references: [id])
+  project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
+  quote    Quote?   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
 
-  invoice Invoice[]
+  invoice Invoice?
 
   @@map("charges")
 }

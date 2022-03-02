@@ -5,19 +5,11 @@ let prisma: PrismaClientType;
 if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient();
 } else {
-  if (global.prisma) {
-    global.prisma.$disconnect();
-    console.log("Prisma Dev Client: Regenerating");
-
-    global.prisma = new PrismaClient();
-  } else if (!global.prisma) {
-    console.log("Prisma Dev Client: Generating");
-    global.prisma = new PrismaClient();
-  }
-
-  prisma = global.prisma;
+  prisma =
+    global.prisma ||
+    new PrismaClient({
+      log: ["query"],
+    });
 }
-
-prisma = new PrismaClient();
 
 export { prisma };
