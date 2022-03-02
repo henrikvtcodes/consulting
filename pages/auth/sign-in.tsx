@@ -14,10 +14,20 @@ import SignInForm from "~components/forms/signIn";
 import { NextAuthErrorParams } from "utils/config";
 
 // eslint-disable-next-line
-const Page = ({ csrfToken }: any) => {
+const Page = ({ csrfToken }) => {
   const router = useRouter();
 
   const { error } = router.query;
+
+  let errorType = "Default";
+  let errorInfo = NextAuthErrorParams.Default;
+
+  if (typeof error === "string") {
+    errorType = error;
+    if (NextAuthErrorParams[error]) {
+      errorInfo = NextAuthErrorParams[error];
+    }
+  }
 
   return (
     <FormPageLayout>
@@ -48,7 +58,7 @@ const Page = ({ csrfToken }: any) => {
           </div>
         </div>
 
-        {error && typeof error === "string" && (
+        {error && (
           <div className="w-full mt-4 px-1 py-2 bg-red-100 rounded flex justify-left items-top text-sm">
             <div className="flex-shrink-0">
               <ExclamationIcon
@@ -58,10 +68,10 @@ const Page = ({ csrfToken }: any) => {
             </div>
             <div className="">
               <h3 className="text-sm font-semibold text-red-800">
-                {NextAuthErrorParams[error].title}
+                {errorInfo.title}
               </h3>
               <div className="mt-1 text-sm font-medium text-red-700">
-                <p>{NextAuthErrorParams[error].message}</p>
+                <p>{errorInfo.message}</p>
               </div>
             </div>
           </div>
