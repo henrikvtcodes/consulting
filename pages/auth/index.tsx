@@ -20,7 +20,7 @@ const Page: NextPage = (props) => {
       console.log("User not logged in");
       setTimeout(() => {
         router.push("/auth/sign-in");
-      }, 10000);
+      }, 2000);
     } else if (status === "authenticated") {
       const roleReq = axios("/api/getRole");
       roleReq.then((res) => {
