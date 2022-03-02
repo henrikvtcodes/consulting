@@ -13,15 +13,16 @@ export async function lookupCode(code: string) {
   return !token.used;
 }
 
-export async function createCode() {
-  const token = genHexCode();
-  const code = await prisma.invite.create({
+export async function createCode(code?: string) {
+  const token = code ? code : genHexCode();
+  console.log("New invite code:", token);
+  const newCode = await prisma.invite.create({
     data: {
       token,
     },
   });
-
-  return code.token;
+  console.log(newCode);
+  return newCode.token;
 }
 
 export async function markCodeAsUsed(code: string, usedBy: string) {

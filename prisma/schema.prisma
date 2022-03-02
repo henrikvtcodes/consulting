@@ -72,10 +72,10 @@ model Invite {
   id     String    @id @default(cuid())
   token  String    @unique
   used   Boolean   @default(false)
-  usedBy String    @unique @default("null")
+  usedBy String?   @unique
   usedOn DateTime?
 
-  user User @relation(fields: [usedBy], references: [id], onDelete: Cascade)
+  user User? @relation(fields: [usedBy], references: [id], onDelete: Cascade)
 
   @@unique([id, token])
   @@map("invites")

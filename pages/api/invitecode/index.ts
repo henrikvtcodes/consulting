@@ -13,6 +13,7 @@ import { getUserRole } from "~utils/getUserRole.server";
 import { getUser } from "~utils/apiAuth";
 import { genHexCode } from "~utils/nanoid";
 import { create } from "domain";
+import { emit } from "process";
 
 export default async function handler(
   req: NextApiRequest,
@@ -29,35 +30,27 @@ export default async function handler(
       res.status(501).end();
 
     case "GET":
-      let code: string = body["code"];
-      let isValid = await lookupCode(code);
-      if (isValid === true) {
-        res.status(200);
-        res.end();
-        return;
-      } else if (isValid === (false || null)) {
-        res.status(404).json({
-          message:
-            typeof isValid === "boolean" ? "Code is Invalid" : "Code not found",
-        });
-        res.end;
-        return;
-      }
-
-    case "POST":
       if (role !== "admin") {
         res.status(403).send("Unauthorized");
         res.end;
         return;
       }
+
+      let code: string | undefined = body["code"];
+
       let newCode: string;
+
       try {
-        newCode = await createCode();
-      } catch {
-        res.status(500).send("Internal Server Error");
+        newCode = await createCode(code);
+      } catch (e) {
+        res.status(500).json({
+          status: "Internal Server Error. Code could not be generated.",
+          error: e as string,
+        });
         return;
       }
-      res.status(200);
+
+      res.status(200).json({ code: newCode });
       res.end();
       return;
 

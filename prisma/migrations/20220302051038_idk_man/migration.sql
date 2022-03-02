@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "invites" ALTER COLUMN "usedBy" DROP NOT NULL,
+ALTER COLUMN "usedBy" DROP DEFAULT;
