@@ -5,7 +5,6 @@ import Favicon from "~components/meta";
 import { WarningBanner } from "~components/tui/warning-banner";
 import "../styles/globals.css";
 
-// prettier-ignore
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
