@@ -12,8 +12,6 @@ import {
 import { getUserRole } from "~utils/getUserRole.server";
 import { getUser } from "~utils/apiAuth";
 import { genHexCode } from "~utils/nanoid";
-import { create } from "domain";
-import { emit } from "process";
 
 export default async function handler(
   req: NextApiRequest,
@@ -22,6 +20,8 @@ export default async function handler(
   await cors(req, res);
 
   const role = await getUserRole(req, res);
+
+  const session = await getSession({ req });
 
   const body = req.body;
 
@@ -54,21 +54,40 @@ export default async function handler(
       res.end();
       return;
 
-    case "PATCH":
-      if (role !== "admin") {
-        res.status(403).send("Unauthorized");
-        res.end;
+    case "POST":
+      // if (role !== "admin") {
+      //   res.status(403).send("Unauthorized");
+      //   res.end;
+      //   return;
+      // }
+
+      let codeToUse: string = body["code"];
+
+      const user = await prisma.user.findUnique({
+        where: {
+          // @ts-ignore
+          email: session?.user?.email,
+        },
+      });
+
+      if (!user) {
+        res.status(500).json({
+          status: "Internal Server Error. User not found.",
+        });
+        res.end();
         return;
       }
-      let codeToUse: string = body["code"];
-      let usedBy = body["usedBy"];
+
+      console.log("Current User: ", user.name);
+
       try {
-        markCodeAsUsed(codeToUse, usedBy);
+        markCodeAsUsed(codeToUse, user.id);
       } catch (error) {
         res.status(500).send(`Internal Server Error: ${error}`);
         res.end;
         return;
       }
+
       res.status(200);
       res.end();
       return;
