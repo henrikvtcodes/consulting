@@ -19,7 +19,6 @@ export const useDebouncedFunc = <T>(inputFunc: any, waitMs: number = 400) => {
     if (inputText.length === 0) {
       return [];
     } else {
-      console.log(debouncedInputFunc(inputText));
       return debouncedInputFunc(inputText);
     }
   }, [debouncedInputFunc, inputText]);
