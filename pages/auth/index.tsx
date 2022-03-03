@@ -19,7 +19,6 @@ const Page: NextPage = (props) => {
 
   useEffect(() => {
     if (status === "unauthenticated") {
-      console.log("User not logged in");
       setTimeout(() => {
         router.push("/auth/sign-in");
       }, 2000);
@@ -27,18 +26,16 @@ const Page: NextPage = (props) => {
       console.log(`User Role: ${role}`);
 
       switch (role) {
-        default:
-          setTimeout(() => {
-            router.push("/auth/error?error=InvalidRole");
-          }, 5000);
+        // default:
+        //   setTimeout(() => {
+        //     router.push("/auth/error?error=InvalidRole");
+        //   }, 5000);
         case "admin":
-          console.log("User is an admin");
           setTimeout(() => {
             router.push("/admin");
           }, 2000);
           break;
         case "client":
-          console.log("User is a client");
           setTimeout(() => {
             router.push("/client");
           }, 2000);

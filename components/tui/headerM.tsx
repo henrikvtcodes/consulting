@@ -1,5 +1,6 @@
 import Image from "next/image";
 import NextLink from "next/link";
+import { useEffect, useState } from "react";
 
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
@@ -17,8 +18,13 @@ const HeaderM = () => {
   const session = useSession();
 
   const { role, isLoading, mutate } = useRole();
+  const [roleState, setRole] = useState(role);
 
-  console.log(role);
+  useEffect(() => {
+    setRole(role);
+  }, [role]);
+
+  console.log(session);
   console.log("isLoading", isLoading);
 
   return (
@@ -68,9 +74,9 @@ const HeaderM = () => {
           {/* NOTE Add Flyout menu for more options here */}
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          {!isLoading && role === ("admin" || "client") ? (
+          {!isLoading && roleState === ("admin" || "client") ? (
             <span>
-              <NextLink href={`/${role}`} prefetch={false} passHref>
+              <NextLink href={`/${role}`} passHref>
                 <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                   Dashboard
                 </a>
@@ -86,7 +92,7 @@ const HeaderM = () => {
               </button>
             </span>
           ) : (
-            <NextLink href={"/auth/sign-in"} prefetch={false} passHref>
+            <NextLink href={"/auth/sign-in"} passHref>
               <a className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h">
                 Sign in
               </a>
