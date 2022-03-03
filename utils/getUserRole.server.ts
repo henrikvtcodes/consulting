@@ -14,7 +14,7 @@ async function getUserRole_Prod( // Determine the current role of the logged in 
 ): Promise<UserRole | null> {
   const session = await getSession({ req });
 
-  if (!session) {
+  if (!session || session.status === "unauthenticated") {
     res.status(401).send("Unauthenticated");
     res.end();
     return null;
