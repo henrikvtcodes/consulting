@@ -8,7 +8,6 @@ import { FcGoogle } from "react-icons/fc";
 import { getProviders, signIn } from "next-auth/react";
 
 import formStyles from "~styles/forms.module.css";
-import { submitSignIn, testOnSubmit } from "~utils/signin";
 
 export type SignInFormProps = {
   email: string;
