@@ -64,6 +64,7 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "stripe": "^8.191.0",
+    "swr": "^1.2.2",
     "tailwindcss": "^3.0.0",
     "use-constant": "^1.1.0",
     "zxcvbn": "^4.4.2"

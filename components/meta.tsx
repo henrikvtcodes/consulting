@@ -93,6 +93,14 @@ const CustomMeta = (props: CustomMetaProps) => {
         content={props.image ? props.image : meta.image}
       />
       <meta property="twitter:site" content={meta.twitterSite} />
+
+      {/* Prefetch user's role, or undefined if they are not logged in */}
+      <link
+        rel="preload"
+        href="/api/getRole"
+        as="fetch"
+        crossOrigin="strict-origin-when-cross-origin"
+      />
     </Head>
   );
 };

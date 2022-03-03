@@ -9,11 +9,18 @@ import { useSession, signOut } from "next-auth/react";
 import SolutionsFlyout from "./flyouts";
 import solutions from "~utils/config";
 import { WarningBanner } from "./warning-banner";
+import { useRole } from "~utils/hooks/useRole";
 
 const localSolutions = solutions;
 
 const HeaderM = () => {
   const session = useSession();
+
+  const { role, isLoading, mutate } = useRole();
+
+  console.log(role);
+  console.log("isLoading", isLoading);
+
   return (
     <Popover className="z-40 relative bg-white">
       <div className="flex justify-between items-center px-4 py-6 sm:px-6 md:justify-start md:space-x-10">
@@ -61,15 +68,18 @@ const HeaderM = () => {
           {/* NOTE Add Flyout menu for more options here */}
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          {session.status === "authenticated" ? (
+          {!isLoading && role === ("admin" || "client") ? (
             <span>
-              <NextLink href={"/auth/sign-in"} prefetch={false} passHref>
+              <NextLink href={`/${role}`} prefetch={false} passHref>
                 <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                   Dashboard
                 </a>
               </NextLink>
               <button
-                onClick={() => signOut()}
+                onClick={() => {
+                  signOut();
+                  mutate();
+                }}
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
               >
                 Sign Out

@@ -30,5 +30,23 @@ export default NextAuth({
     newUser: "/auth/sign-up", // New users will be directed here on first sign in
   },
 
-  callbacks: {},
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      const dbUser = await prisma.user.findUnique({
+        where: {
+          id: user.id,
+        },
+      });
+
+      if (!dbUser) {
+        return true;
+      }
+
+      if (dbUser.isInvited === false) {
+        return "/auth/sign-up";
+      }
+
+      return true;
+    },
+  },
 });

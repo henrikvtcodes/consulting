@@ -7,13 +7,15 @@ import { useSession } from "next-auth/react";
 import axios from "axios";
 
 import FormPageLayout from "layouts/formPage";
-import { getUserRole } from "~utils/getUserRole.server";
+import { useRole } from "~utils/hooks/useRole";
 
 // eslint-disable-next-line
 const Page: NextPage = (props) => {
-  // Page that directs user to administrator or client dashboard if logged in, directs to home page if not logged in
+  // Page that directs user to administrator or client dashboard if logged in, directs to sign in page if not logged in
   const router = useRouter();
   const { data: session, status } = useSession();
+
+  const { role } = useRole();
 
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -22,37 +24,28 @@ const Page: NextPage = (props) => {
         router.push("/auth/sign-in");
       }, 2000);
     } else if (status === "authenticated") {
-      const roleReq = axios("/api/getRole");
-      roleReq.then((res) => {
-        const role = res.data.role;
-        console.log(`User Role: ${role}`);
+      console.log(`User Role: ${role}`);
 
-        switch (role) {
-          // default:
-          //   setTimeout(() => {
-          //     router.push("/auth/error?error=InvalidRole");
-          //   }, 5000);
-          case "admin":
-            console.log("User is an admin");
-            setTimeout(() => {
-              router.push("/admin");
-            }, 2000);
-            break;
-          case "client":
-            console.log("User is a client");
-            setTimeout(() => {
-              router.push("/client");
-            }, 2000);
-            break;
-        }
-      });
-      roleReq.catch((e) => {
-        setTimeout(() => {
-          router.push("/auth/error?error=InvalidRole");
-        }, 5000);
-      });
+      switch (role) {
+        default:
+          setTimeout(() => {
+            router.push("/auth/error?error=InvalidRole");
+          }, 5000);
+        case "admin":
+          console.log("User is an admin");
+          setTimeout(() => {
+            router.push("/admin");
+          }, 2000);
+          break;
+        case "client":
+          console.log("User is a client");
+          setTimeout(() => {
+            router.push("/client");
+          }, 2000);
+          break;
+      }
     }
-  }, [router, status, session]);
+  }, [router, status, session, role]);
 
   return (
     <FormPageLayout>
