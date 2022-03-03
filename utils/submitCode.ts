@@ -1,11 +1,12 @@
 import axios from "axios";
+import { FormHTMLAttributes } from "react";
 
 export type SubmitCodeReturnType = {
   isValid: boolean;
   message: string;
 };
 
-const submitCode = async (code: string): Promise<SubmitCodeReturnType> => {
+const validateCode = async (code: string): Promise<SubmitCodeReturnType> => {
   const result = await axios({
     method: "POST",
     url: `/api/invitecode/validate`,
@@ -13,7 +14,6 @@ const submitCode = async (code: string): Promise<SubmitCodeReturnType> => {
       code,
     },
   });
-  console.log("Res:", result.data);
 
   return {
     isValid: result.data.isValid,
@@ -21,4 +21,8 @@ const submitCode = async (code: string): Promise<SubmitCodeReturnType> => {
   };
 };
 
-export { submitCode };
+const submitCode = (event: any) => {
+  console.log(event);
+};
+
+export { validateCode, submitCode };
