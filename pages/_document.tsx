@@ -1,10 +1,12 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { createGetInitialProps } from "@mantine/next";
 
-const getInitialProps = createGetInitialProps();
+import { meta } from "~components/meta";
 
 class AppDocument extends Document {
-  static getInitialProps = getInitialProps;
+  static async getInitialProps(ctx: any) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
 
   render() {
     return (
@@ -18,6 +20,7 @@ class AppDocument extends Document {
             data-host-url="https://analytics.henriktech.com"
           />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          <link rel="icon" type="image/png" href={meta.icon} />
         </Head>
         <body className="h-full">
           <Main />

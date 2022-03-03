@@ -2,3 +2,5 @@
 **/*.d.ts
 # components/forms/sign-up.tsx
 # components/forms/signIn.tsx
+
+./pages/_app.tsx
