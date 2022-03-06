@@ -6,13 +6,14 @@ import axios from "axios";
 import Favicon from "~components/meta";
 import { WarningBanner } from "~components/tui/warning-banner";
 import "../styles/globals.css";
+import { localStorageCache } from "~utils/swr_localstoragecache";
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SWRConfig
       value={{
         fetcher: (url: string) => axios.get(url).then((res) => res.data),
-        provider: () => new Map(),
+        // provider: localStorageCache,
       }}
     >
       <SessionProvider session={session}>
