@@ -456,6 +456,10 @@ const NextAuthErrorParams: {
     title: "Provider Signin Error",
     message: "We were not able to complete the signin process.",
   },
+  "OAuthAccountNotLinked":{
+    title: "Provider Sign In Error",
+    message: "Your email is already linked to a different account.",
+  }
 };
 
 const allowedOrigins: string[] = [

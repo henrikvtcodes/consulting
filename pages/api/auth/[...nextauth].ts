@@ -32,19 +32,19 @@ export default NextAuth({
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      const dbUser = await prisma.user.findUnique({
-        where: {
-          id: user.id,
-        },
-      });
+      // const dbUser = await prisma.user.findUnique({
+      //   where: {
+      //     id: user.id,
+      //   },
+      // });
 
-      if (!dbUser) {
-        return true;
-      }
+      // if (!dbUser) {
+      //   return true;
+      // }
 
-      if (dbUser.isInvited === false) {
-        return "/auth/sign-up";
-      }
+      // if (dbUser.isInvited === false) {
+      //   return "/auth/sign-up";
+      // }
 
       return true;
     },

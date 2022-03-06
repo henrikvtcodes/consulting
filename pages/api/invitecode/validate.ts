@@ -29,11 +29,11 @@ export default async function handler(
       res.status(501).end();
 
     case "POST":
-      if (role !== "admin") {
-        res.status(403).send("Unauthorized");
-        res.end;
-        return;
-      }
+      // if (role !== "admin") {
+      //   res.status(403).send("Unauthorized");
+      //   res.end;
+      //   return;
+      // }
 
       let code: string = body["code"];
       let isValid = await lookupCode(code);

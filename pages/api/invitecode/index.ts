@@ -12,6 +12,7 @@ import {
 import { getUserRole } from "~utils/getUserRole.server";
 import { getUser } from "~utils/apiAuth";
 import { genHexCode } from "~utils/nanoid";
+import { resourceUsage } from "process";
 
 export default async function handler(
   req: NextApiRequest,
@@ -55,41 +56,37 @@ export default async function handler(
       return;
 
     case "POST":
-      // if (role !== "admin") {
-      //   res.status(403).send("Unauthorized");
+      console.log(req.body);
+      // let codeToUse: string = body["code"];
+
+      // const user = await prisma.user.findUnique({
+      //   where: {
+      //     // @ts-ignore
+      //     email: session?.user?.email,
+      //   },
+      // });
+
+      // if (!user) {
+      //   res.status(500).json({
+      //     status: "Internal Server Error. User not found.",
+      //   });
+      //   res.end();
+      //   return;
+      // }
+
+      // console.log("Current User: ", user.name);
+
+      // try {
+      //   markCodeAsUsed(codeToUse, user.id);
+      // } catch (error) {
+      //   res.status(500).send(`Internal Server Error: ${error}`);
       //   res.end;
       //   return;
       // }
 
-      let codeToUse: string = body["code"];
-
-      const user = await prisma.user.findUnique({
-        where: {
-          // @ts-ignore
-          email: session?.user?.email,
-        },
-      });
-
-      if (!user) {
-        res.status(500).json({
-          status: "Internal Server Error. User not found.",
-        });
-        res.end();
-        return;
-      }
-
-      console.log("Current User: ", user.name);
-
-      try {
-        markCodeAsUsed(codeToUse, user.id);
-      } catch (error) {
-        res.status(500).send(`Internal Server Error: ${error}`);
-        res.end;
-        return;
-      }
-
-      res.status(200);
-      res.end();
-      return;
+      // res.status(200);
+      // res.end();
+      // return;
+      res.status(200).json({ body });
   }
 }
