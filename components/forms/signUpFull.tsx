@@ -45,6 +45,7 @@ const SignUpForm = () => {
           <label htmlFor={"code"}>Invite Code</label>
           <input
             id={"code"}
+            name={"code"}
             className="w-2/3"
             placeholder={"Enter Invite Code"}
             type={"text"}
