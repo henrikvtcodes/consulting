@@ -20,12 +20,14 @@ const HeaderM = () => {
   const { role, isLoading, mutate } = useRole();
   const [roleState, setRole] = useState(role);
 
+  const isLoggedIn = session.status === "authenticated";
+
   useEffect(() => {
+    console.log("Changing role to:", role);
     setRole(role);
   }, [role]);
 
-  console.log(session);
-  console.log("isLoading", isLoading);
+  console.table([{ role, roleState, isLoading }, { session: session.status }]);
 
   return (
     <Popover className="z-40 relative bg-white">
@@ -74,7 +76,7 @@ const HeaderM = () => {
           {/* NOTE Add Flyout menu for more options here */}
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          {session && !isLoading && roleState === ("admin" || "client") ? (
+          {isLoggedIn && !isLoading && roleState === ("admin" || "client") ? (
             <span>
               <NextLink href={`/${role}`} passHref>
                 <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
