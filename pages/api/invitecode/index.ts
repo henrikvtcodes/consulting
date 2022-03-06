@@ -56,37 +56,69 @@ export default async function handler(
       return;
 
     case "POST":
-      console.log(req.body);
-      // let codeToUse: string = body["code"];
+      let codeToUse: string | undefined = body["code"];
 
-      // const user = await prisma.user.findUnique({
-      //   where: {
-      //     // @ts-ignore
-      //     email: session?.user?.email,
-      //   },
-      // });
+      if (!codeToUse) {
+        res.status(400).send("No code provided");
+        res.end;
+        return;
+      }
 
-      // if (!user) {
-      //   res.status(500).json({
-      //     status: "Internal Server Error. User not found.",
-      //   });
-      //   res.end();
-      //   return;
-      // }
+      const codeData = await prisma.invite.findUnique({
+        where: { token: codeToUse },
+      });
 
-      // console.log("Current User: ", user.name);
+      let userEmail = session?.user?.email;
 
-      // try {
-      //   markCodeAsUsed(codeToUse, user.id);
-      // } catch (error) {
-      //   res.status(500).send(`Internal Server Error: ${error}`);
-      //   res.end;
-      //   return;
-      // }
+      if (!userEmail) {
+        res.status(500).send("Server Error: Invalid user");
+        res.end;
+        return;
+      }
 
-      // res.status(200);
-      // res.end();
-      // return;
-      res.status(200).json({ body });
+      const user = await prisma.user.findUnique({
+        where: { email: userEmail },
+      });
+
+      if (!user) {
+        res.status(401).send("Invalid user");
+        res.end;
+        return;
+      }
+
+      if (codeData?.used) {
+        res.status(400).send("Code already used");
+        res.end;
+        return;
+      }
+
+      if (user?.isInvited === true) {
+        res.status(400).send("User has already been invited");
+        res.end;
+        return;
+      }
+
+      const usedCode = await markCodeAsUsed(codeToUse, user?.id);
+
+      if (usedCode instanceof Error) {
+        res.status(500).send(usedCode.message);
+        res.end;
+        return;
+      }
+
+      if (usedCode === true) {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: {
+            isInvited: true,
+          },
+        });
+
+        res.status(302);
+
+        res.setHeader("Location", `/client`);
+
+        res.end();
+      }
   }
 }

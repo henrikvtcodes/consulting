@@ -3,6 +3,7 @@ import {
   CheckIcon,
   RefreshIcon,
 } from "@heroicons/react/outline";
+import { useForm } from "react-hook-form";
 
 import formStyles from "~styles/forms.module.css";
 import { useDebouncedFunc } from "~utils/hooks/useDebouncedReq";
@@ -19,6 +20,13 @@ const useValidateInviteCode = () =>
   );
 
 const SignUpForm = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
   // Custom hook to prevent excesseive requests
   const { inputText, setInputText, results: result } = useValidateInviteCode();
 
@@ -44,8 +52,7 @@ const SignUpForm = () => {
         <div className={formStyles.Input}>
           <label htmlFor={"code"}>Invite Code</label>
           <input
-            id={"code"}
-            name={"code"}
+            {...register("code", { required: true })}
             className="w-2/3"
             placeholder={"Enter Invite Code"}
             type={"text"}
