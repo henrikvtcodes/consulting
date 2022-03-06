@@ -90,6 +90,7 @@ const SignUpForm = () => {
                   <h3 className={`text-sm font-semibold text-${color}-800`}>
                     {safeToSubmit ? "Valid" : "Invalid"}
                   </h3>
+                  {/* Message or Not Found */}
                   {result.result ? (
                     <div
                       className={`mt-1 text-sm font-medium text-${color}-700`}
@@ -97,9 +98,7 @@ const SignUpForm = () => {
                       <p>{result.result.message}</p>
                     </div>
                   ) : (
-                    <div
-                      className={`mt-1 text-sm font-medium text-${color}-700`}
-                    >
+                    <div className={`mt-1 text-sm font-medium text-red-700`}>
                       <p>{"Code was not found"}</p>
                     </div>
                   )}
@@ -112,6 +111,9 @@ const SignUpForm = () => {
           Submit
         </button>
       </form>
+      <div className="text-emerald-800">
+        <div className="text-emerald-700"></div>
+      </div>
     </div>
   );
 };
