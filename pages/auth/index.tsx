@@ -4,10 +4,12 @@ import { NextPage } from "next";
 import Typical from "react-typical";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
-import axios from "axios";
+import useSWR from "swr";
+import { useAsync } from "react-async-hook";
 
 import FormPageLayout from "layouts/formPage";
 import { useRole } from "~utils/hooks/useRole";
+import { time } from "console";
 
 // eslint-disable-next-line
 const Page: NextPage = (props) => {
@@ -17,6 +19,12 @@ const Page: NextPage = (props) => {
 
   const { role } = useRole();
 
+  const { data, error } = useSWR("/api/invitecode/status");
+
+  const isInvited: boolean = data?.invited;
+
+  console.log("isInvited", isInvited);
+
   useEffect(() => {
     if (status === "unauthenticated") {
       setTimeout(() => {
@@ -24,6 +32,12 @@ const Page: NextPage = (props) => {
       }, 2000);
     } else if (status === "authenticated") {
       console.log(`User Role: ${role}`);
+
+      if (isInvited === false) {
+        setTimeout(() => {
+          router.push("/auth/sign-up");
+        }, 500);
+      }
 
       switch (role) {
         // default:
@@ -33,16 +47,16 @@ const Page: NextPage = (props) => {
         case "admin":
           setTimeout(() => {
             router.push("/admin");
-          }, 2000);
+          }, 3000);
           break;
         case "client":
           setTimeout(() => {
             router.push("/client");
-          }, 2000);
+          }, 3000);
           break;
       }
     }
-  }, [router, status, session, role]);
+  }, [router, status, session, role, isInvited]);
 
   return (
     <FormPageLayout>
