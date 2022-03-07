@@ -116,7 +116,7 @@ export default async function handler(
 
         res.status(302);
 
-        res.setHeader("Location", `/client`);
+        res.setHeader("Location", `/auth`);
 
         res.end();
       }
