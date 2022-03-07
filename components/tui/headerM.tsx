@@ -27,7 +27,7 @@ const HeaderM = () => {
     setRole(role);
   }, [role]);
 
-  console.table([{ role, roleState, isLoading }, { session: session.status }]);
+  console.log(isLoggedIn);
 
   return (
     <Popover className="z-40 relative bg-white">
@@ -76,7 +76,7 @@ const HeaderM = () => {
           {/* NOTE Add Flyout menu for more options here */}
         </Popover.Group>
         <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-          {isLoggedIn && !isLoading && roleState === ("admin" || "client") ? (
+          {isLoggedIn ? (
             <span>
               <NextLink href={`/${role}`} passHref>
                 <a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
