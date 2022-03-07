@@ -62,7 +62,7 @@ model User {
 
   accounts Account[]
   sessions Session[]
-  customer Customer[]
+  customer Customer?
   invite   Invite?
 
   @@map("users")
@@ -83,7 +83,7 @@ model Invite {
 
 model Customer {
   id       String @id @default(cuid())
-  userId   String
+  userId   String @unique
   fullName String
   stripeID String
 
@@ -92,8 +92,8 @@ model Customer {
   charge   Charge[]
   projects Project[]
   invoices Invoice[]
+  quotes   Quote[]
 
-  Quote Quote[]
   @@map("customers")
 }
 
