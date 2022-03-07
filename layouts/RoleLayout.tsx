@@ -22,9 +22,12 @@ const RoleLayout = (props: RoleLayoutProps) => {
   const { role } = useRole();
 
   useEffect(() => {
-    switch (props.roles.includes(role)) {
-      case false:
-        router.push(`/auth`);
+    const includes = props.roles.includes(role);
+    const isDefined = typeof role !== "undefined";
+
+    if (!includes && isDefined) {
+      console.log("Eval: ", role);
+      router.push("/auth");
     }
   }, [role, router, props.roles]);
 

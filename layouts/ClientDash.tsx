@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/outline";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import classNames from "~components/tui/classnames";
 import { RoleLayout } from "./RoleLayout";
@@ -47,6 +48,12 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
   const session = useSession();
 
   const userImage = session.data?.user?.image ? session.data?.user?.image : "";
+
+  const router = useRouter();
+
+  const isCurrent = (href: string) => {
+    return router.pathname === href;
+  };
 
   return (
     <RoleLayout roles={["admin", "client"]}>
@@ -117,7 +124,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
+                          isCurrent(item.href)
                             ? "bg-gray-900 text-white"
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "group flex items-center px-2 py-2 text-base font-medium rounded-md"
@@ -125,7 +132,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                       >
                         <item.icon
                           className={classNames(
-                            item.current
+                            isCurrent(item.href)
                               ? "text-gray-300"
                               : "text-gray-400 group-hover:text-gray-300",
                             "mr-4 flex-shrink-0 h-6 w-6"
@@ -189,7 +196,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current
+                      isCurrent(item.href)
                         ? "bg-gray-900 text-white"
                         : "text-gray-300 hover:bg-gray-700 hover:text-white",
                       "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
@@ -197,7 +204,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                   >
                     <item.icon
                       className={classNames(
-                        item.current
+                        isCurrent(item.href)
                           ? "text-gray-300"
                           : "text-gray-400 group-hover:text-gray-300",
                         "mr-3 flex-shrink-0 h-6 w-6"
@@ -244,11 +251,6 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
           </div>
           <main className="flex-1">
             <div className="py-6">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h1 className="text-2xl font-semibold text-gray-900">
-                  Dashboard
-                </h1>
-              </div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
                 {props.children}
               </div>
