@@ -5,13 +5,13 @@ let prisma: PrismaClientType;
 
 if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient({
-    log: ["info", "query", "warn"],
+    log: ["info", "warn"],
   });
 } else {
   prisma =
     global.prisma ||
     new PrismaClient({
-      log: ["info", "warn", "query", "error"],
+      log: ["info", "warn", "error"],
     });
 }
 
