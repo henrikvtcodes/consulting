@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
-import { UserMetadata, UserMetaData_Alter } from "types/user";
+import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
 
 import { getUserRole } from "~utils/getUserRole.server";
 import { prisma } from "~utils/Prisma";
@@ -45,13 +45,18 @@ export default async function handler(
         return;
       }
 
-      const userDataObj = {
+      const userDataObj: UserMetadata = {
         id: user.id,
         email: user.email as string,
         name: user.name as string,
         role: role as string,
         phone: user.phone as string,
         image: user.image as string,
+        address_line1: user.addressLine1 as string,
+        address_line2: user.addressLine2 as string,
+        city: user.addressCity as string,
+        state: user.addressState as string,
+        postal_code: user.addressZip as string,
       };
 
       res.status(200).json({ data: userDataObj });
@@ -77,11 +82,19 @@ export default async function handler(
         name,
         phone,
         photo_url,
-        street_address,
+        address_line1,
+        address_line2,
         city,
         state,
         postal_code,
       }: UserMetaData_Alter = req.body;
+
+      // const userAddress: Address = {
+      //   street_address: street_address === "" ? undefined : street_address,
+      //   city: city === "" ? undefined : city,
+      //   state: state === "" ? undefined : state,
+      //   postal_code: postal_code === "" ? undefined : postal_code,
+      // };
 
       const newUser = await prisma.user.update({
         where: {
@@ -91,6 +104,11 @@ export default async function handler(
           name: name === "" ? undefined : name,
           phone: phone === "" ? undefined : phone,
           image: photo_url === "" ? undefined : photo_url,
+          addressLine1: address_line1 === "" ? undefined : address_line1,
+          addressLine2: address_line2 === "" ? undefined : address_line2,
+          addressCity: city === "" ? undefined : city,
+          addressState: state === "" ? undefined : state,
+          addressZip: postal_code === "" ? undefined : postal_code,
         },
       });
 
@@ -101,6 +119,11 @@ export default async function handler(
         role: role as string,
         phone: newUser.phone as string,
         image: newUser.image as string,
+        address_line1: newUser.addressLine1 as string,
+        address_line2: newUser.addressLine2 as string,
+        city: newUser.addressCity as string,
+        state: newUser.addressState as string,
+        postal_code: newUser.addressZip as string,
       };
 
       res.status(200).json({

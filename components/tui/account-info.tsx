@@ -10,7 +10,11 @@ import { useUser } from "utils/hooks/useUser";
 const PersonalInfo = () => {
   const { user, status, signOut: mutUser } = useUser();
 
-  const { data: userDataRes, error: userDataError } = useSWR("/api/user/meta");
+  const {
+    data: userDataRes,
+    error: userDataError,
+    isValidating,
+  } = useSWR("/api/user/meta");
 
   const userData: UserMetadata = userDataRes?.data;
 
@@ -21,8 +25,16 @@ const PersonalInfo = () => {
   const { register, handleSubmit, formState } = useForm();
 
   const alterUserDetails: SubmitHandler<UserMetaData_Alter> = (data) => {
-    const { name, phone, street_address, city, state, postal_code, photo_url } =
-      data;
+    const {
+      name,
+      phone,
+      address_line1,
+      address_line2,
+      city,
+      state,
+      postal_code,
+      photo_url,
+    } = data;
 
     const result = axios({
       method: "PATCH",
@@ -30,7 +42,8 @@ const PersonalInfo = () => {
       data: {
         name,
         phone,
-        street_address,
+        address_line1,
+        address_line2,
         city,
         state,
         postal_code,
@@ -57,7 +70,7 @@ const PersonalInfo = () => {
       <div className="mt-5 md:mt-0 md:col-span-2">
         {/* Personal Info form */}
         <form onSubmit={handleSubmit(alterUserDetails)}>
-          <div className="grid grid-cols-6 gap-6">
+          <div className="grid grid-cols-6 gap-4">
             <div className="col-span-6 sm:col-span-4">
               <label
                 htmlFor="name"
@@ -131,17 +144,42 @@ const PersonalInfo = () => {
               </div>
             </div>
 
+            <div className="col-span-6 mt-2">
+              <h4 className="text-md font-medium leading-6 text-gray-900">
+                Address
+              </h4>
+              <p className="text-xs text-gray-500">
+                This is your shipping address.
+              </p>
+            </div>
+
             <div className="col-span-6">
               <label
-                htmlFor="street_address"
+                htmlFor="address_line1"
                 className="block text-sm font-medium text-gray-700"
               >
-                Street address
+                Address Line 1
               </label>
               <input
                 type="text"
-                {...register("street_address")}
-                autoComplete="street_address"
+                {...register("address_line1")}
+                autoComplete="address-line1"
+                defaultValue={userData?.address_line1}
+                className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+              />
+            </div>
+            <div className="col-span-6">
+              <label
+                htmlFor="address_line2"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Address Line 2
+              </label>
+              <input
+                type="text"
+                {...register("address_line2")}
+                autoComplete="address-line2"
+                defaultValue={userData?.address_line2}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
@@ -157,13 +195,14 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("city")}
                 autoComplete="address-level2"
+                defaultValue={userData?.city}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
 
             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
               <label
-                htmlFor="region"
+                htmlFor="state"
                 className="block text-sm font-medium text-gray-700"
               >
                 State
@@ -172,6 +211,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("state")}
                 autoComplete="address-level1"
+                defaultValue={userData?.state}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
@@ -187,6 +227,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("postal_code")}
                 autoComplete="postal-code"
+                defaultValue={userData?.postal_code}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
             </div>
@@ -196,9 +237,10 @@ const PersonalInfo = () => {
           <div className="flex justify-end mt-6">
             <button
               type="submit"
+              disabled={isValidating}
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-brand-primary hover:bg-brand-accent1h focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent2h"
             >
-              Save
+              {isValidating ? "Loading..." : "Save"}
             </button>
           </div>
         </form>
