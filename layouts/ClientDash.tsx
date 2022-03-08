@@ -52,7 +52,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
 
   const { user, status, signOut: mutUserData } = useUser();
 
-  const userImage = user.image;
+  const userImage = user?.image;
 
   const router = useRouter();
 
@@ -161,10 +161,10 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                     </div>
                     <div className="ml-3">
                       <p className="text-base font-medium text-white">
-                        {session.data?.user?.name}
+                        {user?.name}
                       </p>
                       <p className="text-sm font-medium text-gray-400 group-hover:text-gray-300">
-                        {session.data?.user?.email}
+                        {user?.email}
                       </p>
                     </div>
                   </div>
@@ -232,9 +232,9 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                   />
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm font-medium text-white">{user.name}</p>
+                  <p className="text-sm font-medium text-white">{user?.name}</p>
                   <p className="text-xs font-medium text-gray-300">
-                    {user.email}
+                    {user?.email}
                   </p>
                 </div>
               </div>

@@ -59,59 +59,55 @@ export default async function handler(
       return;
 
     case "PATCH":
-      // const userToUpdate = await prisma.user.findUnique({
-      //   where: {
-      //     // @ts-ignore
-      //     email: session?.user.email,
-      //   },
-      // });
+      const userToUpdate = await prisma.user.findUnique({
+        where: {
+          // @ts-ignore
+          email: session?.user.email,
+        },
+      });
 
-      // if (!userToUpdate) {
-      //   res.status(500).json({
-      //     status: "Server Error: User Not Found",
-      //   });
-      //   return;
-      // }
+      if (!userToUpdate) {
+        res.status(500).json({
+          status: "Server Error: User Not Found",
+        });
+        return;
+      }
 
       const {
         name,
         phone,
-        image,
+        photo_url,
         street_address,
         city,
         state,
         postal_code,
       }: UserMetaData_Alter = req.body;
 
-      // const newUser = await prisma.user.update({
-      //   where: {
-      //     id: userToUpdate.id,
-      //   },
-      //   data: {
-      //     name,
-      //     phone,
-      //     image,
-      //   },
-      // });
+      const newUser = await prisma.user.update({
+        where: {
+          id: userToUpdate.id,
+        },
+        data: {
+          name: name === "" ? undefined : name,
+          phone: phone === "" ? undefined : phone,
+          image: photo_url === "" ? undefined : photo_url,
+        },
+      });
 
-      // const newUserData: UserMetadata = {
-      //   id: newUser.id,
-      //   email: newUser.email as string,
-      //   name: newUser.name as string,
-      //   role: role as string,
-      //   phone: newUser.phone as string,
-      //   image: newUser.image as string,
-      // };
+      const newUserData: UserMetadata = {
+        id: newUser.id,
+        email: newUser.email as string,
+        name: newUser.name as string,
+        role: role as string,
+        phone: newUser.phone as string,
+        image: newUser.image as string,
+      };
 
-      // res.status(200).json({
-      //   data: newUserData,
-      // });
-
-      logger.apiEvent("success", "UserMetaData", "UserMetaData Updated");
-
-      console.log("newUserData", req.body);
-      res.status(200).json({ ...req.body });
+      res.status(200).json({
+        ...newUserData,
+      });
       res.end();
+
       return;
   }
 }

@@ -1,27 +1,28 @@
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import useSWR, { mutate, useSWRConfig } from "swr";
-import { UserMetadata, UserMetaData_Alter } from "types/user";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 
-const PersonalInfo = () => {
-  const session = useSession();
+import { UserMetadata, UserMetaData_Alter } from "types/user";
+import { useUser } from "utils/hooks/useUser";
 
-  const userImage = session.data?.user?.image ? session.data?.user?.image : "";
+const PersonalInfo = () => {
+  const { user, status, signOut: mutUser } = useUser();
 
   const { data: userDataRes, error: userDataError } = useSWR("/api/user/meta");
 
   const userData: UserMetadata = userDataRes?.data;
+
+  const userImage = userData?.image;
 
   const { mutate } = useSWRConfig();
 
   const { register, handleSubmit, formState } = useForm();
 
   const alterUserDetails: SubmitHandler<UserMetaData_Alter> = (data) => {
-    const { name, phone, street_address, city, state, postal_code } = data;
-
-    console.log("alterUserDetails", data);
+    const { name, phone, street_address, city, state, postal_code, photo_url } =
+      data;
 
     const result = axios({
       method: "PATCH",
@@ -33,11 +34,13 @@ const PersonalInfo = () => {
         city,
         state,
         postal_code,
+        photo_url,
       },
     });
 
     result.then((res) => {
       mutate("/api/user/meta");
+      mutate("/api/auth/session");
     });
   };
 

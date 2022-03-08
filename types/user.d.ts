@@ -10,7 +10,7 @@ export interface UserMetadata {
 export interface UserMetaData_Alter {
     name?: string;
     phone?: string;
-    image?: string;
+    photo_url?: string;
     street_address?: string;
     city?: string;
     state?: string;
