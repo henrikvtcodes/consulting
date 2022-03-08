@@ -14,12 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install Dependencies
+    - name: Setup Nodejs
       uses: actions/setup-node@v2
       with:
         node-version: 16.x
-    - run: yarn install
-    - run: yarn install
+    - name: Install
+      run: yarn install
+    - name: Rerun Install
+      run: yarn install
     
   generate:
 
@@ -29,4 +31,4 @@ jobs:
     
     steps:
     - name: Generate Prisma Client
-    - run: npx prisma generate
+      run: npx prisma generate
