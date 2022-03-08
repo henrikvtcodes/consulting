@@ -121,6 +121,7 @@ const SignUpForm = () => {
       </form>
       <div className="text-emerald-800">
         <div className="text-emerald-700"></div>
+        <div className="text-emerald-100"></div>
       </div>
     </div>
   );
