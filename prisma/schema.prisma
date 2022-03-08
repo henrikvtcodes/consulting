@@ -59,6 +59,11 @@ model User {
   image         String?
   role          String    @default("client")
   isInvited     Boolean   @default(false)
+  addressLine1  String?
+  addressLine2  String?
+  addressCity   String?
+  addressState  String?
+  addressZip    String?
 
   accounts Account[]
   sessions Session[]
