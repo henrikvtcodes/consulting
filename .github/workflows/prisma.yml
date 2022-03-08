@@ -8,23 +8,25 @@ on:
       - "./prisma/**"
   pull_request:
     paths:
-        - "./prisma/**/*.sql"
+      - "./prisma/**/*.sql"
 
 jobs:
   install:
-    - uses: actions/setup-node@v2
-    with:
-      node-version: '16'
+    name: Install Dependencies
 
     runs-on: ubuntu-latest
 
-    name: Install
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
 
-    run: yarn install
+      - run: yarn install
 
   generate:
-    name: Generate Prisma Client
+    name: Generate Prisma
 
     needs: install
 
-    run: npx prisma generate
+    steps:
+      - run: npx prisma generate
