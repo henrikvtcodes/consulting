@@ -27,3 +27,5 @@ export const userSlice = createSlice({
     login: (state, action: PayloadAction<Session>) => {},
   },
 });
+
+export const userReducer = userSlice.reducer;
