@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 
 import classNames from "~components/tui/classnames";
 import { RoleLayout } from "./RoleLayout";
+import { useUser } from "~utils/hooks/useUser";
 
 const navigation = [
   { name: "Home", href: "/client", icon: HomeIcon, current: true },
@@ -49,7 +50,9 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
     required: true,
   });
 
-  const userImage = session.data?.user?.image ? session.data?.user?.image : "";
+  const { user, status, signOut: mutUserData } = useUser();
+
+  const userImage = user.image;
 
   const router = useRouter();
 
@@ -229,11 +232,9 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                   />
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm font-medium text-white">
-                    {session.data?.user?.name}
-                  </p>
+                  <p className="text-sm font-medium text-white">{user.name}</p>
                   <p className="text-xs font-medium text-gray-300">
-                    {session.data?.user?.email}
+                    {user.email}
                   </p>
                 </div>
               </div>

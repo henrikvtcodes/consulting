@@ -14,6 +14,7 @@ import FormWindow from "~components/forms/window";
 import SignInForm from "~components/forms/signIn";
 import { NextAuthErrorParams } from "utils/config";
 import { useRole } from "~utils/hooks/useRole";
+import { useUser } from "~utils/hooks/useUser";
 
 const Page = ({ csrfToken }: any) => {
   const router = useRouter();
@@ -29,13 +30,14 @@ const Page = ({ csrfToken }: any) => {
       errorInfo = NextAuthErrorParams[error];
     }
   }
-  const session = useSession();
-
-  const isLoggedIn = session.status === "authenticated";
-
-  const userImage = session.data?.user?.image ? session.data?.user?.image : "";
 
   const { role, isLoading, mutate } = useRole();
+
+  const { user, status, signOut: mutUserData } = useUser();
+
+  console.log(user);
+
+  const isLoggedIn = user as boolean;
 
   return (
     <FormPageLayout>
@@ -53,16 +55,16 @@ const Page = ({ csrfToken }: any) => {
                 {/* eslint-disable-next-line */}
                 <img
                   className="inline-block h-9 w-9 rounded-full"
-                  src={userImage}
+                  src={user.image}
                   alt="Profile Image"
                 />
               </div>
               <div className="ml-3">
                 <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                  {session.data?.user?.name}
+                  {user.name}
                 </p>
                 <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
-                  {session.data?.user?.email}
+                  {user.email}
                 </p>
               </div>
             </div>
@@ -76,6 +78,7 @@ const Page = ({ csrfToken }: any) => {
                 onClick={() => {
                   signOut();
                   mutate();
+                  mutUserData();
                 }}
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
               >

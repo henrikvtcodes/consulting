@@ -11,23 +11,17 @@ import SolutionsFlyout from "./flyouts";
 import solutions from "~utils/config";
 import { WarningBanner } from "./warning-banner";
 import { useRole } from "~utils/hooks/useRole";
+import useSWR from "swr";
+import { useUser } from "~utils/hooks/useUser";
 
 const localSolutions = solutions;
 
 const HeaderM = () => {
-  const session = useSession();
-
   const { role, isLoading, mutate } = useRole();
-  const [roleState, setRole] = useState(role);
 
-  const isLoggedIn = session.status === "authenticated";
+  const { user, status, signOut: mutUserData } = useUser();
 
-  useEffect(() => {
-    console.log("Changing role to:", role);
-    setRole(role);
-  }, [role]);
-
-  console.log(isLoggedIn);
+  const isLoggedIn = user as boolean;
 
   return (
     <Popover className="z-40 relative bg-white">
@@ -87,6 +81,7 @@ const HeaderM = () => {
                 onClick={() => {
                   signOut();
                   mutate();
+                  mutUserData();
                 }}
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
               >
