@@ -1,0 +1,30 @@
+name: Prisma Migrations
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "./prisma/**"
+  pull_request:
+    paths:
+        - "./prisma/**/*.sql"
+
+jobs:
+  install:
+    - uses: actions/setup-node@v2
+    with:
+      node-version: '16'
+
+    runs-on: ubuntu-latest
+
+    name: Install
+
+    run: yarn install
+
+  generate:
+    name: Generate Prisma Client
+
+    needs: install
+
+    run: npx prisma generate
