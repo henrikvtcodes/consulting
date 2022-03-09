@@ -89,8 +89,17 @@ model Invite {
 model Customer {
   id       String @id @default(cuid())
   userId   String @unique
-  fullName String
   stripeID String
+
+  firstName String
+  lastName  String
+
+  sepBillingAddr Boolean @default(false)
+  addressLine1   String?
+  addressLine2   String?
+  addressCity    String?
+  addressState   String?
+  addressZip     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 

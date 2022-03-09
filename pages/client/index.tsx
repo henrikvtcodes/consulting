@@ -18,4 +18,5 @@ const ClientHome: NextPage = (props) => {
     </ClientDashLayout>
   );
 };
+
 export default ClientHome;
