@@ -87,9 +87,9 @@ model Invite {
 }
 
 model Customer {
-  id       String @id @default(cuid())
-  userId   String @unique
-  stripeID String
+  id       String  @id @default(cuid())
+  userId   String  @unique
+  stripeID String? @unique
 
   firstName String
   lastName  String
@@ -103,7 +103,7 @@ model Customer {
 
   user User @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
-  charge   Charge[]
+  charges  Charge[]
   projects Project[]
   invoices Invoice[]
   quotes   Quote[]
