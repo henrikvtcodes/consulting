@@ -12,7 +12,7 @@ const Page: NextPage = (props) => {
       title="Wifi Solutions"
       desc="Get the most out of your internet connection."
     >
-      <div className="py-12 bg-white">
+      <div className="py-12 mb-2 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
             <h2 className="text-base text-brand-primary font-semibold tracking-wide uppercase">
