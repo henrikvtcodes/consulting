@@ -536,18 +536,6 @@ __metadata:
   linkType: hard
 
 "@next/bundle-analyzer@npm:^12.1.0":
-<<<<<<< HEAD
-  version: 12.1.0
-  resolution: "@next/bundle-analyzer@npm:12.1.0"
-  dependencies:
-    webpack-bundle-analyzer: 4.3.0
-  checksum: 7085b903f9b6ffba3d9a4932de88bf9a4ee4ee48e4c6883edfbff32981b30992f65477511e632842ae98714cd12d40502467192b52bf6dd0af8b9ee9e6cf0d39
-  languageName: node
-  linkType: hard
-
-"@next/env@npm:12.1.0":
-=======
->>>>>>> main
   version: 12.1.0
   resolution: "@next/bundle-analyzer@npm:12.1.0"
   dependencies:
@@ -714,16 +702,6 @@ __metadata:
   version: 1.0.0-next.21
   resolution: "@polka/url@npm:1.0.0-next.21"
   checksum: c7654046d38984257dd639eab3dc770d1b0340916097b2fac03ce5d23506ada684e05574a69b255c32ea6a144a957c8cd84264159b545fca031c772289d88788
-<<<<<<< HEAD
-  languageName: node
-  linkType: hard
-
-"@popperjs/core@npm:^2.9.3":
-  version: 2.11.2
-  resolution: "@popperjs/core@npm:2.11.2"
-  checksum: 5695bf020eda54636e16a62dc9b5fdd92beaf7b2d19f62fcef049d57c5cff92773562d80cbf760b217c3ec928da310eb24994ab6a00fd39dffa0af9b5dfc01a6
-=======
->>>>>>> main
   languageName: node
   linkType: hard
 
@@ -2343,13 +2321,6 @@ __metadata:
   dependencies:
     is-obj: ^2.0.0
   checksum: d5775790093c234ef4bfd5fbe40884ff7e6c87573e5339432870616331189f7f5d86575c5b5af2dcf0f61172990f4f734d07844b1f23482fff09e3c4bead05ea
-  languageName: node
-  linkType: hard
-
-"duplexer@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "duplexer@npm:0.1.2"
-  checksum: 62ba61a830c56801db28ff6305c7d289b6dc9f859054e8c982abd8ee0b0a14d2e9a8e7d086ffee12e868d43e2bbe8a964be55ddbd8c8957714c87373c7a4f9b0
   languageName: node
   linkType: hard
 
@@ -4230,11 +4201,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.4":
-=======
 "lodash@npm:^4.17.19, lodash@npm:^4.17.20":
->>>>>>> main
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
