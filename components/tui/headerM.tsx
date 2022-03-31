@@ -66,6 +66,12 @@ const HeaderM = () => {
             </a>
           </NextLink>
 
+          <NextLink href="/contact" passHref>
+            <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+              Contact
+            </a>
+          </NextLink>
+
           {/* NOTE Add Flyout menu for more options here */}
         </Popover.Group>
 
@@ -142,6 +148,12 @@ const HeaderM = () => {
                     className="text-base font-medium text-brand-text1 hover:text-brand-text2"
                   >
                     Case Studies
+                  </a>
+                </NextLink>
+
+                <NextLink href="/faq" passHref>
+                  <a className="text-base font-medium text-brand-text1 hover:text-brand-text2">
+                    FAQ
                   </a>
                 </NextLink>
 
