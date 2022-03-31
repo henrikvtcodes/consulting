@@ -1,14 +1,13 @@
-import NextLink from 'next/link';
+import NextLink from "next/link";
 
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
+import { Fragment } from "react";
+import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
-import classNames from './classnames'
-import { solutions } from '~utils/config';
+import classNames from "./classnames";
+import { solutions } from "~utils/config";
 
 const SolutionsFlyout = () => {
-
   return (
     <Popover className="relative">
       {({ open }) => (
@@ -50,7 +49,10 @@ const SolutionsFlyout = () => {
                       >
                         {item.icon && (
                           <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-brand-primary text-white sm:h-12 sm:w-12">
-                            <item.icon className="h-6 w-6 group-hover:text-brand-accent2h" aria-hidden="true" />
+                            <item.icon
+                              className="h-6 w-6 group-hover:text-brand-accent2h"
+                              aria-hidden="true"
+                            />
                           </div>
                         )}
                         <div className="ml-4">
@@ -96,4 +98,4 @@ const SolutionsFlyout = () => {
   );
 };
 
-export default  SolutionsFlyout;
+export default SolutionsFlyout;
