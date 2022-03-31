@@ -377,6 +377,10 @@ const NextAuthErrorParams: {
     title: "Server Error",
     message: "The server encountered an error while attempting to log you in.",
   },
+  "InvalidRole": {
+    title: "User Discrepancy",
+    message: "There is a problem with your user account. Please contact Henrik directly to report the problem.",
+  },
   "Verification": {
     title: "Verification Error",
     message:
@@ -387,13 +391,25 @@ const NextAuthErrorParams: {
     message: "You are not permitted to access this page.",
   },
   "OAuthSignin": {
-    title: "Provider Signin Error",
+    title: "Provider Sign In Error",
     message: "We were not able to sign you in using this provider.",
   },
   "OAuthCallback": {
-    title: "Provider Signin Error",
+    title: "Provider Sign In Error",
     message: "We were not able to complete the signin process.",
   },
+  "OAuthAccountNotLinked":{
+    title: "Provider Sign In Error",
+    message: "Your email is already linked to a different account.",
+  },
+  "Callback": {
+    title: "Provider Sign In Error",
+    message: "We were not able to complete the signin process.",
+  },
+  "SessionRequired":{
+    title: "Session Required",
+    message: "You must be signed in to access that page.",
+  }
 };
 
 const allowedOrigins: string[] = [
@@ -408,4 +424,4 @@ const config = {
 };
 
 export default config;
-export { solutions, allSolutions, namedSolutions,  faqs, people, allowedOrigins, vendors };
+export { solutions, allSolutions, namedSolutions,  faqs, people, allowedOrigins, vendors, NextAuthErrorParams };

@@ -10,11 +10,17 @@ body {
 }
 
 /* FONT */
-@import url('https://rsms.me/inter/inter.css');
-:root { font-family: 'Inter', sans-serif; }
-  @supports (font-variation-settings: normal) {
-    :root { font-family: 'Inter var', sans-serif; }
-    * { font-family: Inter var; }
+@import url("https://rsms.me/inter/inter.css");
+:root {
+  font-family: "Inter", Arial, sans-serif;
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter var", Arial, sans-serif;
+  }
+  * {
+    font-family: Inter var, Arial;
+  }
 }
 
 /* TAILWIND */
