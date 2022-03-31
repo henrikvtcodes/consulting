@@ -12,7 +12,10 @@ import {
   BriefcaseIcon,
   LocationMarkerIcon,
   LockClosedIcon, 
-  LightningBoltIcon
+  LightningBoltIcon,
+  ShieldCheckIcon,
+  CursorClickIcon,
+  HeartIcon
 } from "@heroicons/react/outline";
 
 // prettier-ignore-file
@@ -145,10 +148,25 @@ const solutions = [
     ],
     longFeatures: [
       {
-        feat: "Increased Efficiency",
-        desc: "Turn off lights when you're not home.",
+        feat: "Save Money",
+        desc: "Optimize lighting and climate control use. Save money on energy bills and maintenance.",
         icon: LightningBoltIcon,
-      }
+      },
+      {
+        feat: "Protect your Home",
+        desc: "Automatically detect water and gas leaks, fire, and more. No more worrying.",
+        icon: ShieldCheckIcon,
+      },
+      {
+        feat: "Comfortable Living",
+        desc: "Turn on lights in the morning and heat the house before you get home. No need to lift a finger.",
+        icon: HeartIcon,
+      },   
+      {
+        feat: "One Remote",
+        desc: "Forget about multiple remotes for different devices. Just one and done.",
+        icon: CursorClickIcon,
+      },
     ],
     icon: DeviceMobileIcon,
   },
@@ -194,7 +212,7 @@ const vendorLogos = {
   uniview : {
     alt: "Uniview",
     href: "#",
-    img: "/brands/Uniview_Color_Dark.png",
+    img: "/brands/Uniview_Color_Dark.jpg",
     width: 95,
   },
   lutronCaseta : {
