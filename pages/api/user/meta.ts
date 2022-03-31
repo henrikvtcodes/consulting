@@ -4,7 +4,7 @@ import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
 
 import { getUserRole } from "~utils/getUserRole.server";
 import { prisma } from "~utils/Prisma";
-import logger from "~utils/logger";
+import logger from "~utils/loggerOld";
 
 export default async function handler(
   req: NextApiRequest,

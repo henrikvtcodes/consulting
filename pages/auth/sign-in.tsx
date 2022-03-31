@@ -16,7 +16,7 @@ import { NextAuthErrorParams } from "utils/config";
 import { useRole } from "~utils/hooks/useRole";
 import { useUser } from "~utils/hooks/useUser";
 
-const Page = ({ csrfToken }: any) => {
+const Page = ({ csrfToken }) => {
   const router = useRouter();
 
   const { error } = router.query;
@@ -34,8 +34,6 @@ const Page = ({ csrfToken }: any) => {
   const { role, isLoading, mutate } = useRole();
 
   const { user, status, signOut: mutUserData } = useUser();
-
-  console.log(user);
 
   const isLoggedIn = user as boolean;
 

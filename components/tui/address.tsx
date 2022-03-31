@@ -6,18 +6,13 @@ export const AddressForm = ({
   addressData,
   register,
   isHidden,
+  isRequired,
 }: {
   addressData: Address;
   register: any;
   isHidden?: boolean;
+  isRequired?: boolean;
 }) => {
-  const [address, setAddress] = useState(addressData);
-
-  // eslint-disable-next-line
-  useEffect(() => {
-    setAddress(addressData);
-  });
-
   return (
     <>
       <div className={`col-span-6 ${isHidden && "hidden"} `}>
@@ -31,7 +26,8 @@ export const AddressForm = ({
           type="text"
           {...register("address_line1")}
           autoComplete="address-line1"
-          defaultValue={address?.address_line1}
+          defaultValue={addressData?.address_line1}
+          required={isRequired}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>
@@ -46,7 +42,7 @@ export const AddressForm = ({
           type="text"
           {...register("address_line2")}
           autoComplete="address-line2"
-          defaultValue={address?.address_line2}
+          defaultValue={addressData?.address_line2}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>
@@ -66,7 +62,9 @@ export const AddressForm = ({
           type="text"
           {...register("city")}
           autoComplete="address-level2"
-          defaultValue={address?.city}
+          defaultValue={addressData?.city}
+          required={isRequired}
+          minLength={2}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>
@@ -86,7 +84,8 @@ export const AddressForm = ({
           type="text"
           {...register("state")}
           autoComplete="address-level1"
-          defaultValue={address?.state}
+          defaultValue={addressData?.state}
+          required={isRequired}
           minLength={2}
           maxLength={2}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -108,7 +107,10 @@ export const AddressForm = ({
           type="text"
           {...register("postal_code")}
           autoComplete="postal-code"
-          defaultValue={address?.postal_code}
+          defaultValue={addressData?.postal_code}
+          required={isRequired}
+          minLength={5}
+          maxLength={5}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>

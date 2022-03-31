@@ -1,103 +1,65 @@
-import chalk from 'chalk';
+import chalk from "chalk";
 
-const { bgGreen, bgRed, bgBlue, bgHex, bold, black, white } = chalk
+const {
+  bgGreen,
+  bgRed,
+  bgBlue,
+  bgHex,
+  bold,
+  black,
+  white,
+  blueBright,
+  inverse,
+  green,
+} = chalk;
 
-type EventType = "success" | "info" | "event" | "error"
-
-/**
- * 
- * @param eventType 
- * @param route 
- * @param message 
- */
-const apiEvent = async (eventType:EventType,route:string, message:string) => {
-
-  switch (eventType) {
-    case "success":
-      console.log(
-        bgGreen(bold("SUCCESS") + " on " + bold(`/api/${route}`)),` ${message}`
-      );
-
-    case "info" || "event":
-      console.log(
-        bgBlue(bold("EVENT") + " on " + bold(`/api/${route}`)),` ${message}`
-      );
-
-    case "error":
-      console.log(
-        bgRed(bold("ERROR") + " on " + bold(`/api/${route}`)),` ${message}`
-      );
-  }
-  
-
-}
+type EventType = "success" | "info" | "event" | "error";
 
 /**
- * 
- * @param eventType 
- * @param route 
- * @param message 
+ *
+ * @param eventType
+ * @param route
+ * @param message
  */
-const miscEvent = async (eventType:EventType,title:string, message:string) => {
 
-  switch (eventType) {
-    case "success":
-      console.log(
-        bgGreen(bold(`${title}:`)),` ${message}`
-      );
+export class ApiEvent {
+  route: string;
+  routeIndicator: string;
+  logByDefault: boolean = true;
 
-    case "info" || "event":
-      console.log(
-        bgBlue(bold(`${title}:`)),` ${message}`
-      );
+  successIndicator = green(bold("SUCCESS"));
+  infoIndicator = blueBright(bold("INFO"));
+  errorIndicator = bgRed(bold("ERROR"));
 
-    case "error":
-      console.log(
-        bgRed(bold(`${title}:`)),` ${message}`
-      );
+  constructor(route: string, logByDefault?: boolean) {
+    this.route = route;
+    this.routeIndicator = inverse(bold(`api/${this.route}`));
+    this.logByDefault = logByDefault || true;
   }
-  
 
-}
+  private out(out: string) {
+    console.log(out);
+  }
 
-/**
- * 
- * @param eventStatus 
- * @param eventType 
- * @param message 
- */
-const stripeEvent = async (eventStatus:string,eventType:string, message:string) =>{
-  switch (eventStatus) {
-    case "webhook.success":
-      console.log( 
-        bgHex("#32325D")("Stripe:"),
-        bgGreen(`Webhook success ${bold(eventType)}`),
-        message
-        
-      );
+  success(message: string) {
+    let output = `${this.successIndicator} on ${this.routeIndicator}: ${message}`;
+    if (this.logByDefault) {
+      this.out(output);
+    }
+  }
 
-    case "webhook.info" || "webhook.event":
-      console.log(
-        bgHex("#32325D").white("Stripe:"),
-        bgBlue(`Webhook event ${bold(eventType)}:`),
-        message
-      );
+  info(message: string) {
+    let output = `${this.infoIndicator} on ${this.routeIndicator}: ${message}`;
+    if (this.logByDefault) {
+      this.out(output);
+    }
+  }
 
-    case "webhook.error":
-      console.log(
-        bgHex("#32325D")("Stripe:"),
-        bgGreen(`Webhook event ${bold(eventType)}`),
-        message
-
-      );
+  error(message: string) {
+    let output = `${this.errorIndicator} on ${this.routeIndicator}:${message}`;
+    console.log(
+      `${this.errorIndicator} on ${this.routeIndicator}:`,
+      ` ${message}`
+    );
   }
 }
-
-
-const logger = {
-  apiEvent: apiEvent,
-  stripeEvent: stripeEvent,
-  miscEvent: miscEvent,
-} 
-
-export default logger;

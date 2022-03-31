@@ -10,7 +10,7 @@ import { AddressForm } from "./address";
 import { Toggle, FormToggle } from "./switch";
 import { userInfo } from "os";
 import { Switch } from "@headlessui/react";
-import { UpsertCustomer } from "types/customer";
+import { CustomerData, UpsertCustomer } from "types/customer";
 
 const PersonalInfo = () => {
   const { user, status, signOut: mutUser } = useUser();
@@ -187,20 +187,25 @@ const PaymentInfo = () => {
   const { register, handleSubmit, control, formState } = useForm();
 
   const {
-    data: userDataRes,
+    data: custDataRes,
     error: userDataError,
     isValidating,
-  } = useSWR("/api/user/meta");
+  } = useSWR("/api/user/customer");
 
-  const userData: UserMetadata = userDataRes?.data;
+  const userData: CustomerData = custDataRes;
 
-  const newCustomer = !data;
+  // const userData: CustomerData | { customerNotFound: boolean } =
+  //   userDataRes?.data;
+
+  const newCustomer = (custDataRes?.customerNotFound as boolean) === true;
 
   const [addressState, setAddressState] = useState<boolean>(
     newCustomer ? false : data?.sepBillingAddr
   );
 
   const upsertCustomer: SubmitHandler<UpsertCustomer> = (data) => {
+    data.sepBillingAddr = !data.sepBillingAddr;
+
     const {
       first_name,
       last_name,
@@ -212,9 +217,29 @@ const PaymentInfo = () => {
       sepBillingAddr,
     } = data;
 
-    data.sepBillingAddr = !sepBillingAddr;
+    const reqMethod = newCustomer ? "POST" : "PATCH";
+    console.log(reqMethod);
 
-    console.log(data);
+    const result = axios({
+      method: reqMethod,
+      url: "/api/user/customer",
+      data: {
+        first_name,
+        last_name,
+        address_line1,
+        address_line2,
+        city,
+        state,
+        postal_code,
+        sepBillingAddr,
+      },
+    });
+
+    result.then((res) => {
+      mutate("/api/user/customer");
+      console.log("Payment Info Update Request Completed");
+      console.log(res);
+    });
   };
 
   return (
@@ -226,6 +251,16 @@ const PaymentInfo = () => {
         <p className="mt-1 text-sm text-gray-500">
           Processed securely by Stripe.
         </p>
+        {/* {newCustomer && (
+          <div className="w-full bg-yellow-200 rounded-md p-1 mt-2">
+            <p className="font-semibold text-sm text-yellow-700">
+              You are a new customer.
+            </p>
+            <p className="font-normal text-xs text-yellow-600">
+              Please enter your billing information.
+            </p>
+          </div>
+        )} */}
       </div>
       <div className="mt-5 md:mt-0 md:col-span-2">
         <form onSubmit={handleSubmit(upsertCustomer)}>
@@ -289,9 +324,10 @@ const PaymentInfo = () => {
           <div className="flex justify-end mt-6">
             <button
               type="submit"
+              disabled={isValidating}
               className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-brand-primary hover:bg-brand-accent1h focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent2h"
             >
-              Save
+              {isValidating ? "Loading..." : "Save"}
             </button>
           </div>
         </form>
