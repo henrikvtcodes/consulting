@@ -18,6 +18,11 @@ class AppDocument extends Document {
             src="/umami.js"
             data-host-url="https://analytics.henriktech.com"
           /> }
+          { process.env.NODE_ENV === "production" &&
+            <script
+            async
+            defer data-domain="consulting.henrikvt.com" src="https://plausible.henriktech.com/js/plausible.js"
+          /> }
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
         <body className="h-full">
