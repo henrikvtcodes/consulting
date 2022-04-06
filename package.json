@@ -32,7 +32,7 @@
     "autoprefixer": "^10.4.0",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.24.0",
-    "chalk": "^5.0.0",
+    "chalk": "^5.0.1",
     "cookie": "^0.4.1",
     "cors": "^2.8.5",
     "dayjs": "^1.10.7",

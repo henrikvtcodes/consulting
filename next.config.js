@@ -1,9 +1,12 @@
 /** @type {import('next').NextConfig} */
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
+const { withPlausibleProxy } = require('next-plausible')
 
-module.exports = withBundleAnalyzer({
+
+bundleAnalyze = withBundleAnalyzer({
   swcMinify: true,
   reactStrictMode: true,
   images: {
@@ -14,3 +17,5 @@ module.exports = withBundleAnalyzer({
     ],
   },
 });
+
+module.exports = withPlausibleProxy()(bundleAnalyze)
