@@ -7,7 +7,7 @@ import { WarningBanner } from "~components/tui/warning-banner";
 import "../styles/globals.css";
 import { Provider } from "react-redux";
 
-function App({ Component, pageProps: { session, ...pageProps } }:AppProps) {
+function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <div>
       {process.env.NODE_ENV === "production" ? <WarningBanner /> : <Fragment />}
