@@ -5,7 +5,6 @@ import PlausibleProvider from "next-plausible";
 import Favicon from "~components/meta";
 import { WarningBanner } from "~components/tui/warning-banner";
 import "../styles/globals.css";
-import { Provider } from "react-redux";
 
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
