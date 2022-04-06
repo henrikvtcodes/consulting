@@ -16,8 +16,22 @@ bundleAnalyze = withBundleAnalyzer({
       "impnjvrvbyrcqytveudc.supabase.in",
     ],
   },
+  async rewrites() {
+      return [
+          {
+              source: '/static/js/umami.js',
+              destination: 'https://analytics.henriktech.com'
+          },
+          {
+              source: '/static/api/collect',
+              destination: 'https://analytics.henriktech.com/api/collect'
+          }
+      ];
+  },
 });
 
 module.exports = withPlausibleProxy({
+  subdirectory:"static",
+  scriptName: "privacy",
   customDomain: 'https://plausible.henriktech.com',
 })(bundleAnalyze)
