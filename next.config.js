@@ -18,4 +18,6 @@ bundleAnalyze = withBundleAnalyzer({
   },
 });
 
-module.exports = withPlausibleProxy()(bundleAnalyze)
+module.exports = withPlausibleProxy({
+  customDomain: 'https://plausible.henriktech.com',
+})(bundleAnalyze)
