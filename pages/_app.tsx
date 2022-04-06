@@ -15,7 +15,7 @@ function App({ Component, pageProps: { session, ...pageProps } }:AppProps) {
       <PlausibleProvider
         domain="consulting.henrikvt.com"
         selfHosted
-        customDomain="plausible.henriktech.com"
+        customDomain="https://plausible.henriktech.com"
       >
         <Component {...pageProps} />
       </PlausibleProvider>
