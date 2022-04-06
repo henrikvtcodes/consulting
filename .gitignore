@@ -2,8 +2,13 @@
 
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # testing
 /coverage
@@ -25,6 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -33,6 +39,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# prisma
+/prisma/generated/
+
 # typescript
 *.tsbuildinfo
 .vercel
+!types.d.ts
+!global.d.ts
