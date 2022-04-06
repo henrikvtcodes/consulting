@@ -19,8 +19,8 @@ bundleAnalyze = withBundleAnalyzer({
   async rewrites() {
       return [
           {
-              source: '/static/js/umami.js',
-              destination: 'https://analytics.henriktech.com'
+              source: '/static/js/views.js',
+              destination: 'https://analytics.henriktech.com/umami.js'
           },
           {
               source: '/static/api/collect',

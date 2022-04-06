@@ -16,7 +16,7 @@ class AppDocument extends Document {
             async
             defer
             data-website-id="77e5daa9-9e45-4a71-9e24-018a2acdac45"
-            src="/js/views.js"
+            src="static/js/views.js"
             data-host-url="https://analytics.henriktech.com"
           />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
