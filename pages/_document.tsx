@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class AppDocument extends Document {
-  static async getInitialProps(ctx:any) {
+  static async getInitialProps(ctx: any) {
     const initialProps = await Document.getInitialProps(ctx);
     return { ...initialProps };
   }
@@ -10,19 +10,13 @@ class AppDocument extends Document {
     return (
       <Html className="h-full bg-gray-50">
         <Head>
-          { process.env.NODE_ENV === "production" &&
-            <script
+          <script
             async
             defer
-            data-website-id="8157dbf3-8f86-4656-a8ae-d3010628e50d"
-            src="/umami.js"
-            data-host-url="https://analytics.henriktech.com"
-          /> }
-          { process.env.NODE_ENV === "production" &&
-            <script
-            async
-            defer data-domain="consulting.henrikvt.com" src="https://plausible.henriktech.com/js/plausible.js"
-          /> }
+            data-website-id="77e5daa9-9e45-4a71-9e24-018a2acdac45"
+            src="static/js/views.js"
+            data-host-url="/proxy/views"
+          />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
         <body className="h-full">
