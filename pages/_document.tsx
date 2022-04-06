@@ -17,7 +17,7 @@ class AppDocument extends Document {
             defer
             data-website-id="77e5daa9-9e45-4a71-9e24-018a2acdac45"
             src="static/js/views.js"
-            data-host-url="https://analytics.henriktech.com"
+            data-host-url="/proxy/views"
           />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link rel="icon" type="image/png" href={meta.icon} />

@@ -23,7 +23,7 @@ bundleAnalyze = withBundleAnalyzer({
               destination: 'https://analytics.henriktech.com/umami.js'
           },
           {
-              source: '/static/api/collect',
+              source: '/proxy/views/api/collect',
               destination: 'https://analytics.henriktech.com/api/collect'
           }
       ];
