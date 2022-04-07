@@ -13,7 +13,7 @@ function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     plausible("siteView", {
       props: {
-        v: "Landing",
+        Version: "Landing",
       },
     });
   }, [plausible]);
