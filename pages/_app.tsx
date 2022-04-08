@@ -11,11 +11,7 @@ function App({ Component, pageProps }: AppProps) {
   const plausible = usePlausible();
 
   useEffect(() => {
-    plausible("siteView", {
-      props: {
-        Version: "Landing",
-      },
-    });
+    plausible("Landing View");
   }, [plausible]);
 
   return (
@@ -25,6 +21,7 @@ function App({ Component, pageProps }: AppProps) {
         domain="consulting.henrikvt.com"
         selfHosted
         customDomain="https://plausible.henriktech.com"
+        trackOutboundLinks={true}
       >
         <Component {...pageProps} />
       </PlausibleProvider>
