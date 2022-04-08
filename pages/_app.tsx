@@ -10,7 +10,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const plausible = usePlausible();
 
   useEffect(() => {
-    plausible("MarketingView");
+    plausible("Marketing View");
   }, [plausible]);
   return (
     <div>
