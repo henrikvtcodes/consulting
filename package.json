@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:gen": "yarn prisma generate && next dev",
-    "build": "ANALYZE=true next build",
+    "build": "next build",
+    "build:analyze": "ANALYZE=true next build",
     "vercel:build": "rm -rf node_modules/.prisma; yarn run prisma:gen; next build",
     "start": "next start",
     "lint": "next lint",
