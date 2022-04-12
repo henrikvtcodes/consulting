@@ -4,8 +4,10 @@ declare module 'react-typical';
 
 import type { PrismaClient as PrismaClientType } from "@prisma/client";
 
-interface CustomNodeJsGlobal extends NodeJS.Global {
-  prisma: PrismaClientType
+declare global {
+  namespace NodeJS {
+    interface Global {
+      prisma: PrismaClientType;
+    }
+  }
 }
-
-declare const global: CustomNodeJsGlobal
