@@ -2,8 +2,9 @@
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
+const { withPlausibleProxy } = require("next-plausible");
 
-module.exports = withBundleAnalyzer({
+bundleAnalyze = withBundleAnalyzer({
   swcMinify: true,
   reactStrictMode: true,
   images: {
@@ -13,4 +14,22 @@ module.exports = withBundleAnalyzer({
       "impnjvrvbyrcqytveudc.supabase.in",
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/static/js/views.js",
+        destination: "https://analytics.henriktech.com/umami.js",
+      },
+      {
+        source: "/proxy/views/api/collect",
+        destination: "https://analytics.henriktech.com/api/collect",
+      },
+    ];
+  },
 });
+
+module.exports = withPlausibleProxy({
+  subdirectory: "static",
+  scriptName: "privacy",
+  customDomain: "https://plausible.henriktech.com",
+})(bundleAnalyze);
