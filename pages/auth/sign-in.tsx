@@ -16,7 +16,7 @@ import { NextAuthErrorParams } from "utils/config";
 import { useRole } from "~utils/hooks/useRole";
 import { useUser } from "~utils/hooks/useUser";
 
-const Page = ({ csrfToken }) => {
+const Page = ({ csrfToken }: { csrfToken: string }) => {
   const router = useRouter();
 
   const { error } = router.query;
