@@ -41,28 +41,28 @@ const solutions = [
     longFeatures: [
       {
         feat: "Custom Designed",
-        desc: `When designing your WiFi system, we take note of many factors that affect the design of a WiFi network. Part of the process includes 
+        desc: `When designing your WiFi system, I take note of many factors that affect the design of a WiFi network. Part of the process includes 
         investigating existing infrastructure and taking signal strength measurements. The end result is WiFi that works for you. `,
         icon: AdjustmentsIcon,
       },
       {
         feat: "Transparent",
-        desc: `We strive to make sure that our clients can trust us. Our proposal packages (proposal, quotes, and invoices)
+        desc: `I strive to make sure that my clients can trust me. Our proposal packages (proposal, quotes, and invoices)
         clearly outline the goals of the project and the reasoning behind the design. All major costs (>$20) are itemized and
         explained.`,
         icon: BookOpenIcon,
       },
       {
         feat: "Budget Optimized",
-        desc: `The budget is one of the central factors in any project. When given a budget, we make sure that it is used as efficiently
-        as possible. If we can't work with a given budget, we make sure the client understands why and we will provide alternate options
+        desc: `The budget is one of the central factors in any project. When given a budget, I make sure that it is used as efficiently
+        as possible. If I can't work with a given budget, I make sure the client understands why and I will provide alternate options
         at the client's request.`,
         icon: CurrencyDollarIcon,
       },
       {
         feat: "Human Support",
-        desc: `We never leave you in the dark. If you have any questions, or issues, we will not hesistate to help. Unless it's necessary,
-        we won't even charge most of the time! Additionally, you won't be left confused; We don't try to hide behind fancy technical terms.`,
+        desc: `I never leave you in the dark. If you have any questions, or issues, I will not hesistate to help. Unless it's necessary,
+        I won't even charge most of the time! Additionally, you won't be left confused; I don't hide behind fancy technical terms.`,
         icon: ChatAlt2Icon,
       },
     ],
@@ -81,35 +81,35 @@ const solutions = [
     longFeatures: [
       {
         feat: "Limited Budget",
-        desc: "We will do our best to build the best solution for your budget.",
+        desc: "I will do my best to build the best solution for your budget.",
         icon: CurrencyDollarIcon,
       },
       {
         feat: "Maintenace",
-        desc: "Not everything needs replacing; we can also repair, maintain, and extend networks.",
+        desc: "Not everything needs replacing; I can also repair, maintain, and extend networks.",
         icon: PuzzleIcon,
       },
       {
         feat: "Security",
-        desc: `We understand the importance of network security in the 21st century.`,
+        desc: `I understand the importance of network security in the 21st century.`,
         icon: LockClosedIcon,
       },
       {
         feat: "Residential",
-        desc: `Unstable home network? Slow internet? We can advise you on how to get the most out of your home network.
-        Don't be afraid to ask; we will gladly give free advice.`,
+        desc: `Unstable home network? Slow internet? I can advise you on how to get the most out of your home network.
+        Don't be afraid to ask; I will gladly give free advice.`,
         icon: HomeIcon,
       },
       {
         feat: "Small Business",
-        desc: `As a small business, we love to work with other small businesses. We understand what is necessary
+        desc: `As a small business, I love to work with other small businesses. We understand what is necessary
         to get your business online.`,
         icon: BriefcaseIcon,
       },
       {
         feat: "Rural",
         desc: `Need to connect multiple buildings? A pool, garage/workshop, guest house, or even neighbor? 
-        HVTC is who you need; this is our specialty.`,
+        HVTC is who you need; this is my specialty.`,
         icon: LocationMarkerIcon,
       }
     ],
@@ -123,7 +123,7 @@ const solutions = [
     shortFeatures: [
       { feat: "Highly scalable" },
       { feat: "Footage stored locally or in a private cloud" },
-      { feat: "Privacy first - we don't rely on Amazon or Google" },
+      { feat: "Privacy first - I don't rely on Amazon or Google" },
       { feat: "Catch bad actors in high resolution" },
     ],
     longFeatures: [
@@ -328,22 +328,22 @@ const allSolutions = [
   {
     name: "Optimized Cost",
     description:
-      "When we design a solution for you, we make sure that the end is cost effective without compromising on quality.",
+      "When I design a solution for you, I make sure that the end result is cost effective without compromising on quality.",
   },
   {
     name: "Transparent Pricing",
     description:
-      "Our pricing structure is simple and transparent. We provide a clear breakdown of all costs.",
+      "My pricing structure is simple and transparent. I provide a clear breakdown of all costs.",
   },
   {
     name: "Communication",
     description:
-      "We are always in constant communication with our clients and will respond to any questions or concerns.",
+      "I am always in constant communication with my clients and will respond to any questions or concerns.",
   },
   {
     name: "Guaranteed Results",
     description:
-      "If we make a mistake, it will be fixed at no additional cost to you.",
+      "If I make a mistake, it will be fixed at no additional labor cost to you.",
   },
 ];
 

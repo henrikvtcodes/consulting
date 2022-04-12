@@ -40,7 +40,7 @@ const ProjectList = (props: ProjectListProps) => {
           </h2>
           <div className="mt-3 sm:mt-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:items-center">
             <p className="text-xl text-gray-500">
-              See a list of projects we&apos;ve done.
+              See a list of projects I&apos;ve done.
             </p>
           </div>
         </div>
