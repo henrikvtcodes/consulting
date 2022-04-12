@@ -68,7 +68,7 @@ const SolutionsFlyout = () => {
                   ))}
                 </div>
                 <div className="p-5 bg-gray-50 sm:p-8">
-                  <NextLink href={"/contact"} passHref>
+                  <NextLink href={"/contact?utm_content=flyout"} passHref>
                     <a
                       href="/contact"
                       className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100"
