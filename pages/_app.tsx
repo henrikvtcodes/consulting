@@ -13,7 +13,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     plausible("Marketing View");
   }, [plausible]);
   return (
-    <div>
+    <div className="selection:bg-brand-accent2">
       {process.env.NODE_ENV === "production" ? <WarningBanner /> : <Fragment />}
       <Favicon />
       <PlausibleProvider

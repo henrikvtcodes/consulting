@@ -1,20 +1,19 @@
 .markdown {
-  @apply text-lg leading-relaxed text-brand-text1;
+  @apply text-lg leading-relaxed text-brand-text2;
 }
 
 .markdown p,
 .markdown ul,
-.markdown ol,
-.markdown blockquote {
+.markdown ol {
   @apply my-6;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply mt-8 text-xl font-semibold text-brand-text1 leading-8;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-8 leading-snug;
 }
 
 .markdown a {

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import { Fragment } from "react";
 import fs from "fs";
 import path from "path";
 
@@ -17,7 +18,7 @@ type PageProps = {
 type PostType = {
   slug: string;
   title: string;
-  client: string;
+  client: string | null;
   coverImage: string;
   desc: string;
   content: string;
@@ -35,11 +36,19 @@ const Page = ({ post }: { post: PostType }) => {
     >
       <div>
         <div className="max-w-2xl mx-auto pb-12">
+          <span className="block text-base text-center text-brand-primary font-semibold tracking-wide uppercase my-4">
+            Case Studies
+          </span>
           <Post.Title>{post.title}</Post.Title>
           <Post.CoverImage image={post.coverImage} />
-          <h1 className="text-xl">
-            <strong>For:</strong> {post.client}
-          </h1>
+          {post.client ? (
+            <h2 className="text-xl text-brand-text1">
+              <span className="font-semibold ">For:</span>{" "}
+              <span className="text-gray-700">{post.client}</span>
+            </h2>
+          ) : (
+            <Fragment />
+          )}
           <div
             className={markdownStyles["markdown"]}
             dangerouslySetInnerHTML={{ __html: post.content }}
@@ -87,7 +96,7 @@ export async function getStaticProps({ params: { slug } }: any) {
   const finalPost: PostType = {
     title: post.title,
     slug: post.slug,
-    client: post.client,
+    client: post.client || null,
     coverImage: post.coverImage,
     desc: post.desc,
     content,

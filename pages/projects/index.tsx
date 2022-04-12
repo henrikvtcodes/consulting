@@ -1,5 +1,3 @@
-
-
 import HomeLayout from "layouts/home";
 import ProjectList from "~components/tui/projectList";
 import { ProjectProps } from "~components/tui/projectList";
@@ -14,7 +12,7 @@ const Page = ({ allPosts }: Props) => {
     <HomeLayout>
       <ProjectList projects={allPosts} />
     </HomeLayout>
-  )
+  );
 };
 
 export const getStaticProps = async () => {
@@ -24,6 +22,7 @@ export const getStaticProps = async () => {
     "client",
     "desc",
     "published",
+    "tags",
   ]);
 
   return {
