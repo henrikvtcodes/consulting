@@ -50,7 +50,7 @@ const Home: NextPage = (props) => {
                         </a>
                       </NextLink>
                       <NextLink
-                        href={"/case-studies?utm_campaign=hero&utm_source=site"}
+                        href={"/projects?utm_campaign=hero&utm_source=site"}
                         passHref
                       >
                         <a className="flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-brand-accent1 bg-opacity-60 hover:bg-opacity-70 sm:px-8">
