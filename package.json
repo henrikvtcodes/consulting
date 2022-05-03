@@ -6,8 +6,9 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "yarn run prisma:gen; turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
+    "vercel:build": "rm -rf node_modules/.prisma; yarn run prisma:gen; turbo run build --filter=my-pkg",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
@@ -17,7 +18,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^5.17.0",
-    "@prisma/client": "^3.10.0",
+    "@prisma/client": "^3.13.0",
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.24.0",
     "axios": "^0.24.0",
@@ -28,7 +29,7 @@
   "devDependencies": {
     "@types/node": "16.11.11",
     "eslint": "7",
-    "prisma": "^3.10.0",
+    "prisma": "^3.13.0",
     "typescript": "4.5.2"
   },
   "packageManager": "yarn@3.2.0",

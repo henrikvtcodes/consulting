@@ -679,7 +679,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:^3.10.0":
+"@prisma/client@npm:^3.13.0":
   version: 3.13.0
   resolution: "@prisma/client@npm:3.13.0"
   dependencies:
@@ -731,65 +731,6 @@ __metadata:
   version: 1.29.0
   resolution: "@stripe/stripe-js@npm:1.29.0"
   checksum: 413ae9541a3612166edcdf9cc7d62f3d3cac3f301e723b1da9aec618d0a11a31e30725f334e7498b8a42496e01a6e9254d4c5e1a748d41b7d46e038257d625c4
-  languageName: node
-  linkType: hard
-
-"@supabase/functions-js@npm:^1.3.3":
-  version: 1.3.3
-  resolution: "@supabase/functions-js@npm:1.3.3"
-  dependencies:
-    cross-fetch: ^3.1.5
-  checksum: dd46a70e434ebac345ea41cd7ba86f1cdde02b80212c46913e93880dfe60a9ce52bcc35758d7c3c93685f535f5ca6a8be446f7d800232402e2056630ebff37fc
-  languageName: node
-  linkType: hard
-
-"@supabase/gotrue-js@npm:^1.22.13":
-  version: 1.22.13
-  resolution: "@supabase/gotrue-js@npm:1.22.13"
-  dependencies:
-    cross-fetch: ^3.0.6
-  checksum: 74e44dec3936dc844f64907933ebc8cef747c17a3d690581595cc43b8dd77ea366c9c7da36f22858116b4b974bdbe0984fa992dc4a6871629c476dc0b4a690d4
-  languageName: node
-  linkType: hard
-
-"@supabase/postgrest-js@npm:^0.37.2":
-  version: 0.37.2
-  resolution: "@supabase/postgrest-js@npm:0.37.2"
-  dependencies:
-    cross-fetch: ^3.0.6
-  checksum: 173bd75f315900119425b27007b69fb5517eb482d22e21f3daeb62d0982ce80199e271050181a6a29694f9a56675f381ccbfd7a0b2534815fa936511c0629992
-  languageName: node
-  linkType: hard
-
-"@supabase/realtime-js@npm:^1.7.2":
-  version: 1.7.2
-  resolution: "@supabase/realtime-js@npm:1.7.2"
-  dependencies:
-    "@types/phoenix": ^1.5.4
-    websocket: ^1.0.34
-  checksum: 355d0bb073691ce015f529b55bc23880b3ca7b481c0c0c4af8e287778a201a7d0fdbbe5bbcd65950fad9dc6229616dc2340558a2c71f26bfb67279b19dc1885f
-  languageName: node
-  linkType: hard
-
-"@supabase/storage-js@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "@supabase/storage-js@npm:1.7.0"
-  dependencies:
-    cross-fetch: ^3.1.0
-  checksum: bd02b43c288381b4fdc5dc9233122d5a687fb0d3c60927e79b4517856d6497c7f205464c333bc5ece2a2910a021430f442d165d7893b012232445fd0f2afbfe1
-  languageName: node
-  linkType: hard
-
-"@supabase/supabase-js@npm:^1.29.1":
-  version: 1.35.2
-  resolution: "@supabase/supabase-js@npm:1.35.2"
-  dependencies:
-    "@supabase/functions-js": ^1.3.3
-    "@supabase/gotrue-js": ^1.22.13
-    "@supabase/postgrest-js": ^0.37.2
-    "@supabase/realtime-js": ^1.7.2
-    "@supabase/storage-js": ^1.7.0
-  checksum: 0fa057c13078b33315480d4c71280e3036b9c5677a529f794968c5e2500ea4dfcfa6efe695b8e0ff8250d1f82748df8878b433eee647ba75ddb4981a3e894bb0
   languageName: node
   linkType: hard
 
@@ -948,13 +889,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/phoenix@npm:^1.5.4":
-  version: 1.5.4
-  resolution: "@types/phoenix@npm:1.5.4"
-  checksum: be6635e3dd63b9ae80e375c3918075cb1d63264f46039665c62390d2a5249335c32c7f0d154da27724a7859c0eaef1476fb61f7fa40541b4013e0bc1d5a47fd5
-  languageName: node
-  linkType: hard
-
 "@types/probe-image-size@npm:^7.0.1":
   version: 7.0.1
   resolution: "@types/probe-image-size@npm:7.0.1"
@@ -979,15 +913,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e68b0d59aa69577fc6a6d654b25d5d8408625498f4c483f160b557fac21e840f6e8807cbde93e9f039949b6d624a019b1990d18499c1d65aecf3605c25e30242
-  languageName: node
-  linkType: hard
-
-"@types/recoil@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@types/recoil@npm:0.0.9"
-  dependencies:
-    recoil: "*"
-  checksum: f4209a72dbbef74f3ba128678b0e9a24752273e5ae468c8ed51a6e5562561c214c250218224664410ca4d7f5f3764c1f657264bca0e09e63d52bfb53412e7cac
   languageName: node
   linkType: hard
 
@@ -1544,16 +1469,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bufferutil@npm:^4.0.1":
-  version: 4.0.6
-  resolution: "bufferutil@npm:4.0.6"
-  dependencies:
-    node-gyp: latest
-    node-gyp-build: ^4.3.0
-  checksum: dd107560947445280af7820c3d0534127b911577d85d537e1d7e0aa30fd634853cef8a994d6e8aed3d81388ab1a20257de776164afe6a6af8e78f5f17968ebd6
-  languageName: node
-  linkType: hard
-
 "bytes@npm:3.0.0":
   version: 3.0.0
   resolution: "bytes@npm:3.0.0"
@@ -1846,14 +1761,14 @@ __metadata:
   resolution: "consulting@workspace:."
   dependencies:
     "@google-cloud/storage": ^5.17.0
-    "@prisma/client": ^3.10.0
+    "@prisma/client": ^3.13.0
     "@stripe/react-stripe-js": ^1.7.0
     "@stripe/stripe-js": ^1.24.0
     "@types/node": 16.11.11
     axios: ^0.24.0
     eslint: 7
     nanoid: ^3.2.0
-    prisma: ^3.10.0
+    prisma: ^3.13.0
     stripe: ^8.207.0
     turbo: ^1.2.6
     typescript: 4.5.2
@@ -1900,15 +1815,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-fetch@npm:^3.0.6, cross-fetch@npm:^3.1.0, cross-fetch@npm:^3.1.5":
-  version: 3.1.5
-  resolution: "cross-fetch@npm:3.1.5"
-  dependencies:
-    node-fetch: 2.6.7
-  checksum: f6b8c6ee3ef993ace6277fd789c71b6acf1b504fd5f5c7128df4ef2f125a429e29cd62dc8c127523f04a5f2fa4771ed80e3f3d9695617f441425045f505cf3bb
-  languageName: node
-  linkType: hard
-
 "cross-spawn@npm:^7.0.2":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -1943,16 +1849,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d@npm:1, d@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "d@npm:1.0.1"
-  dependencies:
-    es5-ext: ^0.10.50
-    type: ^1.0.1
-  checksum: 49ca0639c7b822db670de93d4fbce44b4aa072cd848c76292c9978a8cd0fff1028763020ff4b0f147bd77bfe29b4c7f82e0f71ade76b2a06100543cdfd948d19
-  languageName: node
-  linkType: hard
-
 "damerau-levenshtein@npm:^1.0.7":
   version: 1.0.8
   resolution: "damerau-levenshtein@npm:1.0.8"
@@ -1981,7 +1877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2, debug@npm:^2.2.0, debug@npm:^2.6.9":
+"debug@npm:2, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -2293,38 +2189,6 @@ __metadata:
     is-date-object: ^1.0.1
     is-symbol: ^1.0.2
   checksum: 4ead6671a2c1402619bdd77f3503991232ca15e17e46222b0a41a5d81aebc8740a77822f5b3c965008e631153e9ef0580540007744521e72de8e33599fca2eed
-  languageName: node
-  linkType: hard
-
-"es5-ext@npm:^0.10.35, es5-ext@npm:^0.10.50":
-  version: 0.10.61
-  resolution: "es5-ext@npm:0.10.61"
-  dependencies:
-    es6-iterator: ^2.0.3
-    es6-symbol: ^3.1.3
-    next-tick: ^1.1.0
-  checksum: 2f2034e91e77fe247d94f0fd13a94bcf113273b7cc4650794d6795e377267ffb2425d3a891bd8c4d9c8b990e16e17dd7c28f12dbd3fa4b0909d0874892f491bf
-  languageName: node
-  linkType: hard
-
-"es6-iterator@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "es6-iterator@npm:2.0.3"
-  dependencies:
-    d: 1
-    es5-ext: ^0.10.35
-    es6-symbol: ^3.1.1
-  checksum: 6e48b1c2d962c21dee604b3d9f0bc3889f11ed5a8b33689155a2065d20e3107e2a69cc63a71bd125aeee3a589182f8bbcb5c8a05b6a8f38fa4205671b6d09697
-  languageName: node
-  linkType: hard
-
-"es6-symbol@npm:^3.1.1, es6-symbol@npm:^3.1.3":
-  version: 3.1.3
-  resolution: "es6-symbol@npm:3.1.3"
-  dependencies:
-    d: ^1.0.1
-    ext: ^1.1.2
-  checksum: cd49722c2a70f011eb02143ef1c8c70658d2660dead6641e160b94619f408b9cf66425515787ffe338affdf0285ad54f4eae30ea5bd510e33f8659ec53bcaa70
   languageName: node
   linkType: hard
 
@@ -2643,15 +2507,6 @@ __metadata:
   version: 5.0.1
   resolution: "event-target-shim@npm:5.0.1"
   checksum: 1ffe3bb22a6d51bdeb6bf6f7cf97d2ff4a74b017ad12284cc9e6a279e727dc30a5de6bb613e5596ff4dc3e517841339ad09a7eec44266eccb1aa201a30448166
-  languageName: node
-  linkType: hard
-
-"ext@npm:^1.1.2":
-  version: 1.6.0
-  resolution: "ext@npm:1.6.0"
-  dependencies:
-    type: ^2.5.0
-  checksum: ca3ef4619e838f441a92238a98b77ac873da2175ace746c64303ffe2c3208e79a3acf3bf7004e40b720f3c2a83bf0143e6dd4a7cdfae6e73f54a3bfc7a14b5c2
   languageName: node
   linkType: hard
 
@@ -3114,13 +2969,6 @@ __metadata:
   dependencies:
     duplexer: ^0.1.2
   checksum: 2df97f359696ad154fc171dcb55bc883fe6e833bca7a65e457b9358f3cb6312405ed70a8da24a77c1baac0639906cd52358dc0ce2ec1a937eaa631b934c94194
-  languageName: node
-  linkType: hard
-
-"hamt_plus@npm:1.0.2":
-  version: 1.0.2
-  resolution: "hamt_plus@npm:1.0.2"
-  checksum: af26ea32db03009019cc83dfa9411521a2fa16079443de1a502c9be46d8b3c975acda8ed93fc5750ef08d3186d35901e2d8cfe717dd54bea67b358601fa74e4c
   languageName: node
   linkType: hard
 
@@ -4712,13 +4560,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-tick@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "next-tick@npm:1.1.0"
-  checksum: 83b5cf36027a53ee6d8b7f9c0782f2ba87f4858d977342bfc3c20c21629290a2111f8374d13a81221179603ffc4364f38374b5655d17b6a8f8a8c77bdea4fe8b
-  languageName: node
-  linkType: hard
-
 "next@npm:^12.1.4":
   version: 12.1.6
   resolution: "next@npm:12.1.6"
@@ -4783,7 +4624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.7, node-fetch@npm:^2.6.1, node-fetch@npm:^2.6.7":
+"node-fetch@npm:^2.6.1, node-fetch@npm:^2.6.7":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
   dependencies:
@@ -4801,17 +4642,6 @@ __metadata:
   version: 1.3.1
   resolution: "node-forge@npm:1.3.1"
   checksum: 08fb072d3d670599c89a1704b3e9c649ff1b998256737f0e06fbd1a5bf41cae4457ccaee32d95052d80bbafd9ffe01284e078c8071f0267dc9744e51c5ed42a9
-  languageName: node
-  linkType: hard
-
-"node-gyp-build@npm:^4.3.0":
-  version: 4.4.0
-  resolution: "node-gyp-build@npm:4.4.0"
-  bin:
-    node-gyp-build: bin.js
-    node-gyp-build-optional: optional.js
-    node-gyp-build-test: build-test.js
-  checksum: 972a059f960253d254e0b23ce10f54c8982236fc0edcab85166d0b7f87443b2ce98391c877cfb2f6eeafcf03c538c5f4dd3e0bfff03828eb48634f58f4c64343
   languageName: node
   linkType: hard
 
@@ -5297,7 +5127,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:^3.10.0":
+"prisma@npm:^3.13.0":
   version: 3.13.0
   resolution: "prisma@npm:3.13.0"
   dependencies:
@@ -5553,22 +5383,6 @@ __metadata:
   dependencies:
     picomatch: ^2.2.1
   checksum: 1ced032e6e45670b6d7352d71d21ce7edf7b9b928494dcaba6f11fba63180d9da6cd7061ebc34175ffda6ff529f481818c962952004d273178acd70f7059b320
-  languageName: node
-  linkType: hard
-
-"recoil@npm:*":
-  version: 0.7.2
-  resolution: "recoil@npm:0.7.2"
-  dependencies:
-    hamt_plus: 1.0.2
-  peerDependencies:
-    react: ">=16.13.1"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 2ad0c2052fd33ee358e3b448fd36ea6d4b37e69ace65ff44124605171c4794e4f167215209731aac3d45d42ea9f4c67e9c5a0704ff04ab94b64bcca96d5f59a3
   languageName: node
   linkType: hard
 
@@ -6627,20 +6441,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type@npm:^1.0.1":
-  version: 1.2.0
-  resolution: "type@npm:1.2.0"
-  checksum: dae8c64f82c648b985caf321e9dd6e8b7f4f2e2d4f846fc6fd2c8e9dc7769382d8a52369ddbaccd59aeeceb0df7f52fb339c465be5f2e543e81e810e413451ee
-  languageName: node
-  linkType: hard
-
-"type@npm:^2.5.0":
-  version: 2.6.0
-  resolution: "type@npm:2.6.0"
-  checksum: 80da01fcc0f6ed5a253dc326530e134000a8f66ea44b6d9687cde2f894f0d0b2486595b0cd040a64f7f79dc3120784236f8c9ef667a8aef03984e049b447cfb4
-  languageName: node
-  linkType: hard
-
 "typedarray-to-buffer@npm:^3.1.5":
   version: 3.1.5
   resolution: "typedarray-to-buffer@npm:3.1.5"
@@ -6932,16 +6732,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"utf-8-validate@npm:^5.0.2":
-  version: 5.0.9
-  resolution: "utf-8-validate@npm:5.0.9"
-  dependencies:
-    node-gyp: latest
-    node-gyp-build: ^4.3.0
-  checksum: 90117f1b65e0a1256c83dfad529983617263b622f2379745311d0438c7ea31db0d134ebd0dca84c3f5847a3560a3d249644e478a9109c616f63c7ea19cac53dc
-  languageName: node
-  linkType: hard
-
 "util-deprecate@npm:^1.0.1, util-deprecate@npm:^1.0.2":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -7053,10 +6843,8 @@ __metadata:
     "@heroicons/react": ^1.0.5
     "@next-auth/prisma-adapter": ^1.0.1
     "@next/bundle-analyzer": ^12.1.0
-    "@prisma/client": ^3.10.0
     "@stripe/react-stripe-js": ^1.7.0
     "@stripe/stripe-js": ^1.24.0
-    "@supabase/supabase-js": ^1.29.1
     "@tailwindcss/aspect-ratio": ^0.4.0
     "@tailwindcss/forms": ^0.4.0
     "@tailwindcss/line-clamp": ^0.3.0
@@ -7068,7 +6856,6 @@ __metadata:
     "@types/node": 16.11.11
     "@types/probe-image-size": ^7.0.1
     "@types/react": 17.0.37
-    "@types/recoil": ^0.0.9
     "@types/zxcvbn": ^4.4.1
     autoprefixer: ^10.4.0
     awesome-debounce-promise: ^2.1.0
@@ -7089,7 +6876,6 @@ __metadata:
     next-mdx-remote: ^3.0.8
     next-plausible: ^3.1.9
     postcss: ^8.4.4
-    prisma: ^3.10.0
     probe-image-size: ^7.2.2
     react: 17.0.2
     react-async-hook: ^4.0.0
@@ -7135,20 +6921,6 @@ __metadata:
   bin:
     webpack-bundle-analyzer: lib/bin/analyzer.js
   checksum: 00b7bf4ac9fca17062b66b6897145b94e87153d3ec8815f0e0c05a3b8a1ca75320262db01a5fa634f604ee3d41aecde1ee59838d05b6d03cd5be62eb1addbcf8
-  languageName: node
-  linkType: hard
-
-"websocket@npm:^1.0.34":
-  version: 1.0.34
-  resolution: "websocket@npm:1.0.34"
-  dependencies:
-    bufferutil: ^4.0.1
-    debug: ^2.2.0
-    es5-ext: ^0.10.50
-    typedarray-to-buffer: ^3.1.5
-    utf-8-validate: ^5.0.2
-    yaeti: ^0.0.6
-  checksum: 8a0ce6d79cc1334bb6ea0d607f0092f3d32700b4dd19e4d5540f2a85f3b50e1f8110da0e4716737056584dde70bbebcb40bbd94bbb437d7468c71abfbfa077d8
   languageName: node
   linkType: hard
 
@@ -7247,13 +7019,6 @@ __metadata:
   version: 4.0.2
   resolution: "xtend@npm:4.0.2"
   checksum: ac5dfa738b21f6e7f0dd6e65e1b3155036d68104e67e5d5d1bde74892e327d7e5636a076f625599dc394330a731861e87343ff184b0047fef1360a7ec0a5a36a
-  languageName: node
-  linkType: hard
-
-"yaeti@npm:^0.0.6":
-  version: 0.0.6
-  resolution: "yaeti@npm:0.0.6"
-  checksum: 6db12c152f7c363b80071086a3ebf5032e03332604eeda988872be50d6c8469e1f13316175544fa320f72edad696c2d83843ad0ff370659045c1a68bcecfcfea
   languageName: node
   linkType: hard
 
