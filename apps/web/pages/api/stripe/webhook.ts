@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { buffer } from "micro";
 
-import { stripe } from "apps/web/utils/stripe";
-import { ApiEvent } from "apps/web/utils/logger";
+import { stripe } from "utils/stripe";
+import { ApiEvent } from "utils/logger";
 
 export const config = {
   api: {

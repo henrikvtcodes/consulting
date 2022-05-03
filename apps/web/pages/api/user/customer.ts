@@ -2,10 +2,10 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
 
-import { getUserRole } from "apps/web/utils/getUserRole.server";
-import { prisma } from "apps/web/utils/Prisma";
-import { stripe } from "apps/web/utils/stripe";
-import logger from "apps/web/utils/loggerOld";
+import { getUserRole } from "utils/getUserRole.server";
+import { prisma } from "utils/Prisma";
+import { stripe } from "utils/stripe";
+import logger from "utils/loggerOld";
 import { CreateCustomer, UpsertCustomer } from "types/customer";
 
 export default async function handler(

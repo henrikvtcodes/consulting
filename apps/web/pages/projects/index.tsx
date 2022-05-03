@@ -1,7 +1,7 @@
 import HomeLayout from "layouts/home";
-import ProjectList from "apps/web/components/tui/projectList";
-import { ProjectProps } from "apps/web/components/tui/projectList";
-import { getAllPosts } from "apps/web/utils/getPost";
+import ProjectList from "components/tui/projectList";
+import { ProjectProps } from "components/tui/projectList";
+import { getAllPosts } from "utils/getPost";
 
 type Props = {
   allPosts: ProjectProps[];

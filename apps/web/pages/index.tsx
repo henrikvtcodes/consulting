@@ -3,7 +3,7 @@ import Image from "next/image";
 import NextLink from "next/link";
 
 import HomeLayout from "layouts/home";
-import { DefaultMeta } from "apps/web/components/meta";
+import { DefaultMeta } from "components/meta";
 
 const Home: NextPage = (props) => {
   return (

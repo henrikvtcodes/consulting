@@ -1,5 +1,5 @@
 import { prisma } from "./index";
-import { genHexCode } from "apps/web/utils/nanoid";
+import { genHexCode } from "utils/nanoid";
 
 export async function lookupCode(code: string) {
   const token = await prisma.invite.findUnique({

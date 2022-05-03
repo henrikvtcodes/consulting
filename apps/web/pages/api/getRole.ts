@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { getUserRole } from "apps/web/utils/getUserRole.server";
+import { getUserRole } from "utils/getUserRole.server";
 
 export default async function handler(
   req: NextApiRequest,

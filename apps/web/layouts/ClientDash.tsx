@@ -13,9 +13,9 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import classNames from "apps/web/components/tui/classnames";
+import classNames from "components/tui/classnames";
 import { RoleLayout } from "./RoleLayout";
-import { useUser } from "apps/web/utils/hooks/useUser";
+import { useUser } from "utils/hooks/useUser";
 
 const navigation = [
   { name: "Home", href: "/client", icon: HomeIcon, current: true },

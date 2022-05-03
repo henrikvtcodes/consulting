@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 
-import { CustomMeta } from "apps/web/components/meta";
+import { CustomMeta } from "components/meta";
 
 const ErrorPage = () => {
   return (

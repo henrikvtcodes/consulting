@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
 import classNames from "./classnames";
-import { solutions } from "apps/web/utils/config";
+import { solutions } from "utils/config";
 
 const SolutionsFlyout = () => {
   return (

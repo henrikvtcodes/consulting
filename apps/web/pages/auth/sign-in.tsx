@@ -10,11 +10,11 @@ import { useSession, signOut } from "next-auth/react";
 import NextLink from "next/link";
 
 import FormPageLayout from "layouts/formPage";
-import FormWindow from "apps/web/components/forms/window";
-import SignInForm from "apps/web/components/forms/signIn";
-import { NextAuthErrorParams } from "apps/web/utils/config";
-import { useRole } from "apps/web/utils/hooks/useRole";
-import { useUser } from "apps/web/utils/hooks/useUser";
+import FormWindow from "components/forms/window";
+import SignInForm from "components/forms/signIn";
+import { NextAuthErrorParams } from "utils/config";
+import { useRole } from "utils/hooks/useRole";
+import { useUser } from "utils/hooks/useUser";
 
 const Page = ({ csrfToken }: { csrfToken: string }) => {
   const router = useRouter();

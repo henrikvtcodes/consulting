@@ -1,6 +1,6 @@
 import FormPageLayout from "layouts/formPage";
-import FormWindow from "apps/web/components/forms/window";
-import SignInForm from "apps/web/components/forms/signIn";
+import FormWindow from "components/forms/window";
+import SignInForm from "components/forms/signIn";
 
 // eslint-disable-next-line
 const Page = () => {

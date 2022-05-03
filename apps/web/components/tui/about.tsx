@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { people } from "apps/web/utils/config";
+import { people } from "utils/config";
 
 const AboutSection = () => {
   return (

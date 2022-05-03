@@ -2,9 +2,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
 
-import { getUserRole } from "apps/web/utils/getUserRole.server";
-import { prisma } from "apps/web/utils/Prisma";
-import logger from "apps/web/utils/loggerOld";
+import { getUserRole } from "utils/getUserRole.server";
+import { prisma } from "utils/Prisma";
+import logger from "utils/loggerOld";
 
 export default async function handler(
   req: NextApiRequest,

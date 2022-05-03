@@ -8,11 +8,11 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 
 import HomeLayout from "layouts/home";
-import { DefaultMeta } from "apps/web/components/meta";
-import Brands from "apps/web/components/tui/brands";
-import classNames from "apps/web/components/tui/classnames";
-import { faqs } from "apps/web/utils/config";
-import { markdownToHtmlSync } from "apps/web/utils/markdownToHtml";
+import { DefaultMeta } from "components/meta";
+import Brands from "components/tui/brands";
+import classNames from "components/tui/classnames";
+import { faqs } from "utils/config";
+import { markdownToHtmlSync } from "utils/markdownToHtml";
 import markdownStyles from "~styles/faq.module.css";
 
 type PageProps = {

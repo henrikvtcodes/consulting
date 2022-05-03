@@ -2,16 +2,16 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import { Prisma } from "@prisma/client";
 
-import { cors } from "apps/web/utils/cors";
-import { prisma } from "apps/web/utils/Prisma";
+import { cors } from "utils/cors";
+import { prisma } from "utils/Prisma";
 import {
   lookupCode,
   createCode,
   markCodeAsUsed,
-} from "apps/web/utils/Prisma/inviteCode";
-import { getUserRole } from "apps/web/utils/getUserRole.server";
-import { getUser } from "apps/web/utils/apiAuth";
-import { genHexCode } from "apps/web/utils/nanoid";
+} from "utils/Prisma/inviteCode";
+import { getUserRole } from "utils/getUserRole.server";
+import { getUser } from "utils/apiAuth";
+import { genHexCode } from "utils/nanoid";
 import { create } from "domain";
 
 export default async function handler(

@@ -1,5 +1,5 @@
 import HomeLayout from "layouts/home";
-import AboutSection from "apps/web/components/tui/about";
+import AboutSection from "components/tui/about";
 
 const Page = () => {
   return (

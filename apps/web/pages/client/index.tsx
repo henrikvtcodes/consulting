@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 
 import { RoleLayout } from "layouts/RoleLayout";
 import { ClientDashLayout } from "layouts/ClientDash";
-import { useUser } from "apps/web/utils/hooks/useUser";
+import { useUser } from "utils/hooks/useUser";
 
 const ClientHome: NextPage = (props) => {
   const { user } = useUser();

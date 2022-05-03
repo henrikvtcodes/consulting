@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 
 import { UserMetadata, UserMetaData_Alter } from "types/user";
-import { useUser } from "apps/web/utils/hooks/useUser";
+import { useUser } from "utils/hooks/useUser";
 import { AddressForm } from "./address";
 import { Toggle, FormToggle } from "./switch";
 import { userInfo } from "os";

@@ -6,12 +6,12 @@ import {
 import { useForm } from "react-hook-form";
 
 import formStyles from "~styles/forms.module.css";
-import { useDebouncedFunc } from "apps/web/utils/hooks/useDebouncedReq";
+import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";
 import {
   validateCode,
   submitCode,
   SubmitCodeReturnType,
-} from "apps/web/utils/submitCode";
+} from "utils/submitCode";
 
 const useValidateInviteCode = () =>
   useDebouncedFunc<SubmitCodeReturnType>(

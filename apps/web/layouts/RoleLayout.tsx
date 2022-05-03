@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { useRole } from "apps/web/utils/hooks/useRole";
+import { useRole } from "utils/hooks/useRole";
 
 type RoleLayoutProps = {
   roles: string[];

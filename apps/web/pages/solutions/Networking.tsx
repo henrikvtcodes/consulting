@@ -3,10 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 
 import HomeLayout from "layouts/home";
-import Brands from "apps/web/components/tui/brands";
-import Features from "apps/web/components/tui/featuresTabs";
-import config from "apps/web/utils/config";
-import { vendors, namedSolutions } from "apps/web/utils/config";
+import Brands from "components/tui/brands";
+import Features from "components/tui/featuresTabs";
+import config from "utils/config";
+import { vendors, namedSolutions } from "utils/config";
 
 const Page: NextPage = (props) => {
   return (

@@ -5,8 +5,8 @@ import axios from "axios";
 import PlausibleProvider, { usePlausible } from "next-plausible";
 import { Fragment, useEffect } from "react";
 
-import Favicon from "apps/web/components/meta";
-import { WarningBanner } from "apps/web/components/tui/warning-banner";
+import Favicon from "components/meta";
+import { WarningBanner } from "components/tui/warning-banner";
 import "../styles/globals.css";
 
 // prettier-ignore

@@ -2,15 +2,15 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import { Prisma } from "@prisma/client";
 
-import { cors } from "apps/web/utils/cors";
-import { prisma } from "apps/web/utils/Prisma";
+import { cors } from "utils/cors";
+import { prisma } from "utils/Prisma";
 import {
   lookupCode,
   createCode,
   markCodeAsUsed,
-} from "apps/web/utils/Prisma/inviteCode";
-import { getUserRole } from "apps/web/utils/getUserRole.server";
-import { getUser } from "apps/web/utils/apiAuth";
+} from "utils/Prisma/inviteCode";
+import { getUserRole } from "utils/getUserRole.server";
+import { getUser } from "utils/apiAuth";
 
 export default async function handler(
   req: NextApiRequest,

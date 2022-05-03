@@ -4,8 +4,8 @@ import Image from "next/image";
 import NextLink from "next/link";
 
 import HomeLayout from "layouts/home";
-import { DefaultMeta } from "apps/web/components/meta";
-import { solutions, allSolutions } from "apps/web/utils/config";
+import { DefaultMeta } from "components/meta";
+import { solutions, allSolutions } from "utils/config";
 
 import { CheckIcon } from "@heroicons/react/solid";
 

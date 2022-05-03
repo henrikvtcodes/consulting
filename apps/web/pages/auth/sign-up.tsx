@@ -1,10 +1,10 @@
 import { NextPage } from "next";
 
 import FormPageLayout from "layouts/formPage";
-import FormWindow from "apps/web/components/forms/window";
-import SignUpForm from "apps/web/components/forms/signUpFull";
-import { useDebouncedFunc } from "apps/web/utils/hooks/useDebouncedReq";
-import { validateCode, SubmitCodeReturnType } from "apps/web/utils/submitCode";
+import FormWindow from "components/forms/window";
+import SignUpForm from "components/forms/signUpFull";
+import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";
+import { validateCode, SubmitCodeReturnType } from "utils/submitCode";
 
 // eslint-disable-next-line
 const Page: NextPage = (props) => {

@@ -8,7 +8,7 @@ import useSWR from "swr";
 import { useAsync } from "react-async-hook";
 
 import FormPageLayout from "layouts/formPage";
-import { useRole } from "apps/web/utils/hooks/useRole";
+import { useRole } from "utils/hooks/useRole";
 import { time } from "console";
 
 // eslint-disable-next-line

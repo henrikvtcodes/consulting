@@ -4,10 +4,10 @@ import fs from "fs";
 import path from "path";
 
 import HomeLayout from "layouts/home";
-import { getPostBySlug } from "apps/web/utils/getPost";
-import markdownToHtml from "apps/web/utils/markdownToHtml";
+import { getPostBySlug } from "utils/getPost";
+import markdownToHtml from "utils/markdownToHtml";
 import markdownStyles from "../../styles/markdown.module.css";
-import Post from "apps/web/components/post";
+import Post from "components/post";
 
 type PageProps = {
   post: PostType;

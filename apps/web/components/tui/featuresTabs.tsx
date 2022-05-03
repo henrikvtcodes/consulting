@@ -3,8 +3,8 @@ import { Fragment } from "react";
 import { Tab } from "@headlessui/react";
 
 import classNames from "./classnames";
-import config from "apps/web/utils/config";
-import Post from "apps/web/components/post";
+import config from "utils/config";
+import Post from "components/post";
 
 type FeatureProps = {
   name: string;

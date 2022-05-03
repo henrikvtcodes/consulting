@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-import { meta } from "apps/web/components/meta";
+import { meta } from "components/meta";
 
 class AppDocument extends Document {
   static async getInitialProps(ctx: any) {

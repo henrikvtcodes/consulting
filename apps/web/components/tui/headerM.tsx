@@ -8,11 +8,11 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useSession, signOut } from "next-auth/react";
 
 import SolutionsFlyout from "./flyouts";
-import solutions from "apps/web/utils/config";
+import solutions from "utils/config";
 import { WarningBanner } from "./warning-banner";
-import { useRole } from "apps/web/utils/hooks/useRole";
+import { useRole } from "utils/hooks/useRole";
 import useSWR from "swr";
-import { useUser } from "apps/web/utils/hooks/useUser";
+import { useUser } from "utils/hooks/useUser";
 
 const localSolutions = solutions;
 
