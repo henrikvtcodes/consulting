@@ -25,7 +25,7 @@ const Page: NextPage = (props) => {
               <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
                 <div>
                   <h2 className="text-base font-semibold text-brand-accent1h uppercase tracking-wide">
-                    I have standards
+                    Standards
                   </h2>
                   <p className="mt-2 text-3xl font-extrabold text-gray-900">
                     All Solutions
