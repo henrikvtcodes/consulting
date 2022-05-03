@@ -5,7 +5,7 @@
   "root": "apps/server",
   "compilerOptions": {
     "webpack": true,
-    "tsConfigPath": "packages/tsconfig/base.json"
+    "tsConfigPath": "packages/tsconfig/nestjs.json"
   },
   "projects": {
     "server": {

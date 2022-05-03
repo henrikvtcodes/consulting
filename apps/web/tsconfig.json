@@ -1,7 +1,7 @@
 {
   "extends": "tsconfig/nextjs.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "../../.next",
     "baseUrl": ".",
     "paths": {
       "~utils/*": ["./utils/*"],

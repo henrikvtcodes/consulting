@@ -2362,6 +2362,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"amdefine@npm:>=0.0.4":
+  version: 1.0.1
+  resolution: "amdefine@npm:1.0.1"
+  checksum: 9d4e15b94641643a9385b2841b4cb2bcf4e8e2f741ea4bd475c93ad7bab261ad4ed827a32e9c549b38b98759c4526c173ae4e6dde8caeb75ee5cebedc9863762
+  languageName: node
+  linkType: hard
+
 "ansi-colors@npm:4.1.1, ansi-colors@npm:^4.1.1":
   version: 4.1.1
   resolution: "ansi-colors@npm:4.1.1"
@@ -2576,6 +2583,29 @@ __metadata:
   version: 0.4.0
   resolution: "asynckit@npm:0.4.0"
   checksum: 7b78c451df768adba04e2d02e63e2d0bf3b07adcd6e42b4cf665cb7ce899bedd344c69a1dcbce355b5f972d597b25aaa1c1742b52cffd9caccb22f348114f6be
+  languageName: node
+  linkType: hard
+
+"autoprefix@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "autoprefix@npm:1.0.1"
+  dependencies:
+    autoprefixer-core: ~5.1.1
+    camelcase: ^1.1.0
+    decamelize: ^1.0.0
+  checksum: 4ef23f8c0fee75ddefa15f37648b212eaa2cb5718bb4d833a5a41598f3f824ebb1322d3c46e56e4fcfb17f50cbfbdd733354845e8065ef17c37b5599aaa77f76
+  languageName: node
+  linkType: hard
+
+"autoprefixer-core@npm:~5.1.1":
+  version: 5.1.11
+  resolution: "autoprefixer-core@npm:5.1.11"
+  dependencies:
+    browserslist: ~0.2.0
+    caniuse-db: ^1.0.30000132
+    num2fraction: ~1.1.0
+    postcss: ~4.0.6
+  checksum: 7cce017392638993692c0d0ff72e2e72d42cc7dc8db32aff54854bfaf5ae9dd86d04ea8dd3306e21080e98d29e0dd127685b2ac3827e904b552008dc26edeec0
   languageName: node
   linkType: hard
 
@@ -2896,6 +2926,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"browserslist@npm:~0.2.0":
+  version: 0.2.0
+  resolution: "browserslist@npm:0.2.0"
+  dependencies:
+    caniuse-db: ^1.0.30000054
+  checksum: f49a513898f302ecd945defa073bd61871e984433bf303a8a0b5c0419e5872fc099027f7e866a36f9c19039e34a60622802e6ef6659b09b0cea252d6127d529e
+  languageName: node
+  linkType: hard
+
 "bs-logger@npm:0.x":
   version: 0.2.6
   resolution: "bs-logger@npm:0.2.6"
@@ -3012,6 +3051,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"camelcase@npm:^1.1.0":
+  version: 1.2.1
+  resolution: "camelcase@npm:1.2.1"
+  checksum: 3da5ab4bb997f33e57023ddee39887e0d3f34ce5a2d41bcfe84454ee528c4fd769a4f9a428168bf9b24aca9338699885ffb63527acb02834c31b864d4b0d2299
+  languageName: node
+  linkType: hard
+
 "camelcase@npm:^5.3.1":
   version: 5.3.1
   resolution: "camelcase@npm:5.3.1"
@@ -3023,6 +3069,13 @@ __metadata:
   version: 6.3.0
   resolution: "camelcase@npm:6.3.0"
   checksum: 8c96818a9076434998511251dcb2761a94817ea17dbdc37f47ac080bd088fc62c7369429a19e2178b993497132c8cbcf5cc1f44ba963e76782ba469c0474938d
+  languageName: node
+  linkType: hard
+
+"caniuse-db@npm:^1.0.30000054, caniuse-db@npm:^1.0.30000132":
+  version: 1.0.30001335
+  resolution: "caniuse-db@npm:1.0.30001335"
+  checksum: 2c2cbc97b036d547d10af79a0047e8c76535e4d231970d704c7c7b8fd39f6cb95170581d690d6b4458f584ce6fcdce8c1d53c4e6dd63d137c6d057d187711956
   languageName: node
   linkType: hard
 
@@ -3657,6 +3710,13 @@ __metadata:
   dependencies:
     ms: ^2.1.1
   checksum: b3d8c5940799914d30314b7c3304a43305fd0715581a919dacb8b3176d024a782062368405b47491516d2091d6462d4d11f2f4974a405048094f8bfebfa3071c
+  languageName: node
+  linkType: hard
+
+"decamelize@npm:^1.0.0":
+  version: 1.2.0
+  resolution: "decamelize@npm:1.2.0"
+  checksum: ad8c51a7e7e0720c70ec2eeb1163b66da03e7616d7b98c9ef43cce2416395e84c1e9548dd94f5f6ffecfee9f8b94251fc57121a8b021f2ff2469b2bae247b8aa
   languageName: node
   linkType: hard
 
@@ -6652,6 +6712,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-base64@npm:~2.1.7":
+  version: 2.1.9
+  resolution: "js-base64@npm:2.1.9"
+  checksum: 9a90987f413a361a9dbb9dd07bf7f1553339aa8640f7e7025d7ba652f31eb59ea4d7854f77b403a728026adc1ae9192c7139a10b3f9d9f8df10fac3ffec97f4e
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0, js-tokens@npm:^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -8045,6 +8112,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"num2fraction@npm:~1.1.0":
+  version: 1.1.0
+  resolution: "num2fraction@npm:1.1.0"
+  checksum: bbf9dc24be761a23e7de1f420dcc0f741e09d9398bbe4e24dfa914efc0ef9876dd2ce1e121c41cbbda6899fcdd4d3455a5585329793e4b866f0c8b33ae102d0d
+  languageName: node
+  linkType: hard
+
 "nwsapi@npm:^2.2.0":
   version: 2.2.0
   resolution: "nwsapi@npm:2.2.0"
@@ -8590,7 +8664,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.12, postcss@npm:^8.4.4":
+"postcss@npm:^8.4.12, postcss@npm:^8.4.13":
   version: 8.4.13
   resolution: "postcss@npm:8.4.13"
   dependencies:
@@ -8598,6 +8672,16 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 514fb3552805a5d039a2d6b4df3e73f657001716ca93c0d57e6067b0473abdea70276d80afc96005c9aaff82ed5d98062bd97724d3f47ca400fba0b5e9e436ed
+  languageName: node
+  linkType: hard
+
+"postcss@npm:~4.0.6":
+  version: 4.0.6
+  resolution: "postcss@npm:4.0.6"
+  dependencies:
+    js-base64: ~2.1.7
+    source-map: ~0.2.0
+  checksum: 71c261dc4409c240d8edbdb457a75efe2262cc179a16331aebcfffc81c5b47d3e0d5c40befcc948b8b92201da0a180ac970170cbf2b048a274001773a550f94e
   languageName: node
   linkType: hard
 
@@ -9729,6 +9813,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"source-map@npm:~0.2.0":
+  version: 0.2.0
+  resolution: "source-map@npm:0.2.0"
+  dependencies:
+    amdefine: ">=0.0.4"
+  checksum: 95fe800c3a93f8c0b9516c033bfc75f2678e27d2e6c0b23ae222f5ddc4afa0a39bd0be15d1c0a1e766d388f3761cc854a053a4330f49242e6045e1a4f9dc0e26
+  languageName: node
+  linkType: hard
+
 "source-map@npm:~0.8.0-beta.0":
   version: 0.8.0-beta.0
   resolution: "source-map@npm:0.8.0-beta.0"
@@ -10134,7 +10227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^3.0.0":
+"tailwindcss@npm:^3.0.24":
   version: 3.0.24
   resolution: "tailwindcss@npm:3.0.24"
   dependencies:
@@ -11291,6 +11384,7 @@ __metadata:
     "@types/probe-image-size": ^7.0.1
     "@types/react": 17.0.37
     "@types/zxcvbn": ^4.4.1
+    autoprefix: ^1.0.1
     autoprefixer: ^10.4.0
     awesome-debounce-promise: ^2.1.0
     axios: ^0.24.0
@@ -11309,7 +11403,7 @@ __metadata:
     next-auth: ^4.2.1
     next-mdx-remote: ^3.0.8
     next-plausible: ^3.1.9
-    postcss: ^8.4.4
+    postcss: ^8.4.13
     probe-image-size: ^7.2.2
     react: 17.0.2
     react-async-hook: ^4.0.0
@@ -11324,7 +11418,7 @@ __metadata:
     remark-html: ^15.0.1
     stripe: ^8.207.0
     swr: ^1.2.2
-    tailwindcss: ^3.0.0
+    tailwindcss: ^3.0.24
     tsconfig: "*"
     typescript: 4.5.2
     use-constant: ^1.1.0
