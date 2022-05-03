@@ -46,13 +46,19 @@ const HeaderM = () => {
           as="nav"
           className="hidden md:flex justify-self-start space-x-10"
         >
-          <NextLink href="/about" passHref>
+          <NextLink
+            href={"/about?utm_campaign=navlink&utm_source=site"}
+            passHref
+          >
             <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               About Me
             </a>
           </NextLink>
 
-          <NextLink href="/projects" passHref>
+          <NextLink
+            href={"/projects?utm_campaign=navlink&utm_source=site"}
+            passHref
+          >
             <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               Case Studies
             </a>
@@ -60,13 +66,16 @@ const HeaderM = () => {
 
           <SolutionsFlyout />
 
-          <NextLink href="/faq" passHref>
+          <NextLink href={"/faq?utm_campaign=navlink&utm_source=site"} passHref>
             <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               FAQ
             </a>
           </NextLink>
 
-          <NextLink href="/contact?utm_content=header" passHref>
+          <NextLink
+            href={"/contact?utm_campaign=navlink&utm_source=site"}
+            passHref
+          >
             <a className="text-base font-medium text-gray-500 hover:text-gray-900">
               Contact
             </a>
@@ -113,12 +122,12 @@ const HeaderM = () => {
               <div className="mt-6">
                 <nav className="grid grid-cols-1 gap-7 ">
                   {localSolutions.solutions.map((solution: any) => (
-                    <NextLink key={solution.name} href={solution.href}>
-                      <a
-                        key={solution.name}
-                        href={solution.href}
-                        className="group -m-3 p-3 flex items-center rounded-lg hover:bg-gray-50"
-                      >
+                    <NextLink
+                      key={solution.name}
+                      href={`${solution.href}?utm_campaign=mobile_flyout&utm_source=site`}
+                      passHref
+                    >
+                      <a className="group -m-3 p-3 flex items-center rounded-lg hover:bg-gray-50">
                         <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-brand-primary text-white">
                           <solution.icon
                             className="h-6 w-6 group-hover:text-brand-accent2h"
@@ -136,7 +145,10 @@ const HeaderM = () => {
             </div>
             <div className="py-6 px-5">
               <div className="grid grid-cols-2 gap-4">
-                <NextLink href="/about" passHref>
+                <NextLink
+                  href={"/about?utm_campaign=mobile_flyout&utm_source=site"}
+                  passHref
+                >
                   <a className="text-base font-medium text-brand-text1 hover:text-brand-text2">
                     About Me
                   </a>
@@ -144,20 +156,28 @@ const HeaderM = () => {
 
                 <NextLink href="/case-studies" passHref>
                   <a
-                    href="/case-studies"
+                    href={
+                      "/case-studies?utm_campaign=mobile_flyout&utm_source=site"
+                    }
                     className="text-base font-medium text-brand-text1 hover:text-brand-text2"
                   >
                     Case Studies
                   </a>
                 </NextLink>
 
-                <NextLink href="/faq" passHref>
+                <NextLink
+                  href={"/faq?utm_campaign=mobile_flyout&utm_source=site"}
+                  passHref
+                >
                   <a className="text-base font-medium text-brand-text1 hover:text-brand-text2">
                     FAQ
                   </a>
                 </NextLink>
 
-                <NextLink href="/contact" passHref>
+                <NextLink
+                  href={"/contact?utm_campaign=mobile_flyout&utm_source=site"}
+                  passHref
+                >
                   <a className="text-base font-medium text-brand-text1 hover:text-brand-text2">
                     Contact
                   </a>

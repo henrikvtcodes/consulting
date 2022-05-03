@@ -41,12 +41,12 @@ const SolutionsFlyout = () => {
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8 lg:grid-cols-2">
                   {solutions.map((item: any) => (
-                    <NextLink key={item.name} href={item.href} passHref>
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 group"
-                      >
+                    <NextLink
+                      key={item.name}
+                      href={`${item.href}?utm_campaign=flyout&utm_source=site`}
+                      passHref
+                    >
+                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 group">
                         {item.icon && (
                           <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-brand-primary text-white sm:h-12 sm:w-12">
                             <item.icon
@@ -68,11 +68,11 @@ const SolutionsFlyout = () => {
                   ))}
                 </div>
                 <div className="p-5 bg-gray-50 sm:p-8">
-                  <NextLink href={"/contact?utm_content=flyout"} passHref>
-                    <a
-                      href="/contact"
-                      className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100"
-                    >
+                  <NextLink
+                    href={"/contact?utm_campaign=flyout&utm_source=site"}
+                    passHref
+                  >
+                    <a className="-m-3 p-3 flow-root rounded-md hover:bg-gray-100">
                       <div className="flex items-center">
                         <div className="text-base font-medium text-gray-900">
                           Custom Solutions

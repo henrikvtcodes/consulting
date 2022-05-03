@@ -79,7 +79,10 @@ const Page: NextPage = (props) => {
                       /mo
                     </span>
                   </p> */}
-                  <NextLink href={tier.href} passHref>
+                  <NextLink
+                    href={`${tier.href}?utm_campaign=card&utm_source=site`}
+                    passHref
+                  >
                     <a className="mt-8 block w-full bg-brand-primary rounded-md py-2 text-sm font-semibold text-white text-center hover:shadow-inner">
                       See {tier.name}
                     </a>
