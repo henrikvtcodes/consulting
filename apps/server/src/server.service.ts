@@ -3,6 +3,6 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class ServerService {
   getHello(): string {
-    return 'Hello World!';
+    return `NextAuth URL: ${process.env.NEXTAUTH_URL}`;
   }
 }
