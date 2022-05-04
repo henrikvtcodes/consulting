@@ -6,7 +6,6 @@
       "outputs": ["server/**", ".next/**"],
       "dependsOn": ["^build"]
     },
-    "vercel": {},
     "dev": {
       "cache": false,
       "dependsOn": ["^build"]
@@ -15,5 +14,12 @@
       "cache": false
     }
   },
-  "globalDependencies": [".env", "./prisma/schema.prisma"]
+  "globalDependencies": [
+    "./.env",
+    "./prisma/schema.prisma",
+    "$DATABASE_URL",
+    "$NEXTAUTH_SECRET",
+    "$STRIPE_SECRET_KEY",
+    "$STRIPE_WEBHOOK_SECRET"
+  ]
 }
