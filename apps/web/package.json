@@ -29,7 +29,7 @@
     "@types/marked": "^4.0.1",
     "@types/zxcvbn": "^4.4.1",
     "autoprefix": "^1.0.1",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "10.4.0",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.24.0",
     "chalk": "^5.0.0",
