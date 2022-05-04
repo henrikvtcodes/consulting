@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^5.17.0",
+    "@nestjs/schematics": "^8.0.10",
     "@prisma/client": "^3.13.0",
     "@stripe/react-stripe-js": "^1.7.0",
     "@stripe/stripe-js": "^1.24.0",

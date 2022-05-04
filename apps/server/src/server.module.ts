@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { ServerController } from './server.controller';
-import { ServerService } from './server.service';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -10,8 +9,9 @@ import { ServerService } from './server.service';
       envFilePath: ['../../.env'],
       isGlobal: true,
     }),
+    PrismaModule,
   ],
-  controllers: [ServerController],
-  providers: [ServerService],
+  controllers: [],
+  providers: [],
 })
 export class ServerModule {}
