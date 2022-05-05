@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
-import { ServerController } from './server/server.controller';
+import { ServerController } from './server.controller';
 
 @Module({
   imports: [

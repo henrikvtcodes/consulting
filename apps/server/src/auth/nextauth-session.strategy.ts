@@ -4,6 +4,7 @@ import passportCustom from 'passport-custom';
 
 import { AuthService } from './auth.service';
 import { Request } from 'express';
+import { Session, User } from '@prisma/client';
 
 const CustomStrategy = passportCustom.Strategy;
 
@@ -16,21 +17,27 @@ export class NextAuthSession extends PassportStrategy(
     super();
   }
 
-  async validate(req: Request): Promise<any> {
+  async validate(req: Request): Promise<{
+    session: Session & {
+      user: User;
+    };
+  }> {
     const sessionToken = req.cookies['next-auth.session-token'];
     if (!sessionToken) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException({ message: 'No session token' });
     }
 
     const session = await this.authService.verifySession(sessionToken);
     if (!session) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException({
+        statusCode: 401,
+        message: 'Invalid Session',
+        token: sessionToken,
+      });
     }
 
     return {
-      id: session.id,
-      userId: session.userId,
-      expires: session.expires,
+      session: session,
     };
   }
 }

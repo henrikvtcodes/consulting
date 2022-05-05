@@ -7,8 +7,8 @@ export class AuthController {
   @Get()
   @UseGuards(AuthGuard('nextauth-session'))
   getCookies(@Req() request: Request, @Res() response) {
-    const cookies = request.cookies['next-auth.session-token'];
-    console.log(cookies);
-    response.send(cookies);
+    const user = request.cookies;
+
+    response.send(user);
   }
 }
