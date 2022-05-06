@@ -1,8 +1,8 @@
 name: Deploy Server to Railway
 
 on:
-  push:
-    branches: [monorepo]
+  # push:
+  #   branches: [monorepo]
   workflow_dispatch:
     branches: [monorepo]
 
