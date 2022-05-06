@@ -3,7 +3,7 @@
   "baseBranch": "origin/monorepo",
   "pipeline": {
     "build": {
-      "outputs": ["server/**", ".next/**"],
+      "outputs": ["server/**", ".next/**", "./.next/**"],
       "dependsOn": ["^build"]
     },
     "dev": {

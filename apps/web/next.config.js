@@ -7,6 +7,7 @@ const { withPlausibleProxy } = require("next-plausible");
 bundleAnalyze = withBundleAnalyzer({
   swcMinify: true,
   reactStrictMode: true,
+  distDir: "../../.next",
   images: {
     domains: [
       "tailwindui.com",
