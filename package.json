@@ -8,12 +8,14 @@
   "scripts": {
     "build": "yarn run prisma:gen; turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
-    "vercel:build": "rm -rf node_modules/.prisma; yarn run prisma:gen; turbo run build --filter=web",
+    "vercel:build": "yarn run prisma:clean; turbo run build --filter=web",
+    "railway": "yarn run prisma:clean; turbo run build --filter=server",
     "serverprod": "turbo run build --filter=server && yarn workspace server run start:prod",
     "lint": "turbo run lint",
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
-    "prisma": "prisma migrate dev",
+    "prisma": "rm -rf node_modules/.prisma; prisma generate",
+    "prisma:clean": "rm -rf node",
     "prisma:gen": "prisma generate",
     "prisma:push": "prisma push"
   },
