@@ -8,7 +8,7 @@ My project primarily uses Google & Facebook OAuth to authenticate users. I chose
 ### Prisma (Postgres)
 I chose Prisma simply because it's something that I've wanted to dig into for a while. Additionally, its a very well-loved ORM in the community. Full type safety is an amazing experience. NextAuth also has an adapter for it which allows me to easily tightly integrate sign up flows with custom authentication/authorization.
 
-### API Routes
+### API Routes (to change soon)
 Next.js API Routes are really the backbone of this project. They handle all of my backend needs, from authentication (NextAuth), to handling payments (Stripe).
 
 ### Stripe  
