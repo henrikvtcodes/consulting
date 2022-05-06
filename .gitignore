@@ -49,3 +49,6 @@ yarn-error.log*
 .vercel
 !types.d.ts
 !global.d.ts
+
+# turbo
+.turbo
