@@ -22,10 +22,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-          cache: yarn
+          cache: "yarn"
 
       - name: Install packages
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable-cache
 
       - name: Generate Prisma
         run: yarn run prisma:clean
@@ -37,4 +37,4 @@ jobs:
         run: npm i -g @railway/cli
 
       - name: Deploy
-        run: railway up
+        run: RAILWAY_TOKEN=$RAILWAY_TOKEN railway up
