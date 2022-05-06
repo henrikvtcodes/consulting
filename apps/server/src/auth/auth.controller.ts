@@ -6,8 +6,8 @@ import { AuthGuard } from '@nestjs/passport';
 export class AuthController {
   @Get()
   @UseGuards(AuthGuard('nextauth-session'))
-  getCookies(@Req() request: Request, @Res() response) {
-    const user = request.cookies;
+  getCookies(@Req() request, @Res() response) {
+    const user = request.user.user.id;
 
     response.send(user);
   }
