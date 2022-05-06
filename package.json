@@ -6,7 +6,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "yarn run prisma:gen; turbo run build",
+    "build": "yarn run prisma:clean; turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
     "vercel:build": "yarn run prisma:clean; turbo run build --filter=web",
     "serverprod": "yarn run prisma:clean; turbo run build --filter=server && yarn workspace server run start:prod",
@@ -14,7 +14,7 @@
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
     "prisma": "rm -rf node_modules/.prisma; prisma generate",
-    "prisma:clean": "rm -rf node",
+    "prisma:clean": "rm -rf node_modules/.prisma; prisma generate",
     "prisma:gen": "prisma generate",
     "prisma:push": "prisma push"
   },
