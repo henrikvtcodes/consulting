@@ -36,11 +36,6 @@ jobs:
       - name: Install Railway
         run: npm i -g @railway/cli
 
-      - name: WHOAMI
-        run: railway whoami
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-
       - name: Deploy
         run: railway up
         env:
