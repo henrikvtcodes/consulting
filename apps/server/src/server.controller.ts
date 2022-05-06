@@ -5,8 +5,7 @@ import { PrismaService } from './prisma/prisma.service';
 export class ServerController {
   constructor(private readonly prisma: PrismaService) {}
   @Get()
-  getHealthCheck(): object {
-    this.prisma.$connect();
+  getHealthCheck() {
     return {
       status: 'OK',
     };
