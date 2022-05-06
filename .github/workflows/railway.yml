@@ -25,7 +25,7 @@ jobs:
           cache: "yarn"
 
       - name: Install packages
-        run: yarn install --immutable-cache
+        run: yarn install --immutable
 
       - name: Generate Prisma
         run: yarn run prisma:clean
