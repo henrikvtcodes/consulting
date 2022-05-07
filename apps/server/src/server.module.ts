@@ -1,5 +1,11 @@
-import { Module } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { applyRawBodyOnlyTo } from '@golevelup/nestjs-webhooks';
 
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
@@ -21,4 +27,11 @@ import { UserModule } from './user/user.module';
   controllers: [ServerController],
   providers: [],
 })
-export class ServerModule {}
+export class ServerModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    applyRawBodyOnlyTo(consumer, {
+      method: RequestMethod.ALL,
+      path: 'stripe/webhook',
+    });
+  }
+}

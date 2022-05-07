@@ -602,6 +602,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@golevelup/nestjs-common@npm:^1.4.4":
+  version: 1.4.4
+  resolution: "@golevelup/nestjs-common@npm:1.4.4"
+  dependencies:
+    nanoid: ^3.2.0
+  checksum: d7024160ffbddd7bdd79bb5357b736cab6251d69ac8cd3652a6260e64e75009cb5ae4a6d00dc719f714979c7b520d861d546d982af6e4672805e57fd17d93440
+  languageName: node
+  linkType: hard
+
+"@golevelup/nestjs-modules@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@golevelup/nestjs-modules@npm:0.5.0"
+  dependencies:
+    lodash: ^4.17.21
+  peerDependencies:
+    "@nestjs/common": ^8.x
+    rxjs: ^7.x
+  checksum: 41ea4594b5b7490789a318256ffc8a217f0e5aa853c77f14f2c1a53c9dc034d7057f29b3c417d47dfdbd2ce9f2e355e5ef5f9bf85e421891b8f5f99509a9a8a0
+  languageName: node
+  linkType: hard
+
+"@golevelup/nestjs-webhooks@npm:^0.2.12":
+  version: 0.2.12
+  resolution: "@golevelup/nestjs-webhooks@npm:0.2.12"
+  dependencies:
+    "@golevelup/nestjs-common": ^1.4.4
+    "@golevelup/nestjs-modules": ^0.5.0
+  peerDependencies:
+    body-parser: ^1.19.0
+  checksum: 6623a5cc07ac7db1cbf266a04bbbfd6d0b63a15bb506839f60c46dc8d188a5da762c8de3a433dcbaaab07f99d12e610bb66d17fe1fca0cd755c45fe989df712b
+  languageName: node
+  linkType: hard
+
 "@google-cloud/paginator@npm:^3.0.7":
   version: 3.0.7
   resolution: "@google-cloud/paginator@npm:3.0.7"
@@ -9706,6 +9739,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "server@workspace:apps/server"
   dependencies:
+    "@golevelup/nestjs-webhooks": ^0.2.12
     "@nestjs/cli": ^8.1.3
     "@nestjs/common": ^8.1.1
     "@nestjs/config": ^2.0.0
