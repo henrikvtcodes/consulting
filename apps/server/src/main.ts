@@ -5,7 +5,9 @@ import cookieParser from 'cookie-parser';
 import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
-  const app = await NestFactory.create(ServerModule);
+  const app = await NestFactory.create(ServerModule, {
+    bodyParser: false,
+  });
 
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
@@ -19,6 +21,8 @@ async function bootstrap() {
       'https://consulting.henrikvt.com',
     ],
     allowedHeaders: ['Cookies', 'Content-Type'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    credentials: true,
   });
 
   await app.listen(3333);

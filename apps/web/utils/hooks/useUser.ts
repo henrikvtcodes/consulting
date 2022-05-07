@@ -19,10 +19,8 @@ export const useUser = () => {
     };
   }
 
-  console.log("user", user);
-
   return {
-    user: user?.user,
+    user: user?.data,
     signOut,
   };
 };

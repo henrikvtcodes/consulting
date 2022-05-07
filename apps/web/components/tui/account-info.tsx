@@ -12,6 +12,8 @@ import { userInfo } from "os";
 import { Switch } from "@headlessui/react";
 import { CustomerData, UpsertCustomer } from "types/customer";
 
+import { API_URL } from "~utils/config";
+
 const PersonalInfo = () => {
   const { user, signOut: mutUser } = useUser();
 
@@ -19,7 +21,7 @@ const PersonalInfo = () => {
     data: userDataRes,
     error: userDataError,
     isValidating,
-  } = useSWR("/api/user/meta");
+  } = useSWR(`${API_URL}/user`);
 
   const userData: UserMetadata = userDataRes?.data;
 
@@ -41,10 +43,9 @@ const PersonalInfo = () => {
       photo_url,
     } = data;
 
-    const result = axios({
-      method: "PATCH",
-      url: "/api/user/meta",
-      data: {
+    const result = axios.patch(
+      `${API_URL}/user`,
+      {
         name,
         phone,
         address_line1,
@@ -54,10 +55,13 @@ const PersonalInfo = () => {
         postal_code,
         photo_url,
       },
-    });
+      {
+        withCredentials: true,
+      }
+    );
 
     result.then((res) => {
-      mutate("/api/user/meta");
+      mutate(`${API_URL}/user`);
       mutate("/api/auth/session");
     });
   };
@@ -182,15 +186,15 @@ const PersonalInfo = () => {
 };
 
 const PaymentInfo = () => {
-  const { data, error } = useSWR("/api/user/customer");
+  const { data, error } = useSWR(`${API_URL}/user/customer`);
 
   const { register, handleSubmit, control, formState } = useForm();
 
   const {
     data: custDataRes,
-    error: userDataError,
+    error: custDataError,
     isValidating,
-  } = useSWR("/api/user/customer");
+  } = useSWR(`${API_URL}/user/customer`);
 
   const userData: CustomerData = custDataRes;
 
@@ -217,13 +221,12 @@ const PaymentInfo = () => {
       sepBillingAddr,
     } = data;
 
-    const reqMethod = newCustomer ? "POST" : "PATCH";
-    console.log(reqMethod);
+    const reqMethod = newCustomer ? axios.post : axios.patch;
+    // console.log(reqMethod);
 
-    const result = axios({
-      method: reqMethod,
-      url: "/api/user/customer",
-      data: {
+    const result = reqMethod(
+      `${API_URL}/user/customer`,
+      {
         first_name,
         last_name,
         address_line1,
@@ -233,10 +236,13 @@ const PaymentInfo = () => {
         postal_code,
         sepBillingAddr,
       },
-    });
+      {
+        withCredentials: true,
+      }
+    );
 
     result.then((res) => {
-      mutate("/api/user/customer");
+      mutate(`${API_URL}/user/customer`);
       console.log("Payment Info Update Request Completed");
       console.log(res);
     });
