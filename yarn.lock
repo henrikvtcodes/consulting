@@ -611,6 +611,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@golevelup/nestjs-discovery@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@golevelup/nestjs-discovery@npm:3.0.0"
+  dependencies:
+    lodash: ^4.17.15
+  checksum: 62d60b3da8604dc131f38fcf965fcbbb0fdce37af7d71c71710fa14b8ac1df80d22b45d3ecbe5da9bc55a233079ae031778f34b07fc5d19bda082a0345cab87f
+  languageName: node
+  linkType: hard
+
 "@golevelup/nestjs-modules@npm:^0.5.0":
   version: 0.5.0
   resolution: "@golevelup/nestjs-modules@npm:0.5.0"
@@ -620,6 +629,19 @@ __metadata:
     "@nestjs/common": ^8.x
     rxjs: ^7.x
   checksum: 41ea4594b5b7490789a318256ffc8a217f0e5aa853c77f14f2c1a53c9dc034d7057f29b3c417d47dfdbd2ce9f2e355e5ef5f9bf85e421891b8f5f99509a9a8a0
+  languageName: node
+  linkType: hard
+
+"@golevelup/nestjs-stripe@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "@golevelup/nestjs-stripe@npm:0.3.3"
+  dependencies:
+    "@golevelup/nestjs-common": ^1.4.4
+    "@golevelup/nestjs-discovery": ^3.0.0
+    "@golevelup/nestjs-modules": ^0.5.0
+  peerDependencies:
+    stripe: ^8.39.0
+  checksum: 74217f5b6304bbcd8a1def210c9e835d7cdc5f36aa52b2f3ce591178e0f276aa54e84686a59ee570b26a1d4ce58c1fdd66e04651325e29f91b60d18664d44d14
   languageName: node
   linkType: hard
 
@@ -3560,7 +3582,7 @@ __metadata:
     eslint: 7
     nanoid: ^3.2.0
     prisma: ^3.13.0
-    stripe: ^8.207.0
+    stripe: ^8.222.0
     turbo: ^1.2.6
     typescript: 4.5.2
   languageName: unknown
@@ -7164,7 +7186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
+"lodash@npm:4.17.21, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -9739,6 +9761,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "server@workspace:apps/server"
   dependencies:
+    "@golevelup/nestjs-stripe": ^0.3.3
     "@golevelup/nestjs-webhooks": ^0.2.12
     "@nestjs/cli": ^8.1.3
     "@nestjs/common": ^8.1.1
@@ -9767,6 +9790,7 @@ __metadata:
     rimraf: ^3.0.2
     rxjs: ^7.4.0
     source-map-support: ^0.5.20
+    stripe: ^8.222.0
     supertest: ^6.1.6
     ts-jest: ^27.0.7
     ts-loader: ^9.2.6
@@ -10216,6 +10240,16 @@ __metadata:
     "@types/node": ">=8.1.0"
     qs: ^6.10.3
   checksum: aefe91ca4b97ec202cdc0b268e233426ed56a5ca3460aad469bb49d3ed2076232277ca95d55d34f58320f54a3a08ac159b562e28642f5c63dd650cd4d9480580
+  languageName: node
+  linkType: hard
+
+"stripe@npm:^8.222.0":
+  version: 8.222.0
+  resolution: "stripe@npm:8.222.0"
+  dependencies:
+    "@types/node": ">=8.1.0"
+    qs: ^6.10.3
+  checksum: ac9a5b569abf274a9f10cf5bad09d6cf47d457dad21191e8fc896c356608e75337b2e39b6e39526579d39f5b29c74a34e61c55e706def2498a079f7b4dbaea17
   languageName: node
   linkType: hard
 
