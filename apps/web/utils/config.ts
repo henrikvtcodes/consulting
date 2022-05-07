@@ -11,11 +11,18 @@ import {
   PuzzleIcon,
   BriefcaseIcon,
   LocationMarkerIcon,
-  LockClosedIcon
+  LockClosedIcon,
 } from "@heroicons/react/outline";
 
 // prettier-ignore-file
 // eslint-disable
+
+// export const API_URL =
+//   process.env.NODE_ENV === "production"
+//     ? process.env.API_BASE_URL
+//     : "http://localhost:3333";
+
+export const API_URL = "http://localhost:3333";
 
 const solutions = [
   {
@@ -107,7 +114,7 @@ const solutions = [
         desc: `Need to connect multiple buildings? A pool, garage/workshop, guest house, or even neighbor? 
         HVTC is who you need; this is our specialty.`,
         icon: LocationMarkerIcon,
-      }
+      },
     ],
     icon: GlobeAltIcon,
   },
@@ -127,7 +134,7 @@ const solutions = [
         feat: "",
         desc: "",
         icon: WifiIcon,
-      }
+      },
     ],
     icon: VideoCameraIcon,
   },
@@ -147,7 +154,7 @@ const solutions = [
         feat: "",
         desc: "",
         icon: WifiIcon,
-      }
+      },
     ],
     icon: DeviceMobileIcon,
   },
@@ -157,153 +164,153 @@ const namedSolutions = {
   Networking: solutions[1],
   Surveillance: solutions[2],
   SmartHome: solutions[3],
-}
+};
 
 const vendorLogos = {
-  ubiquiti : {
+  ubiquiti: {
     alt: "Ubiquiti Networks",
     href: "#",
     img: "/brands/UbiquitiNetworks-ColorFullLogo.png",
     width: 164,
   },
-  synology : {
+  synology: {
     alt: "Synology",
     href: "#",
     img: "/brands/Synology_Dark.png",
     width: 180,
   },
-  netgear : {
+  netgear: {
     alt: "Netgear Business",
     href: "#",
     img: "/brands/Netgear_LightBg.png",
     width: 204,
   },
-  hikvision : {
+  hikvision: {
     alt: "Hikvision",
     href: "#",
     img: "/brands/Hikvision_Color.png",
     width: 85,
   },
-  axisComs : {
+  axisComs: {
     alt: "Axis Communications",
     href: "#",
     img: "/brands/Axis-Communications_LightBg.png",
     width: 133,
   },
-  uniview : {
+  uniview: {
     alt: "Uniview",
     href: "#",
     img: "/brands/Uniview_Color_Dark.png",
     width: 95,
   },
-  lutronCaseta : {
+  lutronCaseta: {
     alt: "Lutron Caseta Wireless",
     href: "#",
     img: "/brands/LutronCaseta_Color_Dark.png",
     width: 76,
   },
-  hue : {
+  hue: {
     alt: "Philips Hue",
     href: "#",
     img: "/brands/PhilipsHue_Color_Dark.png",
     width: 75,
   },
-  aeotec : {
+  aeotec: {
     alt: "Aeotec",
     href: "#",
     img: "/brands/Aeotec_Color.png",
     width: 193,
   },
-  kasa : {
+  kasa: {
     alt: "Kasa Smart",
     href: "#",
     img: "/brands/KasaSmart_Color_Dark.png",
     width: 159,
   },
-  homeseer : {
+  homeseer: {
     alt: "HomeSeer",
     href: "#",
     img: "/brands/HomeSeer_Color_Dark.png",
     width: 255,
   },
-  sonos : {
+  sonos: {
     alt: "Sonos",
     href: "#",
     img: "/brands/Sonos_Dark.png",
     width: 72,
   },
-  tplink : {
+  tplink: {
     alt: "TP-Link",
     href: "#",
     img: "/brands/TPLink-Color-Logo.svg",
     width: 99,
   },
-  pfsense : {
+  pfsense: {
     alt: "PFSense",
     href: "#",
     img: "/brands/PfSense_color.png",
     width: 164,
   },
-  truecable : {
+  truecable: {
     alt: "TrueCable",
     href: "#",
     img: "/brands/TrueCable_Dark.png",
     width: 102,
   },
-  belden : {
+  belden: {
     alt: "Belden",
     href: "#",
     img: "/brands/Belden_Color.svg",
     width: 250,
   },
-  merakiGo : {
+  merakiGo: {
     alt: "Cisco Meraki Go",
     href: "#",
     img: "/brands/CiscoMerakiGo_Color_Dark.png",
     width: 173,
   },
-  instantOn : {
+  instantOn: {
     alt: "Aruba Instant On",
     href: "#",
     img: "/brands/ArubaInstantOn_Color_Dark.svg",
     width: 93,
   },
-}
+};
 
 const vendors = {
   WiFi: [
-  vendorLogos.ubiquiti,
-  vendorLogos.tplink,
-  vendorLogos.netgear,
-  vendorLogos.merakiGo,
-  vendorLogos.instantOn,
-  vendorLogos.belden,
-],
+    vendorLogos.ubiquiti,
+    vendorLogos.tplink,
+    vendorLogos.netgear,
+    vendorLogos.merakiGo,
+    vendorLogos.instantOn,
+    vendorLogos.belden,
+  ],
   Networking: [
-  vendorLogos.ubiquiti,
-  vendorLogos.tplink,
-  vendorLogos.netgear,
-  vendorLogos.pfsense,
-  vendorLogos.truecable,
-  vendorLogos.belden,
-],
+    vendorLogos.ubiquiti,
+    vendorLogos.tplink,
+    vendorLogos.netgear,
+    vendorLogos.pfsense,
+    vendorLogos.truecable,
+    vendorLogos.belden,
+  ],
   Smarthome: [
-  vendorLogos.lutronCaseta,
-  vendorLogos.hue,
-  vendorLogos.aeotec,
-  vendorLogos.kasa,
-  vendorLogos.homeseer,
-  vendorLogos.sonos,
-],
+    vendorLogos.lutronCaseta,
+    vendorLogos.hue,
+    vendorLogos.aeotec,
+    vendorLogos.kasa,
+    vendorLogos.homeseer,
+    vendorLogos.sonos,
+  ],
   Security: [
-  vendorLogos.synology,
-  vendorLogos.ubiquiti,
-  vendorLogos.netgear,
-  vendorLogos.hikvision,
-  vendorLogos.axisComs,
-  vendorLogos.uniview,
-]
-}
+    vendorLogos.synology,
+    vendorLogos.ubiquiti,
+    vendorLogos.netgear,
+    vendorLogos.hikvision,
+    vendorLogos.axisComs,
+    vendorLogos.uniview,
+  ],
+};
 
 const allSolutions = [
   {
@@ -427,47 +434,48 @@ const NextAuthErrorParams: {
     message: string;
   };
 } = {
-  "Default": {
+  Default: {
     title: "An Unknown Error Occurred",
     message: "An unknown error ocurred. Please try again later.",
   },
-  "Configuration": {
+  Configuration: {
     title: "Server Error",
     message: "The server encountered an error while attempting to log you in.",
   },
-  "InvalidRole": {
+  InvalidRole: {
     title: "User Discrepancy",
-    message: "There is a problem with your user account. Please contact Henrik directly to report the problem.",
+    message:
+      "There is a problem with your user account. Please contact Henrik directly to report the problem.",
   },
-  "Verification": {
+  Verification: {
     title: "Verification Error",
     message:
       "The email verification token is invalid or expired. Please try again.",
   },
-  "AccessDenied": {
+  AccessDenied: {
     title: "Access Denied",
     message: "You are not permitted to access this page.",
   },
-  "OAuthSignin": {
+  OAuthSignin: {
     title: "Provider Sign In Error",
     message: "We were not able to sign you in using this provider.",
   },
-  "OAuthCallback": {
+  OAuthCallback: {
     title: "Provider Sign In Error",
     message: "We were not able to complete the signin process.",
   },
-  "OAuthAccountNotLinked":{
+  OAuthAccountNotLinked: {
     title: "Provider Sign In Error",
     message: "Your email is already linked to a different account.",
   },
-  "Callback": {
+  Callback: {
     title: "Provider Sign In Error",
     message: "We were not able to complete the signin process.",
   },
-  "SessionRequired":{
+  SessionRequired: {
     title: "Session Required",
     message: "You must be signed in to access that page.",
-  }
+  },
 };
 
 const allowedOrigins: string[] = [
@@ -488,4 +496,13 @@ const config = {
 };
 
 export default config;
-export { solutions, allSolutions, namedSolutions,  faqs, people, allowedOrigins, vendors, NextAuthErrorParams };
+export {
+  solutions,
+  allSolutions,
+  namedSolutions,
+  faqs,
+  people,
+  allowedOrigins,
+  vendors,
+  NextAuthErrorParams,
+};

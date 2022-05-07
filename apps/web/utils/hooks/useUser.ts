@@ -1,28 +1,28 @@
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
 
-export const useUser = () => {
-  const session = useSession();
+import { API_URL } from "~utils/config";
 
+export const useUser = () => {
   const {
     data: user,
     error,
     mutate: mutateSession,
-  } = useSWR("/api/auth/session");
+  } = useSWR(`${API_URL}/user`);
 
   const signOut = () => mutateSession();
 
-  if (session.status === "unauthenticated") {
+  if (error) {
     return {
       user: null,
-      status: session.status,
       signOut,
     };
   }
 
+  console.log("user", user);
+
   return {
     user: user?.user,
-    status: session.status,
     signOut,
   };
 };

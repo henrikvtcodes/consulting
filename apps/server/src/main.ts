@@ -18,6 +18,7 @@ async function bootstrap() {
       'https://dev.consulting.henrikvt.com',
       'https://consulting.henrikvt.com',
     ],
+    allowedHeaders: ['Cookies', 'Content-Type'],
   });
 
   await app.listen(3333);

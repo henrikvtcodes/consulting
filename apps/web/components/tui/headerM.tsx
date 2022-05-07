@@ -19,7 +19,7 @@ const localSolutions = solutions;
 const HeaderM = () => {
   const { role, isLoading, mutate } = useRole();
 
-  const { user, status, signOut: mutUserData } = useUser();
+  const { user, signOut: mutUserData } = useUser();
 
   const isLoggedIn = user as boolean;
 

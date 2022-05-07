@@ -13,7 +13,7 @@ import { Switch } from "@headlessui/react";
 import { CustomerData, UpsertCustomer } from "types/customer";
 
 const PersonalInfo = () => {
-  const { user, status, signOut: mutUser } = useUser();
+  const { user, signOut: mutUser } = useUser();
 
   const {
     data: userDataRes,

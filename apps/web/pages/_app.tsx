@@ -16,31 +16,33 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   useEffect(() => {
     plausible("Dev View");
   }, [plausible]);
-  
+
+  // `${process.env.API_BASE_URL as string}${url}`
+
   return (
-      <SWRConfig
-        value={{
-          fetcher: (url: string) => axios.get(url).then((res) => res.data),
-          provider: () => new Map(),
-        }}
-      >
+    <SWRConfig
+      value={{
+        fetcher: (url: string) => axios.get(url, {withCredentials: true}).then((res) => res.data),
+        provider: () => new Map(),
+      }}
+    >
       <Favicon />
-        <SessionProvider session={session}>
-          {process.env.NEXT_PUBLIC_PROD_WARN === "true" ? (
-            <WarningBanner />
-          ) : (
-            <Fragment />
-          )}
-          <PlausibleProvider
-            domain="consulting.henrikvt.com"
-            selfHosted
-            customDomain="https://plausible.henriktech.com"
-            trackOutboundLinks={true}
-          >
-            <Component {...pageProps} />
-          </PlausibleProvider>
-        </SessionProvider>
-      </SWRConfig>
+      <SessionProvider session={session}>
+        {process.env.NEXT_PUBLIC_PROD_WARN === "true" ? (
+          <WarningBanner />
+        ) : (
+          <Fragment />
+        )}
+        <PlausibleProvider
+          domain="consulting.henrikvt.com"
+          selfHosted
+          customDomain="https://plausible.henriktech.com"
+          trackOutboundLinks={true}
+        >
+          <Component {...pageProps} />
+        </PlausibleProvider>
+      </SessionProvider>
+    </SWRConfig>
   );
 }
 

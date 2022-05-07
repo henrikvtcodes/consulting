@@ -4,7 +4,12 @@ import { Strategy } from 'passport-custom';
 
 import { AuthService } from './auth.service';
 import { Request } from 'express';
-import { Session, User } from '@prisma/client';
+import { User } from '@prisma/client';
+
+const cookieName =
+  process.env.NODE_ENV === 'production'
+    ? '__Secure-next-auth.session-token'
+    : 'next-auth.session-token';
 
 @Injectable()
 export class NextAuthSession extends PassportStrategy(
@@ -15,13 +20,8 @@ export class NextAuthSession extends PassportStrategy(
     super();
   }
 
-  async validate(req: Request): Promise<
-    | (Session & {
-        user: User;
-      })
-    | null
-  > {
-    const sessionToken = req.cookies['next-auth.session-token'];
+  async validate(req: Request): Promise<User | null> {
+    const sessionToken = req.cookies[cookieName];
     if (!sessionToken) {
       throw new UnauthorizedException({ message: 'No session token' });
     }
@@ -34,6 +34,6 @@ export class NextAuthSession extends PassportStrategy(
       });
     }
 
-    return session;
+    return session.user;
   }
 }

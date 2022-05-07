@@ -23,6 +23,21 @@ export default NextAuth({
 
   secret: process.env.NEXTAUTH_SECRET as string,
 
+  cookies: {
+    sessionToken: {
+      name:
+        process.env.NODE_ENV === "production"
+          ? "__Secure-next-auth.session-token"
+          : "next-auth.session-token",
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
+
   pages: {
     signIn: "/auth/sign-in",
     error: "/auth/error", // Error code passed in query string as ?error=

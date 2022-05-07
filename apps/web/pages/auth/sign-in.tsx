@@ -33,7 +33,7 @@ const Page = ({ csrfToken }: { csrfToken: string }) => {
 
   const { role, isLoading, mutate } = useRole();
 
-  const { user, status, signOut: mutUserData } = useUser();
+  const { user, signOut: mutUserData } = useUser();
 
   const isLoggedIn = user as boolean;
 
