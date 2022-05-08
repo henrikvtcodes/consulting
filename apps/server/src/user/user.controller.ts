@@ -14,8 +14,9 @@ import { User } from '@prisma/client';
 
 import { SessionGuard } from '../auth/nextauth-session.guard';
 import { PrismaService } from '../prisma/prisma.service';
+import { UserService } from './user.service';
 
-interface UserMetadata extends Address {
+export interface UserMetadata extends Address {
   id: string;
   name: string;
   email: string;
@@ -24,13 +25,13 @@ interface UserMetadata extends Address {
   image: string;
 }
 
-interface UserMetaData_Alter extends Address {
+export interface UserMetaData_Alter extends Address {
   name?: string;
   phone?: string;
   photo_url?: string;
 }
 
-type Address = {
+export type Address = {
   address_line1?: string;
   address_line2?: string;
   city?: string;
@@ -50,7 +51,7 @@ export interface CreateCustomer extends Address {
   sepBillingAddr: boolean;
 }
 
-const addressFields = [
+export const addressFields = [
   'address_line1',
   'address_line2',
   'city',
@@ -61,34 +62,26 @@ const addressFields = [
 @Controller('user')
 @UseGuards(SessionGuard)
 export class UserController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly userService: UserService,
+  ) {}
 
-  @Get()
+  @Get() // Get User Data
   getUser(@Req() req, @Res() res) {
     const user = req.user as User;
 
-    const userDataObj: UserMetadata = {
-      id: user.id,
-      email: user.email as string,
-      name: user.name as string,
-      role: user.role as string,
-      phone: user.phone as string,
-      image: user.image as string,
-      address_line1: user.addressLine1 as string,
-      address_line2: user.addressLine2 as string,
-      city: user.addressCity as string,
-      state: user.addressState as string,
-      postal_code: user.addressZip as string,
-    };
-    return res.json({ data: userDataObj });
+    delete user.isInvited, user.emailVerified; // Remove unneeded fields
+
+    return res.json({ data: user });
   }
 
-  @Get('role')
+  @Get('role') // Get user role
   getRole(@Req() req) {
     return { role: req.user.role };
   }
 
-  @Get('customer')
+  @Get('customer') // Get customer data
   async getCustomer(@Req() req): Promise<any> {
     const customer = await this.prisma.customer.findUnique({
       where: {
@@ -100,117 +93,40 @@ export class UserController {
       throw new HttpException('Customer Data not found', HttpStatus.NOT_FOUND);
     }
 
+    delete customer.id, customer.stripeID, customer.userId;
+
     return {
-      first_name: customer.firstName,
-      last_name: customer.lastName,
-      address_line1: customer.addressLine1,
-      address_line2: customer.addressLine2,
-      city: customer.addressCity,
-      state: customer.addressState,
-      postal_code: customer.addressZip,
-      sepBillingAddr: customer.sepBillingAddr,
+      customer: {
+        first_name: customer.firstName,
+        last_name: customer.lastName,
+        address_line1: customer.addressLine1,
+        address_line2: customer.addressLine2,
+        city: customer.addressCity,
+        state: customer.addressState,
+        postal_code: customer.addressZip,
+        sepBillingAddr: customer.sepBillingAddr,
+      },
     };
   }
 
-  @Patch() // Route to update user data
+  @Patch() // Update user data
   async updateUser(@Req() req, @Body() body): Promise<any> {
     const user = req.user as User;
 
-    const {
-      name,
-      phone,
-      photo_url,
-      address_line1,
-      address_line2,
-      city,
-      state,
-      postal_code,
-    }: UserMetaData_Alter = body;
+    const newUser = await this.userService.updateUser(user, body);
 
-    const newUser = await this.prisma.user.update({
-      where: {
-        id: user.id,
-      },
-      data: {
-        // Ugly code, but it works; If field is empty, set as undefined to prevent Prisma from updating it
-        name: name === '' ? undefined : name,
-        phone: phone === '' ? undefined : phone,
-        image: photo_url === '' ? undefined : photo_url,
-        addressLine1: address_line1 === '' ? undefined : address_line1,
-        addressLine2: address_line2 === '' ? undefined : address_line2,
-        addressCity: city === '' ? undefined : city,
-        addressState: state === '' ? undefined : state,
-        addressZip: postal_code === '' ? undefined : postal_code,
-      },
-    });
+    delete newUser.emailVerified, newUser.isInvited;
 
-    const newUserData: UserMetadata = {
-      id: newUser.id,
-      email: newUser.email as string,
-      name: newUser.name as string,
-      role: newUser.role as string,
-      phone: newUser.phone as string,
-      image: newUser.image as string,
-      address_line1: newUser.addressLine1 as string,
-      address_line2: newUser.addressLine2 as string,
-      city: newUser.addressCity as string,
-      state: newUser.addressState as string,
-      postal_code: newUser.addressZip as string,
-    };
-
-    return newUserData;
+    return newUser;
   }
 
   @Post('customer')
   async newCustomer(@Req() req, @Body() body): Promise<any> {
     const user = req.user as User;
 
-    const userDataObj: UserMetadata = {
-      id: user.id,
-      email: user.email as string,
-      name: user.name as string,
-      role: user.role as string,
-      phone: user.phone as string,
-      image: user.image as string,
-      address_line1: user.addressLine1 as string,
-      address_line2: user.addressLine2 as string,
-      city: user.addressCity as string,
-      state: user.addressState as string,
-      postal_code: user.addressZip as string,
-    };
+    const newCustomer = await this.userService.newCustomer(user, body);
 
-    const createCustomer: CreateCustomer = body;
-
-    for (let key in createCustomer) {
-      key = key as string;
-
-      let value = createCustomer[key];
-
-      value = value === '' ? userDataObj[key] : value;
-
-      createCustomer[key] = value;
-    }
-
-    const newCustomer = await this.prisma.customer.create({
-      data: {
-        userId: user.id,
-        firstName: createCustomer.first_name,
-        lastName: createCustomer.last_name,
-        addressLine1: createCustomer.address_line1,
-        addressLine2: createCustomer.address_line2,
-        addressCity: createCustomer.city,
-        addressState: createCustomer.state,
-        addressZip: createCustomer.postal_code,
-        sepBillingAddr: createCustomer.sepBillingAddr,
-      },
-    });
-
-    if (newCustomer === null) {
-      throw new HttpException(
-        'Customer Create Failed',
-        HttpStatus.INTERNAL_SERVER_ERROR,
-      );
-    }
+    delete newCustomer.userId, newCustomer.stripeID, newCustomer.id;
 
     return {
       customer: {
@@ -228,109 +144,23 @@ export class UserController {
 
   @Patch('customer')
   async updateCustomer(@Req() req, @Body() body): Promise<any> {
-    const user = req.user as User;
+    const updateCustomer = await this.userService.updateCustomer(
+      req.user as User,
+      body,
+    );
 
-    const customerData = await this.prisma.customer.findUnique({
-      where: {
-        userId: user.id,
-      },
-    });
-
-    const userDataObj: UserMetadata = {
-      id: user.id,
-      email: user.email as string,
-      name: user.name as string,
-      role: user.role as string,
-      phone: user.phone as string,
-      image: user.image as string,
-      address_line1: user.addressLine1 as string,
-      address_line2: user.addressLine2 as string,
-      city: user.addressCity as string,
-      state: user.addressState as string,
-      postal_code: user.addressZip as string,
-    };
-
-    const upsertCustomer: UpsertCustomer = body;
-
-    if (!upsertCustomer.sepBillingAddr) {
-      // ANCHOR If billing address is not separate, copy user address into billing addressS
-      for (let key in upsertCustomer) {
-        key = key as string;
-        let value = upsertCustomer[key];
-
-        if (addressFields.includes(key)) {
-          value = userDataObj[key];
-        }
-
-        upsertCustomer[key] = value;
-      }
-    }
-
-    upsertCustomer.first_name =
-      upsertCustomer.first_name === '' ? undefined : upsertCustomer.first_name;
-    upsertCustomer.last_name =
-      upsertCustomer.last_name === '' ? undefined : upsertCustomer.last_name;
-
-    if (
-      // If the user is only updating their billing address, convert unchanged fields to undefined
-      customerData?.sepBillingAddr === true &&
-      upsertCustomer.sepBillingAddr === true
-    ) {
-      upsertCustomer.address_line1 =
-        upsertCustomer.address_line1 === ''
-          ? undefined
-          : upsertCustomer.address_line1;
-      // upsertCustomer.address_line2 =
-      //   upsertCustomer.address_line2 === ""
-      //     ? undefined
-      //     : upsertCustomer.address_line2;
-      upsertCustomer.city =
-        upsertCustomer.city === '' ? undefined : upsertCustomer.city;
-      upsertCustomer.state =
-        upsertCustomer.state === '' ? undefined : upsertCustomer.state;
-      upsertCustomer.postal_code =
-        upsertCustomer.postal_code === ''
-          ? undefined
-          : upsertCustomer.postal_code;
-    } else if (
-      customerData?.sepBillingAddr === false &&
-      upsertCustomer.sepBillingAddr === true
-    ) {
-      for (let key in upsertCustomer) {
-        key = key as string;
-        let value = upsertCustomer[key];
-
-        value = value === '' ? undefined : value;
-        upsertCustomer[key] = value;
-      }
-    }
-
-    const updatedCustomer = await this.prisma.customer.update({
-      where: {
-        userId: user.id,
-      },
-      data: {
-        firstName: upsertCustomer.first_name,
-        lastName: upsertCustomer.last_name,
-        addressLine1: upsertCustomer.address_line1,
-        addressLine2: upsertCustomer.address_line2,
-        addressCity: upsertCustomer.city,
-        addressState: upsertCustomer.state,
-        addressZip: upsertCustomer.postal_code,
-        sepBillingAddr: upsertCustomer.sepBillingAddr,
-      },
-    });
+    delete updateCustomer.id, updateCustomer.stripeID, updateCustomer.userId;
 
     return {
       customer: {
-        first_name: updatedCustomer.firstName,
-        last_name: updatedCustomer.lastName,
-        address_line1: updatedCustomer.addressLine1,
-        address_line2: updatedCustomer.addressLine2,
-        city: updatedCustomer.addressCity,
-        state: updatedCustomer.addressState,
-        postal_code: updatedCustomer.addressZip,
-        sepBillingAddr: updatedCustomer.sepBillingAddr,
+        first_name: updateCustomer.firstName,
+        last_name: updateCustomer.lastName,
+        address_line1: updateCustomer.addressLine1,
+        address_line2: updateCustomer.addressLine2,
+        city: updateCustomer.addressCity,
+        state: updateCustomer.addressState,
+        postal_code: updateCustomer.addressZip,
+        sepBillingAddr: updateCustomer.sepBillingAddr,
       },
     };
   }
