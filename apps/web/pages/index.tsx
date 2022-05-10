@@ -4,8 +4,9 @@ import NextLink from "next/link";
 
 import HomeLayout from "layouts/home";
 import { DefaultMeta } from "components/meta";
+import { genHexCode } from "~utils/nanoid";
 
-const Home: NextPage = (props) => {
+const Home = ({ code }) => {
   return (
     <HomeLayout>
       <DefaultMeta />
@@ -36,8 +37,9 @@ const Home: NextPage = (props) => {
                     </span>
                   </h1>
                   <p className="mt-6 max-w-lg mx-auto text-center text-xl text-blue-prussian sm:max-w-3xl">
-                    Serving Pike County, Pennsylvania and Hudson County, New
-                    Jersey since 2019
+                    {/* Serving Pike County, Pennsylvania and Hudson County, New
+                    Jersey since 2019 */}
+                    {`Dev - ${code}`}
                   </p>
                   <div className="mt-10 max-w-sm mx-auto sm:max-w-none sm:flex sm:justify-center">
                     <div className="space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:grid-cols-2 sm:gap-5">
@@ -64,3 +66,16 @@ const Home: NextPage = (props) => {
 };
 
 export default Home;
+
+export async function getStaticProps() {
+  const hexCode = genHexCode();
+  console.log("\n\n");
+  console.log("BUILD ID:", hexCode);
+  console.log("\n\n");
+
+  return {
+    props: {
+      code: hexCode,
+    },
+  };
+}
