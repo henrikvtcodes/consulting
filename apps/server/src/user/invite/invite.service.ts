@@ -22,6 +22,10 @@ export class InviteService {
 
   async validateInvite(code: string) {
     const invite = await this.getInvite(code);
+    if (!invite) {
+      return null;
+    }
+
     return !invite.used;
   }
 

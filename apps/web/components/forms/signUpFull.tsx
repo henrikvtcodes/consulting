@@ -12,6 +12,7 @@ import {
   submitCode,
   SubmitCodeReturnType,
 } from "utils/submitCode";
+import { API_URL } from "~utils/config";
 
 const useValidateInviteCode = () =>
   useDebouncedFunc<SubmitCodeReturnType>(
@@ -46,7 +47,7 @@ const SignUpForm = () => {
     <div className="md:w-[464px] flex flex-col">
       <form
         className="flex flex-col mx-2 md:mx-16 space-y-3"
-        action="/api/invitecode"
+        action={`${API_URL}/invite/submit`}
         method="post"
       >
         <div className={formStyles.Input}>

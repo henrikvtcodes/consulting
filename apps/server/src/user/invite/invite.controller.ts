@@ -4,15 +4,15 @@ import {
   Get,
   HttpException,
   HttpStatus,
-  Patch,
+  Param,
   Post,
   Req,
+  Res,
   UseGuards,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { rmSync } from 'fs';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
-import { Roles, ROLES_KEY } from '../../auth/role.decorator';
+import { Roles } from '../../auth/role.decorator';
 import { Role } from '../../auth/role.enum';
 import { RolesGuard } from '../../auth/role.guard';
 import { InviteService } from './invite.service';
@@ -25,13 +25,15 @@ export class InviteController {
   @Post() // Allow admin to create a new invite code
   @Roles(Role.ADMIN)
   async getNewInvite(@Req() req, @Body() body) {
-    const user = req.user as User;
-
     const requestCode: string | undefined = body['code'];
+
+    const newInvite = await this.inviteService.createInvite(requestCode);
+
+    return newInvite;
   }
 
-  @Patch() // Allow user to use an invite code
-  async useInvite(@Req() req, @Body() body) {
+  @Post('submit') // Allow user to use an invite code
+  async useInvite(@Req() req, @Body() body, @Res() res) {
     const user = req.user as User;
 
     const code: string | undefined = body['code'];
@@ -68,6 +70,8 @@ export class InviteController {
             HttpStatus.INTERNAL_SERVER_ERROR,
           );
         }
+
+        return res.status(HttpStatus.SEE_OTHER).redirect('/auth');
     }
   }
 
@@ -77,9 +81,22 @@ export class InviteController {
     return { invited: user.isInvited };
   }
 
-  @Get('validate')
-  async validateInvite(@Req() req, @Body() body) {
-    const code = body['code'];
+  @Get('validate/:code')
+  async validateInvite(@Param('code') code: string, @Req() req) {
+    const user = req.user as User;
+
+    if (user.isInvited) {
+      throw new HttpException(
+        {
+          status: HttpStatus.FORBIDDEN,
+          message: 'You are already invited',
+          isValid: false,
+        },
+        HttpStatus.FORBIDDEN,
+      );
+    }
+
+    // const code = body['code'];
     const isValid = await this.inviteService.validateInvite(code);
 
     if (isValid === null) {
