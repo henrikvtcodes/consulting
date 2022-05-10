@@ -3,6 +3,7 @@ import { StripeModule as StripeHandler } from '@golevelup/nestjs-stripe';
 
 import { StripeController } from './stripe.controller';
 import { StripeService } from './stripe.service';
+import { CustomerService } from './customer.service';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { StripeService } from './stripe.service';
     }),
   ],
   controllers: [StripeController],
-  providers: [StripeService],
+  providers: [StripeService, CustomerService],
+  exports: [CustomerService],
 })
 export class StripeModule {}
