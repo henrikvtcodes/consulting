@@ -13,6 +13,9 @@ import {
 import { User } from '@prisma/client';
 
 import { SessionGuard } from '../auth/nextauth-session.guard';
+import { Roles } from '../auth/role.decorator';
+import { Role } from '../auth/role.enum';
+import { RolesGuard } from '../auth/role.guard';
 import { PrismaService } from '../prisma/prisma.service';
 import { UserService } from './user.service';
 
@@ -60,7 +63,8 @@ export const addressFields = [
 ];
 
 @Controller('user')
-@UseGuards(SessionGuard)
+@UseGuards(SessionGuard, RolesGuard)
+@Roles(Role.CLIENT)
 export class UserController {
   constructor(
     private readonly prisma: PrismaService,
