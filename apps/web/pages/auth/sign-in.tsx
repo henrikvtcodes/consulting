@@ -55,6 +55,7 @@ const Page = ({ csrfToken }: { csrfToken: string }) => {
                   className="inline-block h-9 w-9 rounded-full"
                   src={user.image}
                   alt="Profile Image"
+                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="ml-3">

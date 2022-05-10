@@ -153,6 +153,7 @@ const PersonalInfo = () => {
                   className="inline-block h-10 w-10 rounded-full ml-2"
                   src={userImage}
                   alt=""
+                  referrerPolicy="no-referrer"
                 />
               </div>
             </div>

@@ -157,6 +157,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                         className="inline-block h-10 w-10 rounded-full"
                         src={userImage}
                         alt=""
+                        referrerPolicy="no-referrer"
                       />
                     </div>
                     <div className="ml-3">
@@ -229,6 +230,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                     className="inline-block h-9 w-9 rounded-full"
                     src={userImage}
                     alt=""
+                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div className="ml-3">
