@@ -1,9 +1,9 @@
 {
   "extends": "tsconfig/base.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "lib": ["dom", "ES2015"]
   },
-  "include": ["./**/*"],
-  "exclude": ["node_modules", "dist", "test", "**/*spec.ts"],
-  "files": ["index.ts", "address.ts", "user.ts", "customer.ts"]
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
 }

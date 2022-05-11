@@ -2,11 +2,21 @@
   "name": "types",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "publishConfig": {
-    "access": "public"
+  "private": true,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --external @prisma/client",
+    "dev": "tsup src/index.ts --format esm --watch --dts --external @prisma/client"
   },
   "devDependencies": {
     "tsconfig": "*"
+  },
+  "dependencies": {
+    "tsup": "^5.12.7"
   }
 }
