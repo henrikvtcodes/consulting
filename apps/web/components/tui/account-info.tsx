@@ -4,12 +4,17 @@ import useSWR, { mutate, useSWRConfig } from "swr";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 
-import type { Address, UserDetailsForm, User } from "types";
+import type {
+  Address,
+  UserDetailsForm,
+  User,
+  CustomerDetailsForm,
+  Customer,
+} from "types";
 import { useUser } from "utils/hooks/useUser";
 import { AddressForm } from "./address";
 import { Toggle, FormToggle } from "./switch";
 import { Switch } from "@headlessui/react";
-import { CustomerData, UpsertCustomer } from "types/customer";
 
 import { API_URL } from "~utils/config";
 
@@ -22,9 +27,7 @@ const PersonalInfo = () => {
     isValidating,
   } = useSWR(`${API_URL}/user`);
 
-  const userData: UserMetadata = userDataRes?.data;
-
-  const userImage = userData?.image;
+  const userImage = user.image;
 
   const { mutate } = useSWRConfig();
 
@@ -90,7 +93,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("name")}
                 autoComplete="name"
-                defaultValue={userData?.name}
+                defaultValue={user.name}
                 minLength={2}
                 maxLength={50}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -108,7 +111,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("email")}
                 autoComplete="email"
-                defaultValue={userData?.email}
+                defaultValue={user.email}
                 disabled
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
@@ -125,7 +128,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("phone")}
                 autoComplete="tel-national"
-                defaultValue={userData?.phone}
+                defaultValue={user.phone}
                 minLength={10}
                 maxLength={10}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -166,7 +169,7 @@ const PersonalInfo = () => {
               </p>
             </div>
 
-            <AddressForm register={register} addressData={userData} />
+            <AddressForm register={register} addressData={user} />
           </div>
 
           {/* Submit Buttons */}
@@ -196,7 +199,7 @@ const PaymentInfo = () => {
     isValidating,
   } = useSWR(`${API_URL}/user/customer`);
 
-  const userData: CustomerData = custDataRes;
+  const userData: Customer = custDataRes;
 
   // const userData: CustomerData | { customerNotFound: boolean } =
   //   userDataRes?.data;
@@ -207,34 +210,15 @@ const PaymentInfo = () => {
     newCustomer ? false : data?.sepBillingAddr
   );
 
-  const upsertCustomer: SubmitHandler<UpsertCustomer> = (data) => {
-    data.sepBillingAddr = !data.sepBillingAddr;
-
-    const {
-      first_name,
-      last_name,
-      address_line1,
-      address_line2,
-      city,
-      state,
-      postal_code,
-      sepBillingAddr,
-    } = data;
+  const upsertCustomer: SubmitHandler<CustomerDetailsForm> = (data) => {
+    data.separateAddr = !data.separateAddr;
 
     const reqMethod = newCustomer ? axios.post : axios.patch;
-    // console.log(reqMethod);
 
     const result = reqMethod(
       `${API_URL}/user/customer`,
       {
-        first_name,
-        last_name,
-        address_line1,
-        address_line2,
-        city,
-        state,
-        postal_code,
-        sepBillingAddr,
+        ...data,
       },
       {
         withCredentials: true,
@@ -277,14 +261,14 @@ const PaymentInfo = () => {
               <>
                 <div className="col-span-6 sm:col-span-3">
                   <label
-                    htmlFor="first_name"
+                    htmlFor="firstName"
                     className="block text-sm font-medium text-gray-700"
                   >
                     First name
                   </label>
                   <input
                     type="text"
-                    {...register("first_name")}
+                    {...register("firstName")}
                     defaultValue={data?.first_name as string}
                     autoComplete="given-name"
                     className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -292,14 +276,14 @@ const PaymentInfo = () => {
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label
-                    htmlFor="last_name"
+                    htmlFor="lastName"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Last name
                   </label>
                   <input
                     type="text"
-                    {...register("last_name")}
+                    {...register("lastName")}
                     defaultValue={data?.last_name as string}
                     autoComplete="family-name"
                     className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"

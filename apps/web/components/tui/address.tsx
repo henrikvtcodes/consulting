@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 
 // import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
-import type { Address } from "types";
+import type { Address, AddressOpt } from "types";
 
 export const AddressForm = ({
   addressData,
@@ -9,7 +9,7 @@ export const AddressForm = ({
   isHidden,
   isRequired,
 }: {
-  addressData: Address;
+  addressData: AddressOpt;
   register: any;
   isHidden?: boolean;
   isRequired?: boolean;
