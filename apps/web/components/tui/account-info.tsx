@@ -4,11 +4,10 @@ import useSWR, { mutate, useSWRConfig } from "swr";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 
-import { UserMetadata, UserMetaData_Alter } from "types/user";
+import type { Address, UserDetailsForm, User } from "types";
 import { useUser } from "utils/hooks/useUser";
 import { AddressForm } from "./address";
 import { Toggle, FormToggle } from "./switch";
-import { userInfo } from "os";
 import { Switch } from "@headlessui/react";
 import { CustomerData, UpsertCustomer } from "types/customer";
 
@@ -31,16 +30,16 @@ const PersonalInfo = () => {
 
   const { register, handleSubmit, formState } = useForm();
 
-  const alterUserDetails: SubmitHandler<UserMetaData_Alter> = (data) => {
+  const alterUserDetails: SubmitHandler<UserDetailsForm> = (data) => {
     const {
       name,
       phone,
-      address_line1,
-      address_line2,
-      city,
-      state,
-      postal_code,
-      photo_url,
+      addressLine1,
+      addressLine2,
+      addressCity,
+      addressState,
+      addressZip,
+      image,
     } = data;
 
     const result = axios.patch(
@@ -48,12 +47,12 @@ const PersonalInfo = () => {
       {
         name,
         phone,
-        address_line1,
-        address_line2,
-        city,
-        state,
-        postal_code,
-        photo_url,
+        addressLine1,
+        addressLine2,
+        addressCity,
+        addressState,
+        addressZip,
+        image,
       },
       {
         withCredentials: true,

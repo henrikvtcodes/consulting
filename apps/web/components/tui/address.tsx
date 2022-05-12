@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 
-import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
+// import { Address, UserMetadata, UserMetaData_Alter } from "types/user";
+import type { Address } from "types";
 
 export const AddressForm = ({
   addressData,
@@ -24,25 +25,25 @@ export const AddressForm = ({
         </label>
         <input
           type="text"
-          {...register("address_line1")}
+          {...register("addressLine1")}
           autoComplete="address-line1"
-          defaultValue={addressData?.address_line1}
+          defaultValue={addressData?.addressLine1}
           required={isRequired}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>
       <div className={`col-span-6 ${isHidden && "hidden"} `}>
         <label
-          htmlFor="address_line2"
+          htmlFor="addressLine2"
           className="block text-sm font-medium text-gray-700"
         >
           Address Line 2
         </label>
         <input
           type="text"
-          {...register("address_line2")}
+          {...register("addressLine2")}
           autoComplete="address-line2"
-          defaultValue={addressData?.address_line2}
+          defaultValue={addressData?.addressLine2}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
         />
       </div>
@@ -53,16 +54,16 @@ export const AddressForm = ({
         } sm:col-span-6 lg:col-span-2`}
       >
         <label
-          htmlFor="city"
+          htmlFor="addressCity"
           className="block text-sm font-medium text-gray-700"
         >
           City
         </label>
         <input
           type="text"
-          {...register("city")}
+          {...register("addressCity")}
           autoComplete="address-level2"
-          defaultValue={addressData?.city}
+          defaultValue={addressData?.addressCity}
           required={isRequired}
           minLength={2}
           className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -75,16 +76,16 @@ export const AddressForm = ({
         } sm:col-span-3 lg:col-span-2`}
       >
         <label
-          htmlFor="state"
+          htmlFor="addressState"
           className="block text-sm font-medium text-gray-700"
         >
           State
         </label>
         <input
           type="text"
-          {...register("state")}
+          {...register("addressState")}
           autoComplete="address-level1"
-          defaultValue={addressData?.state}
+          defaultValue={addressData?.addressState}
           required={isRequired}
           minLength={2}
           maxLength={2}
@@ -98,16 +99,16 @@ export const AddressForm = ({
         } sm:col-span-3 lg:col-span-2`}
       >
         <label
-          htmlFor="postal_code"
+          htmlFor="addressZip"
           className="block text-sm font-medium text-gray-700"
         >
           ZIP / Postal code
         </label>
         <input
           type="text"
-          {...register("postal_code")}
+          {...register("addressZip")}
           autoComplete="postal-code"
-          defaultValue={addressData?.postal_code}
+          defaultValue={addressData?.addressZip}
           required={isRequired}
           minLength={5}
           maxLength={5}

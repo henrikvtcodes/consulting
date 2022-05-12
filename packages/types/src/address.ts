@@ -13,3 +13,13 @@ export type AddressOpt = {
   addressState?: string;
   addressZip?: string;
 };
+
+type EnforceKeys<T> = Array<keyof T>; // Helpful doodad from StackOverflow
+
+export const addressFields: EnforceKeys<Address> = [
+  "addressLine1",
+  "addressLine2",
+  "addressCity",
+  "addressState",
+  "addressZip",
+];

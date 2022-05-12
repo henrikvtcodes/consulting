@@ -1,9 +1,16 @@
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
+import { User } from "types";
 
 import { API_URL } from "~utils/config";
 
-export const useUser = () => {
+type ReturnUseUser = () => {
+  user: User | null;
+  signOut: () => any;
+  error?: any;
+};
+
+export const useUser: ReturnUseUser = () => {
   const {
     data: user,
     error,
@@ -15,6 +22,7 @@ export const useUser = () => {
   if (error) {
     return {
       user: null,
+      error,
       signOut,
     };
   }

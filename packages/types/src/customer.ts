@@ -1,7 +1,13 @@
 import { AddressOpt } from "./address";
 
+export interface Customer extends AddressOpt {
+  firstName: string;
+  lastName: string;
+  separateAddr: boolean;
+}
+
 export interface CustomerDetailsForm extends AddressOpt {
-  first_name?: string;
-  last_name?: string;
+  firstName?: string;
+  lastName?: string;
   separateAddr?: boolean;
 }
