@@ -6,7 +6,8 @@ import { API_URL } from "~utils/config";
 
 type ReturnUseUser = () => {
   user: User | null;
-  signOut: () => any;
+  updateUser: () => any;
+  isValidating: boolean;
   error?: any;
 };
 
@@ -14,21 +15,24 @@ export const useUser: ReturnUseUser = () => {
   const {
     data: user,
     error,
+    isValidating,
     mutate: mutateSession,
   } = useSWR(`${API_URL}/user`);
 
-  const signOut = () => mutateSession();
+  const updateUser = () => mutateSession();
 
   if (error) {
     return {
       user: null,
       error,
-      signOut,
+      isValidating,
+      updateUser,
     };
   }
 
   return {
-    user: user?.data,
-    signOut,
+    user: user?.user,
+    isValidating,
+    updateUser,
   };
 };

@@ -19,9 +19,9 @@ const localSolutions = solutions;
 const HeaderM = () => {
   const { role, isLoading, mutate } = useRole();
 
-  const { user, signOut: mutUserData } = useUser();
+  const { user, updateUser } = useUser();
 
-  const isLoggedIn = user as boolean;
+  const isLoggedIn = user === null ? false : true;
 
   return (
     <Popover className="z-40 relative bg-white">
@@ -81,7 +81,7 @@ const HeaderM = () => {
                 onClick={() => {
                   signOut();
                   mutate();
-                  mutUserData();
+                  updateUser();
                 }}
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
               >

@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { ClientDashLayout } from "layouts/ClientDash";
 import { PersonalInfo, PaymentInfo } from "components/tui/account-info";
 
-const Page: NextPage = (props) => {
+const Page = () => {
   return (
     <ClientDashLayout>
       <main>

@@ -33,9 +33,11 @@ const Page = ({ csrfToken }: { csrfToken: string }) => {
 
   const { role, isLoading, mutate } = useRole();
 
-  const { user, signOut: mutUserData } = useUser();
+  const { user, updateUser } = useUser();
 
-  const isLoggedIn = user as boolean;
+  const isLoggedIn = user === null ? false : true;
+
+  const image = user?.image === undefined ? null : user.image;
 
   return (
     <FormPageLayout>
@@ -53,17 +55,17 @@ const Page = ({ csrfToken }: { csrfToken: string }) => {
                 {/* eslint-disable-next-line */}
                 <img
                   className="inline-block h-9 w-9 rounded-full"
-                  src={user.image}
+                  src={image}
                   alt="Profile Image"
                   referrerPolicy="no-referrer"
                 />
               </div>
               <div className="ml-3">
                 <p className="text-base font-medium text-gray-700 group-hover:text-gray-900">
-                  {user.name}
+                  {user?.name}
                 </p>
                 <p className="text-sm font-medium text-gray-500 group-hover:text-gray-700">
-                  {user.email}
+                  {user?.email}
                 </p>
               </div>
             </div>
@@ -77,7 +79,7 @@ const Page = ({ csrfToken }: { csrfToken: string }) => {
                 onClick={() => {
                   signOut();
                   mutate();
-                  mutUserData();
+                  updateUser();
                 }}
                 className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
               >

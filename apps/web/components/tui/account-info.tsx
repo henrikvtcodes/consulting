@@ -12,6 +12,7 @@ import type {
   Customer,
 } from "types";
 import { useUser } from "utils/hooks/useUser";
+import { useCustomer } from "~utils/hooks/useCustomer";
 import { AddressForm } from "./address";
 import { Toggle, FormToggle } from "./switch";
 import { Switch } from "@headlessui/react";
@@ -19,15 +20,9 @@ import { Switch } from "@headlessui/react";
 import { API_URL } from "~utils/config";
 
 const PersonalInfo = () => {
-  const { user, signOut: mutUser } = useUser();
+  const { user, updateUser, isValidating } = useUser();
 
-  const {
-    data: userDataRes,
-    error: userDataError,
-    isValidating,
-  } = useSWR(`${API_URL}/user`);
-
-  const userImage = user.image;
+  const image = user?.image === undefined ? null : user.image;
 
   const { mutate } = useSWRConfig();
 
@@ -63,8 +58,7 @@ const PersonalInfo = () => {
     );
 
     result.then((res) => {
-      mutate(`${API_URL}/user`);
-      mutate("/api/auth/session");
+      updateUser();
     });
   };
 
@@ -93,7 +87,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("name")}
                 autoComplete="name"
-                defaultValue={user.name}
+                defaultValue={user?.name}
                 minLength={2}
                 maxLength={50}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -111,7 +105,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("email")}
                 autoComplete="email"
-                defaultValue={user.email}
+                defaultValue={user?.email}
                 disabled
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               />
@@ -128,7 +122,7 @@ const PersonalInfo = () => {
                 type="text"
                 {...register("phone")}
                 autoComplete="tel-national"
-                defaultValue={user.phone}
+                defaultValue={user?.phone}
                 minLength={10}
                 maxLength={10}
                 className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -146,14 +140,14 @@ const PersonalInfo = () => {
                 <input
                   type="text"
                   {...register("photo_url")}
-                  defaultValue={userImage}
+                  defaultValue={image}
                   autoComplete="photo"
                   className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block flex-grow shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
                 {/* eslint-disable-next-line */}
                 <img
                   className="inline-block h-10 w-10 rounded-full ml-2"
-                  src={userImage}
+                  src={image}
                   alt=""
                   referrerPolicy="no-referrer"
                 />
@@ -189,33 +183,25 @@ const PersonalInfo = () => {
 };
 
 const PaymentInfo = () => {
-  const { data, error } = useSWR(`${API_URL}/user/customer`);
+  const { customer, update, isValidating } = useCustomer();
 
   const { register, handleSubmit, control, formState } = useForm();
-
-  const {
-    data: custDataRes,
-    error: custDataError,
-    isValidating,
-  } = useSWR(`${API_URL}/user/customer`);
-
-  const userData: Customer = custDataRes;
 
   // const userData: CustomerData | { customerNotFound: boolean } =
   //   userDataRes?.data;
 
-  const newCustomer = (custDataRes?.customerNotFound as boolean) === true;
+  const newCustomer = customer === null;
 
   const [addressState, setAddressState] = useState<boolean>(
-    newCustomer ? false : data?.sepBillingAddr
+    newCustomer ? false : customer?.separateAddr
   );
 
   const upsertCustomer: SubmitHandler<CustomerDetailsForm> = (data) => {
     data.separateAddr = !data.separateAddr;
 
-    const reqMethod = newCustomer ? axios.post : axios.patch;
+    const req = newCustomer ? axios.post : axios.patch;
 
-    const result = reqMethod(
+    const result = req(
       `${API_URL}/user/customer`,
       {
         ...data,
@@ -226,9 +212,7 @@ const PaymentInfo = () => {
     );
 
     result.then((res) => {
-      mutate(`${API_URL}/user/customer`);
-      console.log("Payment Info Update Request Completed");
-      console.log(res);
+      update();
     });
   };
 
@@ -269,7 +253,7 @@ const PaymentInfo = () => {
                   <input
                     type="text"
                     {...register("firstName")}
-                    defaultValue={data?.first_name as string}
+                    defaultValue={customer?.firstName as string}
                     autoComplete="given-name"
                     className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
@@ -284,7 +268,7 @@ const PaymentInfo = () => {
                   <input
                     type="text"
                     {...register("lastName")}
-                    defaultValue={data?.last_name as string}
+                    defaultValue={customer?.lastName as string}
                     autoComplete="family-name"
                     className="mt-1 focus:ring-brand-accent2h focus:border-brand-accent2h block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
@@ -303,7 +287,7 @@ const PaymentInfo = () => {
                 </div>
                 <AddressForm
                   register={register}
-                  addressData={userData}
+                  addressData={customer}
                   isHidden={addressState}
                 />
               </>
