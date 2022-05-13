@@ -33,7 +33,7 @@ export class UserController {
 
     delete user.isInvited, user.emailVerified; // Remove unneeded fields
 
-    return { user: user };
+    return { user };
   }
 
   @Get('role') // Get user role

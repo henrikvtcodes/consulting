@@ -121,12 +121,15 @@ export class UserService {
       }
     }
 
+    delete newData.separateAddr;
+
     const updatedCustomer = await this.prisma.customer.update({
       where: {
         userId: user.id,
       },
       data: {
         ...newData,
+        sepBillingAddr: newData.separateAddr,
       },
     });
 
