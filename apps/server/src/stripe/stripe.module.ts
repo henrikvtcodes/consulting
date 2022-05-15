@@ -4,6 +4,7 @@ import { StripeModule as StripeHandler } from '@golevelup/nestjs-stripe';
 import { StripeController } from './stripe.controller';
 import { StripeService } from './stripe.service';
 import { CustomerService } from './customer.service';
+import { InvoiceController } from './invoice/invoice.controller';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { CustomerService } from './customer.service';
       },
     }),
   ],
-  controllers: [StripeController],
+  controllers: [StripeController, InvoiceController],
   providers: [StripeService, CustomerService],
   exports: [CustomerService],
 })
