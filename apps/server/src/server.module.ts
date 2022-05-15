@@ -12,6 +12,8 @@ import { AuthModule } from './auth/auth.module';
 import { ServerController } from './server.controller';
 import { StripeModule } from './stripe/stripe.module';
 import { UserModule } from './user/user.module';
+import { ProjectsModule } from './projects/projects.module';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { UserModule } from './user/user.module';
     AuthModule,
     StripeModule,
     UserModule,
+    ProjectsModule,
+    FilesModule,
   ],
   controllers: [ServerController],
   providers: [],
