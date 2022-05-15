@@ -9,54 +9,35 @@ import { useAsync } from "react-async-hook";
 
 import FormPageLayout from "layouts/formPage";
 import { useRole } from "utils/hooks/useRole";
-import { time } from "console";
+import { API_URL } from "~utils/config";
+import { useUser } from "~utils/hooks/useUser";
 
-// eslint-disable-next-line
-const Page: NextPage = (props) => {
+const Page = () => {
   // Page that directs user to administrator or client dashboard if logged in, directs to sign in page if not logged in
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { user, updateUser, isValidating } = useUser();
 
   const { role } = useRole();
 
-  const { data, error } = useSWR("/api/invitecode/status");
+  const { data: inviteStatus, error } = useSWR(`${API_URL}/invite/status`);
 
-  const isInvited: boolean = data?.invited;
+  const isInvited: boolean = inviteStatus?.invited;
 
   console.log("isInvited", isInvited);
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      setTimeout(() => {
-        router.push("/auth/sign-in");
-      }, 2000);
-    } else if (status === "authenticated") {
-      console.log(`User Role: ${role}`);
-
-      if (isInvited === false) {
-        setTimeout(() => {
-          router.push("/auth/sign-up");
-        }, 500);
+  if (user !== (undefined || null) && !isValidating) {
+    if (isInvited) {
+      if (role === "admin") {
+        router.push("/admin");
+      } else if (role === "client") {
+        router.push("/client");
       }
-
-      switch (role) {
-        // default:
-        //   setTimeout(() => {
-        //     router.push("/auth/error?error=InvalidRole");
-        //   }, 5000);
-        case "admin":
-          setTimeout(() => {
-            router.push("/admin");
-          }, 3000);
-          break;
-        case "client":
-          setTimeout(() => {
-            router.push("/client");
-          }, 3000);
-          break;
-      }
+    } else {
+      router.push("/aith/sign-up");
     }
-  }, [router, status, session, role, isInvited]);
+  } else if (user !== (undefined || null) && !isValidating) {
+    router.push("/auth/sign-in");
+  }
 
   return (
     <FormPageLayout>
