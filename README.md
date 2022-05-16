@@ -13,6 +13,3 @@ There is a NestJS app which effectively handles all my backend needs for this.
 
 ### Stripe  
 Stripe was also a no-brainer. There are other payment processors out there but none of them match Stripe's amazing DX suite. Stripe just makes it so easy with all of the ways that they enable developers, whether its Checkout pages, or a custom form with Stripe Elements. I'm also making heavy use of Stripe's Invoicing features for this project.
-
----
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
