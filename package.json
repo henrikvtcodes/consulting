@@ -8,7 +8,7 @@
   "scripts": {
     "build": "yarn run prisma:clean; turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
-    "vercel:build": "yarn run prisma:clean; turbo run build --filter=web; cp ./apps/web/.next ./.next",
+    "vercel:build": "yarn run prisma:clean; turbo run build --filter=web",
     "serverprod": "yarn workspace server run start:prod",
     "lint": "turbo run lint",
     "test": "turbo run test",
