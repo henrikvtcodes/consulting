@@ -33,7 +33,7 @@ const Page = () => {
         router.push("/client");
       }
     } else {
-      router.push("/aith/sign-up");
+      router.push("/auth/sign-up");
     }
   } else if (user !== (undefined || null) && !isValidating) {
     router.push("/auth/sign-in");
