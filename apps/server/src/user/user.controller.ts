@@ -6,6 +6,7 @@ import {
   HttpStatus,
   Patch,
   Post,
+  Put,
   Req,
   UseGuards,
 } from '@nestjs/common';
@@ -16,6 +17,7 @@ import { SessionGuard } from '../auth/nextauth-session.guard';
 import { Roles } from '../auth/role.decorator';
 import { RolesGuard } from '../auth/role.guard';
 import { PrismaService } from '../prisma/prisma.service';
+import { CustomerService } from '../stripe/customer.service';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -24,14 +26,15 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(
     private readonly prisma: PrismaService,
-    private readonly userService: UserService,
+    private userService: UserService,
+    private customerService: CustomerService,
   ) {}
 
   @Get() // Get User Data
   getUser(@Req() req): { user: User } {
     const user = req.user as DbUser;
 
-    delete user.isInvited, user.emailVerified; // Remove unneeded fields
+    delete user.emailVerified; // Remove unneeded fields
 
     return { user };
   }
