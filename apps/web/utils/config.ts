@@ -19,7 +19,7 @@ import {
 
 export const API_URL =
   process.env.NODE_ENV === "production"
-    ? process.env.API_BASE_URL
+    ? process.env.NEXT_PUBLIC_API_BASE_URL
     : "http://localhost:3333";
 
 const solutions = [
