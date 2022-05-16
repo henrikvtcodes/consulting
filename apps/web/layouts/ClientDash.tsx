@@ -50,7 +50,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
     required: true,
   });
 
-  const { user, signOut: mutUserData } = useUser();
+  const { user } = useUser();
 
   const userImage = user?.image;
 
