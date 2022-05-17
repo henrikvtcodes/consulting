@@ -35,7 +35,7 @@ export default NextAuth({
         secure: true,
         domain:
           process.env.NODE_ENV === "production"
-            ? "dev.consulting.henrikvt.com"
+            ? (process.env.VERCEL_URL as string)
             : undefined,
       },
     },
