@@ -3,16 +3,8 @@
   "baseBranch": "origin/monorepo",
   "pipeline": {
     "build": {
-      "outputs": ["server/**", ".next/**", "./.next/**"],
+      "outputs": ["dist/**", ".next/**", "./.next/**", ""],
       "dependsOn": ["^build"]
-    },
-    "web#build": {
-      "dependsOn": ["types#build"],
-      "outputs": []
-    },
-    "server#build": {
-      "dependsOn": ["types#build"],
-      "outputs": []
     },
     "dev": {
       "cache": false,
