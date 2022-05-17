@@ -6,6 +6,14 @@
       "outputs": ["server/**", ".next/**", "./.next/**"],
       "dependsOn": ["^build"]
     },
+    "web#build": {
+      "dependsOn": ["types#build"],
+      "outputs": []
+    },
+    "server#build": {
+      "dependsOn": ["types#build"],
+      "outputs": []
+    },
     "dev": {
       "cache": false,
       "dependsOn": ["^build"]
