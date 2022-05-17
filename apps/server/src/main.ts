@@ -17,11 +17,12 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:3000',
+      'http://127.0.0.1:3000',
       'https://dev.consulting.henrikvt.com',
       'https://consulting.henrikvt.com',
     ],
-    allowedHeaders: ['Cookies', 'Content-Type'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Cookie', 'Content-Type', 'crossDomain'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
 
