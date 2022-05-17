@@ -14,12 +14,5 @@
       "cache": false
     }
   },
-  "globalDependencies": [
-    "./.env",
-    "./prisma/schema.prisma",
-    "$DATABASE_URL",
-    "$NEXTAUTH_SECRET",
-    "$STRIPE_SECRET_KEY",
-    "$STRIPE_WEBHOOK_SECRET"
-  ]
+  "globalDependencies": ["./prisma/schema.prisma"]
 }
