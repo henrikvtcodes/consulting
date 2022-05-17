@@ -30,12 +30,12 @@ export default NextAuth({
           : "next-auth.session-token",
       options: {
         httpOnly: true,
-        sameSite: "none",
+        sameSite: "lax",
         path: "/",
         secure: true,
         domain:
           process.env.NODE_ENV === "production"
-            ? (process.env.VERCEL_URL as string)
+            ? process.env.VERCEL_URL
             : undefined,
       },
     },
