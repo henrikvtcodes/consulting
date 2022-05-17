@@ -31,13 +31,13 @@ export default NextAuth({
           : "next-auth.session-token",
       options: {
         httpOnly: true,
-        sameSite: "lax",
+        sameSite: "none",
         path: "/",
         secure: true,
-        domain:
-          process.env.NODE_ENV === "production"
-            ? (process.env.VERCEL_URL as string)
-            : undefined,
+        // domain:
+        //   process.env.NODE_ENV === "production"
+        //     ? "dev.consulting.henrikvt.com"
+        //     : "*",
       },
     },
   },
@@ -45,7 +45,6 @@ export default NextAuth({
   pages: {
     signIn: "/auth/sign-in",
     error: "/auth/error", // Error code passed in query string as ?error=
-    verifyRequest: "/auth/verify-email", // used for check email message
     newUser: "/auth/sign-up", // New users will be directed here on first sign in
   },
 
