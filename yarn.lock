@@ -3685,7 +3685,6 @@ __metadata:
     sharp: ^0.30.4
     stripe: ^8.222.0
     turbo: ^1.2.6
-    types: "*"
     typescript: 4.5.2
   languageName: unknown
   linkType: soft

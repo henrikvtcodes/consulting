@@ -8,7 +8,7 @@
   "scripts": {
     "build": "yarn run prisma:clean; turbo run build",
     "dev": "turbo run dev --no-cache --parallel --continue",
-    "vercel:build": "yarn run prisma:clean; turbo run build --filter=*web*",
+    "vercel:build": "yarn run prisma:clean; turbo run build --filter=web",
     "serverprod": "yarn workspace server run start:prod",
     "lint": "turbo run lint",
     "test": "turbo run test",
@@ -31,7 +31,6 @@
     "@types/node": "16.11.11",
     "eslint": "7",
     "prisma": "^3.13.0",
-    "types": "*",
     "typescript": "4.5.2"
   },
   "packageManager": "yarn@3.2.0",
