@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
 const { withPlausibleProxy } = require("next-plausible");
 
-bundleAnalyze = withBundleAnalyzer({
+module.exports = withPlausibleProxy({
+  subdirectory: "static",
+  scriptName: "privacy",
+  customDomain: "https://plausible.henriktech.com",
+})({
   swcMinify: true,
   reactStrictMode: true,
   // distDir: process.env.NODE_ENV !== "production" ? "../../.next" : ".next",
@@ -29,9 +30,3 @@ bundleAnalyze = withBundleAnalyzer({
     ];
   },
 });
-
-module.exports = withPlausibleProxy({
-  subdirectory: "static",
-  scriptName: "privacy",
-  customDomain: "https://plausible.henriktech.com",
-})(bundleAnalyze);
