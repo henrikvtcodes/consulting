@@ -9,7 +9,6 @@ import Favicon from "components/meta";
 import { WarningBanner } from "components/tui/warning-banner";
 import "../styles/globals.css";
 
-// prettier-ignore
 function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const plausible = usePlausible();
 
@@ -22,7 +21,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SWRConfig
       value={{
-        fetcher: (url: string) => axios.get(url, {withCredentials: true}).then((res) => res.data),
+        fetcher: (url: string) =>
+          axios.get(url, { withCredentials: true }).then((res) => res.data),
         provider: () => new Map(),
       }}
     >
