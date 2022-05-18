@@ -56,10 +56,13 @@ export class UserService {
       newData[key] = value;
     }
 
+    delete newData.separateAddr;
+
     const newCustomer = await this.prisma.customer.create({
       data: {
         userId: user.id,
         ...newData,
+        sepBillingAddr: newData.separateAddr,
       },
     });
 
