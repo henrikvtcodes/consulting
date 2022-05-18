@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { User } from '@prisma/client';
+import { User as DbUser } from '@prisma/client';
 import { customAlphabet } from 'nanoid';
 
 import { PrismaService } from '../../prisma/prisma.service';
@@ -47,16 +47,18 @@ export class InviteService {
     return invite;
   }
 
-  async useInviteClient(user: User, code: string) {
+  async useInviteClient(user: DbUser, code: string) {
     const invite = await this.getInvite(code);
 
     if (!invite) {
       // Invite doesnt exist, return null
       return null;
     } else if (invite.used) {
+      console.log("Invite Used")
       // Invite has already been used, return null
       return null;
     } else if (user.isInvited) {
+      console.log("User Already Invited")
       // User is already invited, return null
       return null;
     }
