@@ -6,7 +6,7 @@ import { PrismaService } from './prisma/prisma.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(ServerModule, {
-    bodyParser: false,
+    bodyParser: false, // See server.module.ts, there is custom config for body parsing to handle stripe webhooks
   });
 
   const prismaService = app.get(PrismaService);
@@ -26,6 +26,6 @@ async function bootstrap() {
     credentials: true,
   });
 
-  await app.listen(3333);
+  await app.listen(process.env.PORT || 3333);
 }
 bootstrap();
