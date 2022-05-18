@@ -4,11 +4,6 @@ import FacebookProvider from "next-auth/providers/facebook";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "utils/Prisma";
 
-console.log("\n\n");
-console.log("VERCEL_URL", process.env.VERCEL_URL);
-console.log("NEXT PUBLIC VERCEL URL", process.env.NEXT_PUBLIC_VERCEL_URL);
-console.log("\n\n");
-
 export default NextAuth({
   // NOTE: POTENTIAL FOR TYPE ERROR
   // @ts-ignore
