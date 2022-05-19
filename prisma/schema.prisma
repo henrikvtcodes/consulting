@@ -96,16 +96,6 @@ model Customer {
   userId   String  @unique
   stripeID String? @unique
 
-  firstName String
-  lastName  String
-
-  sepBillingAddr Boolean @default(false)
-  addressLine1   String?
-  addressLine2   String?
-  addressCity    String?
-  addressState   String?
-  addressZip     String?
-
   user User @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   charges  Charge[]

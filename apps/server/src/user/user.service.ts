@@ -41,101 +41,17 @@ export class UserService {
     return newUser;
   }
 
-  async newCustomer(user: DbUser, newData: Customer): Promise<DbCustomer> {
-    const userDataObj: User = {
-      ...user,
-    };
-
-    for (let key in newData) {
-      key = key as string;
-
-      let value = newData[key];
-
-      value = value === '' ? userDataObj[key] : value;
-
-      newData[key] = value;
-    }
-
-    delete newData.separateAddr;
-
-    const newCustomer = await this.prisma.customer.create({
+  async initCustomer(user: DbUser): Promise<DbCustomer> {
+    const customer = await this.prisma.customer.create({
       data: {
-        userId: user.id,
-        ...newData,
-        sepBillingAddr: newData.separateAddr,
+        user: {
+          connect: {
+            id: user.id,
+          },
+        },
       },
     });
 
-    return newCustomer;
-  }
-
-  async updateCustomer(user: DbUser, newData: Customer): Promise<DbCustomer> {
-    const customerData = await this.prisma.customer.findUnique({
-      where: {
-        userId: user.id,
-      },
-    });
-
-    const userDataObj: User = {
-      ...user,
-    };
-
-    if (!newData.separateAddr) {
-      // ANCHOR If billing address is not separate, copy user address into billing addressS
-      for (let key in newData) {
-        key = key as string;
-        let value = newData[key];
-
-        if (addressFields.includes(key as keyof AddressOpt)) {
-          value = userDataObj[key];
-        }
-
-        newData[key] = value;
-      }
-    }
-
-    newData.firstName =
-      newData.firstName === '' ? undefined : newData.firstName;
-    newData.lastName = newData.lastName === '' ? undefined : newData.lastName;
-
-    if (
-      // If the user is only updating their billing address, convert unchanged fields to undefined
-      customerData?.sepBillingAddr === true &&
-      newData.separateAddr === true
-    ) {
-      newData.addressLine1 =
-        newData.addressLine1 === '' ? undefined : newData.addressLine1;
-      newData.addressCity =
-        newData.addressCity === '' ? undefined : newData.addressCity;
-      newData.addressState =
-        newData.addressState === '' ? undefined : newData.addressState;
-      newData.addressZip =
-        newData.addressZip === '' ? undefined : newData.addressZip;
-    } else if (
-      customerData?.sepBillingAddr === false &&
-      newData.separateAddr === true
-    ) {
-      for (let key in newData) {
-        key = key as string;
-        let value = newData[key];
-
-        value = value === '' ? undefined : value;
-        newData[key] = value;
-      }
-    }
-
-    delete newData.separateAddr;
-
-    const updatedCustomer = await this.prisma.customer.update({
-      where: {
-        userId: user.id,
-      },
-      data: {
-        ...newData,
-        sepBillingAddr: newData.separateAddr,
-      },
-    });
-
-    return updatedCustomer;
+    return customer;
   }
 }

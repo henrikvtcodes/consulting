@@ -11,7 +11,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { User as DbUser, Role } from '@prisma/client';
-import { User, Customer } from 'types';
+import { CustomerExists, User } from 'types';
 
 import { SessionGuard } from '../auth/nextauth-session.guard';
 import { Roles } from '../auth/role.decorator';
@@ -44,27 +44,49 @@ export class UserController {
     return { role: req.user.role };
   }
 
-  @Get('customer') // Get customer data
-  async getCustomer(@Req() req): Promise<{ customer: Customer }> {
+  @Get('customer/exists') // Get customer data
+  async checkIfCustomerExists(@Req() req): Promise<CustomerExists> {
+    const user = req.user as DbUser;
     const customer = await this.prisma.customer.findUnique({
-      where: {
-        userId: req.user.id,
-      },
+      where: { userId: user.id },
     });
 
     if (!customer) {
-      throw new HttpException('Customer Data not found', HttpStatus.NOT_FOUND);
+      return { exists: false };
     }
 
-    delete customer.id, customer.stripeID, customer.userId;
+    if (!customer.stripeID) {
+      return { exists: { stripe: false } };
+    }
 
-    return {
-      customer: {
-        ...customer,
-        separateAddr: customer.sepBillingAddr,
-      },
-    };
+    return { exists: { stripe: true } };
   }
+
+  // @Get('customer') // Get customer data
+  // async getCustomer(@Req() req): Promise<{ customer: Customer }> {
+  //   const user = req.user as DbUser;
+
+  //   const customer = await this.prisma.customer.findUnique({
+  //     where: {
+  //       userId: user.id,
+  //     },
+  //   });
+
+  //   if (!customer) {
+  //     throw new HttpException('Customer Data not found', HttpStatus.NOT_FOUND);
+  //   }
+
+  //   console.log(customer);
+
+  //   delete customer.id, customer.stripeID, customer.userId;
+
+  //   return {
+  //     customer: {
+  //       ...customer,
+  //       separateAddr: customer.sepBillingAddr,
+  //     },
+  //   };
+  // }
 
   @Patch() // Update user data
   async updateUser(@Req() req, @Body() body): Promise<{ user: User }> {
@@ -77,39 +99,39 @@ export class UserController {
     return { user: newUser };
   }
 
-  @Post('customer')
-  async newCustomer(@Req() req, @Body() body): Promise<{ customer: Customer }> {
-    const user = req.user as DbUser;
+  // @Post('customer')
+  // async newCustomer(@Req() req, @Body() body): Promise<{ customer: Customer }> {
+  //   const user = req.user as DbUser;
 
-    const newCustomer = await this.userService.newCustomer(user, body);
+  //   const newCustomer = await this.userService.newCustomer(user, body);
 
-    delete newCustomer.userId, newCustomer.stripeID, newCustomer.id;
+  //   delete newCustomer.userId, newCustomer.stripeID, newCustomer.id;
 
-    return {
-      customer: {
-        ...newCustomer,
-        separateAddr: newCustomer.sepBillingAddr,
-      },
-    };
-  }
+  //   return {
+  //     customer: {
+  //       ...newCustomer,
+  //       separateAddr: newCustomer.sepBillingAddr,
+  //     },
+  //   };
+  // }
 
-  @Patch('customer')
-  async updateCustomer(
-    @Req() req,
-    @Body() body,
-  ): Promise<{ customer: Customer }> {
-    const updateCustomer = await this.userService.updateCustomer(
-      req.user as DbUser,
-      body,
-    );
+  // @Patch('customer')
+  // async updateCustomer(
+  //   @Req() req,
+  //   @Body() body,
+  // ): Promise<{ customer: Customer }> {
+  //   const updateCustomer = await this.userService.updateCustomer(
+  //     req.user as DbUser,
+  //     body,
+  //   );
 
-    delete updateCustomer.id, updateCustomer.stripeID, updateCustomer.userId;
+  //   delete updateCustomer.id, updateCustomer.stripeID, updateCustomer.userId;
 
-    return {
-      customer: {
-        ...updateCustomer,
-        separateAddr: updateCustomer.sepBillingAddr,
-      },
-    };
-  }
+  //   return {
+  //     customer: {
+  //       ...updateCustomer,
+  //       separateAddr: updateCustomer.sepBillingAddr,
+  //     },
+  //   };
+  // }
 }

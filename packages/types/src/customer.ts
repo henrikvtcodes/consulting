@@ -11,3 +11,11 @@ export interface CustomerDetailsForm extends AddressOpt {
   lastName?: string;
   separateAddr?: boolean;
 }
+
+export interface CustomerExists {
+  exists:
+    | {
+        stripe: boolean;
+      }
+    | false;
+}
