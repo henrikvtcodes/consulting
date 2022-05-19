@@ -2,7 +2,30 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { prisma } from "utils/Prisma";
+
+import { PrismaClient } from "@prisma/client";
+import type { PrismaClient as PrismaClientType } from "@prisma/client";
+let prisma: PrismaClientType;
+
+// add prisma to the NodeJS global type
+interface CustomNodeJsGlobal extends NodeJS.Global {
+  prisma: PrismaClient;
+}
+
+// Prevent multiple instances of Prisma Client in development
+declare const global: CustomNodeJsGlobal;
+
+if (process.env.NODE_ENV === "production") {
+  prisma = new PrismaClient({
+    log: ["info", "warn", "error"],
+  });
+} else {
+  prisma =
+    global.prisma ||
+    new PrismaClient({
+      log: ["info", "warn", "error"],
+    });
+}
 
 export default NextAuth({
   // NOTE: POTENTIAL FOR TYPE ERROR
