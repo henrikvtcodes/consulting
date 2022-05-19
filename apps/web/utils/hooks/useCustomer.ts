@@ -17,7 +17,7 @@ export const useCustomer: ReturnUseCustomer = () => {
     error,
     isValidating,
     mutate: mutateSession,
-  } = useSWR(`${API_URL}/customer`);
+  } = useSWR(`/customer`);
 
   const update = () => mutateSession();
 
