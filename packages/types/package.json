@@ -11,8 +11,8 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts --external @prisma/client",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts --external @prisma/client"
+    "build": "tsup",
+    "dev": "tsup  --watch"
   },
   "devDependencies": {
     "tsconfig": "*"
