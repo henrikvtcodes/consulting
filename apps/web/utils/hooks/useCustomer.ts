@@ -17,7 +17,7 @@ export const useCustomer: ReturnUseCustomer = () => {
     error,
     isValidating,
     mutate: mutateSession,
-  } = useSWR(`/customer`);
+  } = useSWR(`customer`);
 
   const update = () => mutateSession();
 

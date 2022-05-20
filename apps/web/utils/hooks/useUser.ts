@@ -17,7 +17,7 @@ export const useUser: ReturnUseUser = () => {
     error,
     isValidating,
     mutate: mutateSession,
-  } = useSWR(`/user`);
+  } = useSWR(`user`);
 
   const updateUser = () => mutateSession();
 

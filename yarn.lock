@@ -7285,6 +7285,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ky@npm:^0.30.0":
+  version: 0.30.0
+  resolution: "ky@npm:0.30.0"
+  checksum: d6ec6461e18cd2e4abb809b0574ff704c2e17bd61248843471c2492dd9486dfeadd4d139a5a6ec194b0175f9bc7b8c634685880d1ac646553a9f440c0982e8d3
+  languageName: node
+  linkType: hard
+
 "language-subtag-registry@npm:~0.3.2":
   version: 0.3.21
   resolution: "language-subtag-registry@npm:0.3.21"
@@ -11979,6 +11986,7 @@ __metadata:
     eslint-config-next: 12.0.4
     framer-motion: ^4
     gray-matter: ^4.0.3
+    ky: ^0.30.0
     marked: ^4.0.8
     nanoid: ^3.2.0
     next: ^12.1.4

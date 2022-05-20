@@ -1,9 +1,10 @@
 import axios from "axios";
+import ky from "ky";
 import { API_URL } from "~utils/config";
 
 export const useApiClient = () => {
-  return axios.create({
-    baseURL: API_URL,
-    withCredentials: true,
+  return ky.extend({
+    prefixUrl: API_URL,
+    credentials: "include",
   });
 };

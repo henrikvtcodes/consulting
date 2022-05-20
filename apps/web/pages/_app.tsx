@@ -18,12 +18,10 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
     plausible("Dev View");
   }, [plausible]);
 
-  // `${process.env.API_BASE_URL as string}${url}`
-
   return (
     <SWRConfig
       value={{
-        fetcher: (url: string) => apiClient.get(url).then((res) => res.data),
+        fetcher: (url: string) => apiClient.get(url).json(),
         provider: () => new Map(),
       }}
     >
