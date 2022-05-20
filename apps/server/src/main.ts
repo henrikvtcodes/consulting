@@ -21,7 +21,7 @@ async function bootstrap() {
       'https://dev.consulting.henrikvt.com',
       'https://consulting.henrikvt.com',
     ],
-    allowedHeaders: ['Cookie', 'Content-Type', 'crossDomain'],
+    allowedHeaders: ['Cookie', 'Content-Type'],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
