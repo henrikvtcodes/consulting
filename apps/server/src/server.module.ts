@@ -34,6 +34,7 @@ import { FilesModule } from './files/files.module';
 export class ServerModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     applyRawBodyOnlyTo(consumer, {
+      // Reapplies standard body parsing middleware to all requests except for webhooks
       method: RequestMethod.ALL,
       path: 'stripe/webhook',
     });
