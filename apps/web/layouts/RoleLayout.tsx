@@ -24,7 +24,7 @@ const RoleLayout = (props: RoleLayoutProps) => {
   const { user } = useUser();
 
   if (user !== undefined) {
-    if (!user.isInvited) {
+    if (!user?.isInvited) {
       router.push("/auth/sign-up");
     }
 
