@@ -15,7 +15,11 @@ import {
   LightningBoltIcon,
   ShieldCheckIcon,
   CursorClickIcon,
-  HeartIcon
+  HeartIcon,
+  EyeIcon,
+  MoonIcon,
+  SpeakerphoneIcon,
+  GlobeIcon
 } from "@heroicons/react/outline";
 
 // prettier-ignore-file
@@ -128,10 +132,27 @@ const solutions = [
     ],
     longFeatures: [
       {
-        feat: "",
-        desc: "",
-        icon: WifiIcon,
-      }
+        feat: "Keep Watch",
+        desc: "No low quality, unusable foootage here. When I install cameras, I make sure that they'll provide consistent, high-quality footage.",
+        icon: EyeIcon,
+      },
+      {
+        feat: "Quality Nightvision",
+        desc: `When I select a camera, I make sure that it has class leading night vision. You'll never question
+        what went bump in the night. `,
+        icon: MoonIcon,
+      },
+      {
+        feat: "2 Way Audio",
+        desc: `Speak to people outside your camera - whether it's a delivery at your door or a not-so-sneaky trespasser.`,
+        icon: SpeakerphoneIcon,
+      },
+      {
+        feat: "Access From Anywhere",
+        desc: `You'll be able to securely access your cameras from anywhere. The best part? Your data is never sent
+        through big tech.`,
+        icon: GlobeIcon,
+      },
     ],
     icon: VideoCameraIcon,
   },
