@@ -4,6 +4,7 @@ import {
   RefreshIcon,
 } from "@heroicons/react/outline";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 import formStyles from "~styles/forms.module.css";
 import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";
@@ -13,6 +14,7 @@ import {
   SubmitCodeReturnType,
 } from "utils/submitCode";
 import { API_URL } from "~utils/config";
+import { useApiClient } from "~utils/hooks/useApiClient";
 
 const useValidateInviteCode = () =>
   useDebouncedFunc<SubmitCodeReturnType>(
@@ -28,8 +30,26 @@ const SignUpForm = () => {
     formState: { errors },
   } = useForm();
 
-  // Custom hook to prevent excesseive requests
+  const router = useRouter();
+
+  // Custom hook to prevent excessive requests
   const { inputText, setInputText, results: result } = useValidateInviteCode();
+
+  const client = useApiClient();
+
+  const submitCode = (data: any) => {
+    const res = client.post("/invite/submit", {
+      body: JSON.stringify({
+        code: data.code,
+      }),
+    });
+
+    res.then((res) => {
+      if (res.status == (200 || 201)) {
+        router.push("/client");
+      }
+    });
+  };
 
   const safeToSubmit =
     result.status === "success" &&
@@ -48,7 +68,7 @@ const SignUpForm = () => {
       <form
         className="flex flex-col mx-2 md:mx-16 space-y-3"
         action={`${API_URL}/invite/submit`}
-        method="post"
+        onSubmit={handleSubmit(submitCode)}
       >
         <div className={formStyles.Input}>
           <label htmlFor={"code"}>Invite Code</label>
