@@ -440,7 +440,7 @@ const NextAuthErrorParams: {
   InvalidRole: {
     title: "User Discrepancy",
     message:
-      "There is a problem with your user account. Please contact Henrik directly to report the problem.",
+      "There is a problem with your user account. Please contact Henrik to report the problem.",
   },
   Verification: {
     title: "Verification Error",
@@ -453,11 +453,12 @@ const NextAuthErrorParams: {
   },
   OAuthSignin: {
     title: "Provider Sign In Error",
-    message: "We were not able to sign you in using this provider.",
+    message:
+      "You could not be signed in using this provider. Please try again.",
   },
   OAuthCallback: {
     title: "Provider Sign In Error",
-    message: "We were not able to complete the signin process.",
+    message: "The sign in process could not be completed.",
   },
   OAuthAccountNotLinked: {
     title: "Provider Sign In Error",
@@ -465,7 +466,7 @@ const NextAuthErrorParams: {
   },
   Callback: {
     title: "Provider Sign In Error",
-    message: "We were not able to complete the signin process.",
+    message: "The sign in process could not be completed.",
   },
   SessionRequired: {
     title: "Session Required",
