@@ -106,7 +106,7 @@ const solutions = [
       },
       {
         feat: "Small Business",
-        desc: `As a small business, I love to work with other small businesses. We understand what is necessary
+        desc: `As a small business, I love to work with other small businesses. I understand what is necessary
         to get your business online.`,
         icon: BriefcaseIcon,
       },
