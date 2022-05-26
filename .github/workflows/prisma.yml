@@ -5,11 +5,11 @@ name: Prisma Migrate
 
 on:
   push:
-    branches: [main]
+    branches: [main, monorepo]
     paths:
       - "./prisma/**/*.{prisma,sql}"
   workflow_dispatch:
-    branches: [main]
+    branches: [main, monorepo]
 
 jobs:
   install:

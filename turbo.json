@@ -1,0 +1,18 @@
+{
+  "$schema": "https://turborepo.org/schema.json",
+  "baseBranch": "origin/monorepo",
+  "pipeline": {
+    "build": {
+      "outputs": ["dist/**", ".next/**", "./.next/**", ""],
+      "dependsOn": ["^build"]
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
+    }
+  },
+  "globalDependencies": ["./prisma/schema.prisma"]
+}

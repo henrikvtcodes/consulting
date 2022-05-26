@@ -1,0 +1,23 @@
+{
+  "name": "types",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "private": true,
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup  --watch"
+  },
+  "devDependencies": {
+    "tsconfig": "*"
+  },
+  "dependencies": {
+    "tsup": "^5.12.7"
+  }
+}

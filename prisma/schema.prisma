@@ -1,7 +1,6 @@
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -57,7 +56,8 @@ model User {
   emailVerified DateTime?
   phone         String?
   image         String?
-  role          String    @default("client")
+  role          Role      @default(client)
+  roleString    String?
   isInvited     Boolean   @default(false)
   addressLine1  String?
   addressLine2  String?
@@ -71,6 +71,11 @@ model User {
   invite   Invite?
 
   @@map("users")
+}
+
+enum Role {
+  admin
+  client
 }
 
 model Invite {
@@ -91,16 +96,6 @@ model Customer {
   userId   String  @unique
   stripeID String? @unique
 
-  firstName String
-  lastName  String
-
-  sepBillingAddr Boolean @default(false)
-  addressLine1   String?
-  addressLine2   String?
-  addressCity    String?
-  addressState   String?
-  addressZip     String?
-
   user User @relation(fields: [userId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   charges  Charge[]
@@ -112,17 +107,17 @@ model Customer {
 }
 
 model Project {
-  id          String   @id @default(cuid())
+  id          String        @id @default(cuid())
   name        String
   description String
-  status      String
+  status      ProjectStatus @default(awaitingApproval)
   isClosed    Boolean
   ownerId     String
   totalCost   Int
   totalDue    Int
   totalPaid   Int
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now())
 
   customer Customer @relation(fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: Cascade)
 
@@ -131,6 +126,15 @@ model Project {
   invoices Invoice[]
 
   @@map("projects")
+}
+
+enum ProjectStatus {
+  awaitingApproval
+  approved
+  inProgress
+  awaitingPayment
+  completed
+  cancelled
 }
 
 model Quote {
