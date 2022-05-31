@@ -3,7 +3,7 @@ title: Vacation Rental Woes
 client: Dwarfskill Preserve Cabins
 coverImage: dwarfskill.jpg
 published: true
-desc: The story of how I fixed the wifi problems of a vacation rental and saved my clients money.
+desc: Fixing wifi problems at a vacation rental and saving money in the process.
 index: 0
 tags: Networking-Wifi
 ---
