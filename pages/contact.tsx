@@ -8,12 +8,13 @@ const Page: NextPage = (props) => {
       <div className="flex flex-col items-center w-fit mx-auto">
         <div className=" bg-gray-100 rounded-lg py-2 px-4 mx-2 md:m-0">
           <h3 className="text-2xl font-semibold"> Contact Me</h3>
-          <p>
+          <p className="max-w-2xl">
             {" "}
             If you&apos;re interested in what I can provide to you, please
-            submit a message through the form below. <br />
-            <span className="font-bold"> Or you can email me:</span> consulting
-            at henrikvt dot com.
+            submit a message through the form below. I&apos;ll get back to you
+            as soon as I can. <br />
+            <span className="font-bold"> You can also email me at:</span>{" "}
+            consulting at henrikvt dot com.
           </p>
         </div>
         <iframe
