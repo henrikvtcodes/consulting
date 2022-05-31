@@ -31,6 +31,7 @@ const Page: NextPage = (props) => {
             <Image
               width={1920}
               height={907}
+              priority
               className="rounded-lg shadow-2xl"
               src="/liveview.png"
               alt="Networking Dashboard Screenshot"

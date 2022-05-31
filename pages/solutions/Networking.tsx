@@ -30,6 +30,7 @@ const Page: NextPage = (props) => {
             <Image
               width={1920}
               height={907}
+              priority
               className="rounded-lg shadow-2xl"
               src="/udmScreenshot-cens.png"
               alt="Networking Dashboard Screenshot"
