@@ -157,7 +157,7 @@ const HeaderM = () => {
                 <NextLink href="/case-studies" passHref>
                   <a
                     href={
-                      "/case-studies?utm_campaign=mobile_flyout&utm_source=site"
+                      "/projects?utm_campaign=mobile_flyout&utm_source=site"
                     }
                     className="text-base font-medium text-brand-text1 hover:text-brand-text2"
                   >
