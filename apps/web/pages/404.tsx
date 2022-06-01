@@ -1,8 +1,18 @@
 import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { usePlausible } from "next-plausible";
+import { useEffect } from "react";
 
-import { CustomMeta } from "components/meta";
+import { CustomMeta } from "~components/meta";
 
 const ErrorPage = () => {
+  const router = useRouter();
+  const plausible = usePlausible();
+
+  useEffect(() => {
+    plausible("404", { props: { path: document.location.pathname } });
+  });
+
   return (
     <main className="flex justify-center align-middle h-screen w-screen">
       <CustomMeta

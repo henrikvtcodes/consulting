@@ -22,6 +22,7 @@ export const getStaticProps = async () => {
     "client",
     "desc",
     "published",
+    "tags",
   ]);
 
   return {

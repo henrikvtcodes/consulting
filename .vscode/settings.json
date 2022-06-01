@@ -1,5 +1,5 @@
 {
-  "WillLuke.nextjs.addTypesOnSave": true,
   "WillLuke.nextjs.hasPrompted": true,
-  "commentAnchors.workspace.excludeFiles": "**/{node_modules,.git,.idea,target,out,build,dist,vendor,.next}/**/*"
+  "commentAnchors.workspace.excludeFiles": "**/{node_modules,.git,.idea,target,out,build,dist,vendor,.next}/**/*",
+  "WillLuke.nextjs.addTypesOnSave": false
 }

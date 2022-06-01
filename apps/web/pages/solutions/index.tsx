@@ -19,13 +19,13 @@ const Page: NextPage = (props) => {
               Solutions
             </h1>
             <p className="mt-5 text-xl text-gray-500 sm:text-center">
-              See what we can offer you.
+              See what I can offer you.
             </p>
             <div className="bg-white">
               <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:py-24 lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
                 <div>
                   <h2 className="text-base font-semibold text-brand-accent1h uppercase tracking-wide">
-                    We have standards
+                    Standards
                   </h2>
                   <p className="mt-2 text-3xl font-extrabold text-gray-900">
                     All Solutions
@@ -79,7 +79,10 @@ const Page: NextPage = (props) => {
                       /mo
                     </span>
                   </p> */}
-                  <NextLink href={tier.href} passHref>
+                  <NextLink
+                    href={`${tier.href}?utm_campaign=card&utm_source=site`}
+                    passHref
+                  >
                     <a className="mt-8 block w-full bg-brand-primary rounded-md py-2 text-sm font-semibold text-white text-center hover:shadow-inner">
                       See {tier.name}
                     </a>
@@ -87,7 +90,7 @@ const Page: NextPage = (props) => {
                 </div>
                 <div className="pt-6 pb-8 px-6">
                   <h3 className="text-xs font-medium text-gray-900 tracking-wide uppercase">
-                    What we can do
+                    What I can do
                   </h3>
                   <ul role="list" className="mt-6 space-y-4">
                     {tier.shortFeatures.map((feature) => (

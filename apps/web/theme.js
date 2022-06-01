@@ -7,7 +7,7 @@ module.exports = {
       manatee: "#9CA3AF",
       jet: "#2c2f33",
       charleston: "#23272a",
-      rock: "#8A8E97",
+      rock: "#4b5563",
     },
     orange: {
       spanish: "#e36414",

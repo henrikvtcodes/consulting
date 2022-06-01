@@ -12,6 +12,14 @@ import {
   BriefcaseIcon,
   LocationMarkerIcon,
   LockClosedIcon,
+  LightningBoltIcon,
+  ShieldCheckIcon,
+  CursorClickIcon,
+  HeartIcon,
+  EyeIcon,
+  MoonIcon,
+  SpeakerphoneIcon,
+  GlobeIcon,
 } from "@heroicons/react/outline";
 
 // prettier-ignore-file
@@ -39,28 +47,28 @@ const solutions = [
     longFeatures: [
       {
         feat: "Custom Designed",
-        desc: `When designing your WiFi system, we take note of many factors that affect the design of a WiFi network. Part of the process includes 
+        desc: `When designing your WiFi system, I take note of many factors that affect the design of a WiFi network. Part of the process includes 
         investigating existing infrastructure and taking signal strength measurements. The end result is WiFi that works for you. `,
         icon: AdjustmentsIcon,
       },
       {
         feat: "Transparent",
-        desc: `We strive to make sure that our clients can trust us. Our proposal packages (proposal, quotes, and invoices)
+        desc: `I strive to make sure that my clients can trust me. Our proposal packages (proposal, quotes, and invoices)
         clearly outline the goals of the project and the reasoning behind the design. All major costs (>$20) are itemized and
         explained.`,
         icon: BookOpenIcon,
       },
       {
         feat: "Budget Optimized",
-        desc: `The budget is one of the central factors in any project. When given a budget, we make sure that it is used as efficiently
-        as possible. If we can't work with a given budget, we make sure the client understands why and we will provide alternate options
+        desc: `The budget is one of the central factors in any project. When given a budget, I make sure that it is used as efficiently
+        as possible. If I can't work with a given budget, I make sure the client understands why and I will provide alternate options
         at the client's request.`,
         icon: CurrencyDollarIcon,
       },
       {
         feat: "Human Support",
-        desc: `We never leave you in the dark. If you have any questions, or issues, we will not hesistate to help. Unless it's necessary,
-        we won't even charge most of the time! Additionally, you won't be left confused; We don't try to hide behind fancy technical terms.`,
+        desc: `I never leave you in the dark. If you have any questions, or issues, I will not hesistate to help. Unless it's necessary,
+        I won't even charge most of the time! Additionally, you won't be left confused; I don't hide behind fancy technical terms.`,
         icon: ChatAlt2Icon,
       },
     ],
@@ -79,35 +87,35 @@ const solutions = [
     longFeatures: [
       {
         feat: "Limited Budget",
-        desc: "We will do our best to build the best solution for your budget.",
+        desc: "I will do my best to build the best solution for your budget.",
         icon: CurrencyDollarIcon,
       },
       {
         feat: "Maintenace",
-        desc: "Not everything needs replacing; we can also repair, maintain, and extend networks.",
+        desc: "Not everything needs replacing; I can also repair, maintain, and extend networks.",
         icon: PuzzleIcon,
       },
       {
         feat: "Security",
-        desc: `We understand the importance of network security in the 21st century.`,
+        desc: `I understand the importance of network security in the 21st century.`,
         icon: LockClosedIcon,
       },
       {
         feat: "Residential",
-        desc: `Unstable home network? Slow internet? We can advise you on how to get the most out of your home network.
-        Don't be afraid to ask; we will gladly give free advice.`,
+        desc: `Unstable home network? Slow internet? I can advise you on how to get the most out of your home network.
+        Don't be afraid to ask; I will gladly give free advice.`,
         icon: HomeIcon,
       },
       {
         feat: "Small Business",
-        desc: `As a small business, we love to work with other small businesses. We understand what is necessary
+        desc: `As a small business, I love to work with other small businesses. I understand what is necessary
         to get your business online.`,
         icon: BriefcaseIcon,
       },
       {
         feat: "Rural",
         desc: `Need to connect multiple buildings? A pool, garage/workshop, guest house, or even neighbor? 
-        HVTC is who you need; this is our specialty.`,
+        HVTC is who you need; this is my specialty.`,
         icon: LocationMarkerIcon,
       },
     ],
@@ -121,14 +129,31 @@ const solutions = [
     shortFeatures: [
       { feat: "Highly scalable" },
       { feat: "Footage stored locally or in a private cloud" },
-      { feat: "Privacy first - we don't rely on Amazon or Google" },
+      { feat: "Privacy first - I don't rely on Amazon or Google" },
       { feat: "Catch bad actors in high resolution" },
     ],
     longFeatures: [
       {
-        feat: "",
-        desc: "",
-        icon: WifiIcon,
+        feat: "Keep Watch",
+        desc: "No low quality, unusable foootage here. When I install cameras, I make sure that they'll provide consistent, high-quality footage.",
+        icon: EyeIcon,
+      },
+      {
+        feat: "Quality Nightvision",
+        desc: `When I select a camera, I make sure that it has class leading night vision. You'll never question
+        what went bump in the night. `,
+        icon: MoonIcon,
+      },
+      {
+        feat: "2 Way Audio",
+        desc: `Speak to people outside your camera - whether it's a delivery at your door or a not-so-sneaky trespasser.`,
+        icon: SpeakerphoneIcon,
+      },
+      {
+        feat: "Access From Anywhere",
+        desc: `You'll be able to securely access your cameras from anywhere. The best part? Your data is never sent
+        through big tech.`,
+        icon: GlobeIcon,
       },
     ],
     icon: VideoCameraIcon,
@@ -146,9 +171,24 @@ const solutions = [
     ],
     longFeatures: [
       {
-        feat: "",
-        desc: "",
-        icon: WifiIcon,
+        feat: "Save Money",
+        desc: "Optimize lighting and climate control use. Save money on energy bills and maintenance.",
+        icon: LightningBoltIcon,
+      },
+      {
+        feat: "Protect your Home",
+        desc: "Automatically detect water and gas leaks, fire, and more. No more worrying.",
+        icon: ShieldCheckIcon,
+      },
+      {
+        feat: "Comfortable Living",
+        desc: "Turn on lights in the morning and heat the house before you get home. No need to lift a finger.",
+        icon: HeartIcon,
+      },
+      {
+        feat: "One Remote",
+        desc: "Forget about multiple remotes for different devices. Just one and done.",
+        icon: CursorClickIcon,
       },
     ],
     icon: DeviceMobileIcon,
@@ -195,7 +235,7 @@ const vendorLogos = {
   uniview: {
     alt: "Uniview",
     href: "#",
-    img: "/brands/Uniview_Color_Dark.png",
+    img: "/brands/Uniview_Color_Dark.jpg",
     width: 95,
   },
   lutronCaseta: {
@@ -311,22 +351,22 @@ const allSolutions = [
   {
     name: "Optimized Cost",
     description:
-      "When we design a solution for you, we make sure that the end is cost effective without compromising on quality.",
+      "When I design a solution for you, I make sure that the end result is cost effective without compromising on quality.",
   },
   {
     name: "Transparent Pricing",
     description:
-      "Our pricing structure is simple and transparent. We provide a clear breakdown of all costs.",
+      "My pricing structure is simple and transparent. I provide a clear breakdown of all costs.",
   },
   {
     name: "Communication",
     description:
-      "We are always in constant communication with our clients and will respond to any questions or concerns.",
+      "I am always in constant communication with my clients and will respond to any questions or concerns.",
   },
   {
     name: "Guaranteed Results",
     description:
-      "If we make a mistake, it will be fixed at no additional cost to you.",
+      "If I make a mistake, it will be fixed at no additional labor cost to you.",
   },
 ];
 
@@ -336,14 +376,14 @@ const faqs = [
     answer:
       "You can check out my about page; that should answer all your questions.",
   },
-  {
-    question: "Do you have a terms of service and/or privacy policy?",
-    answer: `Since I use Google and Facebook API's, I am required to have some form of privacy policy. 
-    The code is open source on [GitHub](https://github.com/henrikvtcodes/consulting), but I'll tell you exactly how it works.
-    I only store basic identifying information about you: name, email, profile picture, and your phone number, if you consented to that. 
-    I also collect anonymous usage data with a simple analytics tool.
-    This site does not employ any privacy-intrusive technologies; e.g. cross site trackers, supercookies, personalization, etc.`,
-  },
+  // {
+  //   question: "Do you have a terms of service and/or privacy policy?",
+  //   answer: `Since I use Google and Facebook API's, I am required to have some form of privacy policy.
+  //   The code is open source on [GitHub](https://github.com/henrikvtcodes/consulting), but I'll tell you exactly how it works.
+  //   I only store basic identifying information about you: name, email, profile picture, and your phone number, if you consented to that.
+  //   I also collect anonymous usage data with a simple analytics tool.
+  //   This site does not employ any privacy-intrusive technologies; e.g. cross site trackers, supercookies, personalization, etc.`,
+  // },
   {
     question: "How do you process payment? Is it secure?",
     answer: `I employ Stripe as my payment processor. This means that any of your raw credit card details, bank information, or other sensitive information are never processed or stored by me. 
@@ -362,65 +402,6 @@ const people = [
     linkedinUrl: "https://www.linkedin.com/in/henrik-van-tassell-68964a216/",
   },
   // More people...
-];
-
-const solutionsTabs = [
-  {
-    name: "Design",
-    features: [
-      {
-        name: "Adaptive and modular",
-        description:
-          "The Organize base set allows you to configure and evolve your setup as your items and habits change. The included trays and optional add-ons are easily rearranged to achieve that perfect setup.",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-01.jpg",
-        imageAlt:
-          "Maple organizer base with slots, supporting white polycarbonate trays of various sizes.",
-      },
-    ],
-  },
-  {
-    name: "Material",
-    features: [
-      {
-        name: "Natural wood options",
-        description:
-          "Organize has options for rich walnut and bright maple base materials. Accent your desk with a contrasting material, or match similar woods for a calm and cohesive look. Every base is hand sanded and finished.",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-02.jpg",
-        imageAlt:
-          "Walnut organizer base with pen, sticky note, phone, and bin trays, next to modular drink coaster attachment.",
-      },
-    ],
-  },
-  {
-    name: "Considerations",
-    features: [
-      {
-        name: "Helpful around the home",
-        description:
-          "Our customers use Organize throughout the house to bring efficiency to many daily routines. Enjoy Organize in your workspace, kitchen, living room, entry way, garage, and more. We can't wait to see how you'll use it!",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-03.jpg",
-        imageAlt:
-          "Walnut organizer base with white polycarbonate trays in the kitchen with various kitchen utensils.",
-      },
-    ],
-  },
-  {
-    name: "Included",
-    features: [
-      {
-        name: "Everything you'll need",
-        description:
-          "The Organize base set includes the pen, phone, small, and large trays to help you group all your essential items. Expand your set with the drink coaster and headphone stand add-ons.",
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/product-feature-06-detail-04.jpg",
-        imageAlt:
-          "Walnut organizer system on black leather desk mat on top of white desk.",
-      },
-    ],
-  },
 ];
 
 const NextAuthErrorParams: {
@@ -481,12 +462,6 @@ const allowedOrigins: string[] = [
 
 const config = {
   solutions: solutions,
-  solutionsTabs: {
-    wifi: solutionsTabs,
-    networking: solutionsTabs,
-    surveillance: solutionsTabs,
-    smartHome: solutionsTabs,
-  },
   origins: allowedOrigins,
   NextAuthErrorParams,
 };
