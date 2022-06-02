@@ -18,7 +18,7 @@ import { FilesModule } from './files/files.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['../../.env'],
+      envFilePath: ['../../../.env'],
       isGlobal: true,
     }),
     PrismaModule,
