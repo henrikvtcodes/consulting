@@ -1,15 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpException,
-  HttpStatus,
-  Patch,
-  Post,
-  Put,
-  Req,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
 import { User as DbUser, Role } from '@prisma/client';
 import { CustomerExists, User } from 'types';
 
