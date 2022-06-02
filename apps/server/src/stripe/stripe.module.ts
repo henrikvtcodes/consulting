@@ -5,8 +5,7 @@ import { StripeController } from './stripe.controller';
 import { StripeService } from './stripe.service';
 import { CustomerService } from './customer.service';
 import { InvoiceController } from './invoice/invoice.controller';
-import { CheckoutEventService } from './webhooks/checkout/checkoutEvent.service';
-import { CustomerEventService } from './webhooks/customer/customerEvent.service';
+import { WebhooksModule } from './webhooks/webhooks.module';
 
 @Module({
   imports: [
@@ -16,14 +15,10 @@ import { CustomerEventService } from './webhooks/customer/customerEvent.service'
         stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
       },
     }),
+    WebhooksModule,
   ],
   controllers: [StripeController, InvoiceController],
-  providers: [
-    StripeService,
-    CustomerService,
-    CustomerEventService,
-    CheckoutEventService,
-  ],
+  providers: [StripeService, CustomerService],
   exports: [CustomerService],
 })
 export class StripeModule {}
