@@ -25,4 +25,19 @@ export class CustomerService {
       },
     });
   }
+
+  @StripeWebhookHandler('customer.deleted')
+  async handleCustomerDeleted(event: Stripe.Event) {
+    const customer = event.data.object as Stripe.Customer;
+    const userId = customer.metadata['userId'];
+
+    await this.prisma.customer.update({
+      where: {
+        userId: userId,
+      },
+      data: {
+        stripeID: null,
+      },
+    });
+  }
 }
