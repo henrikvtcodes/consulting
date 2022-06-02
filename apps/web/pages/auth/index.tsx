@@ -25,13 +25,13 @@ const Page = () => {
   console.log("isInvited", isInvited);
 
   if (user !== (undefined || null) && !isValidating) {
-    if (isInvited) {
+    if (isInvited === true) {
       if (role === "admin") {
         router.push("/admin");
       } else if (role === "client") {
         router.push("/client");
       }
-    } else {
+    } else if (isInvited === false) {
       router.push("/auth/sign-up");
     }
   } else if (user !== (undefined || null) && !isValidating) {
