@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 
 import { ClientDashLayout } from "layouts/ClientDash";
-import { PersonalInfo, PaymentInfo } from "components/tui/account-info";
+import { PersonalInfo } from "components/tui/account-info";
+import { PaymentInfo } from "components/tui/PaymentInfo";
 
 const Page = () => {
   return (
