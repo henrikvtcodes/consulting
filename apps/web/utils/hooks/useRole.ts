@@ -1,7 +1,5 @@
 import useSWR from "swr";
 
-import { API_URL } from "~utils/config";
-
 const useRole = () => {
   const { data, error, mutate } = useSWR(`user/role`);
   return {

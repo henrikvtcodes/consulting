@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { API_URL } from "./config";
+import { useApiClient } from "./hooks/useApiClient";
 
 export type SubmitCodeReturnType = {
   isValid: boolean;

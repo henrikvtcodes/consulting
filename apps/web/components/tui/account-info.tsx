@@ -16,7 +16,6 @@ import { useUser } from "utils/hooks/useUser";
 import { useCustomer } from "~utils/hooks/useCustomer";
 import { AddressForm } from "./address";
 import { Toggle, FormToggle } from "./switch";
-import { API_URL } from "~utils/config";
 import { useApiClient } from "~utils/hooks/useApiClient";
 
 const PersonalInfo = () => {

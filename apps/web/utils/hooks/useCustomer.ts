@@ -2,8 +2,6 @@ import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import { Customer } from "types";
 
-import { API_URL } from "~utils/config";
-
 type ReturnUseCustomer = () => {
   customer: Customer | null;
   update: () => any;

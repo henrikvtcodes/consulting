@@ -9,7 +9,6 @@ import { useAsync } from "react-async-hook";
 
 import FormPageLayout from "layouts/formPage";
 import { useRole } from "utils/hooks/useRole";
-import { API_URL } from "~utils/config";
 import { useUser } from "~utils/hooks/useUser";
 
 const Page = () => {
@@ -19,7 +18,7 @@ const Page = () => {
 
   const { role } = useRole();
 
-  const { data: inviteStatus, error } = useSWR(`${API_URL}/invite/status`);
+  const { data: inviteStatus, error } = useSWR(`invite/status`);
 
   const isInvited: boolean = inviteStatus?.invited;
 

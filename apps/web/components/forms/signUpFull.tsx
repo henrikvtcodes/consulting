@@ -13,7 +13,6 @@ import {
   submitCode,
   SubmitCodeReturnType,
 } from "utils/submitCode";
-import { API_URL } from "~utils/config";
 import { useApiClient } from "~utils/hooks/useApiClient";
 
 const useValidateInviteCode = () =>
@@ -67,7 +66,6 @@ const SignUpForm = () => {
     <div className="md:w-[464px] flex flex-col">
       <form
         className="flex flex-col mx-2 md:mx-16 space-y-3"
-        action={`${API_URL}/invite/submit`}
         onSubmit={handleSubmit(submitCode)}
       >
         <div className={formStyles.Input}>
