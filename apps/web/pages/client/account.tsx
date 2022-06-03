@@ -1,5 +1,3 @@
-import type { NextPage } from "next";
-
 import { ClientDashLayout } from "layouts/ClientDash";
 import { PersonalInfo } from "~components/tui/PersonalInfo";
 import { PaymentInfo } from "components/tui/PaymentInfo";

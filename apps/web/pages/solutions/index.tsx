@@ -1,10 +1,7 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import NextLink from "next/link";
 
 import HomeLayout from "layouts/PublicPage";
-import { DefaultMeta } from "~components/MetaComponents";
 import { solutions, allSolutions } from "utils/config";
 
 import { CheckIcon } from "@heroicons/react/solid";

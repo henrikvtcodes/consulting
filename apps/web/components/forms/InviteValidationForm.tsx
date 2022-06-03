@@ -8,11 +8,7 @@ import { useRouter } from "next/router";
 
 import formStyles from "~styles/forms.module.css";
 import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";
-import {
-  validateCode,
-  submitCode,
-  SubmitCodeReturnType,
-} from "utils/submitCode";
+import { validateCode, SubmitCodeReturnType } from "utils/submitCode";
 import { useApiClient } from "~utils/hooks/useApiClient";
 
 const useValidateInviteCode = () =>

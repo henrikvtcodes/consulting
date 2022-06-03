@@ -1,12 +1,7 @@
-import { LockClosedIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
 import { getCsrfToken, getProviders } from "next-auth/react";
-import {
-  ExclamationIcon,
-  BellIcon,
-  ArrowCircleRightIcon,
-} from "@heroicons/react/solid";
-import { useSession, signOut } from "next-auth/react";
+import { ExclamationIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
+import { signOut } from "next-auth/react";
 import NextLink from "next/link";
 
 import FormPageLayout from "layouts/FormBgPage";

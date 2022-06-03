@@ -3,10 +3,7 @@ import { NextPage } from "next";
 import FormPageLayout from "layouts/FormBgPage";
 import FormWindow from "~components/forms/FormWindow";
 import SignUpForm from "~components/forms/InviteValidationForm";
-import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";
-import { validateCode, SubmitCodeReturnType } from "utils/submitCode";
 
-// eslint-disable-next-line
 const Page: NextPage = (props) => {
   return (
     <FormPageLayout title="Sign Up" desc="Confirm your account">

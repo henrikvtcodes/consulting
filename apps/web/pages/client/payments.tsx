@@ -1,8 +1,6 @@
-import type { NextPage } from "next";
-
 import { ClientDashLayout } from "layouts/ClientDash";
 
-const Page: NextPage = (props) => {
+const Page = () => {
   return (
     <ClientDashLayout>
       <main>

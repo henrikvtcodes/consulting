@@ -1,13 +1,12 @@
 import { useRouter } from "next/router";
 import { ExclamationIcon } from "@heroicons/react/outline";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import NextLink from "next/link";
 
 import FormPageLayout from "layouts/FormBgPage";
 import FormWindow from "~components/forms/FormWindow";
 import config from "utils/config";
 
-// eslint-disable-next-line
 const Page = (props: any) => {
   const router = useRouter();
 
