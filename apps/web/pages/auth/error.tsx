@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
 
 import FormPageLayout from "layouts/FormBgPage";
-import FormWindow from "components/forms/window";
+import FormWindow from "~components/forms/FormWindow";
 import config from "utils/config";
 
 // eslint-disable-next-line

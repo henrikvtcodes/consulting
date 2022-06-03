@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 
 import FormPageLayout from "layouts/FormBgPage";
-import FormWindow from "components/forms/window";
-import SignUpForm from "components/forms/signUpFull";
+import FormWindow from "~components/forms/FormWindow";
+import SignUpForm from "~components/forms/InviteValidationForm";
 import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";
 import { validateCode, SubmitCodeReturnType } from "utils/submitCode";
 
