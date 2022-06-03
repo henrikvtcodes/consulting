@@ -12,19 +12,4 @@ export class StripeController {
     @InjectStripeClient() private stripe: Stripe,
     private customerService: CustomerService,
   ) {}
-  @Post('/createPortalSession')
-  async setupCustomer(@Req() req, @Body() body) {
-    const user = req.user as DbUser;
-
-    const customer = await this.customerService.createCustomer(user);
-
-    const session = await this.customerService.createCustomerPortal(
-      customer,
-      body.url,
-    );
-
-    return {
-      url: session.url,
-    };
-  }
 }

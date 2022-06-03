@@ -12,21 +12,28 @@ export class CustomerService {
     @InjectStripeClient() private stripe: Stripe,
   ) {}
 
+  customerIsDeleted = (
+    // Wacky typeguard thing
+    customer: Stripe.Response<Stripe.Customer | Stripe.DeletedCustomer>,
+  ): customer is Stripe.Response<Stripe.DeletedCustomer> => {
+    return !!customer.deleted;
+  };
+
   async createCustomer(user: DbUser): Promise<Stripe.Customer> {
     const customer = await this.stripe.customers.create({
       email: user.email,
-      name: user.name,
-      phone: user?.phone,
-      shipping: {
-        name: user.name,
-        address: {
-          line1: user?.addressLine1,
-          line2: user?.addressLine2,
-          city: user?.addressCity,
-          state: user?.addressState,
-          postal_code: user?.addressZip,
-        },
-      },
+      // name: user.name,
+      // phone: user?.phone,
+      // shipping: {
+      //   name: user.name,
+      //   address: {
+      //     line1: user?.addressLine1,
+      //     line2: user?.addressLine2,
+      //     city: user?.addressCity,
+      //     state: user?.addressState,
+      //     postal_code: user?.addressZip,
+      //   },
+      // },
       metadata: {
         userId: user.id,
       },
@@ -52,7 +59,7 @@ export class CustomerService {
     return customer;
   }
 
-  async getCustomer(customer: DbCustomer): Promise<Customer> {
+  async getCustomerData(customer: DbCustomer): Promise<Customer> {
     if (customer == null || customer.stripeID == null) {
       return null;
     }
@@ -72,6 +79,46 @@ export class CustomerService {
     };
   }
 
+  async getCustomer(user: DbUser): Promise<Stripe.Response<Stripe.Customer>> {
+    const customer = await this.prisma.customer.findUnique({
+      where: { userId: user.id },
+    });
+
+    if (!customer) {
+      return null;
+    }
+
+    if (!customer.stripeID) {
+      return null;
+    }
+
+    const stripeCustomer = await this.stripe.customers.retrieve(
+      customer.stripeID,
+    );
+
+    if (this.customerIsDeleted(stripeCustomer)) return null;
+
+    return stripeCustomer;
+  }
+
+  async getOrCreateCustomer(user: DbUser): Promise<Stripe.Customer> {
+    const customer = await this.prisma.customer.findUnique({
+      where: { userId: user.id },
+    });
+
+    if (customer.stripeID !== undefined) {
+      const stripeCustomer = await this.stripe.customers.retrieve(
+        customer.stripeID,
+      );
+
+      if (this.customerIsDeleted(stripeCustomer)) return null;
+
+      return stripeCustomer;
+    }
+
+    return await this.createCustomer(user);
+  }
+
   async createCustomerPortal(
     cust: Stripe.Customer,
     url: string,
@@ -83,4 +130,19 @@ export class CustomerService {
 
     return session;
   }
+
+  // async createSetupIntent(
+  //   cust: Stripe.Customer,
+  //   url: string,
+  // ): Promise<Stripe.Checkout.Session> {
+  //   const session = await this.stripe.checkout.sessions.create({
+  //     payment_method_types: ['card'],
+  //     mode: 'setup',
+  //     customer: cust.id,
+  //     success_url: `${url}?session_id={CHECKOUT_SESSION_ID}`,
+  //     cancel_url: `${url}`,
+  //   });
+
+  //   return session;
+  // }
 }

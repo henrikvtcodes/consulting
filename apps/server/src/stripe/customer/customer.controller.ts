@@ -1,5 +1,15 @@
-import { Body, Controller, Post, Get, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  Get,
+  Req,
+  UseGuards,
+  // HttpException,
+  // HttpStatus,
+} from '@nestjs/common';
 import { User as DbUser } from '@prisma/client';
+import Stripe from 'stripe';
 import { Customer, CustomerExists } from 'types';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
 import { PrismaService } from '../../prisma/prisma.service';
@@ -22,7 +32,7 @@ export class CustomerController {
       },
     });
 
-    return await this.customerService.getCustomer(customer);
+    return await this.customerService.getCustomerData(customer);
   }
 
   @Get('exists') // Get customer data
@@ -59,4 +69,24 @@ export class CustomerController {
       url: session.url,
     };
   }
+
+  // @Post('/setupPaymentMethod')
+  // async setupPaymentMethod(@Req() req, @Body() body) {
+  //   const user = req.user as DbUser;
+
+  //   const customer = await this.customerService.getRawCustomer(user);
+
+  //   if (customer === null) {
+  //     throw new HttpException('Customer not found', HttpStatus.NOT_FOUND);
+  //   }
+
+  //   const session = await this.customerService.createSetupIntent(
+  //     customer,
+  //     body.url,
+  //   );
+
+  //   return {
+  //     url: session.url,
+  //   };
+  // }
 }
