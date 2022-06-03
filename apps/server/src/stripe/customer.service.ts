@@ -104,9 +104,10 @@ export class CustomerService {
   async getOrCreateCustomer(user: DbUser): Promise<Stripe.Customer> {
     const customer = await this.prisma.customer.findUnique({
       where: { userId: user.id },
+      rejectOnNotFound: false,
     });
 
-    if (customer.stripeID !== undefined) {
+    if (customer.stripeID !== (null || undefined)) {
       const stripeCustomer = await this.stripe.customers.retrieve(
         customer.stripeID,
       );

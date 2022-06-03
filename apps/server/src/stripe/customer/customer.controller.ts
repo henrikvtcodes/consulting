@@ -58,7 +58,7 @@ export class CustomerController {
   async setupCustomer(@Req() req, @Body() body) {
     const user = req.user as DbUser;
 
-    const customer = await this.customerService.createCustomer(user);
+    const customer = await this.customerService.getOrCreateCustomer(user);
 
     const session = await this.customerService.createCustomerPortal(
       customer,
