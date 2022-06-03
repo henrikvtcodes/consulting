@@ -8,11 +8,7 @@ export interface CustomerDetailsForm extends AddressOpt {
 }
 
 export interface CustomerExists {
-  exists:
-    | {
-        stripe: boolean;
-      }
-    | false;
+  exists: boolean;
 }
 
 export interface Customer {
