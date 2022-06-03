@@ -6,5 +6,8 @@ export const useApiClient = () => {
   return ky.extend({
     prefixUrl: API_URL,
     credentials: "include",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 };
