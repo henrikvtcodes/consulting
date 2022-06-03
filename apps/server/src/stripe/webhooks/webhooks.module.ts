@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { CheckoutService } from './checkout/checkout.service';
-import { CustomerService } from './customer/customer.service';
+import { CheckoutEvent } from './checkout/checkout.event';
+import { CustomerEvent } from './customer/customer.event';
 
 @Module({
-  providers: [CustomerService, CheckoutService],
+  providers: [CustomerEvent, CheckoutEvent],
 })
 export class WebhooksModule {}

@@ -4,7 +4,7 @@ import Stripe from 'stripe';
 import { PrismaService } from '../../../prisma/prisma.service';
 
 @Injectable()
-export class CustomerService {
+export class CustomerEvent {
   constructor(private prisma: PrismaService) {}
 
   @StripeWebhookHandler('customer.updated')
