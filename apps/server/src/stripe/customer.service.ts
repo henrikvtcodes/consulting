@@ -1,7 +1,8 @@
 import { InjectStripeClient } from '@golevelup/nestjs-stripe';
 import { Injectable } from '@nestjs/common';
-import { User as DbUser } from '@prisma/client';
+import { Customer as DbCustomer, User as DbUser } from '@prisma/client';
 import Stripe from 'stripe';
+import { Customer } from 'types';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -49,6 +50,26 @@ export class CustomerService {
     });
 
     return customer;
+  }
+
+  async getCustomer(customer: DbCustomer): Promise<Customer> {
+    if (customer == null || customer.stripeID == null) {
+      return null;
+    }
+
+    const stripeCustomer = await this.stripe.customers.retrieve(
+      customer.stripeID,
+    );
+
+    const paymentMethods = await this.stripe.customers.listPaymentMethods(
+      stripeCustomer.id,
+      { type: 'card' },
+    );
+
+    return {
+      customer: stripeCustomer,
+      paymentMethods: paymentMethods.data,
+    };
   }
 
   async createCustomerPortal(

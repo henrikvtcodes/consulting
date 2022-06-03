@@ -6,6 +6,7 @@ import { StripeService } from './stripe.service';
 import { CustomerService } from './customer.service';
 import { InvoiceController } from './invoice/invoice.controller';
 import { WebhooksModule } from './webhooks/webhooks.module';
+import { CustomerController } from './customer/customer.controller';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { WebhooksModule } from './webhooks/webhooks.module';
     }),
     WebhooksModule,
   ],
-  controllers: [StripeController, InvoiceController],
+  controllers: [StripeController, InvoiceController, CustomerController],
   providers: [StripeService, CustomerService],
   exports: [CustomerService],
 })
