@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import FormPageLayout from "layouts/formPage";
+import FormPageLayout from "layouts/FormBgPage";
 import FormWindow from "components/forms/window";
 import SignUpForm from "components/forms/signUpFull";
 import { useDebouncedFunc } from "utils/hooks/useDebouncedReq";

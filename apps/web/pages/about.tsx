@@ -1,4 +1,4 @@
-import HomeLayout from "layouts/home";
+import HomeLayout from "layouts/PublicPage";
 import AboutSection from "~components/tui/AboutSection";
 
 const Page = () => {

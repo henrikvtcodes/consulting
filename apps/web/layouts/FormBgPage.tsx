@@ -1,4 +1,4 @@
-import { CustomMeta, meta } from "components/meta";
+import { CustomMeta, meta } from "~components/MetaComponents";
 
 type LayoutProps = {
   title?: string;

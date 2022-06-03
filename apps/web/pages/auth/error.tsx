@@ -3,7 +3,7 @@ import { ExclamationIcon } from "@heroicons/react/outline";
 import { useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
 
-import FormPageLayout from "layouts/formPage";
+import FormPageLayout from "layouts/FormBgPage";
 import FormWindow from "components/forms/window";
 import config from "utils/config";
 

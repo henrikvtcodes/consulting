@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import { useAsync } from "react-async-hook";
 
-import FormPageLayout from "layouts/formPage";
+import FormPageLayout from "layouts/FormBgPage";
 import { useRole } from "utils/hooks/useRole";
 import { useUser } from "~utils/hooks/useUser";
 

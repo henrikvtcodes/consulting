@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 
-import HeaderM from "components/tui/headerM";
-import { CustomMeta, meta } from "components/meta";
+import HeaderM from "~components/tui/Header";
+import { CustomMeta, meta } from "~components/MetaComponents";
 
 type HomeLayoutProps = {
   title?: string;

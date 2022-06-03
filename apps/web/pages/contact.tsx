@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 
-import HomeLayout from "layouts/home";
+import HomeLayout from "layouts/PublicPage";
 
 const Page: NextPage = (props) => {
   return (

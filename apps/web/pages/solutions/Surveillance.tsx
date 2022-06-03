@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-import HomeLayout from "layouts/home";
+import HomeLayout from "layouts/PublicPage";
 import Brands from "~components/tui/brands";
 import { vendors, namedSolutions } from "~utils/config";
 

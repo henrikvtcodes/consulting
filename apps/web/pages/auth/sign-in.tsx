@@ -9,7 +9,7 @@ import {
 import { useSession, signOut } from "next-auth/react";
 import NextLink from "next/link";
 
-import FormPageLayout from "layouts/formPage";
+import FormPageLayout from "layouts/FormBgPage";
 import FormWindow from "components/forms/window";
 import SignInForm from "components/forms/signIn";
 import { NextAuthErrorParams } from "utils/config";

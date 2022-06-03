@@ -4,11 +4,11 @@ import { Fragment } from "react";
 import fs from "fs";
 import path from "path";
 
-import HomeLayout from "layouts/home";
+import HomeLayout from "layouts/PublicPage";
 import { getPostBySlug } from "utils/getPost";
 import markdownToHtml from "utils/markdownToHtml";
 import markdownStyles from "../../styles/markdown.module.css";
-import Post from "components/post";
+import Post from "~components/PostComponents";
 
 type PageProps = {
   post: PostType;

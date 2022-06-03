@@ -4,8 +4,8 @@ import { SWRConfig } from "swr";
 import PlausibleProvider, { usePlausible } from "next-plausible";
 import { Fragment, useEffect } from "react";
 
-import Favicon from "components/meta";
-import { WarningBanner } from "components/tui/warning-banner";
+import Favicon from "~components/MetaComponents";
+import { WarningBanner } from "~components/tui/WarningBanner";
 import "../styles/globals.css";
 import { useApiClient } from "~utils/hooks/useApiClient";
 

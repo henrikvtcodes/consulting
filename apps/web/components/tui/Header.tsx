@@ -6,7 +6,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { signOut } from "next-auth/react";
 
-import SolutionsFlyout from "./flyouts";
+import SolutionsFlyout from "./SolutionsFlyout";
 import solutions from "utils/config";
 import { useUser } from "utils/hooks/useUser";
 
