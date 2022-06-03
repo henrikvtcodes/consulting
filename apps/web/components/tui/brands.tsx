@@ -2,8 +2,6 @@ import Image from "next/image";
 import NextLink from "next/link";
 import type { NextPage } from "next";
 
-import { SimpleScale } from "./imageScale";
-
 type Logo = {
   alt: string;
   href: string;
