@@ -9,7 +9,7 @@ import { ChevronDownIcon } from "@heroicons/react/outline";
 
 import HomeLayout from "layouts/home";
 import { DefaultMeta } from "components/meta";
-import Brands from "components/tui/brands";
+import Brands from "~components/tui/brands";
 import classNames from "components/tui/classnames";
 import { faqs } from "utils/config";
 import { markdownToHtmlSync } from "utils/markdownToHtml";

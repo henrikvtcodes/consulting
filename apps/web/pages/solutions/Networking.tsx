@@ -1,11 +1,8 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
 
 import HomeLayout from "layouts/home";
-import Brands from "components/tui/brands";
-import Features from "components/tui/featuresTabs";
-import config from "utils/config";
+import Brands from "~components/tui/brands";
 import { vendors, namedSolutions } from "utils/config";
 
 const Page: NextPage = (props) => {

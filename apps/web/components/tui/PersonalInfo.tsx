@@ -1,18 +1,9 @@
-import { useSWRConfig } from "swr";
 import { useForm, SubmitHandler } from "react-hook-form";
-import axios from "axios";
 
-import type {
-  Address,
-  UserDetailsForm,
-  User,
-  CustomerDetailsForm,
-  Customer,
-} from "types";
+import type { UserDetailsForm } from "types";
 
 import { useUser } from "utils/hooks/useUser";
-import { AddressForm } from "./address";
-import { Toggle, FormToggle } from "./switch";
+import { AddressForm } from "./AddressForm";
 import { useApiClient } from "~utils/hooks/useApiClient";
 
 const PersonalInfo = () => {
