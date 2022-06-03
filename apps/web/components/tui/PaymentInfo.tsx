@@ -7,11 +7,10 @@ import { useRouter } from "next/router";
 const PaymentInfo = () => {
   const { customer, update, isValidating } = useCustomer();
 
-  const { data: customerState } =
+  const { data: customerState, mutate: mutateExists } =
     useSWRImmutable<CustomerExists>("customer/exists");
 
   const client = useApiClient();
-  const router = useRouter();
 
   const getPortal = () => {
     const result = client.post("stripe/createPortalSession", {
@@ -22,7 +21,8 @@ const PaymentInfo = () => {
 
     result.then((res) => {
       res.json().then((data) => {
-        router.push(data.url);
+        window.open(data.url, "_blank");
+        mutateExists();
       });
     });
   };
@@ -38,7 +38,7 @@ const PaymentInfo = () => {
         </p>
       </div>
       <div className="mt-5 md:mt-0 md:col-span-2 flex flex-col align-middle">
-        {customerState ? undefined : (
+        {customerState?.exists ? undefined : (
           <div className="self-center w-max flex flex-col justify-around">
             <p className="text-sm text-center text-gray-500 italic">
               You are not a registered customer.
