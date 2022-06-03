@@ -17,11 +17,11 @@ export class CustomerEvent {
         id: userId,
       },
       data: {
-        addressLine1: customer.shipping.address.line1,
-        addressLine2: customer.shipping.address.line2,
-        addressCity: customer.shipping.address.city,
-        addressState: customer.shipping.address.state,
-        addressZip: customer.shipping.address.postal_code,
+        addressLine1: customer.shipping?.address.line1,
+        addressLine2: customer.shipping?.address.line2,
+        addressCity: customer.shipping?.address.city,
+        addressState: customer.shipping?.address.state,
+        addressZip: customer.shipping?.address.postal_code,
       },
     });
   }
