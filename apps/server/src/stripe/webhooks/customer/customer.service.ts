@@ -35,6 +35,7 @@ export class CustomerService {
       where: {
         userId: userId,
       },
+
       data: {
         stripeID: null,
       },
