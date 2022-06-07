@@ -138,36 +138,42 @@ enum ProjectStatus {
 }
 
 model Quote {
-  id         String   @id @default(cuid())
+  id         String      @id @default(cuid())
+  name       String
   file       String
   projectId  String
   customerId String
   amount     Int
-  status     String
-  isAccepted Boolean
-  isDeclined Boolean
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now())
+  status     QuoteStatus @default(awaitingApproval)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @default(now())
 
   project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
   customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
 
   invoices Invoice?
-  charges  Charge?
 
   @@map("quotes")
 }
 
+enum QuoteStatus {
+  awaitingApproval
+  approved
+  declined
+  invoiced
+  completed
+}
+
 model Invoice {
-  id         String   @id @default(cuid())
+  id         String        @id @default(cuid())
   projectId  String
   customerId String
   stripeId   String
-  chargeId   String   @unique
-  quoteId    String   @unique
-  status     String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now())
+  chargeId   String        @unique
+  quoteId    String        @unique
+  status     InvoiceStatus @default(draft)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @default(now())
 
   project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
   customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
@@ -177,21 +183,26 @@ model Invoice {
   @@map("invoices")
 }
 
+enum InvoiceStatus {
+  draft
+  open
+  paid
+  failed
+  canceled
+}
+
 model Charge {
   id         String   @id @default(cuid())
   amount     Int
-  currency   String
   customerId String
   projectId  String
   stripeId   String
   paid       Boolean
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
-  quoteId    String?  @unique
 
   customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
   project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
-  quote    Quote?   @relation(fields: [quoteId], references: [id], onDelete: Cascade)
 
   invoice Invoice?
 
