@@ -1,11 +1,5 @@
 import { useRouter } from "next/router";
-import { NextPage } from "next";
-// @ts-ignore
-import Typical from "react-typical";
-import { useEffect } from "react";
-import { useSession } from "next-auth/react";
 import useSWR from "swr";
-import { useAsync } from "react-async-hook";
 
 import FormPageLayout from "layouts/FormBgPage";
 import { useRole } from "utils/hooks/useRole";
@@ -40,9 +34,12 @@ const Page = () => {
 
   return (
     <FormPageLayout>
-      <h1 className="text-4xl text-brand-text1">
-        <Typical steps={["Please wait while we log you in..."]} loop={1} />
-      </h1>
+      <div className="rounded-lg bg-white min-h-8 w-auto aspect-square px-6 flex flex-col justify-center items-center basis-1/3 flex-initial grow-0">
+        <span className="rounded-full h-8 w-8 animate-spin bg-gradient-to-t from-blue-400  to-green-400" />
+        {/* <div className="flex flex-col justify-center items-end pt-2">
+          <h3 className=" font-semibold">Please wait</h3>
+        </div> */}
+      </div>
     </FormPageLayout>
   );
 };

@@ -539,13 +539,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@camwiegert/typical@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@camwiegert/typical@npm:0.1.1"
-  checksum: 66a9969c37b8e0ed57a974e1e807758c28a3e971edc5281726a1a0d11a4ffbc0478b8bd09987e2119332b711ef2a63f603ef396bb430c42b0209ae15cb747639
-  languageName: node
-  linkType: hard
-
 "@cspotcode/source-map-consumer@npm:0.8.0":
   version: 0.8.0
   resolution: "@cspotcode/source-map-consumer@npm:0.8.0"
@@ -9484,19 +9477,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-typical@npm:^0.1.3":
-  version: 0.1.3
-  resolution: "react-typical@npm:0.1.3"
-  dependencies:
-    "@camwiegert/typical": ^0.1.1
-  peerDependencies:
-    prop-types: ^15.5.4
-    react: ^15.0.0 || ^16.0.0
-    react-dom: ^15.0.0 || ^16.0.0
-  checksum: 3d39d50bc96a19373526a2a58ac8ea4c6bd31ebf8f0b7e3dd4bd39f412aa90497c928f90fa872685b02db35d954269090741e1176e25e0bd67f2272a2d2adb69
-  languageName: node
-  linkType: hard
-
 "react@npm:17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
@@ -12001,7 +11981,6 @@ __metadata:
     react-hot-toast: ^2.2.0
     react-icons: ^4.3.1
     react-is: ^17.0.2
-    react-typical: ^0.1.3
     remark: ^14.0.2
     remark-html: ^15.0.1
     swr: ^1.2.2
