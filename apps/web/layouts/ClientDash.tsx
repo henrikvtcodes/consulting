@@ -9,7 +9,7 @@ import {
   UserIcon,
   XIcon,
 } from "@heroicons/react/outline";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -50,7 +50,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
     required: true,
   });
 
-  const { user } = useUser();
+  const { user, updateUser } = useUser();
 
   const userImage = user?.image;
 
@@ -149,9 +149,9 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                     ))}
                   </nav>
                 </div>
-                <div className="flex-shrink-0 flex bg-gray-700 p-4">
+                <div className="flex-shrink-0 flex flex-col bg-gray-700 p-4">
                   <div className="flex items-center">
-                    <div>
+                    <div className=" self-start mt-1">
                       {/* eslint-disable-next-line */}
                       <img
                         className="inline-block h-10 w-10 rounded-full"
@@ -167,8 +167,19 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                       <p className="text-sm font-medium text-gray-400 group-hover:text-gray-300">
                         {user?.email}
                       </p>
+                      <button
+                        onClick={() => {
+                          signOut();
+                          updateUser();
+                        }}
+                        className=" mt-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
+                      >
+                        Sign Out
+                      </button>
                     </div>
                   </div>
+
+                  {/* ANCHOR */}
                 </div>
               </div>
             </Transition.Child>
@@ -224,7 +235,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
             </div>
             <div className="flex-shrink-0 flex bg-gray-700 p-4">
               <div className="flex items-center">
-                <div>
+                <div className=" self-start mt-1">
                   {/* eslint-disable-next-line */}
                   <img
                     className="inline-block h-9 w-9 rounded-full"
@@ -238,6 +249,15 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                   <p className="text-xs font-medium text-gray-300">
                     {user?.email}
                   </p>
+                  <button
+                    onClick={() => {
+                      signOut();
+                      updateUser();
+                    }}
+                    className=" mt-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
+                  >
+                    Sign Out
+                  </button>
                 </div>
               </div>
             </div>
