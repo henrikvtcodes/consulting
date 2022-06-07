@@ -1,11 +1,10 @@
 import { Body, Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
-import { User as DbUser, Role } from '@prisma/client';
-import { User } from 'types';
+import { Role } from '@prisma/client';
+import { AuthdUser, User } from 'types';
 
 import { SessionGuard } from '../auth/nextauth-session.guard';
 import { Roles } from '../auth/role.decorator';
 import { RolesGuard } from '../auth/role.guard';
-import { PrismaService } from '../prisma/prisma.service';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -16,9 +15,9 @@ export class UserController {
 
   @Get() // Get User Data
   getUser(@Req() req): { user: User } {
-    const user = req.user as DbUser;
+    const user = req.user as AuthdUser;
 
-    delete user.emailVerified; // Remove unneeded fields
+    delete user.emailVerified, user.customer; // Remove unneeded fields
 
     return { user };
   }
@@ -30,11 +29,11 @@ export class UserController {
 
   @Patch() // Update user data
   async updateUser(@Req() req, @Body() body): Promise<{ user: User }> {
-    const user = req.user as DbUser;
+    const user = req.user as AuthdUser;
 
     const newUser = await this.userService.updateUser(user, body);
 
-    delete newUser.emailVerified, newUser.isInvited;
+    delete newUser.emailVerified, newUser.isInvited, user.customer;
 
     return { user: newUser };
   }

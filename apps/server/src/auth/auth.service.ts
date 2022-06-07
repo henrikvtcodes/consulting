@@ -1,17 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
-import type { Session, User } from '@prisma/client';
+import type { Session } from '@prisma/client';
+import { AuthdUser } from 'types';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async verifySession(sessionToken: string): Promise<
-    Session & {
-      user: User;
-    }
-  > {
+  async verifySession(sessionToken: string): Promise<Session | null> {
     const session = await this.prisma.session.findUnique({
       where: {
         sessionToken,
@@ -28,5 +25,16 @@ export class AuthService {
       }
     }
     return null;
+  }
+
+  async readUser(userId: string): Promise<AuthdUser> {
+    return await this.prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+      include: {
+        customer: true,
+      },
+    });
   }
 }
