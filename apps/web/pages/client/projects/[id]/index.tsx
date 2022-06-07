@@ -3,6 +3,8 @@ import useSWR from "swr";
 
 import { ClientDashLayout } from "layouts/ClientDash";
 import { ProjectData } from "types";
+import ProjectLayout from "layouts/ProjectLayout";
+import CostOverview from "~components/tui/CostOverview";
 
 const Page = () => {
   const router = useRouter();
@@ -12,7 +14,9 @@ const Page = () => {
 
   return (
     <ClientDashLayout>
-      <div> {JSON.stringify(data)} </div>
+      <ProjectLayout>
+        <CostOverview project={data} />
+      </ProjectLayout>
     </ClientDashLayout>
   );
 };
