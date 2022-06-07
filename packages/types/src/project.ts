@@ -1,6 +1,6 @@
-export interface Project {
-  name: string;
-  description: string;
-  createdAt: Date;
-  updatedAt: Date;
+import { Invoice, Project, Quote } from "@prisma/client";
+
+export interface ProjectData extends Project {
+  invoices: Invoice[];
+  quotes: Quote[];
 }

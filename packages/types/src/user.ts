@@ -1,4 +1,4 @@
-import { Role } from "@prisma/client";
+import { User as DbUser, Customer, Role } from "@prisma/client";
 
 import { AddressOpt } from "./address";
 
@@ -16,4 +16,8 @@ export interface UserDetailsForm extends AddressOpt {
   email?: string;
   phone?: string;
   image?: string;
+}
+
+export interface AuthdUser extends DbUser {
+  customer: Customer;
 }
