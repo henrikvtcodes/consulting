@@ -51,15 +51,10 @@ const CardWrapper = ({
 }) => {
   const disabledStatus =
     project.status ===
-    (ProjectStatus.awaitingApproval ||
-      ProjectStatus.cancelled ||
-      ProjectStatus.completed);
-  const closedStatus = project.isClosed;
-
-  console.log(disabledStatus, closedStatus);
+    (ProjectStatus.awaitingApproval || ProjectStatus.cancelled);
 
   switch (true) {
-    case disabledStatus || closedStatus:
+    case disabledStatus:
       return (
         <div className="w-full rounded-lg border-2 py-2 px-3 grid md:grid-cols-3 grid-cols-2 grid-rows-2">
           {children}
