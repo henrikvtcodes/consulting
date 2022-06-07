@@ -40,7 +40,7 @@ const navigation = [
 ];
 
 type ClientDashLayoutProps = {
-  children?: React.ReactElement;
+  children?: React.ReactNode;
 };
 
 const ClientDashLayout = (props: ClientDashLayoutProps) => {
