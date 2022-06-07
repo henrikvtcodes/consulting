@@ -27,7 +27,6 @@
     "@types/marked": "^4.0.1",
     "autoprefixer": "10.4.0",
     "awesome-debounce-promise": "^2.1.0",
-    "axios": "^0.24.0",
     "chalk": "^5.0.0",
     "dayjs": "^1.10.7",
     "framer-motion": "^4",
@@ -36,7 +35,7 @@
     "marked": "^4.0.8",
     "nanoid": "^3.2.0",
     "next": "^12.1.4",
-    "next-auth": "4.2.1",
+    "next-auth": "^4.3.4",
     "next-mdx-remote": "^3.0.8",
     "next-plausible": "^3.1.9",
     "postcss": "^8.4.13",
@@ -55,9 +54,6 @@
     "use-constant": "^1.1.0"
   },
   "devDependencies": {
-    "@types/cookie": "^0.4.1",
-    "@types/cors": "^2.8.12",
-    "@types/micro": "^7.3.6",
     "@types/node": "16.11.11",
     "@types/react": "17.0.37",
     "eslint": "7",

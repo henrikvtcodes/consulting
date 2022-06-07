@@ -1615,24 +1615,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "@types/cookie@npm:0.4.1"
-  checksum: 3275534ed69a76c68eb1a77d547d75f99fedc80befb75a3d1d03662fb08d697e6f8b1274e12af1a74c6896071b11510631ba891f64d30c78528d0ec45a9c1a18
-  languageName: node
-  linkType: hard
-
 "@types/cookiejar@npm:*":
   version: 2.1.2
   resolution: "@types/cookiejar@npm:2.1.2"
   checksum: f6e1903454007f86edd6c3520cbb4d553e1d4e17eaf1f77f6f75e3270f48cc828d74397a113a36942f5fe52f9fa71067bcfa738f53ad468fcca0bc52cb1cbd28
-  languageName: node
-  linkType: hard
-
-"@types/cors@npm:^2.8.12":
-  version: 2.8.12
-  resolution: "@types/cors@npm:2.8.12"
-  checksum: 8c45f112c7d1d2d831b4b266f2e6ed33a1887a35dcbfe2a18b28370751fababb7cd045e745ef84a523c33a25932678097bf79afaa367c6cb3fa0daa7a6438257
   languageName: node
   linkType: hard
 
@@ -1789,15 +1775,6 @@ __metadata:
   version: 1.0.2
   resolution: "@types/mdurl@npm:1.0.2"
   checksum: 79c7e523b377f53cf1f5a240fe23d0c6cae856667692bd21bf1d064eafe5ccc40ae39a2aa0a9a51e8c94d1307228c8f6b121e847124591a9a828c3baf65e86e2
-  languageName: node
-  linkType: hard
-
-"@types/micro@npm:^7.3.6":
-  version: 7.3.7
-  resolution: "@types/micro@npm:7.3.7"
-  dependencies:
-    "@types/node": "*"
-  checksum: 37766f7637d4499362932499d72dda499b6afcdc2a1e2864fd7e65de4591767ef318a48b32626b472a1c16249d8666697816ae309ebd07a097d981bb8ee9502f
   languageName: node
   linkType: hard
 
@@ -2725,15 +2702,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.24.0":
-  version: 0.24.0
-  resolution: "axios@npm:0.24.0"
-  dependencies:
-    follow-redirects: ^1.14.4
-  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
-  languageName: node
-  linkType: hard
-
 "axobject-query@npm:^2.2.0":
   version: 2.2.0
   resolution: "axobject-query@npm:2.2.0"
@@ -3565,7 +3533,6 @@ __metadata:
     "@nestjs/schematics": ^8.0.10
     "@prisma/client": ^3.13.0
     "@types/node": 16.11.11
-    axios: ^0.24.0
     eslint: 7
     nanoid: ^3.2.0
     prisma: ^3.13.0
@@ -5171,7 +5138,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.4, follow-redirects@npm:^1.14.8":
+"follow-redirects@npm:^1.14.8":
   version: 1.14.9
   resolution: "follow-redirects@npm:1.14.9"
   peerDependenciesMeta:
@@ -8262,9 +8229,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:4.2.1":
-  version: 4.2.1
-  resolution: "next-auth@npm:4.2.1"
+"next-auth@npm:^4.3.4":
+  version: 4.3.4
+  resolution: "next-auth@npm:4.3.4"
   dependencies:
     "@babel/runtime": ^7.16.3
     "@panva/hkdf": ^1.0.1
@@ -8277,12 +8244,12 @@ __metadata:
     uuid: ^8.3.2
   peerDependencies:
     nodemailer: ^6.6.5
-    react: ^17.0.2 || ^18.0.0-0
-    react-dom: ^17.0.2 || ^18.0.0-0
+    react: ^17.0.2 || ^18
+    react-dom: ^17.0.2 || ^18
   peerDependenciesMeta:
     nodemailer:
       optional: true
-  checksum: 08733486e731d38801606b70a9bfb21a213a5771f4de21ef7f64e13aa94b5cc45508b424ccb549b7b73be69ed597b87e3dcfba520c75195b46ccf44e3d199ea5
+  checksum: 4b5f6f6d3fa070d168c8dd92a0aae54adaef2a637bad092df34135f3541ec4b9a6616b2eeead49b95b2da18287f485d9e8fe4b9f0116019e4dc08acccedbfff9
   languageName: node
   linkType: hard
 
@@ -11951,15 +11918,11 @@ __metadata:
     "@tailwindcss/forms": ^0.4.0
     "@tailwindcss/line-clamp": ^0.3.0
     "@tailwindcss/typography": ^0.5.0
-    "@types/cookie": ^0.4.1
-    "@types/cors": ^2.8.12
     "@types/marked": ^4.0.1
-    "@types/micro": ^7.3.6
     "@types/node": 16.11.11
     "@types/react": 17.0.37
     autoprefixer: 10.4.0
     awesome-debounce-promise: ^2.1.0
-    axios: ^0.24.0
     chalk: ^5.0.0
     dayjs: ^1.10.7
     eslint: 7
@@ -11970,7 +11933,7 @@ __metadata:
     marked: ^4.0.8
     nanoid: ^3.2.0
     next: ^12.1.4
-    next-auth: 4.2.1
+    next-auth: ^4.3.4
     next-mdx-remote: ^3.0.8
     next-plausible: ^3.1.9
     postcss: ^8.4.13
