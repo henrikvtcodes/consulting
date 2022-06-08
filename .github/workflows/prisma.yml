@@ -7,9 +7,8 @@ on:
   push:
     branches: [main, monorepo]
     paths:
-      - "./prisma/**/*.{prisma,sql}"
+      - "prisma/**"
   workflow_dispatch:
-    branches: [main, monorepo]
 
 jobs:
   install:
