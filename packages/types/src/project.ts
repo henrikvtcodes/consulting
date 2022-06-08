@@ -4,3 +4,12 @@ export interface ProjectData extends Project {
   invoices: Invoice[];
   quotes: Quote[];
 }
+
+export interface RequestProject {
+  name: string;
+  description: string;
+}
+
+export interface CreateProject extends RequestProject {
+  ownerId: string;
+}
