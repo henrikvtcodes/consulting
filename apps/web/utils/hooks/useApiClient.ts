@@ -9,5 +9,11 @@ export const useApiClient = () => {
     headers: {
       "Content-Type": "application/json",
     },
+    retry: {
+      limit: 3,
+      methods: ["post", "patch", "options", "head"],
+      statusCodes: [500],
+    },
+    throwHttpErrors: true,
   });
 };
