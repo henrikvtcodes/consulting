@@ -66,7 +66,7 @@ const CardWrapper = ({
   switch (true) {
     case disabledStatus:
       return (
-        <div className="w-full rounded-lg border-2 py-2 px-3 grid md:grid-cols-3 grid-cols-2 grid-rows-2">
+        <div className="w-full rounded-lg cursor-not-allowed shadow ring-1 ring-gray-400 ring-opacity-5 py-2 px-3 grid md:grid-cols-3 grid-cols-2 grid-rows-2">
           {children}
         </div>
       );
@@ -75,7 +75,7 @@ const CardWrapper = ({
         <NextLink href={`/client/projects/${project.id}`} passHref>
           <a className="no-underline">
             {" "}
-            <div className="w-full rounded-lg border-2 py-2 px-3 grid md:grid-cols-3 grid-cols-2 grid-rows-2 transition-shadow ease-in-out hover:shadow-md ">
+            <div className="w-full rounded-lg shadow ring-1 ring-gray-400 ring-opacity-5 py-2 px-3 grid md:grid-cols-3 grid-cols-2 grid-rows-2 transition-shadow ease-in-out hover:shadow-md ">
               {children}
             </div>
           </a>
