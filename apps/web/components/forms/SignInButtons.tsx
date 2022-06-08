@@ -33,9 +33,7 @@ const SignInForm = ({ csrfToken }: SignInComponentProps) => {
       <div className="flex flex-row justify-center items-center space-x-2">
         <button
           onClick={() =>
-            signIn("google", {
-              callbackUrl: "http://localhost:3000/auth",
-            })
+            signIn("google")
           }
           className="w-full inline-flex justify-center items-center align-middle space-x-2 py-2 px-4 border text-brand-text1 border-gray-300 rounded-md shadow-sm bg-gray-100 font-medium hover:bg-gray-200"
         >
@@ -47,9 +45,7 @@ const SignInForm = ({ csrfToken }: SignInComponentProps) => {
         </button>
         <button
           onClick={() =>
-            signIn("facebook", {
-              callbackUrl: "http://localhost:3000/auth",
-            })
+            signIn("facebook")
           }
           className="w-full inline-flex justify-center items-center align-middle space-x-2 py-2 px-4 border text-brand-text1 border-gray-300 rounded-md shadow-sm bg-gray-100 font-medium hover:bg-gray-200"
         >

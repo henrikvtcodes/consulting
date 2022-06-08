@@ -16,7 +16,7 @@ const Page = () => {
 
   const isInvited: boolean = inviteStatus?.invited;
 
-  console.log("isInvited", isInvited);
+  console.log("isInvited", inviteStatus);
 
   if (user !== (undefined || null) && !isValidating) {
     if (isInvited === true) {

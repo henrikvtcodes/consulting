@@ -5,6 +5,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 import { PrismaClient } from "@prisma/client";
 import type { PrismaClient as PrismaClientType } from "@prisma/client";
+import { redirect } from "next/dist/server/api-utils";
 let prisma: PrismaClientType;
 
 // add prisma to the NodeJS global type
@@ -66,27 +67,9 @@ export default NextAuth({
 
   pages: {
     signIn: "/auth/sign-in",
-    error: "/auth/error", // Error code passed in query string as ?error=
-    newUser: "/auth/sign-up", // New users will be directed here on first sign in
+    error: "/auth/error", // Error display page
+    newUser: "/auth/sign-up", // Invite code page
   },
 
-  callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      // const dbUser = await prisma.user.findUnique({
-      //   where: {
-      //     id: user.id,
-      //   },
-      // });
-
-      // if (!dbUser) {
-      //   return true;
-      // }
-
-      // if (dbUser.isInvited === false) {
-      //   return "/auth/sign-up";
-      // }
-
-      return true;
-    },
-  },
+  callbacks: {},
 });
