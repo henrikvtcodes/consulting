@@ -1,18 +1,17 @@
 import { ProjectData } from "types";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import useSWR from "swr";
 
-const QuoteList = ({ projects }: { projects: ProjectData }) => {
+const QuoteList = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data: project, error } = useSWR<ProjectData>(`project/${id}`);
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
-      <div className="sm:flex sm:items-center">
-        <div className="sm:flex-auto">
-          <h1 className="text-xl font-semibold text-gray-900">Users</h1>
-          <p className="mt-2 text-sm text-gray-700">
-            A list of all the users in your account including their name, title,
-            email and role.
-          </p>
-        </div>
-      </div>
-      <div className="mt-8 flex flex-col">
+    <div className="mt-4">
+      <h3 className="text-lg leading-6 font-medium text-gray-900">Quotes</h3>
+      <div className="mt-2 flex flex-col">
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -29,19 +28,13 @@ const QuoteList = ({ projects }: { projects: ProjectData }) => {
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Title
+                      Status
                     </th>
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Email
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Role
+                      Amout
                     </th>
                     <th
                       scope="col"
@@ -52,27 +45,27 @@ const QuoteList = ({ projects }: { projects: ProjectData }) => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {projects.quotes.map((quote) => (
+                  {project?.quotes?.map((quote) => (
                     <tr key={quote.id}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {quote.name}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
+                        {quote.status}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.email}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
+                        {"$"}
+                        {quote.amount.toString()}
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
+                        <NextLink
+                          href={`${router.asPath}/quote/${quote.id}`}
+                          passHref
                         >
-                          View<span className="sr-only">, {person.name}</span>
-                        </a>
+                          <a className="text-indigo-600 hover:text-indigo-900">
+                            View<span className="sr-only">, {quote.name}</span>
+                          </a>
+                        </NextLink>
                       </td>
                     </tr>
                   ))}
@@ -85,3 +78,5 @@ const QuoteList = ({ projects }: { projects: ProjectData }) => {
     </div>
   );
 };
+
+export default QuoteList;

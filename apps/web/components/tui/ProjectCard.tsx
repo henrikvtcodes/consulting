@@ -1,7 +1,11 @@
 import { Project, ProjectStatus } from "@prisma/client";
 import NextLink from "next/link";
 
-export const Status = ({ status }: { status: ProjectStatus }) => {
+export const ProjectStatusIndicator = ({
+  status,
+}: {
+  status: ProjectStatus;
+}) => {
   switch (status) {
     case ProjectStatus.awaitingApproval:
       return (
@@ -37,6 +41,12 @@ export const Status = ({ status }: { status: ProjectStatus }) => {
       return (
         <span className="rounded-full px-2 py-1 text-sm bg-red-100 text-red-600 font-semibold">
           Cancelled
+        </span>
+      );
+    default:
+      return (
+        <span className="rounded-full px-2 py-1 text-sm bg-gray-100 text-gray-600 font-semibold">
+          Loading
         </span>
       );
   }
@@ -84,7 +94,7 @@ const CardContent = ({ project }: { project: Project }) => {
         {project.description as string}
       </p>
       <span className="md:col-start-3 col-start-2 col-span-1 justify-self-end">
-        <Status status={project.status} />
+        <ProjectStatusIndicator status={project.status} />
       </span>
     </>
   );
