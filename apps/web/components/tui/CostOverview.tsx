@@ -13,7 +13,9 @@ const CostOverview = ({ projectId }: { projectId: string }) => {
           </dt>
           <dd className="mt-1 text-3xl font-semibold text-gray-900">
             {"$"}
-            {project?.totalCost.toString() ? project.totalCost.toString() : "0"}
+            {project?.totalCost?.toString()
+              ? project.totalCost.toString()
+              : "~"}
           </dd>
         </div>
         <div className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
@@ -22,7 +24,7 @@ const CostOverview = ({ projectId }: { projectId: string }) => {
           </dt>
           <dd className="mt-1 text-3xl font-semibold text-gray-900">
             {"$"}
-            {project?.totalDue.toString() ? project.totalDue.toString() : "0"}
+            {project?.totalDue?.toString() ? project.totalDue.toString() : "~"}
           </dd>
         </div>
         <div className="px-4 py-5 bg-white shadow rounded-lg overflow-hidden sm:p-6">
@@ -31,7 +33,9 @@ const CostOverview = ({ projectId }: { projectId: string }) => {
           </dt>
           <dd className="mt-1 text-3xl font-semibold text-gray-900">
             {"$"}
-            {project?.totalPaid.toString() ? project.totalPaid.toString() : "0"}
+            {project?.totalPaid?.toString()
+              ? project.totalPaid.toString()
+              : "~"}
           </dd>
         </div>
       </dl>
