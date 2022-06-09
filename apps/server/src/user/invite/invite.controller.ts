@@ -2,15 +2,17 @@ import {
   Body,
   Controller,
   Get,
+  HttpCode,
   HttpException,
   HttpStatus,
   Param,
   Post,
   Req,
-  Res,
   UseGuards,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
+import { Request } from 'express';
+import { AuthdUser } from 'types';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
 import { Roles } from '../../auth/role.decorator';
 import { Role } from '../../auth/role.enum';
@@ -33,8 +35,10 @@ export class InviteController {
   }
 
   @Post('submit') // Allow user to use an invite code
-  async useInvite(@Req() req, @Body() body, @Res() res) {
-    const user = req.user as User;
+  @HttpCode(200)
+  async useInvite(@Req() req, @Body() body) {
+    const user = req.user as AuthdUser;
+    // const { hostname: origin, protocol } = req as Request;
 
     const code: string | undefined = body['code'];
 
@@ -42,14 +46,12 @@ export class InviteController {
       throw new HttpException('No code provided', HttpStatus.BAD_REQUEST);
     }
 
-    if (user.isInvited && user.role === 'client') {
-      throw new HttpException(
-        'You are not permitted to perform this operation',
-        HttpStatus.UNAUTHORIZED,
-      );
-    }
-
     switch (user.role) {
+      default:
+        throw new HttpException(
+          'Invalid Role - Operation blocked',
+          HttpStatus.FORBIDDEN,
+        );
       case 'admin':
         const resultAdmin = await this.inviteService.useInviteAdmin(code);
         if (resultAdmin === null) {
@@ -60,6 +62,12 @@ export class InviteController {
         }
 
       case 'client':
+        if (user.isInvited === true) {
+          throw new HttpException(
+            'You are not permitted to perform this operation',
+            HttpStatus.FORBIDDEN,
+          );
+        }
         const resultClient = await this.inviteService.useInviteClient(
           user,
           code,
@@ -71,7 +79,14 @@ export class InviteController {
           );
         }
 
-        return res.status(HttpStatus.SEE_OTHER).redirect('/auth');
+        // const originUrl =
+        //   origin === 'localhost'
+        //     ? `${protocol}://${origin}:3000`
+        //     : `${protocol}://${origin}`;
+
+        return {
+          message: 'Invite Successful',
+        };
     }
   }
 
