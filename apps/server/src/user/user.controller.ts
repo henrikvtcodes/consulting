@@ -3,13 +3,11 @@ import { Role } from '@prisma/client';
 import { AuthdUser, User } from 'types';
 
 import { SessionGuard } from '../auth/nextauth-session.guard';
-import { Roles } from '../auth/role.decorator';
 import { RolesGuard } from '../auth/role.guard';
 import { UserService } from './user.service';
 
 @Controller('user')
 @UseGuards(SessionGuard, RolesGuard)
-@Roles(Role.client)
 export class UserController {
   constructor(private userService: UserService) {}
 
