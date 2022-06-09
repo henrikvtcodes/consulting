@@ -1,7 +1,4 @@
-import axios from "axios";
-
-import { API_URL } from "./config";
-import { useApiClient } from "./hooks/useApiClient";
+import { useApiClient, client } from "./hooks/useApiClient";
 
 export type SubmitCodeReturnType = {
   isValid: boolean;
@@ -10,21 +7,15 @@ export type SubmitCodeReturnType = {
 };
 
 const validateCode = async (code: string): Promise<SubmitCodeReturnType> => {
-  const result = await axios({
-    method: "GET",
-    url: `${API_URL}/invite/validate/${code}`,
-    withCredentials: true,
-  });
+  const result = await client
+    .get(`invite/validate/${code}`)
+    .json<SubmitCodeReturnType>();
 
   return {
-    isValid: result.data.isValid,
-    message: result.data.message,
+    isValid: result.isValid,
+    message: result.message,
     status: result.status,
   };
 };
 
-const submitCode = (event: any) => {
-  console.log(event);
-};
-
-export { validateCode, submitCode };
+export { validateCode };

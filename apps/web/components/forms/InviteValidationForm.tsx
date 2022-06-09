@@ -21,7 +21,6 @@ const SignUpForm = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
@@ -32,18 +31,16 @@ const SignUpForm = () => {
 
   const client = useApiClient();
 
-  const submitCode = (data: any) => {
-    const res = client.post("/invite/submit", {
+  const submitCode = async (data: any) => {
+    const res = await client.post("invite/submit", {
       body: JSON.stringify({
         code: data.code,
       }),
     });
 
-    res.then((res) => {
-      if (res.status == (200 || 201)) {
-        router.push("/client");
-      }
-    });
+    if (res.status === 200) {
+      router.push("/client");
+    }
   };
 
   const safeToSubmit =
