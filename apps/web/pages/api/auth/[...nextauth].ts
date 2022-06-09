@@ -29,8 +29,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 export default NextAuth({
-  // NOTE: POTENTIAL FOR TYPE ERROR
-  // @ts-ignore
   adapter: PrismaAdapter(prisma),
 
   providers: [
@@ -70,6 +68,4 @@ export default NextAuth({
     error: "/auth/error", // Error display page
     newUser: "/auth/sign-up", // Invite code page
   },
-
-  callbacks: {},
 });
