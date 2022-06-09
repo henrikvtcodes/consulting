@@ -28,6 +28,13 @@ export class ProjectController {
     // Method to get all a client's projects
     const user = req.user as AuthdUser;
 
+    if (user.customer === null) {
+      throw new HttpException(
+        { message: 'You are not a registered customer', customerExists: false },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     return await this.projectService.getProjects(user.customer.id);
   }
 
