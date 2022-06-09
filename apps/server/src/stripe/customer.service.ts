@@ -107,7 +107,9 @@ export class CustomerService {
       rejectOnNotFound: false,
     });
 
-    if (customer.stripeID !== (null || undefined)) {
+    console.log('customer', customer);
+
+    if (customer && customer.stripeID) {
       const stripeCustomer = await this.stripe.customers.retrieve(
         customer.stripeID,
       );
