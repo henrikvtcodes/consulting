@@ -17,7 +17,7 @@ import classNames from "components/tui/classnames";
 import { RoleLayout } from "./RoleLayout";
 import { useUser } from "utils/hooks/useUser";
 
-const navigation = [
+const clientNav = [
   { name: "Home", href: "/client", icon: HomeIcon, current: true },
   {
     name: "Projects",
@@ -39,14 +39,14 @@ const navigation = [
   },
 ];
 
-type ClientDashLayoutProps = {
+type DashLayoutProps = {
   children?: React.ReactNode;
+  nav: typeof clientNav;
 };
 
-const ClientDashLayout = (props: ClientDashLayoutProps) => {
+export const DashLayout = ({ children, nav }: DashLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const session = useSession({
+  useSession({
     required: true,
   });
 
@@ -124,7 +124,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                     />
                   </div>
                   <nav className="mt-5 px-2 space-y-1">
-                    {navigation.map((item) => (
+                    {nav.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -169,7 +169,9 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                       </p>
                       <button
                         onClick={() => {
-                          signOut();
+                          signOut({
+                            callbackUrl: "/auth/sign-in",
+                          });
                           updateUser();
                         }}
                         className=" mt-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
@@ -208,7 +210,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                 </h1>
               </div>
               <nav className="mt-5 flex-1 px-2 space-y-1">
-                {navigation.map((item) => (
+                {nav.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
@@ -252,6 +254,7 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
                   <button
                     onClick={() => {
                       signOut();
+                      router.push("/auth/sign-in");
                       updateUser();
                     }}
                     className=" mt-2 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-brand-primary hover:bg-brand-accent1h"
@@ -276,13 +279,17 @@ const ClientDashLayout = (props: ClientDashLayoutProps) => {
           </div>
           <main className="flex-1">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-6 text-brand-text1 bg-gray-50 min-h-screen">
-              {props.children}
+              {children}
             </div>
           </main>
         </div>
       </div>
     </RoleLayout>
   );
+};
+
+const ClientDashLayout = ({ children }: { children: React.ReactNode }) => {
+  return <DashLayout nav={clientNav}>{children}</DashLayout>;
 };
 
 export { ClientDashLayout };
