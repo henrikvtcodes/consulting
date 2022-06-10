@@ -1,10 +1,14 @@
 import { NextPage } from "next";
+import { useSession } from "next-auth/react";
 
 import FormPageLayout from "layouts/FormBgPage";
 import FormWindow from "~components/forms/FormWindow";
 import SignUpForm from "~components/forms/InviteValidationForm";
 
 const Page: NextPage = (props) => {
+  useSession({
+    required: true,
+  });
   return (
     <FormPageLayout title="Sign Up" desc="Confirm your account">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
