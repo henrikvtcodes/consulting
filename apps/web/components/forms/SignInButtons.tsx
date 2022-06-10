@@ -20,12 +20,8 @@ export type SignInComponentProps = {
 };
 
 const SignInForm = ({ csrfToken }: SignInComponentProps) => {
-  useEffect(() => {
-    console.log(`Current Origin: ${window.location.origin}`);
-  });
 
   const router = useRouter();
-  router.basePath;
 
   return (
     <div className="flex flex-col space-y-2">
