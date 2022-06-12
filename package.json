@@ -27,6 +27,7 @@
     "turbo": "^1.2.6"
   },
   "devDependencies": {
+    "@nestjs/cli": "^8.2.6",
     "@types/node": "16.11.11",
     "eslint": "7",
     "prisma": "^3.13.0",
