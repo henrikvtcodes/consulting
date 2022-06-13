@@ -1,5 +1,5 @@
 import HomeLayout from "layouts/PublicPage";
-import AboutSection from "~components/tui/AboutSection";
+import AboutSection from "~components/marketing/AboutSection";
 
 const Page = () => {
   return (

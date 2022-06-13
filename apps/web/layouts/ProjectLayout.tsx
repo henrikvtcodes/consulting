@@ -3,7 +3,7 @@ import { HTTPError } from "ky";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { ProjectData } from "types";
-import { ProjectStatusIndicator } from "~components/tui/ProjectCard";
+import { ProjectStatusIndicator } from "~components/client/ProjectCard";
 import { ErrorComponent } from "../pages/404";
 
 const ProjectLayout = ({ children }: { children?: React.ReactNode }) => {

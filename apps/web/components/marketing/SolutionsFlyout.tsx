@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 
-import classNames from "./classnames";
+import classNames from "../classnames";
 import { solutions } from "utils/config";
 
 const SolutionsFlyout = () => {

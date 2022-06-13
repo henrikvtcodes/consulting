@@ -4,9 +4,9 @@ import useSWR from "swr";
 import { ClientDashLayout } from "layouts/ClientDash";
 import { ProjectData } from "types";
 import ProjectLayout from "layouts/ProjectLayout";
-import CostOverview from "~components/tui/CostOverview";
-import QuoteList from "~components/tui/QuoteList";
-import { QuoteDrawer } from "~components/tui/QuoteDrawer";
+import CostOverview from "~components/client/CostOverview";
+import QuoteList from "~components/client/QuoteList";
+import { QuoteDrawer } from "~components/client/QuoteDrawer";
 
 const Page = () => {
   const router = useRouter();

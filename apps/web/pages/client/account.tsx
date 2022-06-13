@@ -1,6 +1,6 @@
 import { ClientDashLayout } from "layouts/ClientDash";
-import { PersonalInfo } from "~components/tui/PersonalInfo";
-import { PaymentInfo } from "components/tui/PaymentInfo";
+import { PersonalInfo } from "~components/client/PersonalInfo";
+import { PaymentInfo } from "~components/client/PaymentInfo";
 
 const Page = () => {
   return (

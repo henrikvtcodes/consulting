@@ -5,7 +5,7 @@ import { useState } from "react";
 import { HTTPError } from "ky";
 
 import { ClientDashLayout } from "layouts/ClientDash";
-import ProjectCard from "~components/tui/ProjectCard";
+import ProjectCard from "~components/client/ProjectCard";
 import { RequestProject } from "~components/forms/RequestProject";
 
 const Page: NextPage = () => {

@@ -1,6 +1,6 @@
 import HomeLayout from "layouts/PublicPage";
-import ProjectList from "~components/tui/CaseStudyList";
-import { ProjectProps } from "~components/tui/CaseStudyList";
+import ProjectList from "~components/marketing/CaseStudyList";
+import { ProjectProps } from "~components/marketing/CaseStudyList";
 import { getAllPosts } from "utils/getPost";
 
 type Props = {

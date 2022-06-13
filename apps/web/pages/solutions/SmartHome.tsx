@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { Transition } from "@headlessui/react";
 
 import HomeLayout from "layouts/PublicPage";
-import Brands from "~components/tui/brands";
+import Brands from "~components/marketing/brands";
 import { vendors, namedSolutions } from "~utils/config";
 import { useState } from "react";
 

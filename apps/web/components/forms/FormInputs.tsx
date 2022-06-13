@@ -4,7 +4,7 @@ import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
 import formStyles from "~styles/forms.module.css";
-import classNames from "../tui/classnames";
+import classNames from "../classnames";
 
 type TextFieldProps = {
   label: string;
