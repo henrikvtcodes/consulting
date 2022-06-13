@@ -13,3 +13,7 @@ export interface RequestProject {
 export interface CreateProject extends RequestProject {
   ownerId: string;
 }
+
+export interface QuoteData extends Quote {
+  invoice: Invoice | null;
+}
