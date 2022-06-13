@@ -8,6 +8,7 @@ const QuoteList = () => {
   const { id } = router.query;
 
   const { data: project, error } = useSWR<ProjectData>(`project/${id}`);
+
   return (
     <div className="mt-4">
       <h3 className="text-lg leading-6 font-medium text-gray-900">Quotes</h3>
@@ -59,7 +60,8 @@ const QuoteList = () => {
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <NextLink
-                          href={`${router.asPath}/quote/${quote.id}`}
+                          href={`${router.asPath}?quoteId=${quote.id}`}
+                          shallow
                           passHref
                         >
                           <a className="text-brand-primary hover:text-brand-accent1h">

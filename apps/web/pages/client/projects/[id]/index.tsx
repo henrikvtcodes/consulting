@@ -6,6 +6,7 @@ import { ProjectData } from "types";
 import ProjectLayout from "layouts/ProjectLayout";
 import CostOverview from "~components/tui/CostOverview";
 import QuoteList from "~components/tui/QuoteList";
+import { QuoteDrawer } from "~components/tui/QuoteDrawer";
 
 const Page = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const Page = () => {
       <ProjectLayout>
         <CostOverview projectId={id as string} />
         <QuoteList />
+        <QuoteDrawer projectId={id as string} />
       </ProjectLayout>
     </ClientDashLayout>
   );
