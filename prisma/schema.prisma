@@ -151,7 +151,7 @@ model Quote {
   project  Project  @relation(fields: [projectId], references: [id], onDelete: NoAction)
   customer Customer @relation(fields: [customerId], references: [id], onDelete: NoAction)
 
-  invoices Invoice?
+  invoice Invoice?
 
   @@map("quotes")
 }
