@@ -20,7 +20,7 @@ export const ErrorComponent = (props: { url: string; label: string }) => {
           </p>
         </div>
         <div className="mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6">
-          <NextLink href="/" passHref>
+          <NextLink href={props.url} passHref>
             <a className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-brand-accent1 hover:bg-brand-accent1h focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-accent2">
               Go back {`${props.label}`}
             </a>
