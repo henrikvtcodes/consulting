@@ -2,6 +2,7 @@ import { ProjectData } from "types";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { QuoteStatusIndicator } from "./Quote";
 
 const QuoteList = () => {
   const router = useRouter();
@@ -52,11 +53,11 @@ const QuoteList = () => {
                         {quote.name}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {quote.status}
+                        <QuoteStatusIndicator status={quote.status} />
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {"$"}
-                        {quote.amount.toString()}
+                        {quote.amount / 100}
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                         <NextLink
