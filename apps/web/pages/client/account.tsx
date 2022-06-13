@@ -1,4 +1,4 @@
-import { ClientDashLayout } from "layouts/ClientDash";
+import { ClientDashLayout } from "layouts/DashLayout";
 import { PersonalInfo } from "~components/client/PersonalInfo";
 import { PaymentInfo } from "~components/client/PaymentInfo";
 

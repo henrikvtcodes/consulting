@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-import { ClientDashLayout } from "layouts/ClientDash";
+import { ClientDashLayout } from "layouts/DashLayout";
 import { ProjectData } from "types";
 import ProjectLayout from "layouts/ProjectLayout";
 import CostOverview from "~components/client/CostOverview";

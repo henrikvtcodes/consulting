@@ -4,7 +4,7 @@ import useSWR from "swr";
 import { useState } from "react";
 import { HTTPError } from "ky";
 
-import { ClientDashLayout } from "layouts/ClientDash";
+import { ClientDashLayout } from "layouts/DashLayout";
 import ProjectCard from "~components/client/ProjectCard";
 import { RequestProject } from "~components/forms/RequestProject";
 

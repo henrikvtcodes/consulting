@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 
-import { ClientDashLayout } from "layouts/ClientDash";
+import { ClientDashLayout } from "layouts/DashLayout";
 import { useUser } from "utils/hooks/useUser";
 
 const ClientHome = () => {

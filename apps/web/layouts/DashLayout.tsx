@@ -12,8 +12,9 @@ import {
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { Role } from "@prisma/client";
 
-import classNames from "components/tui/classnames";
+import classNames from "components/classnames";
 import { RoleLayout } from "./RoleLayout";
 import { useUser } from "utils/hooks/useUser";
 
@@ -41,10 +42,11 @@ const clientNav = [
 
 type DashLayoutProps = {
   children?: React.ReactNode;
+  roles: Role[];
   nav: typeof clientNav;
 };
 
-export const DashLayout = ({ children, nav }: DashLayoutProps) => {
+export const DashLayout = ({ children, nav, roles }: DashLayoutProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   useSession({
     required: true,
@@ -61,7 +63,7 @@ export const DashLayout = ({ children, nav }: DashLayoutProps) => {
   };
 
   return (
-    <RoleLayout roles={["admin", "client"]}>
+    <RoleLayout roles={roles}>
       <div>
         <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
@@ -288,8 +290,26 @@ export const DashLayout = ({ children, nav }: DashLayoutProps) => {
   );
 };
 
-const ClientDashLayout = ({ children }: { children: React.ReactNode }) => {
-  return <DashLayout nav={clientNav}>{children}</DashLayout>;
+export const ClientDashLayout = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  return (
+    <DashLayout nav={clientNav} roles={[Role.admin, Role.client]}>
+      {children}
+    </DashLayout>
+  );
 };
 
-export { ClientDashLayout };
+export const AdminDashLayout = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  return (
+    <DashLayout nav={clientNav} roles={[Role.admin]}>
+      {children}
+    </DashLayout>
+  );
+};

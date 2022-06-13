@@ -1,4 +1,4 @@
-import { ClientDashLayout } from "layouts/ClientDash";
+import { ClientDashLayout } from "layouts/DashLayout";
 
 const Page = () => {
   return (
