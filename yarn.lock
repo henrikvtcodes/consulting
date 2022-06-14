@@ -3640,7 +3640,7 @@ __metadata:
     sharp: ^0.30.4
     stripe: ^8.222.0
     turbo: ^1.2.6
-    typescript: 4.5.2
+    typescript: ^4.7.3
   languageName: unknown
   linkType: soft
 
@@ -10152,7 +10152,7 @@ __metadata:
     tsconfig: "*"
     tsconfig-paths: ^3.11.0
     types: "*"
-    typescript: ^4.4.4
+    typescript: ^4.7.3
   languageName: unknown
   linkType: soft
 
@@ -11505,18 +11505,9 @@ __metadata:
   dependencies:
     tsconfig: "*"
     tsup: ^5.12.7
+    typescript: ^4.7.3
   languageName: unknown
   linkType: soft
-
-"typescript@npm:4.5.2":
-  version: 4.5.2
-  resolution: "typescript@npm:4.5.2"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 74f9ce65d532bdf5d0214b3f60cf37992180023388c87a11ee6f838a803067ef0b63c600fa501b0deb07f989257dce1e244c9635ed79feca40bbccf6e0aa1ebc
-  languageName: node
-  linkType: hard
 
 "typescript@npm:4.6.2":
   version: 4.6.2
@@ -11528,7 +11519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.6.4, typescript@npm:^4.4.4":
+"typescript@npm:4.6.4":
   version: 4.6.4
   resolution: "typescript@npm:4.6.4"
   bin:
@@ -11538,13 +11529,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.5.2#~builtin<compat/typescript>":
-  version: 4.5.2
-  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=bda367"
+"typescript@npm:^4.7.3":
+  version: 4.7.3
+  resolution: "typescript@npm:4.7.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: e25e689eba64f7da7cfc43f8ea76cac7176b56caba42655f0a4cb29c0b7c36e67ca54f33df95902859f56108464245d8b45bcdfe21e3d66d9560feb8db780246
+  checksum: fd13a1ce53790a36bb8350e1f5e5e384b5f6cb9b0635114a6d01d49cb99916abdcfbc13c7521cdae2f2d3f6d8bc4a8ae7625edf645a04ee940588cd5e7597b2f
   languageName: node
   linkType: hard
 
@@ -11558,13 +11549,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.6.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@4.6.4#~builtin<compat/typescript>":
   version: 4.6.4
   resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 1cb434fbc637d347be90e3a0c6cd05e33c38f941713c8786d3031faf1842c2c148ba91d2fac01e7276b0ae3249b8633f1660e32686cc7a8c6a8fd5361dc52c66
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.7.3#~builtin<compat/typescript>":
+  version: 4.7.3
+  resolution: "typescript@patch:typescript@npm%3A4.7.3#~builtin<compat/typescript>::version=4.7.3&hash=bda367"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 8257ce7ecbbf9416da60045a76a99d473698ca9e973fa0ddab7137cacb1587255431176cbbcc801a650938c4dc8109ab88355774829a714fabe56a53a2fe4524
   languageName: node
   linkType: hard
 
@@ -12069,7 +12070,7 @@ __metadata:
     tailwindcss: ^3.0.24
     tsconfig: "*"
     types: "*"
-    typescript: 4.5.2
+    typescript: ^4.7.3
     use-constant: ^1.1.0
   languageName: unknown
   linkType: soft
