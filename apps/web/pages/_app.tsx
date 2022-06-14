@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react";
 import { SWRConfig } from "swr";
 import PlausibleProvider, { usePlausible } from "next-plausible";
 import { Fragment, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 import Favicon from "~components/MetaComponents";
 import { WarningBanner } from "~components/WarningBanner";
@@ -25,6 +26,7 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         provider: () => new Map(),
       }}
     >
+      <Toaster />
       <Favicon />
       <SessionProvider session={session}>
         {process.env.NEXT_PUBLIC_PROD_WARN === "true" ? (

@@ -6,6 +6,8 @@ import { useSWRConfig } from "swr";
 
 import { useApiClient } from "~utils/hooks/useApiClient";
 import { RequestProject } from "types";
+import { HTTPError } from "ky";
+import toast from "react-hot-toast";
 
 const RequestProject = (props: {
   open: boolean;
@@ -14,15 +16,25 @@ const RequestProject = (props: {
   const client = useApiClient();
   const { register, handleSubmit } = useForm<RequestProject>();
 
-  const { mutate } = useSWRConfig()
+  const { mutate } = useSWRConfig();
 
   const submitRequest = async (data: RequestProject) => {
     console.log(data);
-    await client.post("project/request", {
-      body: JSON.stringify(data),
-    });
+    try {
+      await client.post("project/request", {
+        body: JSON.stringify(data),
+      });
+    } catch (e) {
+      const error = e as HTTPError;
+
+      if (error.response.status === 429) {
+        toast.error("You cannot request a project more than once in 24 hours.");
+      } else {
+        toast.error("An error occurred while trying to request a project.");
+      }
+    }
     mutate("project");
-    props.setOpen(false)
+    props.setOpen(false);
   };
   return (
     <Transition.Root show={props.open} as={Fragment}>
