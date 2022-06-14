@@ -8,9 +8,7 @@ import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 
 import HomeLayout from "layouts/PublicPage";
-import { DefaultMeta } from "~components/MetaComponents";
-import Brands from "~components/marketing/brands";
-import classNames from "components/tui/classnames";
+import classNames from "components/classnames";
 import { faqs } from "utils/config";
 import { markdownToHtmlSync } from "utils/markdownToHtml";
 import markdownStyles from "~styles/faq.module.css";
