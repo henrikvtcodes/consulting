@@ -33,9 +33,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/forms"),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
