@@ -20,7 +20,15 @@ export class InviteService {
     return invite;
   }
 
-  async getManyInvites(quantity: number) {
+  async getAllInvites() {
+    return await this.prisma.invite.findMany({
+      orderBy: {
+        used: 'asc',
+      },
+    });
+  }
+
+  async getManyNewInvites(quantity: number) {
     const codes: { token: string }[] = [];
     for (let i = 0; i < quantity; i++) {
       codes.push({ token: genHexCode() });
@@ -42,7 +50,7 @@ export class InviteService {
     return !invite.used;
   }
 
-  async createInvite(code?: string) {
+  async createNewInvite(code?: string) {
     let newCode: string;
 
     if (code) {

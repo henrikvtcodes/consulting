@@ -7,10 +7,11 @@ import {
   HttpStatus,
   Param,
   Post,
+  Query,
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { User } from '@prisma/client';
+import { Invite, User } from '@prisma/client';
 import { AuthdUser } from 'types';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
 import { Roles } from '../../auth/role.decorator';
@@ -23,12 +24,19 @@ import { InviteService } from './invite.service';
 export class InviteController {
   constructor(private inviteService: InviteService) {}
 
+  @Get('/all')
+  @Roles(Role.admin)
+  async getAllInvites(): Promise<Invite[]> {
+    const invites = await this.inviteService.getAllInvites();
+    return invites;
+  }
+
   @Post() // Allow admin to create a new invite code
   @Roles(Role.admin)
-  async getNewInvite(@Req() req, @Body() body) {
+  async getNewInvite(@Body() body) {
     const requestCode: string | undefined = body['code'];
 
-    const newInvite = await this.inviteService.createInvite(requestCode);
+    const newInvite = await this.inviteService.createNewInvite(requestCode);
 
     return newInvite;
   }
@@ -36,11 +44,11 @@ export class InviteController {
   @Post('many')
   @Roles(Role.admin)
   @HttpCode(HttpStatus.OK)
-  async getManyInvites(@Param('count') count: number | undefined) {
+  async getManyNewInvites(@Query('count') count: any) {
     if (count === undefined) {
       throw new HttpException('No count provided', HttpStatus.BAD_REQUEST);
     }
-    const invites = await this.inviteService.getManyInvites(count);
+    const invites = await this.inviteService.getManyNewInvites(count);
     return invites;
   }
 
