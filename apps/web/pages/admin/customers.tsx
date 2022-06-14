@@ -6,7 +6,7 @@ const Page = () => {
   return (
     <AdminDashLayout>
       <main>
-        <h1 className="text-4xl">Admin Home</h1>
+        <h1 className="text-4xl">Admin Customers</h1>
       </main>
     </AdminDashLayout>
   );
