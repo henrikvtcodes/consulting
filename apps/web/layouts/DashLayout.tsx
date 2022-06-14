@@ -223,7 +223,7 @@ export const DashLayout = ({ children, nav, roles }: DashLayoutProps) => {
                   <img
                     className="inline-block h-9 w-9 rounded-full"
                     src={userImage}
-                    alt=""
+                    alt="profile picture"
                     referrerPolicy="no-referrer"
                   />
                 </div>
