@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Patch, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  Patch,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { Role } from '@prisma/client';
 import { AuthdUser, User } from 'types';
 
@@ -43,5 +51,15 @@ export class UserController {
     delete newUser.emailVerified, newUser.isInvited, user.customer;
 
     return { user: newUser };
+  }
+
+  @Patch('invite')
+  @Roles(Role.admin)
+  async inviteUser(@Body() body): Promise<any> {
+    const email: string | undefined = body['email'];
+    if (!email) {
+      throw new HttpException('Missing Email', 400);
+    }
+    return await this.userService.setUserInvited(email);
   }
 }

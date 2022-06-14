@@ -77,4 +77,15 @@ export class UserService {
 
     return users;
   }
+
+  async setUserInvited(email: string) {
+    await this.prisma.user.update({
+      where: {
+        email: email,
+      },
+      data: {
+        isInvited: true,
+      },
+    });
+  }
 }
