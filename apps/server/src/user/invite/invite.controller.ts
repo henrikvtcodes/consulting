@@ -11,11 +11,10 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { Request } from 'express';
 import { AuthdUser } from 'types';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
 import { Roles } from '../../auth/role.decorator';
-import { Role } from '../../auth/role.enum';
+import { Role } from '@prisma/client';
 import { RolesGuard } from '../../auth/role.guard';
 import { InviteService } from './invite.service';
 
@@ -25,7 +24,7 @@ export class InviteController {
   constructor(private inviteService: InviteService) {}
 
   @Post() // Allow admin to create a new invite code
-  @Roles(Role.ADMIN)
+  @Roles(Role.admin)
   async getNewInvite(@Req() req, @Body() body) {
     const requestCode: string | undefined = body['code'];
 
@@ -34,8 +33,19 @@ export class InviteController {
     return newInvite;
   }
 
+  @Post('many')
+  @Roles(Role.admin)
+  @HttpCode(HttpStatus.OK)
+  async getManyInvites(@Param('count') count: number | undefined) {
+    if (count === undefined) {
+      throw new HttpException('No count provided', HttpStatus.BAD_REQUEST);
+    }
+    const invites = await this.inviteService.getManyInvites(count);
+    return invites;
+  }
+
   @Post('submit') // Allow user to use an invite code
-  @HttpCode(200)
+  @HttpCode(HttpStatus.OK)
   async useInvite(@Req() req, @Body() body) {
     const user = req.user as AuthdUser;
     // const { hostname: origin, protocol } = req as Request;

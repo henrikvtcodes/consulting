@@ -20,6 +20,19 @@ export class InviteService {
     return invite;
   }
 
+  async getManyInvites(quantity: number) {
+    const codes: { token: string }[] = [];
+    for (let i = 0; i < quantity; i++) {
+      codes.push({ token: genHexCode() });
+    }
+
+    const invites = await this.prisma.invite.createMany({
+      data: codes,
+      skipDuplicates: true,
+    });
+    return invites;
+  }
+
   async validateInvite(code: string) {
     const invite = await this.getInvite(code);
     if (!invite) {
@@ -54,11 +67,11 @@ export class InviteService {
       // Invite doesnt exist, return null
       return null;
     } else if (invite.used) {
-      console.log("Invite Used")
+      console.log('Invite Used');
       // Invite has already been used, return null
       return null;
     } else if (user.isInvited) {
-      console.log("User Already Invited")
+      console.log('User Already Invited');
       // User is already invited, return null
       return null;
     }
