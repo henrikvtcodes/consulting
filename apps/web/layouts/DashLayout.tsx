@@ -17,28 +17,7 @@ import { Role } from "@prisma/client";
 import classNames from "components/classnames";
 import { RoleLayout } from "./RoleLayout";
 import { useUser } from "utils/hooks/useUser";
-
-const clientNav = [
-  { name: "Home", href: "/client", icon: HomeIcon, current: true },
-  {
-    name: "Projects",
-    href: "/client/projects",
-    icon: FolderIcon,
-    current: false,
-  },
-  {
-    name: "Payments",
-    href: "/client/payments",
-    icon: CurrencyDollarIcon,
-    current: false,
-  },
-  {
-    name: "Account",
-    href: "/client/account",
-    icon: UserIcon,
-    current: false,
-  },
-];
+import { BadgeCheckIcon, UsersIcon } from "@heroicons/react/solid";
 
 type DashLayoutProps = {
   children?: React.ReactNode;
@@ -290,6 +269,28 @@ export const DashLayout = ({ children, nav, roles }: DashLayoutProps) => {
   );
 };
 
+const clientNav = [
+  { name: "Home", href: "/client", icon: HomeIcon, current: true },
+  {
+    name: "Projects",
+    href: "/client/projects",
+    icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: "Payments",
+    href: "/client/payments",
+    icon: CurrencyDollarIcon,
+    current: false,
+  },
+  {
+    name: "Account",
+    href: "/client/account",
+    icon: UserIcon,
+    current: false,
+  },
+];
+
 export const ClientDashLayout = ({
   children,
 }: {
@@ -302,13 +303,35 @@ export const ClientDashLayout = ({
   );
 };
 
+const adminNav = [
+  { name: "Home", href: "/admin", icon: HomeIcon, current: true },
+  {
+    name: "Projects",
+    href: "/admin/projects",
+    icon: FolderIcon,
+    current: false,
+  },
+  {
+    name: "Customers",
+    href: "/admin/customers",
+    icon: UsersIcon,
+    current: false,
+  },
+  {
+    name: "Invites",
+    href: "/admin/invites",
+    icon: BadgeCheckIcon,
+    current: false,
+  },
+];
+
 export const AdminDashLayout = ({
   children,
 }: {
   children: React.ReactNode;
 }) => {
   return (
-    <DashLayout nav={clientNav} roles={[Role.admin]}>
+    <DashLayout nav={adminNav} roles={[Role.admin]}>
       {children}
     </DashLayout>
   );
