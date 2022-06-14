@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Customer as DbCustomer, User as DbUser } from '@prisma/client';
+import { Customer as DbCustomer, Role, User as DbUser } from '@prisma/client';
 import { AddressOpt, Customer, User, UserDetailsForm } from 'types';
 import { PrismaService } from '../prisma/prisma.service';
 
@@ -53,5 +53,28 @@ export class UserService {
     });
 
     return customer;
+  }
+
+  async getAllUsers(): Promise<User[]> {
+    const users = await this.prisma.user.findMany({
+      where: {
+        role: Role.client,
+      },
+      select: {
+        name: true,
+        email: true,
+        phone: true,
+        image: true,
+        role: true,
+        isInvited: true,
+        addressLine1: true,
+        addressLine2: true,
+        addressCity: true,
+        addressState: true,
+        addressZip: true,
+      },
+    });
+
+    return users;
   }
 }

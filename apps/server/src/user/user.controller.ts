@@ -3,6 +3,7 @@ import { Role } from '@prisma/client';
 import { AuthdUser, User } from 'types';
 
 import { SessionGuard } from '../auth/nextauth-session.guard';
+import { Roles } from '../auth/role.decorator';
 import { RolesGuard } from '../auth/role.guard';
 import { UserService } from './user.service';
 
@@ -18,6 +19,14 @@ export class UserController {
     delete user.emailVerified, user.customer; // Remove unneeded fields
 
     return { user };
+  }
+
+  @Get('all')
+  @Roles(Role.admin)
+  async getAllUsers(): Promise<{ users: User[] }> {
+    const users = await this.userService.getAllUsers();
+
+    return { users };
   }
 
   @Get('role') // Get user role
