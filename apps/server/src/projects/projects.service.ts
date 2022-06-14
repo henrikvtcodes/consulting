@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Project, ProjectStatus } from '@prisma/client';
-import { ProjectData } from 'types';
+import { AuthdUser, ProjectData } from 'types';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -23,6 +23,17 @@ export class ProjectsService {
         totalCost: 0,
         totalDue: 0,
         totalPaid: 0,
+      },
+    });
+  }
+
+  async findLastCreatedProject(ownerId: string): Promise<Project> {
+    return await this.prisma.project.findFirst({
+      where: {
+        ownerId: ownerId,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }

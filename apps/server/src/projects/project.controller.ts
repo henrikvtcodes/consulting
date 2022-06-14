@@ -79,6 +79,17 @@ export class ProjectController {
   async requestProject(@Req() req, @Body() projectData: RequestProjectDto) {
     const user = req.user as AuthdUser;
 
+    const lastCreated = await this.projectService.findLastCreatedProject(
+      user.customer.id,
+    );
+
+    if (lastCreated.createdAt > new Date(Date.now() - 24 * 60 * 60 * 1000)) {
+      throw new HttpException(
+        { message: 'You can only request a project once every 24 hours' },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+
     return await this.projectService.createProject(
       projectData.name,
       projectData.description,
