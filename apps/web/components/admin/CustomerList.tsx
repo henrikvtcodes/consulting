@@ -1,4 +1,7 @@
 import { User } from "types";
+import { useSWRConfig } from "swr";
+
+import { useApiClient } from "utils/hooks/useApiClient";
 
 type CustomerListProps = {
   users: User[];
@@ -6,6 +9,20 @@ type CustomerListProps = {
 
 export const CustomerList = (props: CustomerListProps) => {
   const { users } = props;
+
+  const client = useApiClient();
+
+  const { mutate } = useSWRConfig();
+
+  const markUserInvited = async (email: string) => {
+    await client.patch(`user/invite`, {
+      body: JSON.stringify({
+        email: email,
+      }),
+    });
+
+    mutate("user/all");
+  };
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -15,14 +32,6 @@ export const CustomerList = (props: CustomerListProps) => {
             A list of all the users in your account including their name, title,
             email and role.
           </p>
-        </div>
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-          >
-            Add user
-          </button>
         </div>
       </div>
       <div className="mt-8 flex flex-col">
@@ -36,20 +45,20 @@ export const CustomerList = (props: CustomerListProps) => {
                       scope="col"
                       className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
                     >
-                      Name
+                      Account
                     </th>
 
                     <th
                       scope="col"
                       className="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
                     >
-                      Email
+                      Invited
                     </th>
                     <th
                       scope="col"
                       className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
                     >
-                      Role
+                      Phone
                     </th>
                     <th
                       scope="col"
@@ -83,20 +92,29 @@ export const CustomerList = (props: CustomerListProps) => {
                       </td>
 
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
-                          Active
-                        </span>
+                        {user.isInvited ? (
+                          <span className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                            Invited
+                          </span>
+                        ) : (
+                          <span className="inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800">
+                            Not Invited
+                          </span>
+                        )}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {user.role}
+                        {user.phone ? user.phone : "N/A"}
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="#"
-                          className="text-brand-primary hover:text-brand-accent1h"
-                        >
-                          Edit<span className="sr-only">, {user.name}</span>
-                        </a>
+                        {user.isInvited ? undefined : (
+                          <button
+                            onClick={() => markUserInvited(user.email)}
+                            className="text-brand-primary hover:text-brand-accent1h"
+                          >
+                            Mark Invited
+                            <span className="sr-only">, {user.name}</span>
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))}
