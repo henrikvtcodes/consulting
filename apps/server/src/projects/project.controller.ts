@@ -84,9 +84,12 @@ export class ProjectController {
     );
 
     if (lastCreated.createdAt > new Date(Date.now() - 24 * 60 * 60 * 1000)) {
+      // console.log("Rate Limited: Can't create more than one project per day");
+      // console.log(lastCreated.createdAt);
+      // console.log(new Date(Date.now() - 24 * 60 * 60 * 1000));
       throw new HttpException(
         { message: 'You can only request a project once every 24 hours' },
-        HttpStatus.BAD_REQUEST,
+        HttpStatus.TOO_MANY_REQUESTS,
       );
     }
 
