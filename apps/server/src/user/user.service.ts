@@ -1,9 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Customer as DbCustomer, Role, User as DbUser } from '@prisma/client';
-import { AddressOpt, Customer, User, UserDetailsForm } from 'types';
+import { UserData, UserDetailsForm } from 'types';
 import { PrismaService } from '../prisma/prisma.service';
-
-import { addressFields } from 'types';
 
 @Injectable()
 export class UserService {
@@ -55,7 +53,7 @@ export class UserService {
     return customer;
   }
 
-  async getAllUsers(): Promise<User[]> {
+  async getAllUsers(): Promise<UserData[]> {
     const users = await this.prisma.user.findMany({
       where: {
         role: Role.client,

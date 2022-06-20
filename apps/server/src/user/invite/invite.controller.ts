@@ -11,13 +11,14 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { Invite, User } from '@prisma/client';
+import { Invite } from '@prisma/client';
 import { AuthdUser } from 'types';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
 import { Roles } from '../../auth/role.decorator';
 import { Role } from '@prisma/client';
 import { RolesGuard } from '../../auth/role.guard';
 import { InviteService } from './invite.service';
+import { User } from '../user.decorator';
 
 @Controller('invite')
 @UseGuards(SessionGuard, RolesGuard)
@@ -54,8 +55,7 @@ export class InviteController {
 
   @Post('submit') // Allow user to use an invite code
   @HttpCode(HttpStatus.OK)
-  async useInvite(@Req() req, @Body() body) {
-    const user = req.user as AuthdUser;
+  async useInvite(@User() user: AuthdUser, @Body() body) {
     // const { hostname: origin, protocol } = req as Request;
 
     const code: string | undefined = body['code'];
@@ -109,15 +109,12 @@ export class InviteController {
   }
 
   @Get('status') // Check if the logged in user is invited
-  async getInviteStatus(@Req() req) {
-    const user = req.user as User;
+  async getInviteStatus(@User() user: AuthdUser) {
     return { invited: user.isInvited };
   }
 
   @Get('validate/:code')
-  async validateInvite(@Param('code') code: string, @Req() req) {
-    const user = req.user as User;
-
+  async validateInvite(@Param('code') code: string, @User() user: AuthdUser) {
     if (user.isInvited) {
       throw new HttpException(
         {

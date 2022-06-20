@@ -6,7 +6,6 @@ import {
   HttpStatus,
   Param,
   Patch,
-  Req,
   UseGuards,
 } from '@nestjs/common';
 import { Role } from '@prisma/client';
@@ -14,6 +13,7 @@ import { AuthdUser } from 'types';
 import { SessionGuard } from '../../auth/nextauth-session.guard';
 import { Roles } from '../../auth/role.decorator';
 import { RolesGuard } from '../../auth/role.guard';
+import { User } from '../../user/user.decorator';
 import { QuoteService } from './quote.service';
 
 @Controller('quote')
@@ -22,8 +22,7 @@ export class QuoteController {
   constructor(private quoteService: QuoteService) {}
 
   @Get('/:id')
-  async getQuoteData(@Req() req, @Param('id') id: any) {
-    const user = req.user as AuthdUser;
+  async getQuoteData(@User() user: AuthdUser, @Param('id') id: any) {
     if (id === 'undefined') {
       throw new HttpException('No id provided', HttpStatus.BAD_REQUEST);
     }
@@ -33,8 +32,7 @@ export class QuoteController {
   @Patch('/:id/approve')
   @Roles(Role.client)
   @HttpCode(200)
-  async approveQuote(@Req() req, @Param('id') id: string) {
-    const user = req.user as AuthdUser;
+  async approveQuote(@User() user: AuthdUser, @Param('id') id: string) {
     await this.quoteService.approveQuote(id, user.customer.id);
     return;
   }

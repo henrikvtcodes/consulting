@@ -2,7 +2,7 @@ import { User as DbUser, Customer, Role } from "@prisma/client";
 
 import { AddressOpt } from "./address";
 
-export interface User extends AddressOpt {
+export interface UserData extends AddressOpt {
   name: string;
   email: string;
   phone: string;
