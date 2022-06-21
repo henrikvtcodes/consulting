@@ -37,6 +37,12 @@ export class ProjectController {
     return await this.projectService.getProjects(user.customer.id);
   }
 
+  @Get('/all')
+  @Roles(Role.admin)
+  async getAllProjects() {
+    return await this.projectService.getAllProjects();
+  }
+
   @Get('/:id')
   async getProject(@User() user: AuthdUser, @Param('id') projectId: string) {
     const project = await this.projectService.getProject(
@@ -49,12 +55,6 @@ export class ProjectController {
     }
 
     return project;
-  }
-
-  @Get('all')
-  @Roles(Role.admin)
-  async getAllProjects() {
-    return await this.projectService.getAllProjects();
   }
 
   @Post('create')
