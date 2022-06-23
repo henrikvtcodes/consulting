@@ -1,10 +1,10 @@
-import { User } from "types";
+import { UserData } from "types";
 import { useSWRConfig } from "swr";
 
 import { useApiClient } from "utils/hooks/useApiClient";
 
 type CustomerListProps = {
-  users: User[];
+  users: UserData[];
 };
 
 export const CustomerList = (props: CustomerListProps) => {

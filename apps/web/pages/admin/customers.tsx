@@ -3,10 +3,10 @@ import useSWR from "swr";
 
 import { AdminDashLayout } from "layouts/DashLayout";
 import { CustomerList } from "~components/admin/CustomerList";
-import { User } from "types";
+import { UserData } from "types";
 
 const Page = () => {
-  const { data, error } = useSWR<{ users: User[] }>(`user/all`);
+  const { data, error } = useSWR<{ users: UserData[] }>(`user/all`);
   console.log(data);
   return (
     <AdminDashLayout>
